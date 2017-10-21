@@ -1,26 +1,36 @@
 # Tables and figures
 
+```{r data, echo=FALSE}
+
+library(googlesheets)
+library(tidyverse)
+library(agricolae)
+library(GerminaR)
+library(FactoMineR)
+library(gsheet)
+
+gss <- gs_ls()
+fb <- gs_url("https://docs.google.com/spreadsheets/d/1fu3y-z9v3RJTxvkIc4i1VwxQ0399V5CJQi_38ot4F4c/edit#gid=142311263") 
+
+dt <- fb %>% gs_read(ws = "FieldBook") 
+
+
+gnt <- fb %>% gs_read(ws = "Genotypes") %>% 
+  select(Genotypes, Adaptability, "Growning period" = GPL, "Heat tolerance" = Heat, "Dry matter (%)") %>% 
+  mutate_all(funs(replace(., is.na(.), " ")))
+
+
+```
+
+
 ## Tables
 
 ```{r functions, echo=FALSE}
 
-funct <- dplyr::data_frame(
-  
-  "Function" = c("ger_summary", "ger_intime", "fplot", "GerminaQuant", "prosopis"),
-  
-  "Description"= c(
-    
-    "Calculate ten germination indices maintaining the factors levels for analysis of variance",
-    "Calculates and displays cumulative germination data.",
-    "Function that allows to graphic the results in bar or line plot.",
-    "Runs the interactive application in offline mode for use on a personal computer.",
-    "Dataset with germination experiment in *Prosopis juliflor* seeds under under different osmotic potentials and temperatures.")
-)
-
 knitr::kable(
-  funct,
+  gnt,
   booktabs = TRUE,
-  caption = "Main functions in the GerminaR R package for seed germination variables and graphical analysis."
+  caption = "List of potato (*Solanum tuberosum* L.) genotypes from advanced breeding population at International Potato Center (CIP) used in the experiment."
   )
 
 ```
@@ -29,70 +39,18 @@ knitr::kable(
 ## Figures
 
 
+Figure 1: Effect of water deficit on (a) biomass production (kgDW.m-2) and drought susceptibility index (TDWS, defined as tuber dry weight per square meter expressed relative to control treatment) in two commercial varieties and thirteen advanced potato genotypes, and (b) Fraction of transpirable soil water (FTSW) from the beginning of water deficit treatment. Data are the means ±SE (standard error) of 5 replicates. White and black bars represent WW= well-watered and WD= water deficit treatments.
+ 
+Figure 2: Effect of water deficit on (a) tuber yield (kg/m2), (b) harvest index (HI), defined as tuber dry weight per total biomass), and (c) specific leaf area (SLA) in two commercial varieties and thirteen advanced potato genotypes. Data are the means ±SE (standard error) of five replicates. White and black bars represent WW= well-watered and WD= water deficit treatments.
+ 
+Figure 3: Effect of water deficit on (a) root length, and (b) stolon mass in two commercial varieties and thirteen advanced potato genotypes. Data are the means ±SE (standard error) of five replicates. White and black bars represent WW= well-watered and WD= water deficit treatments.
+ 
+Figure 4: Water use efficiency (WUE) of total biomass (g.L-1) (a) and the weighted average of the WUE of each of the plant organs (g.L-1) (b) in two commercial varieties and thirteen advanced potato genotypes. Data are the means ±SE (standard error) of five replicates for tuber, leaf, stem and root in well-watered (WW) and water deficit (WD) treatments.
+ 
+Figure 5:  Relationship between (a) total transpiration and total biomass, (b) tuber yield and water use efficiency (WUE), and between (c) Harvest index and TDWS in 2 commercial varieties and thirteen advanced potato genotypes. Solid line circle depicts tolerant genotypes, dashed line circle the medium tolerant ones, and the dotted line circle the sensitive genotypes. Data are the means ±SE (standard error) of five replicates.
 
-(ref:gerplot) Germination  experiment with *Prosopis juliflor* under different osmotic potentials and temperatures. A) Bar graph with germination percentage in a factorial analisys. B)  Line graph from cumulative germination under different osmotic potentials.
+Supplementary Figure 1: Tuber yield (kg/m2) from five plants of CIP 398203.244 and CIP 398190.89 each, under well-watered (WW) and water deficit (WD) treatments. Pictures were taken using the scale displayed alongside the tubers.
 
+Supplementary Table 1: Means ± SE (standard error) of root:shoot ratio, chlorophyll content (SPAD), relative water content (RWC), and osmotic potential (MPa) in two commercial varieties and thirteen advanced potato genotypes. Data are the means of five replicates. WW= well-watered and WD= water deficit treatments.
 
-```{r, germplot, fig.cap= '(ref:gerplot)'}
-
-# load data
-
-library(GerminaR)
-library(cowplot)
-
-fb <- prosopis %>% dplyr::mutate( nacl = as.factor(nacl), temp = as.factor(temp), rep = as.factor(rep))
-
-## Puntual analysis
-
-# germination analysis
-
-gsm <- ger_summary(SeedN = "seeds", evalName = "D", data = fb)
-
-# analisys of variance
-
-av <- aov(formula = GRP ~ nacl*temp + rep, data = gsm)
-
-# mean comparision test
-
-mc <- ger_testcomp(aov = av, comp = c("temp", "nacl"), type = "snk")
-
-# line or bar graphics
-
-gbp <- fplot(data = mc, type = "bar", 
-             x = "temp", y = "mean", z = "nacl", 
-             lmt = c(0,110), brk = 10,
-             ylab = "Germination ('%')", 
-             xlab = "Temperature (ºC)", 
-             lgl = "NaCl (Mpa)", lgd = "top", 
-             sig = "sg", erb = T, color = F)
-
-## Intime analysis
-
-# data frame with percentual or relative germination in time
-
-git <- ger_intime(Factor = "nacl", SeedN = "seeds", evalName = "D", method = "percentage", data = fb)
-
-# graphic germination in time
-
-ggt <- fplot(data = git, type = "line", 
-             x = "evaluation", y = "mean", z = "nacl", 
-             lmt = c(0,110), brk = 10,
-             ylab = "Germination ('%')", 
-             xlab = "Day", 
-             lgl = "NaCl (Mpa)", 
-             lgd = "top", color = FALSE)
-
-
-## Plot figures
-
-gerplot <- cowplot::ggdraw(xlim = c(0, 1), ylim = c(0, 0.5))+
-  draw_plot(gbp, width = 0.5, height = 0.5, x = 0.0, y = 0.0) +
-  draw_plot(ggt, width = 0.5, height = 0.5, x = 0.5, y = 0.0) +
-  draw_plot_label(label = c("A", "B"), x = c(0.0, 0.5), y = c(0.5, 0.5))
-
-cowplot::ggsave("img/gerplot.tiff", dpi= 300, width = 210*0.9 , height = 297*0.4, units = "mm")
-cowplot::ggsave("img/gerplot.png", dpi= 300, width = 210*0.9 , height = 297*0.4, units = "mm")
-
-knitr::include_graphics("img/gerplot.png")
-
-```
+Supplementary Table 2: Analysis of Variance (ANOVA) table (F-values) showing significance test between genotypes, treatments and the genotype and treatment interaction for each of the traits evaluated in two commercial varieties and thirteen advanced potato genotypes. DAP: Days after planting, root:shoot: ratio between root and shoot.

@@ -1,15 +1,39 @@
 # Materials and methods
 
-## Nulla metus metus
+## Plant material and experimental design
 
-Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante (Table \@ref(tab:functions)).
+They were selected thirteen potato clones from advanced breeding population at International Potato Center (CIP) collection and two commercial varieties were grown from May–August 2013 in an environmentally controlled greenhouse at CIP - La Molina Experimental Station at 28/15 °C day/night with no artificial light, 48/89% min/max relative humidity. One tuber was sown per pot (5L) containing two kg of dry commercial Sogemix SM2 (75% Peat Moss, perlite, vermiculite, and limestone). Fertilization was done twice with ammonium nitrate; triple superphosphate and potassium sulphate, one before planting (mix with the substrate) and the other applied at the surface at 40 DAP (days after planting). 
 
-##  Morbi lacinia
+The experiments  was arranged in a split plot design in the main plot the two irrigation treatments: well-watered (WW) treatment where the moisture was maintained at field capacit and water deficit (WD) treatment where the water requirements of each genotype measured at WW treatment until wilting point was reduced 10% inter-daily measurement (Figure 1b) and the subplot were compound by the fifteen potato genotypes. The water decifit treatment were appliyed since 45 DAP and prior to the treatment initiation, the pots from both WW and WD treatments were watered to soaking and then allowed to drain overnight. Next day, the pots were sealed in a plastic bag secured with a twist tie to prevent water loss except by transpiration and all the pots were weighed and it was defined as the initial weight pot. 
 
-Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. 
+## Trait evaluation
 
-## Proin sodales
+### Transpiration and water use efficiency
+
+Transpiration was calculated by weighing the pots every two days in the between 13:00 and 15:00 hours (GMT -05:00), subtracting the amount of water added, and calculating the difference in weight between two days. The transpiration (TRS) of each plant was calculated by the procedure previously described by @Bhatnagar_Mathur_2007 and @Ray_1998. The inter-daily transpiration rates of WD plants were normalized against WW plant rates to reduce the influence of day-to-day variation ($TRS=\left(\frac{WD_{transpiration}}{WW_{transpiration\ average}}\right)$). The normalization was achieved by dividing transpiration of each individual plant in the WD regime by the mean transpiration of the WW plants. For compare the TRS between plants, a second normalization was done so that the normalized transpiration rate (NTR) of each plant was defined in 1.0 when the soil water content in each pot was at field capacity. Pots in WD treatment were allowed to lose moisture until NTR dropped below 0.15, which was defined as the endpoint for the WD treatment [@Sinclair_1986]. The available soil water or the fraction of transpirable soil water (FTSW), for each pot was calculated by dividing the pot weight minus the final pot weight by the transpirable soil water of that pot ($FTSW=\left(\frac{pot\ weight_{inter-daily}-pot\ weight_{final}}{pot\ weight_{initial}-pot\ weight_{final}}\right)$). 
+
+The WUE in WD and WW plants was estimated from the total biomass and as weighted average for each of the plant components. WUE for the total biomass was calculated as the total biomass in dry weight produced during the treatment apply divided by the cumulative water transpired during the same period ([@Dalla_Costa_1997]. 
+
+### Water components
+
+The relative water conten (RWC) was determined by weighing the third leaflet (FW) from the third leaf from the apical part from the youngest fully expanded leaf of each plant. Each leaflet were placing in a 4x3 inch ziploc bag containing distilled water for 24 hours and after these time it was removed blotting each in a paper towel prior to taking turgid weight (TW) afterwards it was dried in an oven at 90 ºC for 24 hours and weighed (DW). The RWC was calculated according by [@Vasquez_Robinet_2008] by the formula $RWC\left(\%\right)=\left(\frac{leaflet_{FW}-leaflet_{DW}}{leaflet_{TW}-leaflet_{DW}}\right)\cdot100$.
+
+Leaf osmotic potential (LOP) was determined using a dew point microvoltmeter (HR-33T Wescor Inc., Logan, UT, USA) with leaf discs of 5mm diameter, taken from the third fully extended leaf. The leaf discs were put in 1 ml cryogenic tubes and frozen in liquid nitrogen for further analysis. The frozen leaves were incubated at 22°C for 30 min in a sealed C-52 chamber (Wescor Inc., Logan, UT, USA). The total osmotic adjustment (TOA) was defined as the difference in LOP between the WW and the WD plants [@Hessini_2009]. 
+
+## Chlorophyll content (SPAD) 
+
+ The chlorophyll content of the plant was evaluated by taking SPAD measurements using a SPAD-502 chlorophyll meter (Konica Minolta Sensing, Inc., Osaka, Japan) from the third youngest fully expanded leaf from three points (upper, middle and lower leaflet of a leaf). Individual readings of leaflets were averaged to represent individual measurement of a leaf. The evaluactions were done on light adapted leaves at 29, 59, 76, and 83 DAP. SPAD measurements of the leaf were used as an indicator of nitrogen status and leaf senescence. 
+
+## Post-harvest traits and indices 
+
+The harvest was at 90 DAP. The plants were separated in four components: leaves, stems, roots and tubers. The dry weight (g) components were determined by drying them at 80 °C for 3 days in a forced air oven: leaf (LDW), stem (SDW), root (RWD), tuber (TDW). The leaf area (LFA) of the plants was measured in cm^2^ by taking photographs of all the leaves arranged on a wooden board and analyzing the pictures using SisCob v1.0 (EMBRAPA Instrumentação Agropecuária, 2003). Specific leaf area (SLA) was calculated by dividing the LFA with LDW. 
+
+The tolerance to decrease of water supply (TDWS) or the percentage of yield reduction was the index used to evaluated the drougth tolerance and it is used to characterize the response of each genotype to WD [@Deblonde_1999; @Lahlou_2003]. To calculate TDWS the TDW in WD treatment for every genotype was expressed relative to its TDW in the WW treatment. The harvest index (HI) was calculated as the ratio of TDW related to the total dry biomass (TDB). 
+
+## Statistical analysis
+
+The experiment were conducted in split plot design with the main plot as the irrigation treatments (WW and WD) and the subplot as the potato genotypes. Each treatment consisted of five replicates with one potato plant for experimental unit. Statistical analysis and graphs [@R-GerminaR] were performed in the statistical software R [@R-base]. The analysis of variance (ANOVA) was performed to evaluate the differences between the factors and the comparison of the means with the Student-Newman-Keuls test (p <0.05) from agricoale package [@R-agricolae]. For the multivariate analysis correlation analysis was performed [@R-agricolae; @R-corrplot] and principal components analysis were made with FactoMineR package [@R-FactoMineR].
 
 
-Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. 
 
+ 

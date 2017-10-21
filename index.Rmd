@@ -1,6 +1,6 @@
 ---
 title: Impact of water deficit on growth, productivity, and water use and transpiration efficiency in potato (*Solanum tuberosum* L.)
-author: 'Flavio Lozano Isla, Raymundo Gutierrez, Evelyn Roxana Farfan-Vignolo, Raul Blas'
+author: 'Flavio Lozano Isla, Evelyn Roxana Farfan-Vignolo, Raymundo Gutierrez, Raul Blas'
 description: WUE paper
 date: '`r Sys.Date()`'
 url: https\://flavjack.github.io/20130515LM/
@@ -50,10 +50,10 @@ library(tidyverse)
 
 # Abstract {-}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. _Nulla facilisi_ Ut fringilla. **Suspendisse potenti** Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. 
+Drought stress is a serious constraint affecting yields of almost all crops worldwide. The problem is only expected to get worse with water deficits stemming from climate change and population expansion. In this study, we aim to: find traits that can help the plants tolerate water deficit (WD) without the resultant yield penalties, understand the mechanisms of tolerance, and provide useful information for the selection of tolerance in breeding programs. In order to explore the different responses of potato under drought, we have evaluated fifteen genotypes under well watered and WD conditions for a range of agro-morphological and physiological traits. Critically, tolerant genotypes such as CIP397077.16, CIP398190.89, and UNICA were able to preferentially put limited water toward tuber production rather than biomass. We also found a lower specific leaf area (SLA) under WD, and that potato genotypes with the ability to maintain high SPAD and low SLA under WD can also maintain high WUE. 
 
 
-**Key words:** Lorem, ipsum, dolor, sit amet, consectetur.
+**Key words:** water use efficiency; water deficit; abiotic stress; harvest index
 
 
 
