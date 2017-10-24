@@ -63,10 +63,28 @@ dt <- fb %>% gs_read(ws = "FieldBook") %>%
      
 ```
 
+## Abbreviations
 
+SPAD = Soil Plant Analysis Development \
+HGT = Height \
+RWC = Relative water content \
+LOP = Leaf osmotic potential \
+LDW = Leaf dry weight \
+SDW = Stem dry weight \
+RDW = Root dry weight \
+TDW = Tuber dry weight \
+NTUB = Tuber number \
+TRS = Total transpiration \
+LFA = Leaf area \
+TDB = Total dry biomass \
+HI = Harvest index \
+SLA = Specif leaf area \
+WUE = Water use efficiency \
+TWUE = Tuber water use efficiency
+         
 ## Tables
 
-```{r functions, echo=FALSE}
+```{r}
 
 knitr::kable(
   gnt,
@@ -77,9 +95,27 @@ knitr::kable(
 ```
 
 
+```{r}
+
+dtei <- dt %>% 
+  # filter(TREAT == "WD") %>% 
+  as.data.frame()
+
+eindx <- st4gi::elston(traits = c("TDW", "NTUB", "RDW", "LFA", "HI", "TWUE"), 
+                       geno = "GENOTYPE", env = "TREAT", data = dtei) %>% 
+  dplyr::arrange(E.Rank) %>% rename(Genotype = geno)
+
+knitr::kable(
+  eindx,
+  booktabs = TRUE,
+  caption = "The best genotypes ranking accroding Elston index for best tuber dry weight (TDW), tuber number (NTUB), root dry weight (RWD), leaf area (LFA), harvest index (HI), tuber water use efficency (TWUE). Ref: Elston, R. C. (1963). A weight-free index for the purpose of ranking or selection with respect to several traits at a time. Biometrics. 19(1): 85-97."
+  )
+
+```
+
 ## Figures
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, eval=FALSE, include=FALSE}
 
 dtpca <- dt %>%
   select(-block, -GNT) %>% 
@@ -106,7 +142,7 @@ graphics.off()
 ppi <- 300
 png("img/Fig_02.png", width=8*ppi, height=8*ppi, res=ppi)
 
-plot.PCA(pca,choix="ind", habillage = 1, col.hab=c("red","blue"),
+plot.PCA(pca,choix="ind", habillage = 1, col.hab=c("red","blue"), 
          title="Principal Component Analisys",
          autoLab = "y", cex = 0.7, shadowtext = T)
 
@@ -129,43 +165,44 @@ clus <- HCPC(pca, nb.clust=-1)
 
 graphics.off()
 
-
 ```
 
-```{r, fig.align='center', fig.cap="Principal components analysis (PCA) of the variables evaluated in fifteen potato genotypes under dorught stress condition"}
+```{r p1, fig.align='center', fig.cap="Principal components analysis (PCA) of the variables"}
 
 knitr::include_graphics("img/Fig_01.png")
 
 ```
 
-```{r, fig.align='center', fig.cap="Principal components analysis (PCA) of the individuals evaluated in fifteen potato genotypes under dorught stress condition"}
+```{r p2, fig.align='center', fig.cap="Principal components analysis (PCA) of the individual"}
 
 knitr::include_graphics("img/Fig_02.png")
 
 ```
 
-```{r, fig.align='center', fig.cap="Hierarchical Clustering of the indiviudals evaluated in fifteen potato genotypes under dorught stress condition"}
+
+```{r p3, fig.align='center', fig.cap="Hierarchical Clustering of the indiviudals"}
 
 knitr::include_graphics("img/Fig_03.png")
 
 ```
 
-```{r, echo=FALSE, fig.align='center'}
+
+```{r p4, fig.align='center', fig.cap="SPAD at 29 and 83 days after planting"}
 
 # SPAD 29
 
 av <- aov(SPAD_29 ~ GNT*TREAT + block, dt)
 #summary(av)
 
-mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+mc <- GerminaR::ger_testcomp(aov = av, comp = c("GNT","TREAT"))
 
-plt <- fplot(data = mc, type = "line", color = F,
-             x = "GNT", 
+plt1 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
              y = "mean",
-             z = "TREAT", 
+             z = "TREAT",
              ylab = "SPAD 29 DAP",
              xlab =  "Genotypes",
-             lgl = "Irrigation treatment",
+             lgl = "Irrigation",
              zbl = "water deficit  well watered",
              lgd = "top",
              erb =  T,
@@ -177,53 +214,329 @@ plt <- fplot(data = mc, type = "line", color = F,
   #       axis.text.x=element_blank(),
   #       axis.ticks.x=element_blank())
 
-cowplot::ggsave("img/Fig_04.png", dpi= 300, width = 210*0.5 , height = 297*0.25, units = "mm")
+
+# SPAD 83
+
+av <- aov(SPAD_83 ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt2 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "SPAD 83 DAP",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             erb =  T,
+             lmt = c(30,60),
+             brk = 5)
+
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
+
+plot <- plot_grid(plt1, plt2, labels = c("A", "B"), ncol = 1)
+
+cowplot::ggsave("img/Fig_04.png", dpi= 300, width = 210*0.5 , height = 297*0.5, units = "mm")
 
 knitr::include_graphics("img/Fig_04.png")
 
 ```
 
 
+```{r p5, fig.align='center', fig.cap="Relative water content and osmotic potential"}
+
+# RWC
+
+av <- aov(RWC ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt1 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Relative water content ('%')",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             erb =  T,
+             lmt = c(40,80),
+             brk = 5)
 
 
-```{r, fig.align='center', fig.cap="Effect of water deficit on (a) biomass production (kgDW.m-2) and drought susceptibility index (TDWS, defined as tuber dry weight per square meter expressed relative to control treatment) in two commercial varieties and thirteen advanced potato genotypes, and (b) Fraction of transpirable soil water (FTSW) from the beginning of water deficit treatment. Data are the means ±SE (standard error) of 5 replicates. White and black bars represent WW= well-watered and WD= water deficit treatments."}
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
 
-# knitr::include_graphics("img/Fig_0.png")
 
+# LOP
+
+av <- aov(LOP ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt2 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Osmotic potential (Mpa)",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(-4,-1),
+             brk = 0.5,
+             erb =  T)
+
+
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
+
+plot <- plot_grid(plt1, plt2, labels = c("A", "B"), ncol = 1)
+
+cowplot::ggsave("img/Fig_05.png", dpi= 300, width = 210*0.5 , height = 297*0.5, units = "mm")
+
+knitr::include_graphics("img/Fig_05.png")
+
+```
+
+```{r p6, fig.align='center', fig.cap="Total transpiration, Leaf Area and Specific leaf Area"}
+
+# TRS
+
+av <- aov(TRS ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt1 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Total transpiration (l)",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(2,12),
+             brk = 0,
+             erb =  T)
+
+
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
+
+# LFA
+
+av <- aov(LFA ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt2 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Leaf area (cm^2)",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(0,12000),
+             brk = 1000,
+             erb =  T)
+
+
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
+
+
+# SLA
+
+av <- aov(SLA ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt3 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Specific leaf area (cm^2*g^{-1})",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(100,600),
+             brk = 100,
+             erb =  T)
+
+
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
+
+plot <- plot_grid(plt1, plt2, plt3, labels = c("A", "B", "C"), ncol = 1)
+
+cowplot::ggsave("img/Fig_06.png", dpi= 300, width = 210*0.5 , height = 297*0.75, units = "mm")
+
+knitr::include_graphics("img/Fig_06.png")
 
 ```
 
 
-```{r, fig.align='center', fig.cap= "Effect of water deficit on (a) tuber yield (kg/m2), (b) harvest index (HI), defined as tuber dry weight per total biomass), and (c) specific leaf area (SLA) in two commercial varieties and thirteen advanced potato genotypes. Data are the means ±SE (standard error) of five replicates. White and black bars represent WW= well-watered and WD= water deficit treatments."}
+
+```{r p7, fig.align='center', fig.cap="Harvest Index, water use efficency, tuber wue"}
+
+# HI
+
+av <- aov(HI ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt1 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Harvest Index",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(0,1),
+             # brk = 0.1,
+             erb =  T)
 
 
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
 
 
-# knitr::include_graphics("img/Fig_0.png")
+# WUE
+
+av <- aov(WUE ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt2 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Water use efficency (g.l^{-1})",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(7,15),
+             brk = 1,
+             erb =  T)
+
+
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
+
+# TWUE
+
+av <- aov(TWUE ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt3 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Tuber water use efficency (g.l^{-1})",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(0,10),
+             brk = 1,
+             erb =  T)
+
+
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
+
+plot <- plot_grid(plt1, plt2, plt3, labels = c("A", "B", "C"), ncol = 1)
+
+cowplot::ggsave("img/Fig_07.png", dpi= 300, width = 210*0.5 , height = 297*0.75, units = "mm")
+
+knitr::include_graphics("img/Fig_07.png")
 
 ```
 
 
+```{r, fig.align='center', fig.cap="Soil transpiration fraction and transpiration during the experiment"}
 
-```{r, fig.align='center', fig.cap= "Water use efficiency (WUE) of total biomass (g.L-1) (a) and the weighted average of the WUE of each of the plant organs (g.L-1) (b) in two commercial varieties and thirteen advanced potato genotypes. Data are the means ±SE (standard error) of five replicates for tuber, leaf, stem and root in well-watered (WW) and water deficit (WD) treatments."}
 
-# knitr::include_graphics("img/Fig_0.png")
+fts <- fb %>% gs_read(ws = "FTSW") %>%
+  filter(Treatment != "preharvest") %>% 
+  tidyr::gather(key = day, value = fts, -ID, -Genotype, -Treatment)
+
+av <- aov(fts ~ Treatment*day, fts)
+mc <- GerminaR::ger_testcomp(av, c("Treatment", "day"))
+
+plt1 <- fplot(data = mc, type = "line", color = F,
+             x = "day",
+             y = "mean",
+             z = "Treatment",
+             ylab = "Soil transpiration fraction",
+             xlab =  "Days",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(0,1.1),
+             brk = 0.1,
+             erb =  T)
+
+
+trns<- fb %>% gs_read(ws = "Transpiration") %>%
+  filter(Treatment != "preharvest") %>% 
+  tidyr::gather(key = day, value = trans, -ID, -Genotype, -Treatment) %>% 
+  filter(day != "TOTAL") %>% 
+  drop_na()
+
+av <- aov(trans ~ Treatment*day, trns)
+mc <- GerminaR::ger_testcomp(av, c("Treatment", "day"))
+
+plt2 <- fplot(data = mc, type = "line", color = F,
+             x = "day",
+             y = "mean",
+             z = "Treatment",
+             ylab = "Transpiration (ml)",
+             xlab =  "Days",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(0,700),
+             brk = 50,
+             erb =  T)
+
+plot <- plot_grid(plt1, plt2, labels = c("A", "B"), ncol = 1)
+
+cowplot::ggsave("img/Fig_08.png", dpi= 300, width = 210*0.5 , height = 297*0.5, units = "mm")
+
+knitr::include_graphics("img/Fig_08.png")
+
 
 ```
-
-
-```{r, fig.align='center', fig.cap= "Relationship between (a) total transpiration and total biomass, (b) tuber yield and water use efficiency (WUE), and between (c) Harvest index and TDWS in 2 commercial varieties and thirteen advanced potato genotypes. Solid line circle depicts tolerant genotypes, dashed line circle the medium tolerant ones, and the dotted line circle the sensitive genotypes. Data are the means ±SE (standard error) of five replicates."}
-
-# knitr::include_graphics("img/Fig_0.png")
-
-```
-
-
-```{r, fig.align='center', fig.cap= "Means ± SE (standard error) of root:shoot ratio, chlorophyll content (SPAD), relative water content (RWC), and osmotic potential (MPa) in two commercial varieties and thirteen advanced potato genotypes. Data are the means of five replicates. WW= well-watered and WD= water deficit treatments."}
-
-# knitr::include_graphics("img/Fig_0.png")
-
-```
-
 
 

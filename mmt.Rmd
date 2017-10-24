@@ -34,6 +34,3 @@ The tolerance to decrease of water supply (TDWS) or the percentage of yield redu
 
 The experiment were conducted in split plot design with the main plot as the irrigation treatments (WW and WD) and the subplot as the potato genotypes. Each treatment consisted of five replicates with one potato plant for experimental unit. Statistical analysis and graphs [@R-GerminaR] were performed in the statistical software R [@R-base]. The analysis of variance (ANOVA) was performed to evaluate the differences between the factors and the comparison of the means with the Student-Newman-Keuls test (p <0.05) from agricoale package [@R-agricolae]. For the multivariate analysis correlation analysis was performed [@R-agricolae; @R-corrplot] and principal components analysis were made with FactoMineR package [@R-FactoMineR].
 
-
-
- 
