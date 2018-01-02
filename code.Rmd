@@ -1,4 +1,4 @@
-# Tables and figures
+# Tables {-}
 
 ```{r data, echo=FALSE}
 
@@ -82,8 +82,6 @@ SLA = Specif leaf area \
 WUE = Water use efficiency \
 TWUE = Tuber water use efficiency
          
-## Tables
-
 ```{r}
 
 knitr::kable(
@@ -113,7 +111,7 @@ knitr::kable(
 
 ```
 
-## Figures
+# Figures {-}
 
 ```{r, eval=FALSE, include=FALSE}
 
