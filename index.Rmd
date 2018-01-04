@@ -1,6 +1,6 @@
 ---
 title: Impact of water deficit on growth, productivity, and water use and transpiration efficiency in potato (*Solanum tuberosum* L.)
-author: 'Lozano-Isla, Flavio^1^; Gutierrez, Raymundo^1^, Farfan-Vignolo, Evelyn^1^, Blas, Raul^2^'
+author: 'Lozano-Isla, Flavio^a^; Gutierrez, Raymundo^a^; Farfan-Vignolo, Evelyn^a^; Blas, Raul^b^'
 description: WUE paper
 date: '`r Sys.Date()`'
 github-repo: flavjack/20130515LM
@@ -53,8 +53,8 @@ library(corrplot)
 
 # Affiliation {-}
 
-(1) Crop Biodiversity and Breeding Informatics Lab, University of Hohenheim, Stuttgart, Germany.
-(2) Agronomist, co-founder of Quipo.org, Lima, Perú.
+(a) International Potato Center (CIP), Av. La Molina 1895, La Molina, Lima 12, Peru
+(b) Universidad Nacional Agraria La Molina (UNALM), Av. La Molina, Lima 12, Peru
 
 `*` Corresponding author. E-mail address: flavjack@gmail.com (F. Lozano-Isla). Tel.: +55 81 2126 8352; fax: +55 81 2126 7803
 
@@ -64,6 +64,3 @@ Drought stress is a serious constraint affecting yields of almost all crops worl
 
 
 **Key words:** water use efficiency; water deficit; abiotic stress; harvest index
-
-
-
