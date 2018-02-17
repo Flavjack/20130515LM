@@ -5,7 +5,7 @@ description: WUE paper
 date: '`r Sys.Date()`'
 github-repo: flavjack/20130515LM
 cover-image: img/cover.jpg
-favicon: img/favicon.ico
+favicon: img/icon.png
 url: https\://www.lozanoisla.com
 #
 site: bookdown::bookdown_site
