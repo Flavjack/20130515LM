@@ -5,5 +5,5 @@
 
 # Acknowledgments
 
-Authors acknowledge the financial support by BMZ/GIZ through a research grant for “Improved potato varieties and water management technologies to enhance water use efficiency, resilience, cost-effectiveness, and productivity of smallholder farms in stress-prone Central Asian environments”. We also thank R. Blas, Department of Agronomy, Universidad Nacional Agraria La Molina (UNALM), Peru for the comments during the preparation of the undergraduate thesis that was base of this manuscript and Jorge Vega and David Saravia for their help during installation and evaluation of the experiment.
+Authors acknowledge the financial support by BMZ/GIZ through a research grant for “Improved potato varieties and water management technologies to enhance water use efficiency, resilience, cost-effectiveness, and productivity of smallholder farms in stress-prone Central Asian environments”.We also thank Jorge Vega and David Saravia for their help during installation and evaluation of the experiment.
 

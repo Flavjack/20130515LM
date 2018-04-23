@@ -1,5 +1,19 @@
 # Result
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Large differences existed among genotypes in total biomass dry weight (kgDW.m2) of well-watered (WW) plants at the end of the experiment (Figure 1a). Water deficit (WD) treatment had a significant effect (P < 0.001) with an average reduction of around 29% in comparison with the well-watered treatment (Figure 1a). CIP398190.89 was the only genotype with a 5% increase in biomass, and CIP398208.219 was the most affected by WD (~44% reduction in comparison with WW). In terms of productivity, WD decreased tuber yield (kgDW.m2) across genotypes by an average of 39% (P < 0.01), however, CIP398190.89 increased its productivity by 5%, while others like CIP398203.5 and CIP398203.244 presented up to 56% and 48% reduced tuber production (Figure 2a). CIP398190.89 had greater tuber dry weight (g) in WD compared to its yield in WW treatment, with a TDWS of 104.09%, indicating drought tolerance (Figure 1a). Most genotypes had similar performance under drought, such as UNICA (CIP392797.22) with 75.76% and CIP398208.33 with 71.9% TDWS. The genotypes CIP398203.244, CIP398208.219, and CIP398201.510 were among the most sensitive genotypes at 31.56, 46.75 and 48.88% respectively (Figure 1a).  -->
 
 <!-- Differences among genotypes (p<0.001) and treatments (p<0.01) were found for harvest index (HI) (Figure 2b). Dry matter partitioning in CIP3977077.16 and CIP398190.89 under WD as shown by HI were not significantly different from that of the WW treatment. A strong negative correlation among root length and HI was found in both treatments (r= -0.73) -->

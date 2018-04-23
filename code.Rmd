@@ -82,7 +82,7 @@ SLA = Specif leaf area \
 WUE = Water use efficiency \
 TWUE = Tuber water use efficiency
          
-```{r}
+```{r genotypes}
 
 knitr::kable(
   gnt,
@@ -93,7 +93,7 @@ knitr::kable(
 ```
 
 
-```{r}
+```{r rnk}
 
 dtei <- dt %>% 
   # filter(TREAT == "WD") %>% 
@@ -113,7 +113,163 @@ knitr::kable(
 
 # Figures {-}
 
-```{r, eval=FALSE, include=FALSE}
+```{r srl, fig.align='center', fig.cap= "Soil transpiration fraction and transpiration during the experiment"}
+
+fts <- fb %>% gs_read(ws = "FTSW") %>%
+  filter(Treatment != "preharvest") %>% 
+  tidyr::gather(key = day, value = fts, -ID, -Genotype, -Treatment)
+
+av <- aov(fts ~ Treatment*day, fts)
+mc <- GerminaR::ger_testcomp(av, c("Treatment", "day"))
+
+plt1 <- fplot(data = mc, type = "line", color = F,
+             x = "day",
+             y = "mean",
+             z = "Treatment",
+             ylab = "Soil transpiration fraction",
+             xlab =  "Days",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(0,1.1),
+             brk = 0.1,
+             erb =  T) +
+  
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+
+
+trns<- fb %>% gs_read(ws = "Transpiration") %>%
+  filter(Treatment != "preharvest") %>% 
+  tidyr::gather(key = day, value = trans, -ID, -Genotype, -Treatment) %>% 
+  filter(day != "TOTAL") %>% 
+  drop_na()
+
+av <- aov(trans ~ Treatment*day, trns)
+mc <- GerminaR::ger_testcomp(av, c("Treatment", "day"))
+
+plt2 <- fplot(data = mc, type = "line", color = F,
+             x = "day",
+             y = "mean",
+             z = "Treatment",
+             ylab = "Transpiration (ml)",
+             xlab =  "Days",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "none",
+             lmt = c(0,790),
+             brk = 100,
+             erb =  T)
+
+plot <- ggdraw(xlim = c(0, 0.5), ylim = c(0, 0.5))+
+  draw_plot(plt1,  width = 0.494, height = 0.25, x = 0.0055, y = 0.234) +
+  draw_plot(plt2,  width = 0.5, height = 0.25, x = 0.0, y = 0.0) +
+          draw_plot_label(
+            label = c("A", "B"), 
+            x = c(0.45, 0.45), 
+            y = c(0.43, 0.23))
+
+
+cowplot::ggsave("img/fig01.png", dpi= 300, width = 210*0.5 , height = 297*0.5, units = "mm")
+
+knitr::include_graphics("img/fig01.png")
+
+
+```
+
+
+```{r var, fig.align='center', fig.cap="Harvest Index, tuber water use efficency"}
+
+# HI
+av <- aov(HI ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt1 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Harvest Index",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(0, 1),
+             erb =  T) +
+  
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+
+# TWUE
+
+av <- aov(TWUE ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt2 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Tuber water use efficency (g.l^{-1})",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "none",
+             lmt = c(0,9.9),
+             brk = 1,
+             erb =  T) +
+  
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+
+# LFA
+
+av <- aov(LFA ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt3 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Leaf area (cm^2)",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "none",
+             lmt = c(0,11900),
+             brk = 2000,
+             erb =  T)
+
+
+plot <- ggdraw(xlim = c(-0.02, 0.5), ylim = c(0, 0.7))+
+  draw_plot(plt1,  width = 0.5, height = 0.25, x = 0.0, y = 0.452) +
+  draw_plot(plt2,  width = 0.497, height = 0.25, x = 0.003, y = 0.226) +
+  draw_plot(plt3,  width = 0.522, height = 0.25, x = -0.022, y = 0.0) +
+          draw_plot_label(
+            label = c("A", "B", "C"), 
+            x = c(0.45, 0.45, 0.45), 
+            y = c(0.63, 0.455, 0.24))
+
+
+cowplot::ggsave("img/fig02.png", dpi= 300, width = 210*0.5 , height = 297*0.5, units = "mm")
+
+knitr::include_graphics("img/fig02.png")
+
+
+```
+
+
+```{r mlt, fig.align='center', fig.cap="Principal component analysis"}
 
 dtpca <- dt %>%
   select(-block, -GNT) %>% 
@@ -128,20 +284,20 @@ pca <- PCA(dtpca, graph = F, scale.unit = TRUE, quali.sup = 1)
 # Analalisis de componentes principales
 
 ppi <- 300
-png("img/Fig_01.png", width=8*ppi, height=8*ppi, res=ppi)
+png("img/pca_var.png", width=8*ppi, height=8*ppi, res=ppi)
 
 plot.PCA(pca,choix="var",
-         title="Principal Component Analisys",
+         title="",
          autoLab = "y", cex = 0.8, shadowtext = T)
 
 graphics.off()
 
 
 ppi <- 300
-png("img/Fig_02.png", width=8*ppi, height=8*ppi, res=ppi)
+png("img/pca_ind.png", width=8*ppi, height=8*ppi, res=ppi)
 
 plot.PCA(pca,choix="ind", habillage = 1, col.hab=c("red","blue"), 
-         title="Principal Component Analisys",
+         title="",
          autoLab = "y", cex = 0.7, shadowtext = T)
 
 graphics.off()
@@ -156,36 +312,66 @@ graphics.off()
 
 # Analisis de Hierarchical Clustering 
 
-ppi <- 300
-png("img/Fig_03.png", width=8*ppi, height=8*ppi, res=ppi)
+# ppi <- 300
+# png("img/Fig_03.png", width=8*ppi, height=8*ppi, res=ppi)
+# 
+# clus <- HCPC(pca, nb.clust=-1)
+# 
+# graphics.off()
 
-clus <- HCPC(pca, nb.clust=-1)
+pcv <- png::readPNG("img/pca_var.png") %>% 
+  grid::rasterGrob(interpolate = TRUE)
 
-graphics.off()
+pci <- png::readPNG("img/pca_ind.png") %>% 
+  grid::rasterGrob(interpolate = TRUE)
+
+plot <- ggdraw(xlim = c(0.05, 0.8), ylim = c(0, 0.5))+
+  draw_plot(pcv,  width = 0.5, height = 0.5, x = 0.0, y = 0.0) +
+  draw_plot(pci,  width = 0.5, height = 0.5, x = 0.35, y = 0.0) +
+          draw_plot_label(
+            label = c("A", "B"), 
+            x = c(0.37, 0.723), 
+            y = c(0.45, 0.45))
+
+cowplot::ggsave("img/fig03.png", dpi= 300, width = 210*0.9 , height = 297*0.3, units = "mm")
+
+knitr::include_graphics("img/fig03.png")
 
 ```
 
-```{r p1, fig.align='center', fig.cap="Principal components analysis (PCA) of the variables"}
-
-knitr::include_graphics("img/Fig_01.png")
-
-```
-
-```{r p2, fig.align='center', fig.cap="Principal components analysis (PCA) of the individual"}
-
-knitr::include_graphics("img/Fig_02.png")
-
-```
 
 
-```{r p3, fig.align='center', fig.cap="Hierarchical Clustering of the indiviudals"}
 
-knitr::include_graphics("img/Fig_03.png")
 
-```
 
 
 ```{r p4, fig.align='center', fig.cap="SPAD at 29 and 83 days after planting"}
+
+# WUE
+
+av <- aov(WUE ~ GNT*TREAT + block, dt)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
+
+plt2 <- fplot(data = mc, type = "line", color = F,
+             x = "GNT",
+             y = "mean",
+             z = "TREAT",
+             ylab = "Water use efficency (g.l^{-1})",
+             xlab =  "Genotypes",
+             lgl = "Irrigation",
+             zbl = "water deficit  well watered",
+             lgd = "top",
+             lmt = c(7,15),
+             brk = 1,
+             erb =  T)
+
+
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
+
 
 # SPAD 29
 
@@ -236,17 +422,6 @@ plt2 <- fplot(data = mc, type = "line", color = F,
   # theme(axis.title.x=element_blank(),
   #       axis.text.x=element_blank(),
   #       axis.ticks.x=element_blank())
-
-plot <- plot_grid(plt1, plt2, labels = c("A", "B"), ncol = 1)
-
-cowplot::ggsave("img/Fig_04.png", dpi= 300, width = 210*0.5 , height = 297*0.5, units = "mm")
-
-knitr::include_graphics("img/Fig_04.png")
-
-```
-
-
-```{r p5, fig.align='center', fig.cap="Relative water content and osmotic potential"}
 
 # RWC
 
@@ -299,15 +474,6 @@ plt2 <- fplot(data = mc, type = "line", color = F,
   #       axis.text.x=element_blank(),
   #       axis.ticks.x=element_blank())
 
-plot <- plot_grid(plt1, plt2, labels = c("A", "B"), ncol = 1)
-
-cowplot::ggsave("img/Fig_05.png", dpi= 300, width = 210*0.5 , height = 297*0.5, units = "mm")
-
-knitr::include_graphics("img/Fig_05.png")
-
-```
-
-```{r p6, fig.align='center', fig.cap="Total transpiration, Leaf Area and Specific leaf Area"}
 
 # TRS
 
@@ -334,25 +500,6 @@ plt1 <- fplot(data = mc, type = "line", color = F,
   #       axis.text.x=element_blank(),
   #       axis.ticks.x=element_blank())
 
-# LFA
-
-av <- aov(LFA ~ GNT*TREAT + block, dt)
-#summary(av)
-
-mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
-
-plt2 <- fplot(data = mc, type = "line", color = F,
-             x = "GNT",
-             y = "mean",
-             z = "TREAT",
-             ylab = "Leaf area (cm^2)",
-             xlab =  "Genotypes",
-             lgl = "Irrigation",
-             zbl = "water deficit  well watered",
-             lgd = "top",
-             lmt = c(0,12000),
-             brk = 1000,
-             erb =  T)
 
 
   # theme(axis.title.x=element_blank(),
@@ -385,156 +532,9 @@ plt3 <- fplot(data = mc, type = "line", color = F,
   #       axis.text.x=element_blank(),
   #       axis.ticks.x=element_blank())
 
-plot <- plot_grid(plt1, plt2, plt3, labels = c("A", "B", "C"), ncol = 1)
-
-cowplot::ggsave("img/Fig_06.png", dpi= 300, width = 210*0.5 , height = 297*0.75, units = "mm")
-
-knitr::include_graphics("img/Fig_06.png")
-
-```
-
-
-
-```{r p7, fig.align='center', fig.cap="Harvest Index, water use efficency, tuber wue"}
-
-# HI
-
-av <- aov(HI ~ GNT*TREAT + block, dt)
-#summary(av)
-
-mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
-
-plt1 <- fplot(data = mc, type = "line", color = F,
-             x = "GNT",
-             y = "mean",
-             z = "TREAT",
-             ylab = "Harvest Index",
-             xlab =  "Genotypes",
-             lgl = "Irrigation",
-             zbl = "water deficit  well watered",
-             lgd = "top",
-             lmt = c(0,1),
-             # brk = 0.1,
-             erb =  T)
-
-
-  # theme(axis.title.x=element_blank(),
-  #       axis.text.x=element_blank(),
-  #       axis.ticks.x=element_blank())
-
-
-# WUE
-
-av <- aov(WUE ~ GNT*TREAT + block, dt)
-#summary(av)
-
-mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
-
-plt2 <- fplot(data = mc, type = "line", color = F,
-             x = "GNT",
-             y = "mean",
-             z = "TREAT",
-             ylab = "Water use efficency (g.l^{-1})",
-             xlab =  "Genotypes",
-             lgl = "Irrigation",
-             zbl = "water deficit  well watered",
-             lgd = "top",
-             lmt = c(7,15),
-             brk = 1,
-             erb =  T)
-
-
-  # theme(axis.title.x=element_blank(),
-  #       axis.text.x=element_blank(),
-  #       axis.ticks.x=element_blank())
-
-# TWUE
-
-av <- aov(TWUE ~ GNT*TREAT + block, dt)
-#summary(av)
-
-mc <- GerminaR::ger_testcomp(av, c("GNT","TREAT"))
-
-plt3 <- fplot(data = mc, type = "line", color = F,
-             x = "GNT",
-             y = "mean",
-             z = "TREAT",
-             ylab = "Tuber water use efficency (g.l^{-1})",
-             xlab =  "Genotypes",
-             lgl = "Irrigation",
-             zbl = "water deficit  well watered",
-             lgd = "top",
-             lmt = c(0,10),
-             brk = 1,
-             erb =  T)
-
-
-  # theme(axis.title.x=element_blank(),
-  #       axis.text.x=element_blank(),
-  #       axis.ticks.x=element_blank())
-
-plot <- plot_grid(plt1, plt2, plt3, labels = c("A", "B", "C"), ncol = 1)
-
-cowplot::ggsave("img/Fig_07.png", dpi= 300, width = 210*0.5 , height = 297*0.75, units = "mm")
-
-knitr::include_graphics("img/Fig_07.png")
-
-```
-
-
-```{r, fig.align='center', fig.cap="Soil transpiration fraction and transpiration during the experiment"}
-
-
-fts <- fb %>% gs_read(ws = "FTSW") %>%
-  filter(Treatment != "preharvest") %>% 
-  tidyr::gather(key = day, value = fts, -ID, -Genotype, -Treatment)
-
-av <- aov(fts ~ Treatment*day, fts)
-mc <- GerminaR::ger_testcomp(av, c("Treatment", "day"))
-
-plt1 <- fplot(data = mc, type = "line", color = F,
-             x = "day",
-             y = "mean",
-             z = "Treatment",
-             ylab = "Soil transpiration fraction",
-             xlab =  "Days",
-             lgl = "Irrigation",
-             zbl = "water deficit  well watered",
-             lgd = "top",
-             lmt = c(0,1.1),
-             brk = 0.1,
-             erb =  T)
-
-
-trns<- fb %>% gs_read(ws = "Transpiration") %>%
-  filter(Treatment != "preharvest") %>% 
-  tidyr::gather(key = day, value = trans, -ID, -Genotype, -Treatment) %>% 
-  filter(day != "TOTAL") %>% 
-  drop_na()
-
-av <- aov(trans ~ Treatment*day, trns)
-mc <- GerminaR::ger_testcomp(av, c("Treatment", "day"))
-
-plt2 <- fplot(data = mc, type = "line", color = F,
-             x = "day",
-             y = "mean",
-             z = "Treatment",
-             ylab = "Transpiration (ml)",
-             xlab =  "Days",
-             lgl = "Irrigation",
-             zbl = "water deficit  well watered",
-             lgd = "top",
-             lmt = c(0,700),
-             brk = 50,
-             erb =  T)
-
-plot <- plot_grid(plt1, plt2, labels = c("A", "B"), ncol = 1)
-
-cowplot::ggsave("img/Fig_08.png", dpi= 300, width = 210*0.5 , height = 297*0.5, units = "mm")
-
-knitr::include_graphics("img/Fig_08.png")
 
 
 ```
+
 
 

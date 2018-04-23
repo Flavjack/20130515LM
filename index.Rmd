@@ -21,13 +21,14 @@ bibliography:
 - book.bib
 - packages.bib
 csl: ICP.csl
-#
-# https://www.zotero.org/styles
-# http://search.crossref.org/
 ---
 
 
 ```{r setup, include=FALSE}
+
+# browseURL("https://docs.google.com/spreadsheets/d/1fu3y-z9v3RJTxvkIc4i1VwxQ0399V5CJQi_38ot4F4c/edit#gid=142311263")
+# https://www.zotero.org/styles
+# http://search.crossref.org/
 
 knitr::opts_chunk$set(
 	echo = FALSE,
