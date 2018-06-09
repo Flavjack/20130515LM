@@ -11,7 +11,7 @@ library(gsheet)
 library(cowplot)
 
 gss <- gs_ls()
-fb <- gs_url("https://docs.google.com/spreadsheets/d/1fu3y-z9v3RJTxvkIc4i1VwxQ0399V5CJQi_38ot4F4c/edit#gid=142311263") 
+fb <- gs_url("https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY/edit#gid=142311263") 
 
 
 gnt <- fb %>% gs_read(ws = "Genotypes") %>% 
