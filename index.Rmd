@@ -18,11 +18,10 @@ output:
 link-citations: yes
 colorlinks: yes
 bibliography:
-- book.bib
+- 20130515LM (WUE).bib
 - packages.bib
 csl: ICP.csl
 ---
-
 
 ```{r setup, include=FALSE}
 
