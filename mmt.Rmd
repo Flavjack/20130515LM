@@ -2,20 +2,19 @@
 
 ## Plant material and experimental design
 
-Thirteen potato clones were selected from advanced breeding population collection at International Potato Center (CIP) and two commercial varieties were grown in an environmentally controlled greenhouse at CIP (La Molina Experimental Station) at 28/15°C day/night with 70±5% average relative humidity. 
+Thirteen potato clones were selected from advanced breeding population collection at International Potato Center (CIP) and two commercial varieties were grown in an environmentally controlled greenhouse at CIP (La Molina Experimental Station) at 28/15°C day/night with 70±5% average relative humidity. The experiment was carried out in complete randomize block design where the first factor was the two irrigation treatments: well-watered (WW), treatment where the moisture was maintained at field capacit and water deficit (WD) and the second factor were compound by the fifteen potato genotypes, Table (\@ref(tab:genotypes)).
 
-The experiment was carried out in complete randomize block design where the first factor was the two irrigation treatments: well-watered (WW), treatment where the moisture was maintained at field capacit and water deficit (WD), treatment where the water requirements of each genotype measured at WW treatment until wilting point was reduced 10% inter-daily measurement and the second factor were compound by the fifteen potato genotypes, Table (\@ref(tab:genotypes)). The water decifit treatment were appliyed since 45 DAP and prior to the treatment initiation, the pots from both WW and WD treatments were watered to soaking and then allowed to drain overnight. Next day, the pots were sealed in a plastic bag secured with a twist tie to prevent water loss except by transpiration and all the pots were weighed and it was defined as the initial pot weight. 
+## Relationship between Transpiration Rate and Soil Water Supply
 
-Each experimental unit was composed for one tuber per pot (5 L) and It was sown containing two kg of dry commercial Sogemix SM2 (75% Peat Moss, perlite, vermiculite, and limestone). Fertilization was done twice with ammonium nitrate; triple superphosphate and potassium sulphate, one before planting (mix with the substrate) and the other applied at the surface at 40 DAP (days after planting). 
-
-
-## Trait evaluation
-
-### Transpiration and water use efficiency
+Single plants were grown in a greenhouse in plastic pots (5 L) and It was sown containing two kg of dry commercial Sogemix SM2 (75% Peat Moss, perlite, vermiculite, and limestone). Fertilization was done twice with ammonium nitrate; triple superphosphate and potassium sulphate, one before planting (mix with the substrate) and the other applied at the surface at 40 DAP (days after planting).  The pots from both WW and WD treatments were watered to soaking and then allowed to drain overnight. Next day, soil evaporation was minimised by sealed with a plastic bag and all the pots were weighed and it was defined as the initial pot weight. Water deficits were not imposed until 45 DAP that coincides with the beginning of the development of the stolons.
 
 Transpiration was calculated by weighing the pots every two days in the between 13:00 and 15:00 hours (GMT -05:00). The transpiration (TRS) of each plant was calculated by the procedure previously described by @bhatnagar-mathur2007Stressinducible and [@ray1998effect]. The inter-daily transpiration rates of WD plants were normalized against WW plant rates to reduce the influence of day-to-day variation ($TRS=\left(\frac{WD_{transpiration}}{WW_{transpiration\ average}}\right)$). The normalization was achieved by dividing transpiration of each individual plant in the WD regime by the mean transpiration of the WW plants. For compare the TRS between plants, a second normalization was done so that the normalized transpiration rate (NTR) of each plant was defined in 1.0 when the soil water content in each pot was at field capacity [@sinclair1986Influence]. The available soil water or the fraction of transpirable soil water (FTSW), for each pot was calculated by dividing the pot weight minus the final pot weight by the transpirable soil water of that pot ($FTSW=\left(\frac{pot\ weight_{inter-daily}-pot\ weight_{final}}{pot\ weight_{initial}-pot\ weight_{final}}\right)$). 
 
-The WUE in WD and WW plants was estimated from the total biomass and as weighted average for each of the plant components. WUE for the total biomass was calculated as the total biomass in dry weight produced during the treatment apply divided by the cumulative water transpired during the same period [@dallacosta1997Yield]. 
+## Trait evaluation
+
+### Water use efficiency
+
+Water use efficiency (WUE) is defined as a ratio of biomass accumulation, total crop biomass or crop grain yield, to water consumed, expressed as transpiration, evapotranspiration, or total water input to the system [@sinclair1984WaterUse]. According to this concept we calculated the biomas water use efficency (WUE) and tuber water use efficency (TWUE). The WUE was calculated as the total biomass in dry weight produced divided by the cumulative water transpired [@dallacosta1997Yield] and for TWUE was used the dry weight from tuber production divide the cumulative water transpired during the treatment. 
 
 ### Water components
 

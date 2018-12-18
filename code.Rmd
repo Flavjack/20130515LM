@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Tables {-}
 
 ```{r data, echo=FALSE}
@@ -15,7 +20,7 @@ fb <- gs_url("https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGs
 
 
 gnt <- fb %>% gs_read(ws = "Genotypes") %>% 
-  select(Number, Genotypes, Adaptability, "Growning period" = GPL, "Heat tolerance" = Heat, "Dry matter (%)") %>% 
+  dplyr::select(Number, Genotypes, Adaptability, "Growning period" = GPL, "Heat tolerance" = Heat, "Dry matter (%)") %>% 
   mutate_all(funs(replace(., is.na(.), " ")))
 
 dt <- fb %>% gs_read(ws = "FieldBook") %>%
@@ -36,7 +41,8 @@ dt <- fb %>% gs_read(ws = "FieldBook") %>%
          TDW =TUBDW,
          NTUB,
          TRS = TTRNS,
-         LFA = LA
+         LFA = LA,
+         RDL = RLG
          ) %>% 
   mutate(TDB = (LDW+SDW+RDW+TDW),
          HI = TDW/(LDW+SDW+RDW+TDW),

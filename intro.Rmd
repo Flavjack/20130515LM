@@ -1,11 +1,48 @@
 # Introduction
 
-Water has become a scarce and precious resource and its efficient utilization in the production of food is a key challenge in agriculture worldwide. Yield losses due to water deficit are one of the global problems limiting production. Tracking the consequences of water deficit in plants is a difficult task, as it depends on the timing, intensity, type of crop, and duration of stress [@blum2011Drought]. Besides this, abiotic stresses never come alone but are coupled in nature with other location-specific environmental stress factors, such as high irradiance and temperature, which makes describing the effect of one single stress in the field nearly impossible. 
+[@sinclair1984WaterUse]
 
-Peru is the center of potato origin, where native varieties grown are easily accessible for use in breeding for desirable drought tolerance traits. Potato is an important non-grain food crop and is a key component of world food security. Potato is known to be sensitive to water deficit because of its shallow root system, and its fast-closing leaf stomata that reduce transpiration and photosynthesis, considerably reducing tuber yields [@deblonde2001Effects]. Nevertheless, potato has a high harvest index in comparison with cereals and relatively low demand for water. 
+Plantbiomass accumulation, and consequently yield, was shown to be inextricably linked to transpiration.The ratio of plant productivityto waterloss, water-useefficiency, was very conservative [@sinclair1984WaterUse].
 
-Tuber initiation is the most critical period of a potato’s life span in terms of water due to its high demand of around 400 to 600 L for 1kg of tuber dry matter [@stark2013Potato]. Thus, an effective water-saving method is highly desirable trait for potato in semi-arid areas.  To increase yield per unit of water, crop demand for water should be reduced or be used efficiently. Plants need to be bred for  water use efficiency (WUE) by capturing traits that help the plants develop faster, flower earlier, have a lower leaf area index, and be more efficient in capturing radiation [@blum2005Drought; @hochman2009Potential]. In addition to the morphological changes, water use can be improved by maintaining low stomatal conductance (g~s~) during vegetative stages. This simple change is extremely beneficial, as the higher transpiration efficiency (TE) helps to postpone water use to late growing stages and alters the relationship between the dry matter produced and the quantity of soil water consumed [@carli2014Effect; @condon2004Breeding]. The management of water has a marked influence on plant behavior, tuber production, and quality. An important component of adaptation to WUE, the efficiency of the amount of water applied and used for transpiration that goes toward dry matter production. Enhanced WUE can reduce crop water requirements and increase crop yield significantly [@tolk2009Transpiration]. In this way, when a higher WUE under drought is maintained, the effects of water deficit are reduced and the competitiveness for water in drought conditions enhanced [@ogaya2003Comparative]. 
 
-The WUE was found to be greater in the summer due to the greater harvest index (HI) and more-efficient interception of solar radiation per unit of applied water by drought-exposed than by well-watered plots [@trebejo1990Effect]. In normal conditions when irrigation is sufficient to meet the transpiration needs of the crop, genotypes with higher stomatal conductance and low WUE, able to extract more water from the soil, will have higher yield. In contrast, when water is not sufficient, the low WUE arising from a high rate of transpiration leads to low yields in favor of dry matter partitioning to reproductive organs [@tuberosa2012Phenotyping].
 
-This study emphasizes the potential penalties in yield of thirteen advanced potato clones and two commercial varieties that are likely to arise in water-limited conditions, and explores the interrelationship between traits that help plants to mitigate yield losses under water-limited conditions. Chlorophyll content (SPAD), relative water content, osmotic potential, specific leaf area (SLA), transpiration efficiency, root length, stolon mass and tolerance to decrease water supply (TDWS), among other traits, were evaluated to identify convenient indicators of plant water status that helps in the selection of clones with high tolerance to water deficit.
+
+This ratio is called harvest index (H) and has been found to be relatively stable for a particularcultivar over a fairly wide range of conditions (Donald and Hamblin 1976).
+
+Evans (1980) suggested that one of the main variablesfor yield increasesseen to date has been increases in harvest index.
+
+Evans (1980) further suggested that additional large increases in harvest indices are unlikely. Therefore, further increases in water-use efficiency based on marketable yield are not likely from increasesin the harvestindex.
+
+Passioura (1977) and Fischer (1979) have argued that obtaining high harvest indexes underwater-limitedconditions is especially importantin obtaininghigh water-use efficiencies.
+
+
+Passioura (1977) proposed that cereals for water-limited environments be developed with roots with restricted water uptake rates. Again, such an alteration would, in principle, conserve waterduring vegetative growthleaving more soil waterfor extractionduringgraindevelopment. The key aspect of both strategies is that sustained reproductive growth is essential for a high harvest index
+
+However, a deeper and more extensive rooting system may have drawbacks. A greater root biomass would almost surely result in lowered harvest index (in potato can be advantage?)
+
+
+
+Improved harvest index.As illustrated in equations(7) and(9) improvements in harvest index result directly in increased water-use efficiency. The difficulty is that for many crops it appears that further substantial improvements in harvest index are unlikely.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Water has become a scarce and precious resource and its efficient utilization in the production of food is a key challenge in agriculture worldwide. Yield losses due to water deficit are one of the global problems limiting production. Tracking the consequences of water deficit in plants is a difficult task, as it depends on the timing, intensity, type of crop, and duration of stress [@blum2011Drought]. Besides this, abiotic stresses never come alone but are coupled in nature with other location-specific environmental stress factors, such as high irradiance and temperature, which makes describing the effect of one single stress in the field nearly impossible.  -->
+
+<!-- Peru is the center of potato origin, where native varieties grown are easily accessible for use in breeding for desirable drought tolerance traits. Potato is an important non-grain food crop and is a key component of world food security. Potato is known to be sensitive to water deficit because of its shallow root system, and its fast-closing leaf stomata that reduce transpiration and photosynthesis, considerably reducing tuber yields [@deblonde2001Effects]. Nevertheless, potato has a high harvest index in comparison with cereals and relatively low demand for water.  -->
+
+<!-- Tuber initiation is the most critical period of a potato’s life span in terms of water due to its high demand of around 400 to 600 L for 1kg of tuber dry matter [@stark2013Potato]. Thus, an effective water-saving method is highly desirable trait for potato in semi-arid areas.  To increase yield per unit of water, crop demand for water should be reduced or be used efficiently. Plants need to be bred for  water use efficiency (WUE) by capturing traits that help the plants develop faster, flower earlier, have a lower leaf area index, and be more efficient in capturing radiation [@blum2005Drought; @hochman2009Potential]. In addition to the morphological changes, water use can be improved by maintaining low stomatal conductance (g~s~) during vegetative stages. This simple change is extremely beneficial, as the higher transpiration efficiency (TE) helps to postpone water use to late growing stages and alters the relationship between the dry matter produced and the quantity of soil water consumed [@carli2014Effect; @condon2004Breeding]. The management of water has a marked influence on plant behavior, tuber production, and quality. An important component of adaptation to WUE, the efficiency of the amount of water applied and used for transpiration that goes toward dry matter production. Enhanced WUE can reduce crop water requirements and increase crop yield significantly [@tolk2009Transpiration]. In this way, when a higher WUE under drought is maintained, the effects of water deficit are reduced and the competitiveness for water in drought conditions enhanced [@ogaya2003Comparative].  -->
+
+<!-- The WUE was found to be greater in the summer due to the greater harvest index (HI) and more-efficient interception of solar radiation per unit of applied water by drought-exposed than by well-watered plots [@trebejo1990Effect]. In normal conditions when irrigation is sufficient to meet the transpiration needs of the crop, genotypes with higher stomatal conductance and low WUE, able to extract more water from the soil, will have higher yield. In contrast, when water is not sufficient, the low WUE arising from a high rate of transpiration leads to low yields in favor of dry matter partitioning to reproductive organs [@tuberosa2012Phenotyping]. -->
+
+<!-- This study emphasizes the potential penalties in yield of thirteen advanced potato clones and two commercial varieties that are likely to arise in water-limited conditions, and explores the interrelationship between traits that help plants to mitigate yield losses under water-limited conditions. Chlorophyll content (SPAD), relative water content, osmotic potential, specific leaf area (SLA), transpiration efficiency, root length, stolon mass and tolerance to decrease water supply (TDWS), among other traits, were evaluated to identify convenient indicators of plant water status that helps in the selection of clones with high tolerance to water deficit. -->
