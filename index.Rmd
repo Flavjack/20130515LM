@@ -7,7 +7,7 @@ author:
   - "$^{*}$ Corresponding author. E-mail address: flavjack@gmail.com (F. Lozano-Isla)"
 date: "`r if (knitr:::is_html_output()) Sys.Date()`"
 description: document template for scientific report
-github-repo: flavjack/rticles/issues
+github-repo: flavjack/20130515LM/issues
 cover-image: img/cover.jpg
 favicon: img/icon.png
 url: https\://www.lozanoisla.com
@@ -47,7 +47,7 @@ Critically, tolerant genotypes such as CIP397077.16, CIP398190.89, and UNICA wer
 
 # Introduction
 
-Plant biomass accumulation, and consequently yield, was shown to be inextricably linked to transpiration. The ratio of plant productivityto waterloss, water-useefficiency, was very conservative [@sinclair1984WaterUse].
+Plant biomass accumulation, and consequently yield, was shown to be inextricably linked to transpiration. The ratio of plant productivity to water loss, water-use efficiency, was very conservative [@sinclair1984WaterUse].
 
 This ratio is called harvest index (H) and has been found to be relatively stable for a particular cultivar over a fairly wide range of conditions (Donald and Hamblin 1976).
 
@@ -79,16 +79,9 @@ Improved harvest index. As illustrated in equations(7) and(9) improvements in ha
 
 ## Plant material and experimental design
 
-Thirteen potato clones were selected from advanced breeding population collection at International Potato Center (CIP) and two commercial varieties were grown in an environmentally controlled greenhouse at CIP (La Molina Experimental Station) at 28/15°C day/night with 70±5% average relative humidity. The experiment was carried out in complete randomize block design where the first factor was the two irrigation treatments: well-watered (WW), treatment where the moisture was maintained at field capacit and water deficit (WD) and the second factor were compound by the fifteen potato genotypes, Table (\@ref(tab:gnt)).
+Thirteen potato clones were selected from advanced breeding population collection at International Potato Center (CIP) and two commercial varieties were grown in an environmentally controlled greenhouse at CIP (La Molina Experimental Station) at 28/15°C day/night with 70±5% average relative humidity. The experiment was carried out in complete randomize block design where the first factor was the two irrigation treatments: well-watered (WW), treatment where the moisture was maintained at field capacity and water deficit (WD) and the second factor were compound by the fifteen potato genotypes, Table (\@ref(tab:gnt)).
 
-```{r gnt}
 
-gs %>% 
-  sheets_read("gnt") %>% 
-  dplyr::select(Number, Genotypes, Adaptability, "Growning period" = GPL, "Heat tolerance" = Heat, "Dry matter (%)") %>% 
-  kable(caption = "Potatos (*Solanum tuberosum* L.) genotypes used for water deficit experiment with  13 lines from advanced breeding population at International Potato Center (CIP) and two comercial varieties.")
-
-```
 
 ## Relationship between transpiration rate and soil water supply
 
@@ -182,5 +175,16 @@ The experiment was carried out in a complete randomize block design with two fac
 Authors acknowledge the financial support by BMZ/GIZ through a research grant for “Improved potato varieties and water management technologies to enhance water use efficiency, resilience, cost-effectiveness, and productivity of smallholder farms in stress-prone Central Asian environments”.We also thank Jorge Vega and David Saravia for their help during installation and evaluation of the experiment.
 
 
+`r if (knitr::is_html_output()){'
+# References 
+<div id="refs"></div>'}`
+
+`r if (!knitr::is_html_output()){'
+# References
+<div id="refs"></div>'}`
+
+
+```{r chunk_name, child = 'code.Rmd'}
+``` 
 
 
