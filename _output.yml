@@ -1,24 +1,27 @@
 bookdown::gitbook:
-  css: style/style.css
-  split_by: chapter # chapter none
+  css: cnfg/style.css
+  split_by: chapter # options: chapter or none
   split_bib: TRUE
   config:
     toc:
       collapse: section
       scroll_highlight: yes
       before: |
-        <li> <a href="http://www.lozanoisla.com" target="blank"> Flavio Lozano Isla </a> </li>
+        <li> <a href="https://www.linkedin.com/in/flavjack/" target="blank"> Flavio Lozano Isla </a> </li>
       after:  |
-        <li> <a href="http://www.quipo.org" target="blank"> QUIPO.ORG </a> </li>
+        <li> <a href="https://www.zotero.org/flavjack" target="blank"> ZOTERO </a> </li>
     fontsettings:
-      theme: sepia
+      theme: white
       family: sans
       size: 2
     search: yes
-    edit: https://github.com/Flavjack/rticles/blob/master/%s
+    info: no
+    edit:
+      link: https://github.com/Flavjack/rticles/blob/master/%s
+      text: "Edit"
     download: 
-      - ["rticles.docx", "word"]
-      - ["../img/files.zip", "files"]
+      # - ["rticles.docx", "word"]
+      # - ["files.zip", "files"]
     sharing:
       github: yes
       twitter: no

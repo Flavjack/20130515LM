@@ -1,0 +1,1156 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}      % Page framework
+\geometry{a4paper,  total={210mm,297mm}, left=30mm,  right=20mm,  top=25mm,  bottom=25mm}   
+\renewcommand{\baselinestretch}{1.5}   % Line spacing
+\usepackage{times}            % Use font Times-Roman
+\usepackage[T1]{fontenc}      % Codification T1 (copy with accents) 
+\usepackage[utf8]{inputenc}   % Accentuate words and use
+\usepackage[spanish]{babel}   % Put labels in spanish
+\usepackage{latexsym,amsmath,amssymb,amsfonts}   % Numeric formulas
+\usepackage{graphicx}      % Insert graphics
+\usepackage{float}         % Insert graph when you want "[H]"
+\usepackage[round]{natbib} % Bibliography references
+\usepackage{hyperref}      % Insert web links and references
+\usepackage{enumerate}     % Insert bar list
+\usepackage{lscape}        % Put Page horizontal way
+\usepackage{verbatim}      % Multiline coments
+\usepackage[titletoc,toc,title]{appendix}
+
+\renewcommand\thesection{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\usepackage{sectsty}
+\sectionfont{\centering}
+
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\begin{document}
+
+<<preambule,echo=FALSE,message=FALSE,warning=FALSE>>=
+library("agricolae")
+library("gsheet")
+library("FactoMineR")
+library("doBy")
+library("car")
+
+url <- "https://docs.google.com/spreadsheets/d/1fu3y-z9v3RJTxvkIc4i1VwxQ0399V5CJQi_38ot4F4c/edit?usp=sharing"
+fb <-  gsheet2tbl(url,142311263) #LM15052013 (WUE)
+attach(fb)
+opts_chunk$set(comment=NA,background='#FFFFFF',fig.height=6,fig.width=10)
+@
+
+<<dta quality,echo=FALSE>>=
+dta <- data.frame(BLOCK, GENOTYPE, Genotypes, TREAT, BIOMDW, TDWS, HI, LA, LEAFDW, OP.84DAP, 
+                  ROOTDW, RWC.84DAP, SPAD.29DAP, SPAD.83DAP, STEMDW,TTRNS, TUBDW,  TWUE, WUE)
+
+colnames(dta) <- c("Bloques", "GENOTIPOS","Genotipos", "Tratamientos", "BIOM.PS" , "TRA" , "IC", "AF" , 
+                   "HOJA.PS" , "PO" , "RAIZ.PS" , "CRA" , "SPAD.29" , "SPAD.83" , "TALLO.PS" , "TTRN",
+                   "TUB.PS", "EUAT" , "EUA")
+attach(dta)         
+@
+
+<<Data Quality , echo=F, results='hide', fig.show='hide'>>=
+bp  <- Boxplot( BIOM.PS ~ GENOTIPOS*Tratamientos, dta , las = 3 , xlab = "" , ylab = " ")
+dta$BIOM.PS[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( TRA ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$TRA[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( IC ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$IC[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( AF ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$AF[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( HOJA.PS ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$HOJA.PS[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( PO ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$PO[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( RAIZ.PS ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$PO[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( CRA ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$CRA[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( SPAD.29 ~ GENOTIPOS*Tratamientos, dta , las = 3 , xlab = "" , ylab = " ")
+dta$SPAD.29[as.numeric(bp)]  <- NA
+                    
+bp  <- Boxplot( SPAD.83 ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$SPAD.83[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( TALLO.PS ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$TALLO.PS[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( TTRN ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$TTRN[as.numeric(bp)]  <- NA
+                    
+bp  <- Boxplot( TUB.PS ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$TUB.PS[as.numeric(bp)]  <- NA
+                    
+bp  <- Boxplot( EUAT ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$EUAT[as.numeric(bp)]  <- NA
+
+bp  <- Boxplot( EUA ~ GENOTIPOS , dta , las = 3 , xlab = "" , ylab = " ")
+dta$EUA[as.numeric(bp)]  <- NA
+@
+
+\pagenumbering{gobble}
+
+%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+\begin{center}
+{\huge UNIVERSIDAD NACIONAL AGRARIA LA MOLINA}\\[1cm]
+{\Large FACULTAD DE AGRONOM\'IA}\\[1cm]
+\includegraphics[width=0.3\linewidth]{./Rsweave/EEAGP/UNALM}\\[1cm]
+{\large EVALUACI\'ON DE  LA EFICIENCIA DE USO DE AGUA EN QUINCE GENOTIPOS DE PAPA (\emph{Solanum tuberosum} L.) BAJO CONDICIONES DE SEQU\'IA CONTROLADA.}\\[1cm]
+{\large Presentado por:}\\[1cm]
+{\large FLAVIO LOZANO ISLA}\\[1cm]
+{\large TESIS PARA OPTAR EL T\'ITULO DE INGENIERO AGR\'ONOMO}\\[1cm]
+{\large Lima - Per\'u}\\
+{\large  2015}
+\end{center}
+\end{titlepage}
+  
+
+
+
+\newpage
+\addcontentsline{toc}{section}{Dedicatoria}
+
+\vspace*{\stretch{2}}
+\begin{flushright}
+\begin{minipage}{.6\textwidth}
+
+\textit{\textbf{Dedicado a}}\\
+
+\textit{ Mis padrinos Antonio Vega y Agripina Bardales por su apoyo constante y por considerarme como un hijo.\\ Mis Padres Aida A. Isla y Alberto Lozano por su esfuerzo y dedicaci\'on constante para poder lograr mis metas.\\ Mi gu\'ia espiritual e intelectual, mi abuelo  Ing. Agro. Andr\'es Avelino Isla Maldonado. \\ Mis hermanos Juan A. Lozano y Marco A. Lozano por sus consejos y apoyo constante.}
+
+\end{minipage}
+\end{flushright}
+\vspace{\stretch{3}}
+
+
+
+\newpage
+\addcontentsline{toc}{section}{Agradecimientos} % si queremos que aparezca en el indice
+
+\begin{center}
+\textit{\textbf{Agradecimientos}}
+\end{center}
+
+\textit{Al Centro Internacional de la Papa quien hizo posible el desarrollo de esta investigaci\'on con el soporte t\'ecnico, cient\'ifico y financiero.\\[5mm] A mi mentor, gu\'ia y amigo el Dr. Ra\'ul Blas, quien siempre est\'a aconsej\'andome para ser mejor persona, profesional e investigador.\\[5mm] A mi supervisora y amiga, Dra. Evelyn Farfan, por sus consejos y por siempre estar impulsando a mejorar mis actitudes como persona y profesional.\\[5mm] Al Ing. Raymundo Guti\'errez por sus consejos, ense\~nanzas y quien dio inicio al proyecto de investigaci\'on.\\[5mm] Al Ing. Ra\'ul Eyzaguirre por su ayuda y ense\~nanzas durante el proceso de an\'alisis estad\'istico. \\[5mm] Al  Bi\'ol. Kelvin Human\'i por su amistad y por ser el gu\'ia durante mi aprendizaje de R y latex.\\[5mm] A la Lic. Enf. Esther Del Aguila por su apoyo incondicional y su paciencia durante la ejecuci\'on de este trabajo. \\[5mm] A mi gran amigo Omar Benites por su apoyo constante, su soporte inform\'atico y ense\~nanzas  de programaci\'on en R.\\[5mm] Al Ing. David Saravia y Tec. Jorge Vega por sus consejos, amistad y apoyo durante a fase experimental de esta investigaci\'on.\\[5mm] A los miembros del jurado la Ing. Ruby Vega, el Biol. Abelardo Calder\'on y el Ing. Gilberto Rodriguez quien con sus apoyo pudieron hacer posible la culminaci\'on de este trabajo de investigaci\'on. \\[5mm] A mi alma m\'ater la Universidad Agraria la Molina quien me ha permitido adquirir los conocimientos, identidad y \'etica como persona y profesional.}
+
+
+\newpage
+\section*{Resumen} % si no queremos que anhada la palabra "Capitulo"
+\addcontentsline{toc}{section}{Resumen} % si queremos que aparezca en el \'indice
+
+La papa (\emph{Solanum tuberosum L.}) es un cultivo sensible a la sequ\'ia debido a que posee un sistema radicular poco profundo y requiere disponibilidad constante de agua en el suelo para asegurar su m\'aximo rendimiento y calidad en el tub\'erculo. La eficiencia de uso de agua (EUA) se define como la producci\'on por unidad de agua consumida, esta variable es considerada importante para determinar el rendimiento bajo condiciones limitadas de agua. Si logramos entender la relaci\'on entre EUA y el rendimiento bajo condiciones de estr\'es puede ayudarnos a encontrar estrategias que nos ayuden a minimizar la perdida de rendimiento debido a la disponibilidad de agua y asegurar una alta producci\'on. Se llev\'o acabo un experimento en invernadero con condiciones controladas , para caracterizar la respuesta y entender la relaci\'on entre la EUA, el rendimiento y la tolerancia en 15 genotipos de papa de la poblaci\'on avanzada de mejoramiento del Centro Internacional de la Papa (CIP). El experimento fue llevado acabo baja el dise\~no experimental de parcelas divididas teniendo como factor principal dos tipos de riego, sequ\'ia regulada y riego normal y como factor secundario los quince genotipos. A trav\'es del experimento se evaluaron variables morfol\'ogicas y fisiol\'ogicas tales como contenido relativo de clorofila (SPAD), contenido relativo de agua (CRA), Potencial Osm\'otico (PO), \'Area foliar (AF), transpiraci\'on y par\'ametros de rendimiento tales como el peso de la biomasa, \'Indice de Cosecha (IC) e \'Indice de tolerancia a la reducci\'on de agua (TRA). Los resultados de la investigaci\'on muestran diferencias significativas entre tratamientos, y en general las plantas sometidas a limitaciones de agua muestran un rendimiento menor, existiendo una reducci\'on en la biomasa y el \'area foliar. Existe una correlaci\'on alta entra la EUA y el IC (r = 0.98), indicando que este \'ultimo puede ser una herramienta \'util para la selecci\'on prematura de genotipos con buen rendimiento y tolerante al estr\'es por sequ\'ia. Los genotipos, CIP398190.89, CIP397077.16, CIP392797.22, CIP398208.620 mostraron una mayor eficiencia en el uso de agua bajo condiciones de sequ\'ia sin que esto produzca una reducci\'on dr\'astica en su rendimiento.\\
+
+\paragraph{Palabras Claves:} Papa ; Eficiencia de uso de agua ; \'Indice de cosecha ; Tolerancia a la sequ\'ia.
+
+
+\newpage
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+The potato (\emph{Solanum tuberosum} L.) is a sensitive crop to drought because it has a shallow root system and requires constant availability of water in the soil to ensure maximum performance and quality in the tuber. The water use efficiency (EUA) is defined as production per unit of water consumed, this variable is considered important in determining the performance under limited water conditions. If we understand the relationship between the EUA and yield under stress conditions may help us find strategies that help to minimize the loss of yield due to water availability and ensure high production. It was performed an experiment in greenhouse with controlled conditions, to characterize the response and understanding the relationship between the EUA, performance and tolerance in 15 potato genotypes from advanced breeding population of the International Potato Center (CIP). The experiment was carried in a split plot experimental design with the main factor the two types of irrigation, drought and normal watering and as a secondary factor the fifteen genotypes. Through the experiment morphological and physiological variables were evaluated  such as relative chlorophyll content (SPAD), leaf area (AF), transpiration and yield parameters such as the weight of biomass, harvest index (IC) and tolerance index (TRA). The research results show significant differences between treatments, plants subjected to water shortages show a lower yield, and there was a reduction in the biomass and leaf area. There was a high correlation enters the EUA and IC (r = 0.98), indicating that the IC can be a useful tool for early selection of genotypes with good performance and tolerant to drought. Genotypes CIP398190.89, CIP397077.16, CIP392797.22, CIP398208.620 showed greater efficiency in the use of water under drought conditions without producing a drastic reduction in yield.
+
+\paragraph{Keywords} Potato ---  Water use efficiency ---  Harvest Index ---  Drougth Tolerance
+
+
+
+
+%%%%%%%%%%%%%%%%%
+\newpage
+\pagestyle{empty}
+\addcontentsline{toc}{section}{\'Indice}
+\tableofcontents
+\listoffigures
+\listoftables
+%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\pagestyle{plain}
+\pagenumbering{arabic}
+\section{Introducci\'on}
+
+
+La papa es el tercer cultivo de mayor \'area sembrada en el mundo, y el Per\'u es uno de los mayores productor de papa en Latinoam\'erica. La papa representa el sustento de m\'as de 600 mil peque\~nos productores de 19 regiones de nuestro pa\'is, debido a eso la importancia de su estudio bajo distintas condiciones medio ambientales.\\
+
+Actualmente debido al cambio clim\'atico se ha producido una tendencia al uso de menos recursos para producir la misma cantidad de alimentos para una poblaci\'on cada vez mayor y que sigue en aumento. Los estudios de uso eficiente del agua son de suma importancia, debido a que dicho recurso comienza a ser cada vez m\'as escaso, as\'i mismo se presenta un aumento de temperatura en los distintos ecosistemas, por lo que se necesitan plantas que sean tolerantes y/o resistentes al calor y la sequ\'ia con rendimientos aceptables. Adem\'as, la papa es susceptible al estr\'es por sequ\'ia, lo que conlleva a la merma en los rendimientos  y calidad del tub\'erculo.\\
+
+Por ello, el presente trabajo tiene como objetivo evaluar distintos par\'ametros fisiol\'ogicos y morfol\'ogicos para relacionarlo con la eficiencia de uso de agua y el rendimiento del cultivo e identificar y seleccionar los genotipos de papa que presenten tolerancia al estr\'es h\'idrico por sequ\'ia con rendimientos aceptables.\\
+
+Para evaluar la eficiencia de uso de agua en los 15 genotipos de estudio, se utiliz\'o la metodolog\'ia del lis\'imetro, que permite calcular la transpiraci\'on o consumo de agua neta de las plantas. Durante el desarrollo del experimento se realizaron evaluaciones morfol\'ogicas y fisiol\'ogicas para observar los mecanismos que utiliza la planta para tolerar el estr\'es por sequ\'ia. Los datos extra\'idos se correlacionaron con el rendimiento para determinar cuales de las variables presentan mayor respuesta a la sequ\'ia.
+
+
+\newpage
+\section{Revisi\'on de literatura}
+
+\subsection{El cultivo de la papa}
+  
+Seg\'un \citet{MINAG18/06/14}, la papa es el principal cultivo del pa\'is en superficie sembrada y representa el 25 \% del PBI agropecuario. Adem\'as, es la base de la alimentaci\'on de la zona andina y es producido por 600 mil peque\~nas unidades agrarias. La siembra promedio es de 274,411 hect\'areas en 19 regiones del Per\'u. Puede desarrollarse desde el nivel del mar hasta los 4,200 m.s.n.m.; pero mayormente prospera en climas semitemplados. Alcanza su m\'aximo crecimiento y desarrollo entre 15 a 18 $°$C. La formaci\'on de estolones y tub\'erculos es m\'as exigente y requiere de 8 a 12 $°$C.
+
+El rendimiento promedio nacional es de 13.3 t/ha. En costa el promedio alcanza a 25 t/ha. Esto tambi\'en depende de la variedad de papa, niveles de fertilizaci\'on y condiciones de riego. El cultivo de papa de la siembra a la cosecha genera aproximadamente 30.2 millones de jornales y el aporte al Producto Bruto Interno del Per\'u  es 13 \%.
+
+\subsection{Importancia del cultivo}
+	
+La papa es el tercer cultivo m\'as importante despu\'es del trigo y el arroz a nivel mundial. Sin embargo, poco se conoce de la importancia que tiene este tub\'erculo para la salud y la alimentaci\'on humana. La papa es un producto que contiene en 100 gramos; 78 gr. de humedad; 18,5 gr. de almid\'on y es rico en Potasio (560 mg) y vitamina C (20 mg). El consumo de papas (100 gr)  al d\'ia,  puede cubrir el requerimiento de hasta el 50 \% de las necesidades de vitamina C para el ser humano \citep{INIAP18/06/14}.
+
+El Per\'u es el pa\'is con mayor diversidad de papas en el mundo, al contar con 8 especies nativas domesticadas y 2,301 de las m\'as de 4,000 variedades que existen en Latinoam\'erica. Adem\'as, nuestro pa\'is posee 91 de las 200 especies que crecen en forma silvestre en casi todo nuestro continente (y que generalmente no son comestibles) \citep{MINAG18/06/14}. 
+
+
+\subsection{Morfolog\'ia de la papa}
+	
+\begin{enumerate}[a)]
+	
+	\item {\bf Ra\'ices.-} Las plantas de papa pueden desarrollarse a partir de un tub\'erculo o de  semilla sexual. Cuando crecen a partir de tub\'erculos, forman ra\'ices adventicias fibrosas y finas, primero en la base de cada brote y luego, encima de los nudos en la parte subterr\'anea de cada tallo.
+	
+	En comparaci\'on con otras especies cultivadas, la papa tiene un sistema radical d\'ebil; por lo general, penetra hasta los primeros 30 cent\'imetros del suelo, pero puede alcanzar hasta 1.50 metros, dependiendo del cultivar. Lateralmente, las ra\'ices se extienden hasta 60 cent\'imetros o m\'as; en las especies  silvestres, es normal encontrar ra\'ices de m\'as de dos metros de extendidas lateralmente. 
+  
+	\item {\bf Tallos.-} La papa es una planta herb\'acea; su habito de crecimiento cambia entre las especies y dentro de cada especie. Cuando los tallos crecen horizontalmente sobre el suelo son de h\'abito de crecimiento rastrero, cuando los tallos se arrastran pero levantan el \'apice son de crecimiento decumbente y cuando los tallos se levantan, son de crecimiento semierecto o erecto.
+	
+	El sistema de tallos de la planta de papa consta de tallos a\'ereos principales, estolones y tub\'erculos; las plantas provenientes de tub\'erculos pueden producir varios tallos a\'ereos, herb\'iceos, erguidos o ligeramente postrados y resultan del desarrollo de las yemas localizadas en los ojos de los tub\'erculos (semilla).
+	
+	Pueden producirse tantos tallos como yemas tenga el tub\'erculo, en las especies silvestres pueden alcanzar hasta 3 metros de longitud. El di\'ametro de los tallos oscila entre 5 y 25 mil\'imetros; en corte transversal pueden ser redondeados, triangulares o cuadrangulares con ap\'endices laterales denominados alas que pueden ser rectas o serpenteadas y su color var\'ia desde verde claro hasta p\'urpura; los tallos a\'ereos laterales son ramas de los tallos principales.
+
+Por su parte, los estolones son tallos laterales que crecen horizontalmente en el suelo a partir de las yemas de la parte subterr\'anea de los tallos principales. Los estolones son m\'as gruesos y carnosos que las ra\'ices y comienzan a desarrollarse cuando la planta tiene unos 10 cent\'imetros de altura. Aparecen en los nudos de la parte subterr\'anea del tallo rodeado por encima de dos a cinco ra\'ices; pueden ser simples, con nudos en los cuales salen las ra\'ices o ramificados produciendo estolones laterales que se originan en los nudos.
+	
+	\item {\bf Tub\'erculos.-} Morfol\'ogicamente, los tub\'erculos son tallos subterr\'aneos modificados (acortados, engrosados y provistos de yemas) con dos extremos: el basal o extremo ligado al estol\'on y el extremo opuesto que se llama distal o extremo apical. En la anatom\'ia del tub\'erculo se distinguen las siguientes zonas: peridermo, corteza, anillo vascular, par\'enquima de reserva, m\'edula y brotes.
+	
+\begin{description}
+	\item [Peridermo]  es la c\'ascara o piel, tiene la funci\'on de controlar la p\'erdida de humedad e impedir la entrada de pat\'ogenos. El peridermo consta de 6 a 14 capas corchosas de c\'elulas.
+	\item [Par\'enquima externo de almacenamiento o reserva] es la parte que abarca la mayor parte del tub\'erculo, rico en contenido de almid\'on. Esta regi\'on est\'a compuesta por la corteza y el anillo vascular.
+	\item [Corteza] es una estrecha capa de tejido parenquimatoso localizada debajo del peridermo. Las capas celulares m\'as externas de la corteza contienen prote\'inas, gr\'anulos de almid\'on y pigmentos de diferentes colores.
+	\item [Anillo vascular] anillo delgado constituido por el xilema y el floema, por el cual circula el agua y los elementos fotosintetizados, respectivamente. Este anillo hace contacto entre el estol\'on y los ojos.
+	\item [M\'edula] es la parte central del tub\'erculo, constituida por c\'elulas grandes y transparentes, las que forman el par\'enquima medular o interno de almacenamiento.
+	\item [Brotes] los brotes crecen de las yemas que se encuentran en los ojos de los tub\'erculos; el color de los brotes es una caracter\'istica varietal: Pueden ser blancos, parcialmente coloreados en la base o en el \'apice o casi totalmente coloreados. El extremo basal de los brotes, forma normalmente la parte subterr\'anea del tallo y se caracteriza por la presencia de lenticelas. Despu\'es de la siembra, esta parte produce r\'apidamente ra\'ices y luego estolones o tallos laterales; el extremo apical del brote da origen a las hojas y representa la parte del tallo donde tiene lugar el crecimiento del mismo. El tama\~no, forma, profundidad de los ojos, color de la piel y de la pulpa, color de los brotes, n\'umero de tub\'erculos por planta y contenido de materia seca de los tub\'erculos, son caracter\'isticas hereditarias.
+\end{description}
+	 
+	\item {\bf Hojas.-} Las hojas de la planta adulta son generalmente compuestas y, regularmente imparipinadas, con foliolos primarios y secundarios. El fol\'iolo terminal es de mayor tama\~no que los laterales; la forma var\'ia desde orbicular hasta lanceolada. La superficie puede ser opaca o brillante, de color verde oscuro, p\'urpura, viol\'aceo o verde claro, glabrescente o densamente pubescente.
+	
+	\item {\bf Flores.-} Las flores de la papa son hermafroditas y constan de un c\'aliz que presenta una forma muy constante para las variedades o especies. El n\'umero de flores por inflorescencia es variable seg\'un la especie y las condiciones ecol\'ogicas; el ped\'unculo de la inflorescencia est\'a dividido generalmente en dos ramas, cada una de las cuales se subdivide en otras dos formando una inflorescencia denominada ``cima'' y ocasionalmente, adopta forma de ``umbela''. En ciertas especies, la inflorescencia es terminal situada por encima del follaje como sucede en la mayor\'ia de los cultivares de \emph{Solanum tuberosum ssp}. tuberosum.
+  
+	La corola es gamop\'etala, formada por cinco p\'etalos unidos por membranas interpetalares; por su forma, la corola puede ser rot\'acea, estrellada o pent\'agona. La corola tiene color muy variable, con flores blancas, amarillas, rosadas, p\'urpura-viol\'aceas o azules, con mayor o menor tonalidad.
+	
+	El androceo est\'a constituido por cinco estambres que forman una columna alrededor del pistilo; cada estambre consta de antera y filamento que est\'a unida al tubo de la corola. El color de las anteras var\'ia de amarillo claro a naranja intenso. Los granos de polen son esparcidos a trav\'es de poros ubicados en la punta de la antera.
+	
+	El gineceo consta de un solo pistilo que est\'a compuesto de ovario, estilo y estigma. El ovario es s\'upero porque los s\'epalos, p\'etalos y estambres est\'an pegados al recept\'aculo, debajo del ovario; en un corte transversal el ovario presenta otras cavidades o l\'oculos donde hay numerosos \'ovulos distribuidos en la periferia de la placenta. El estilo es una prolongaci\'on del pistilo que conecta al estigma y el ovario; el estigma es la parte receptiva del pistilo, donde germinan los granos de polen para crecer a trav\'es del estilo. Despu\'es de la fertilizaci\'on, los \'ovulos se desarrollan para convertirse en semillas.
+	
+	\item {\bf Frutos.-} Los frutos de la papa son ``bayas'' de diferente tama\~no entre 1 y 4 cm de longitud, con forma esf\'erica, globular, ovoide o c\'onico alargada. Su color var\'ia de verde p\'alido u oscuro; en algunas variedades, tienen puntos blancos o pigmentados o franjas o \'areas pigmentadas
+	
+	Cada baya puede llegar a contener hasta 400 semillas de forma aplanada, ovalada o arri\~nonada, generalmente de color amarillo; cada semilla est\'a envuelta en una capa llamada testa que protege al embri\'on y un tejido de reserva llamado endospermo; el embri\'on tiene dos polos opuestos, la rad\'icula y la pl\'umula que contiene dos cotiledones \citep{Huaman1986}. 
+  
+	
+\end{enumerate}
+
+
+\subsection{Requerimientos agron\'omicos de la papa}
+
+\subsubsection{Suelo}
+
+La papa requiere un suelo con buen drenaje, bien aireado, poroso con un pH de 5 a 6.Los requerimientos de fertilizantes son relativamente altos y por sistema de  riego son de 80 a 120 kg / ha de N, de 50 a 80 kg / ha de P y 125 a 160 kg / ha K. El cultivo se produce en surcos o en suelo plano. Para la producci\'on de secano, la siembra en suelo plano tiende a dar mayores rendimientos debido a la conservaci\'on del agua del suelo. Bajo riego el cultivo crece principalmente en surcos. La profundidad de siembra es generalmente de 5 a 10 cm, mientras que la distancia entre plantas es de 0,75 x 0,3 m bajo riego y 1 x 0,5 m en condiciones de secano. El cultivo durante el per\'iodo de crecimiento debe evitar el da\~no a las ra\'ices y tub\'erculos, y en climas templados se realiza el aporque para evitar enverdecimiento de los tub\'erculos. El cultivo es moderadamente sensible a los suelos salinos con una reducci\'on del rendimiento a diferentes niveles de $CE_e$: 0\% a 1.7; 10\% a 2.5; 25\% a 3.8; 50\% a 5.9 y 100\% a 10 mmhos/cm \citep{FAO18/06/14}. 
+
+\subsubsection{Agua}
+
+Para rendimientos altos, el requerimiento de agua del cultivo (ETm) para  plantaciones de 120 a 150 d\'ias son de 500 a 700 mm dependiendo del clima. La relaci\'on entre la m\'axima evapotranspiraci\'on (ETm) y la evapotranspiraci\'on de referencia (ETo) es dada por el coeficiente del cultivo (Kc). Durante su etapa inicial el Kc es 0.4 - 0.5 (20 a 30 d\'ias), en la etapa de desarrollo es 0.7 - 0.8 (30 a 40 d\'ias) en la media estaci\'on de 1.05 a 1.2 (30 a 60 d\'ias), en la etapa tard\'ia de 0.85 - 0.95 (20 a 35 d\'ias) y en la madurez 0.7 - 0.75. En condiciones de secano se ha observado que una precipitaci\'on de 600 a 800 mm distribuidos regularmente durante el periodo vegetativo del cultivo de la papa es adecuada para obtener un buen rendimiento \citep{Barrantes1993}.
+
+\subsubsection{Clima}
+
+Los rendimientos se ven afectados por la temperatura, las temperaturas medias diarias \'optimas son de 18 a 20 $°$C. En general se requiere una temperatura de noche por debajo de 15 $°$C para la iniciaci\'on de la tuberizaci\'on. La temperatura \'optima del suelo para el crecimiento normal del tub\'erculo es de 15 a 18 $°$C. El crecimiento del tub\'erculo est\'a fuertemente inhibida cuando est\'a por debajo de 10 $°$C y por encima de 30 $°$C. Las variedades de papa se pueden agrupar en temprana (90 a 120 d\'ias), media (120 a 150 d\'ias) y variedades tard\'ias (150 a 180 d\'ias). Las condiciones de fr\'io en la plantaci\'on ralentiza la emergencia pudiendo extender el per\'iodo de crecimiento. Las primeras variedades mejoradas para los climas templados requieren un fotoper\'iodo de 15 a 17 horas, mientras que las variedades tard\'ias producen buenos rendimientos tanto en condiciones largas o cortas de d\'ias. Para los climas tropicales, variedades que toleran d\'ias cortos son requeridos para la adaptaci\'on local.
+
+\subsection{Estr\'es h\'idrico}
+
+En sistemas biol\'ogicos se ha adoptado el concepto f\'isico de tensi\'on-deformaci\'on (stress-strain) para analizar los procesos que ocurren cuando una planta se encuentra sometida a una situaci\'on de estr\'es. El estr\'es biol\'ogico ser\'ia cualquier factor ambiental capaz de producir una deformaci\'on (strain) potencialmente nociva en un organismo \citep{Levitt1980}.
+
+\subsubsection{Estrategias frente al estr\'es h\'idrico}
+
+La falta de agua o d\'eficit h\'idrico se representa como la tensi\'on o estr\'es que actuar\'ia sobre las plantas, y toda tensi\'on produce dos tipos de respuesta en los organismos: respuestas que tienden a evitar o prevenir la tensi\'on (mecanismos evitadores) y mecanismos o adaptaciones que permiten soportar o resistir el estr\'es (mecanismos de tolerancia). Mientras todas las estrategias de tolerancia conllevan una limitaci\'on mayor o menor del crecimiento, solo la estrategia de ahorro de agua conlleva un crecimiento limitado en el caso de la evitaci\'on del estr\'es. Las especies que derrochan agua son en general m\'as productivas y tienen mecanismos que les permiten una eficaz extracci\'on del agua del sustrato y una elevada conductividad hidr\'aulica interna para abastecer con rapidez toda la parte a\'erea de la planta. Esto les confiere una gran competitividad, pero no es siempre una estrategia viable en medios secos, particularmente cuando la carencia de agua es cr\'onica. En estas condiciones predominan las especies tolerantes del estr\'es h\'idrico \citep{Valladares2004}.
+
+\citet{Levitt1980} describi\'o extensamente los dos tipos de estrategias de resistencia al d\'eficit h\'idrico: la estrategia evitadora de la sequ\'ia y la tolerante de la sequ\'ia, c\'omo los mecanismos eco fisiol\'ogicos de resistencia se articulaban entorno a cada una de las tres estrategias mostradas (Figura \ref{fig:stress}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{./Rsweave/EEAGP/stresshidrico}
+\caption[ Tres respuestas posibles ante el estr\'es h\'idrico: escapar, evitaci\'on y/o tolerancia.]{Tres respuestas posibles ante el estr\'es h\'idrico: escapar, evitaci\'on y/o tolerancia. Fuente: \citep{Valladares2004}}
+\label{fig:stress}
+\end{figure}
+
+Diversos autores han realizado clasificaciones m\'as o menos extensas en las cuales se definen las principales estrategias de las especies que pueden denominarse en general mecanismos de resistencia. Estas clasificaciones, aunque utilizan diferentes nomenclaturas, se refieren a mecanismos similares (Cuadro \ref{fig:stresau}). 
+
+\begin{table}[H]
+\centering
+\caption[ Clasificaci\'on de la respuesta de las plantas ante el d\'eficit h\'idrico.]{Clasificaci\'on de la respuesta de las plantas ante el d\'eficit h\'idrico. Fuente: \citep{Valladares2004}}
+\includegraphics[width=0.9\linewidth]{./Rsweave/EEAGP/stresau}
+\label{fig:stresau}
+\end{table}
+
+Seg\'un \citet{Levitt1980}, las plantas han evolucionado hacia el desarrollo de mecanismos que evitan el d\'eficit h\'idrico, mientras que los mecanismos tolerantes ser\'ian un factor que complementar\'ia a los mecanismos anteriores. Una vez que una planta determinada est\'a sometida a estr\'es h\'idrico debe ser capaz de resistirlo, bien por mecanismos tolerantes o bien por mecanismos evitadores (Cuadro \ref{fig:stresmec}). De esta forma, el desarrollo de mecanismos evitadores eficientes permitir\'ia no solo sobrevivir al estr\'es sino continuar creciendo y desarroll\'andose en condiciones de agua limitante. Los mecanismos para evitar el estr\'es ser\'ian m\'as exitosos que los tolerantes en climas \'aridos ya que evitar\'ian cualquier tipo de deformaci\'on (``strain'') el\'astica o inel\'astica y los costes energ\'eticos asociados.
+
+\begin{table}[H]
+\centering
+\caption[ Los principales mecanismos de tolerancia (TOL) o evitaci\'on (EVIT) del d\'eficit h\'idrico.]{Los principales mecanismos de tolerancia (TOL) o evitaci\'on (EVIT) del d\'eficit h\'idrico. Fuente: \citep{Valladares2004}}
+\includegraphics[width=0.9\linewidth]{./Rsweave/EEAGP/stresmec}
+\\
+\scriptsize{Contenido Relativo del Agua (RWC) ; Peso espec\'ifico de la Hoja (SLW) ; Potencial H\'idrico ($\Psi$)}
+\label{fig:stresmec}
+\end{table}
+
+En un marco fisiol\'ogico, a menudo la tolerancia a estreses abi\'oticos como la sequ\'ia est\'a asociada a la supervivencia de la planta. Sin embargo, desde un punto de vista agron\'omico, la tolerancia se entiende m\'as bien en t\'erminos del rendimiento (magnitud y estabilidad) de un cultivo en condiciones limitantes de disponibilidad h\'idrica \citep{Passioura2010}.
+
+
+\subsection{Sequ\'ia}
+
+La sequ\'ia desde el punto de vista agron\'omico se define como la falta de humedad que afecta sensiblemente al normal crecimiento y desarrollo de la planta afectando sus principales funciones y disminuyendo su potencial productivo o rendimiento de sus \'organos, el cual puede ocurrir en cualquier etapa fenol\'ogica de su desarrollo. Debido a este d\'eficit de humedad las plantas reaccionan de diferente forma para contrarrestar estos afectos y normalmente ocurre la disminuci\'on de la producci\'on y si este d\'eficit es demasiado severo y la planta no cuenta con mecanismos de defensa o tolerancia, resistencia o evasi\'on, puede ocurrir la muerte paulatina e irreversible \citep{Jacobsen2003}.
+
+La sequ\'ia en t\'erminos gen\'ericos puede definirse como una deficiencia de agua que depende de dos factores: las variaciones en el descenso del potencial h\'idrico en el ambiente y de las variaciones en el tiempo o duraci\'on de estos descensos \citep{Julio2013}. \citet{Alfonso1997}, indica que esta es una deficiencia ambiental de agua, ya sea en el suelo y/o en la atm\'osfera y que puede someter a una tensi\'on o esfuerzo a las plantas sobre las cuales incide. 
+
+\subsection{El efecto del agua en el rendimiento del cultivo de la papa}
+
+El cultivo de papa es particularmente sensible a la sequ\'ia \citep{Yuan2003} en consecuencia requiere un adecuado riego para mantener el rendimiento y la calidad de los tub\'erculos \citep{Porter1999,Fabeiro2001}. La papa es relativamente sensible al d\'eficit h\'idrico del suelo. Para optimizar el rendimiento total del agua disponible en el suelo no debe ser agotado por m\'as de 30 a 50 \%. El agotamiento de la cantidad total de agua disponible en el suelo durante el per\'iodo de crecimiento de m\'as del 50 \% da como resultados rendimientos m\'as bajos. El d\'eficit de agua durante el per\'iodo de estolonizaci\'on e iniciaci\'on del tub\'erculo (1b) y la formaci\'on de rendimiento (3) tienen el mayor efecto adverso en el rendimiento, mientras que la maduraci\'on (4) y la etapa vegetativa temprana (1a) son per\'iodos menos sensibles. En general, el d\'eficit de agua en la estaci\'on media a la parte tard\'ia del per\'iodo de crecimiento tiende a reducir el rendimiento m\'as que en la primera parte. Sin embargo, las variedades var\'ian en su sensibilidad al d\'eficit h\'idrico. Algunas variedades responden mejor a la irrigaci\'on en la primera parte del per\'iodo de formaci\'on de rendimiento (3), mientras que otros muestran una mejor respuesta en la \'ultima parte de ese per\'iodo. Los rendimientos de las variedades con pocos tub\'erculos pueden ser algo menos sensible al d\'eficit de agua que aquellos con muchos tub\'erculos (Figura \ref{fig:potatog}).
+
+Para maximizar el rendimiento, el suelo debe ser mantenido a un  alto contenido de humedad. Esto, sin embargo, puede tener un efecto adverso cuando el riego frecuente con agua relativamente fr\'ia puede disminuir la temperatura del suelo por debajo del valor \'optimo de 15 a 18 $°$C durante la formaci\'on de tub\'erculos. Adem\'as, los problemas de aireaci\'on del suelo a veces pueden ocurrir en suelos h\'umedos y pesados.
+
+Dado que la papa es un cultivo relativamente sensible tanto en t\'erminos de rendimiento y calidad, en condiciones de suministro de agua limitado la oferta disponible debe dirigirse preferentemente hacia la maximizaci\'on de los rendimientos por hect\'area en lugar de difundir el agua limitada en un \'area mayor. Ahorro en el agua se pueden realizar principalmente mediante la mejora de tiempo y profundidad de la aplicaci\'on del riego.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{./Rsweave/EEAGP/pws}
+\caption[ Etapas de desarrollo de la papa.]{Etapas de desarrollo de la papa. Fuente: Sparks (1972)}
+\label{fig:potatog}
+\end{figure}
+
+Un buen rendimiento del cultivo de papa de 120 d\'ias en climas templados y subtropical es de 25 a 35 ton/ha de tub\'erculos frescos y en climas tropicales los rendimientos son de 15 a 25 ton/ha. La eficiencia de utilizaci\'on del agua para la producci\'on cosechada de tub\'erculos que contienen de 70 a 75 por ciento de humedad es de 4 a 7 kg/m3 \citep{FAO18/06/14}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Materiales y M\'etodos}
+
+\subsection{Material biol\'ogico}
+
+Se utilizaron quince (15) genotipos de papa provenientes de poblaciones de mejoramiento del Centro Internacional de la Papa. Los cuales fueron evaluados y seleccionados por sus buenas caracter\'isticas agron\'omicas y bromatol\'ogicas. Dentro del grupo de genotipos empleados se usaron 2 variedades de papa (UNICA y Achirana) que fueron evaluados bajo condiciones de sequ\'ia en experimentos anteriores por lo que se tiene conocimiento de su tolerancia al estr\'es por sequ\'ia. Los genotipos presentan distintas caracter\'isticas en su precocidad y madurez fisiol\'ogica (Cuadro \ref{tab:genotypes2}).
+
+\begin{figure}[H]
+\caption{Informaci\'on agron\'omica de los 15 genotipos evaluados}
+\centering
+\includegraphics[width=1\linewidth]{./Rsweave/EEAGP/genotypes}
+\label{tab:genotypes2}
+\end{figure}
+
+\subsection{Trabajos en invernadero}
+
+\subsubsection{Localizaci\'on}
+	
+El presente trabajo de investigaci\'on se desarroll\'o en el invernadero 10 A del Centro Internacional de la papa.
+
+
+\begin{table}[H]
+\centering
+\caption{Localizaci\'on geogr\'afica}
+\includegraphics[width=0.4\linewidth]{./Rsweave/EEAGP/ubg}
+\label{fig:ubg}
+\end{table}
+
+\subsubsection{Condiciones ambientales}
+
+El experimento se llev\'o  acabo en la estaci\'on  de Invierno  (Mayo a Agosto de 2013).Las temperaturas promedio m\'axima y m\'inima  del invernadero fueron de 24 y 15 $°$C respectivamente. La humedad relativa promedio fue de 80 \%. No hubo uso de luz artificial.
+		
+\subsection{Metodolog\'ia de sequ\'ia regulada}
+
+\subsubsection{Desinfecci\'on de materiales}
+
+La desinfecci\'on de los materiales usados en la siembra, se realiz\'o con 30 g de hipoclorito de calcio en 120 litros de agua. Se sumergieron los materiales para su desinfecci\'on (macetas, tutores de bamb\'u y mallas pl\'asticas). Luego se procedi\'o a enjugar y ponerlos a secar para su uso posterior.
+
+\subsubsection{Preparaci\'on de sustrato}
+
+Se utiliz\'o una mezcla de sustrato SOGEMIX SM-2 (75 \% Musgo de turba, perlita, vermiculita, y la piedra caliza) mezclada con tierra de chacra proveniente de la estaci\'on experimental de Huancayo. La desinfecci\'on del sustrato se realiz\'o con vapor de agua (100 $°$C) por 8 horas y luego se dej\'o a la intemperie para su enfriado, luego de 48 horas se procedi\'o a realizar un muestreo del sustrato para su an\'alisis (Cuadro \ref{fig:ana}). Cada maceta fue tarada y se coloc\'o 2 Kg de sustrato con una malla pl\'astica en la base para evitar la p\'erdida de sustrato.
+
+La fertilizaci\'on se fraccion\'o en dos, a la siembra y a los 40 DDS (d\'ias despu\'es de la siembra) en una dosis 170 - 60 - 270 de nitrato de amonio, superfosfato triple y sulfato de potasio respectivamente \citep{CIP23/06/14}.
+
+\begin{table}[H]
+\centering
+\caption{An\'alisis de sustrato}
+\includegraphics[width=0.8\linewidth]{./Rsweave/EEAGP/ana}
+\label{fig:ana}
+\end{table}
+
+Seg\'un el resultado del an\'alisis, el sustrato usado posee un nivel muy alto de materia org\'anica (propio de la naturaleza del mismo), dando lugar a un alto contenido de nitr\'ogeno, con un pH moderadamente \'acido  y un valor de  $CE_{es}$ de 10.30 dS/m, valor que lo califica como muy salino ($CE_{es} > 8$). Los contenidos de f\'osforo y potasio son altos, mientras que el nivel de carbonatos es nulo. La capacidad de intercambio cati\'onico (CIC) es alta, dando con ello una alta fertilidad potencial del sustrato.
+
+\subsubsection{Siembra de tub\'erculos}
+
+Los tub\'erculos fueron propagados en la estaci\'on experimental de Huancayo. Los tub\'erculos aun no brotados, fueron sometidos aun un tratamiento qu\'imico con RINDITE en una dosis de 200 ml en una c\'amara de 1 $m^3$ bien sellada por 72 horas, para romper la dormancia y luego se ponen los tub\'erculos en c\'amara caliente para favorecer el brotamiento de las yemas. Una vez que las semillas (tub\'erculo) estuvieron bien brotados se llevaron a c\'amara de luz difusa  para suberificar las yemas y proceder a sembrarlas.
+
+% Foto!!
+
+\subsubsection{Tratamiento de riego}
+
+Las plantas se regaron interdiariamente hasta el inicio del tratamiento. A los 30 DDS las macetas se saturaron con agua y se dejaron drenar durante la noche para eliminar el exceso de agua, las macetas fueron selladas con bolsas de polietileno para evitar la p\'erdida de agua por evaporaci\'on de la superficie del suelo, se realiz\'o el peso interdiario de las macetas hasta los 45 DDS para calcular los par\'ametros iniciales para la aplicaci\'on de los tratamientos. El tratamiento de sequ\'ia regulada se inici\'o a los 45 DDS, con la metodolog\'ia de lis\'imetro. Se pesaron las macetas cada 2 d\'ias por las tardes (entre 13:00 y 15:00 horas) seg\'un la metodolog\'ia descrita en \citet{Bhatnagar-Mathur2007}. 
+
+Con el fin de exponer a una sequ\'ia progresiva a las plantas en sequ\'ia controlada, se les redujo 150 ml de agua en cada riego, y las plantas con tratamiento de riego normal se le prove\'ia de agua de acuerdo a su demanda de transpiraci\'on, el c\'alculo se realiz\'o en base a la diferencia de pesos. La disminuci\'on del agua en el sustrato se puede graficar en base a los c\'alculos de la fracci\'on transpirable del suelo (Fig. \ref{fig:FTS}). Siendo el peso inicial de la maceta despu\'es de saturaci\'on la base para reponer el agua (capacidad de campo).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{./Rsweave/EEAGP/FTS}
+\caption{Fracci\'on transpirable del suelo durante el tratamiento de sequ\'ia controlada}
+\label{fig:FTS}
+\end{figure}
+
+\subsubsection*{Las macetas se dividieron en 2 tratamientos}
+
+\begin{description}
+	\item [a) Riego normal.-] El tratamiento en el cual se aplic\'o el agua de acuerdo a los requerimientos de evapotranspiraci\'on de la planta. Las plantas se mantuvieron durante todo el experimento a capacidad de campo.
+  
+	\item [b) Sequ\'ia controlada.-] El tratamiento de sequ\'ia regulada consisti\'o en disminuir la cantidad de agua aplicada a la planta de forma gradual hasta llegar a una transpiraci\'on normalizada en promedio de 20 \%. Momento en donde se realiza la cosecha final del experimento.
+\end{description}
+
+\subsection{Dise\~no y an\'alisis estad\'istico}
+
+El dise\~no experimental utilizado fue de Parcelas Divididas, lo cual es adecuado para la caracter\'isticas de la evaluaci\'on \citep{Montgomery1999}. La unidad experimental fue de una planta y/o maceta. Los factores por analizar fueron dos: los genotipos de papa y los tipos de riego. El factor genotipos const\'o de 13 clones avanzado y 2 variedades de papa  (UNICA y Achirana) . El factor de tipo de riego tuvo dos tratamientos: riego normal y sequ\'ia controlada. Las unidades experimentales fueron cinco por tratamiento las que fueron distribuidas al azar (Fig. \ref{fig:design}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{./Rsweave/EEAGP/design}
+\caption{Distribuci\'on espacial del experimento con el dise\~no de parcelas divididas dentro del invernadero}
+\label{fig:design}
+\end{figure}
+
+Los datos fueron procesados y analizados en el software Estad\'istico R v.3.0.3 (The R Foundation for Statistical Computing). Los datos previos a su an\'alisis fueron sometidos a detecci\'on de ``valores at\'ipicos'' usando el paquete ``car'', para los an\'alisis de variancia (ANVA) y correlaci\'on de Pearson en el paquete ``Agricolae''. El an\'alisis de componentes principales con ``FactoMineR''. Los An\'alisis de regresi\'on lineal y figuras se realizaron con el software estad\'istico GraphPad Prism 6 (GraphPad Software, Inc.). 
+
+\subsection{Variables evaluadas en el experimento}
+
+\subsubsection{Componentes del rendimiento}
+
+Se separ\'o la planta en cuatro componentes (ra\'iz, tallo, hojas y tub\'erculos) a la cosecha se procedi\'o a pesar la biomasa fresca (g) , luego se puso a la estufa a 80 $°$C por 3 d\'ias, y se realiz\'o los pesos secos (g) por cada componente.
+
+\begin{enumerate}[a)]
+  \item {\bf Biomasa seca (g)} Se determin\'o como las suma de los cuatro componentes: ra\'iz, tallo, hojas y tub\'erculos. 
+  \item {\bf \'indice de cosecha} Se calcul\'o en base al peso seco de los componentes. Es la relaci\'on del peso seco del tub\'erculo en relaci\'on al peso de la biomasa
+\end{enumerate}
+
+\subsubsection{Potencial osm\'otico} 
+
+Para esta medici\'on se seleccion\'o un fol\'iolo de la tercera hoja extendida desde el \'apice de la planta y luego utilizando un sacabocado de 5 mm de di\'ametro, se extrajeron dos discos de dicho fol\'iolo. Estos se colocaron en viales criog\'enicos (NALGENE) de 1.0 ml, e inmediatamente se guardaron en nitr\'ogeno l\'iquido. Se realizaron las lecturas del potencial osm\'otico utilizando un microvolt\'imetro HR-33T  (Wescor Inc., Logan, UT, USA) y c\'amaras psicrom\'etricas C52 (Wescor Inc., Logan, UT, USA).Las muestras permanecieron durante 30 minutos  en las c\'amaras psicrometricas hasta alcanzar el equilibrio del punto de roc\'io; y en ese instante se procedi\'o a la lectura del dato.
+
+\subsubsection{Transpiraci\'on Total}
+
+Transpiraci\'on de las plantas se calcul\'o bajo la metodolog\'ia del lis\'imetro y se determina como la diferencia de pesos de las macetas, m\'as el agua a\~nadida en la evaluaci\'on anterior.
+
+La diferencia entre el peso inicial y final de la maceta permite estimar la transpiraci\'on total de agua del suelo disponible en cada maceta. Esta informaci\'on es utilizada para determinar la fracci\'on transpirable del suelo y calcular la cantidad de agua a reponerse en cada maceta.
+
+El c\'alculo de la fracci\'on transpirable del suelo (FTS) fue calculada usando la siguiente formula:
+
+$$ FTS = \left(\frac{1 - PIM - PDM}{PIM - PFM}\right) $$
+
+Donde:
+
+\begin{itemize}
+  \item FTS     : Fracci\'on Transpirable del Suelo 
+  \item PIM (g): Peso Inicial de la Maceta 
+  \item PDM (g): Peso Diario de la Maceta 
+  \item PFM (g): Peso Final de la Maceta 
+\end{itemize}
+
+%Agregar metodolog\'ia descrita en paper de transg\'enico
+
+
+\subsubsection{\'Area foliar}
+
+El \'area foliar representa la superficie total de la hoja en $cm^2$. Se realiz\'o a los 90 DDS, al t\'ermino del experimento, la evaluaci\'on de realiz\'o en cada unidad experimental. Las hojas cosechadas se colocaron sobre una superficie y se tom\'o una foto perpendicular a la superficie captando todas las hojas, luego se procedi\'o a su an\'alisis en el Software SisCop v1.0 (Embrapa Instrumentacao Agropecuaria, 2003)
+
+\subsubsection{Eficiencia de uso de agua}
+
+El uso eficiente de agua est\'a definido como proporci\'on de biomasa acumulada, expresada como di\'oxido de carbono asimilado por el cultivo por cantidad de agua consumida, expresada como transpiraci\'on, evapotranspiraci\'on o total de agua ingresada al sistema \citep{Sinclair1984}.
+
+Para el caso de este estudio se utilizara la eficiencia de uso de agua en tub\'erculos (EUAtuberculos) y biomasa total (EUAbiomasa).
+
+$$ EUA = \left(\frac{PS_{biomasa}}{TT}\right) $$
+
+Donde:
+
+\begin{itemize}
+\item $PS_{biomasa}$ (g): Peso Seco de Tub\'erculo y/o biomasa total 
+\item TT (ml): Transpiraci\'on Total
+\end{itemize}
+
+
+\subsubsection{Contenido relativo de agua}
+
+
+% Plant water status: RWC was determined gravi- metrically according to Catsk\'o (1960), using samples of 10 leaf discs of 0.5 cm2 each. The fresh (FM), turgid (TM), and dry (DM) masses were determined. To obtain DM, samples were dried at 80 C for 24 h \cite{Lauriano2004}.
+
+El Contenido Relativo de Agua (CRA) es el contenido h\'idrico basado el en peso. M\'etodo que mide el estado h\'idrico de las plantas como porcentaje del peso seco. El material vegetal se seca en estufa u horno a una temperatura entre 60 y 80 $°$C \citep{Troyo-Dieguez2007}.
+
+El CRA se calcula mediante la expresi\'on:
+
+$$ CRA (\%) = \left(\frac{PF - PS}{PT - PS}\right)x100 $$
+
+Donde:
+
+\begin{itemize}
+  \item CRA (\%): Contenido Relativo de agua 
+  \item PF (g): Peso Fresco 
+  \item PS (g): Peso Seco 
+  \item PT (g): Peso Turgente   
+\end{itemize}
+
+
+Para realizar la medici\'on CRA, se procedi\'o a seleccionar un fol\'iolo de la tercera hoja extendida desde el \'apice de la planta. Dicho fol\'iolo ser\'a colocado en una bolsas de sellado herm\'etico de 3 x 2.5 pulgadas (previamente pesada en una balanza de precisi\'on (0.001 g)), para evitar que pierda humedad durante su transporte. Estos foliolos se pesan en fresco y luego son puestos en turgencia con agua destilada durante 8 horas para alcanzar su m\'axima capacidad de almacenamiento y determinar  su peso turgente. Luego, se procede a colocar dichos foliolos en el horno a 80 $°$C por 3 d\'ias, y as\'i determinar el peso seco.
+
+\subsubsection{Contenido relativo de clorofila}
+
+Es el contenido relativo de pigmentos fotosint\'eticos medido con un equipo de desarrollo anal\'itico de suelos y plantas (soil plant analytical development, SPAD). El an\'alisis de las clorofilas da a conocer el estado de desarrollo de la planta y permite la determinaci\'on del estado fisiol\'ogico de la planta, con lo cual se puede detectar posibles estreses \citep{Ferri2004}.
+
+Para realizar esta medici\'on, se us\'o el clorofil\'ometro (Konica Minolta Sensing, Inc., Osaka, Japan). Se seleccion\'o tres  foliolos un impar y los dos pares cercanos a este, de la tercera hoja extendida desde la parte apical de la planta. En los cuales se realiz\'o tres lecturas o muestreos, por cada fol\'iolo y se promediaron  dichas lecturas por cada unidad experimental. Las unidades de medici\'on son caracter\'istica del equipo, las cuales figuran como unidades SPAD (por sus siglas en ingl\'es: Soil Plant Analizer Device) las cuales representan o equivalen al contenido relativo de clorofila en la hoja de la planta.
+
+\subsubsection{\'Indice de tolerancia a la reducci\'on de agua}
+
+El \'indice de sequ\'ia, Tolerancia a la Reducci\'on de Agua (TRA), es usado para caracterizar la respuesta de cada genotipo sometido a condiciones de sequ\'ia. Es calculado como el peso seco tub\'erculo en condiciones de sequ\'ia en relaci\'on al peso seco del tub\'erculo en condiciones de riego \citep{Deblonde2001}.
+
+El \'indice de tolerancia a la reducci\'on de agua depende no solo del rendimiento bajo sequ\'ia y riego, sino tambi\'en de la intensidad del estr\'es. Este valor depende altamente de las condiciones ambientales. Valores menores a la unidad son considerados tolerantes a la sequ\'ia, ya que la reducci\'on en condiciones de sequ\'ia es m\'as peque\~na que el rendimiento promedio de todo los genotipos evaluados \cite{Cabello2013}.  
+
+
+% Drought Tolerance Index (DTI) effectively discriminated genotypes with high yield in both stressed and non-stressed environments. DTI was significantly positively correlated to Yp and Ys.DTI was highly significantly associated to both Ys and Yp indices and exhibited high concordance values within all subsets of genotypes, suggesting that selection for DTI could allow identifying genotypes that yield well in both stress and non- stress environments \cite{Cabello2013}.
+
+
+El TRA se calcula mediante la expresi\'on:
+
+$$ TRA =   \frac { 1 - (\frac{Y_s}{Y_p}) } { 1 - (\frac{Y_{ms}}{Y_{mp}}) } $$
+
+
+Donde:
+
+\begin{itemize}
+  \item TRA   : Tolerancia a la reducci\'on del agua. 
+  \item $Y_s$ : Rendimiento bajo sequ\'ia. 
+  \item $Y_p$ : Rendimiento bajo condiciones de riego. 
+  \item $Y_{ms}$ : Rendimiento promedio de los genotipos bajo sequ\'ia.
+  \item $Y_{mp}$ : Rendimiento promedio de los genotipos bajo condiciones de riego. 
+\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section{Resultados y discusiones}
+
+\subsection{Clones con tolerancia al estr\'es por sequ\'ia en base al rendimiento } 
+
+% Ac\'a tambi\'en usa los resultados de las variables medidas, esos clones de mejor rendimiento tienen los mejores valores en ciertas variables......que son las indicadoras de un clon tolerante a estr\'es.
+
+<<echo=FALSE,results='hide'>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,TUB.PS)
+av <- aov(TUB.PS ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("Tratamientos"))
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+rs
+@
+
+Los resultados muestran que no existe interacci\'on entre los tratamientos con los genotipos. M\'as si existe diferencias significativas entre los tratamientos, siendo el tratamiento de riego controlado el que presento mayor rendimiento (40.61 gr/planta) con respecto a las plantas en sequ\'ia regulada (23.87 g/planta) (Anexo \ref{pstub}).
+
+Los genotipos que presentaron mayor rendimiento fueron CIP398208.620 con 53.15 g; CIP398098.119 con 50.18 g y el CIP398208.219 con 43.83 g. Mientras que los genotipos contrastantes fueron CIP720088 con 19.35 gr; CIP398201.510 con 18.68 g  y el CIP398203.244 con 8.59 g (Fig \ref{fig:yield}).
+
+La selecci\'on en base al rendimiento y la tolerancia a la reducci\'on del agua se puede observar que los genotipos que tienen mayor performance en promedio son el CIP398208.620, CIP398098.119, CIP397077.16, CIP392797.22 y el CIP398190.89 (Fig \ref{fig:yield}). La variedad UNICA (CIP392797.22) entre los genotipos estudiados presenta caracter\'isticas de madurez prematura con buena aclimataci\'on a calor y ambientes secos por lo que se le consideran un genotipo tolerante y se refleja en la reducci\'on de su rendimiento en poco menos de 25\% en condiciones de estr\'es como los reportados por otros estudios \citet{Ramirez2014}. 
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./Rsweave/EEAGP/Tuber-TRA}
+\caption{Selecci\'on de clones en base al peso seco de tub\'erculos e \'indice de tolerancia al estr\'es}
+\label{fig:yield}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{./Rsweave/EEAGP/Tuberculo}
+\caption{Rendimiento de los genotipos en peso seco}
+\label{fig:yield2}
+\end{figure}
+
+La restricci\'on del riego reduce el rendimiento comparado con plantas bien regadas \citep{Yactayo2013}. Los agricultores no quieren cultivares que sean tolerantes a la sequ\'ia y pobres potencial de rendimiento. Lo que desean es cultivares que respondan a las condiciones favorables pero que puedan mantener un rendimiento econ\'omico adecuado en condiciones de sequ\'ia. Lo que representa una reducci\'on aceptable hasta de 20 a 40 \% entre plantas estresadas y no estresadas. Es por ello que es importante identificar variedades con ambas caracter\'isticas, rendimiento aceptable bajo condiciones de estr\'es por sequ\'ia. 
+
+El rendimiento bajo condiciones manejadas de estr\'es puede predecir el rendimiento en condiciones naturales (campo). Ganancia bajo esta selecci\'on ha sido demostrado con anterioridad \citep{IRRI18/06/14}.El efecto de la sequ\'ia en el rendimiento depender\'a del estado de desarrollo del cultivo la intensidad y duraci\'on al estr\'es por reducci\'on del agua \citep{Kumar1994}. En la agricultura de subsistencia, un rendimiento estable es m\'as importante que un rendimiento alto en ambientes favorables. En la agricultura comercial,  altos rendimientos son altos ingresos lo cual es el objetivo deseado \citep{Rosielle1981}.
+
+Actualmente existen variedades cultivadas de alta precocidad que pueden escapar de los periodos de sequ\'ias estacionarias debido a su corto periodo de crecimiento, y las variedades de periodos largos pueden beneficiarse de los mecanismos de resistencia a la sequ\'ia en base a tolerancia \citep{Coleman2008}. Sin embargo, la base gen\'etica presente podr\'ia ser aun peque\~nas para el desarrollo exitoso de la respuesta al estr\'es por sequ\'ia bajo varias condiciones de crecimiento.
+
+La combinaci\'on de altos rendimientos estables y altos rendimientos en sequ\'ia, ha sido propuesto como un criterio de selecci\'on para caracterizar el desempe\~no del genotipos bajo distintos grados de variaci\'on en la sequ\'ia \citep{AHMAD2003}, ya que la sequ\'ia es un fen\'omeno err\'atico e impredecible, el objetivo de los mejoradores es mejorar la capacidad de las plantas a la tolerancia al estr\'es por sequ\'ia mientras mantengan a su vez un rendimiento alto \citep{Spitters1990}. 
+
+% Producers, therefore, prefer cultivars that produce high yields when water is not so limiting but suffer minimum loss during droughty seasons (Nasir Ud-Din et al., 1992) \cite{Sio-SeMardeh2006}.
+
+
+\subsection{Contenido Relativo de Clorofila}  
+
+<<echo=FALSE,results='hide',eval=TRUE>>=
+
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,SPAD.29)
+av <- aov(SPAD.29 ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+rs
+
+@
+
+A los 29 DDS, cuando no se aplic\'o aun el tratamiento de sequ\'ia regulada se observa que no existe diferencia significativa entre los tratamientos (Anexo \ref{AOV:SPAD29}) , eso muestra que todos los genotipos est\'an iniciando el tratamiento bajo las mismas condiciones y sin efectos alguno de estr\'es; m\'as si existe diferencia significativa entre los genotipos ($p < 0.001$) ya que los genotipos provienen de distintas hibridaciones (Fig. \ref{fig:SPAD}) . El promedio general para contenido relativo de clorofila en los genotipos fue 56.55.
+
+Los genotipos que mostraron mayores promedios en SPAD fueron CIP398201.510 con 62.90 , CIP397077.16 con 61.40 y CIP398203.244 con 61.27. Mientras que los genotipos de con menor SPAD fueron los genotipos CIP398203.5  con 53.03 , CIP398098.119 con 51.06 y CIP398208.219 con 46.93 (Fig. \ref{fig:SPAD}).
+
+<<echo=FALSE,results='hide'>>=
+
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,SPAD.83)
+av <- aov(SPAD.83 ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+rs
+
+@
+
+En los resultados de las mediciones de SPAD a los 83 DDS, se observ\'o una reducci\'on en el promedio general con 41.90. Adicionalmente se observa una interacci\'on genotipo con tratamiento ($p = 0.01$) (Anexo \ref{AOV:SPAD83}), lo que hace referencia a que existe un efecto de la sequ\'ia en relaci\'on a los genotipos estudiados (Fig. \ref{fig:SPAD}). 
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{./Rsweave/EEAGP/SPAD29DDS}
+\caption{Contenido Relativo de Clorofila a los a los 29 DDS.}
+\label{fig:SPAD}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{./Rsweave/EEAGP/SPAD83DDS}
+\caption{Contenido Relativo de Clorofila a los a los 83 DDS.}
+\label{fig:SPAD2}
+\end{figure}
+
+
+La medici\'on del SPAD usualmente se utiliza para determinar el estado  nutricional de la planta en base a fertilizaci\'on nitrogenada. \citet{Yamamoto2002} encontr\'o que los valores de SPAD estaban correlacionados no solo con la concentraci\'on de clorofila sino tambi\'en con la concentraci\'on de nitr\'ogeno en las hojas de los cultivos, tambi\'en confirmado por \citet{Li2012} en papa. El permanecer verde del cultivo es un tratamiento apreciado en los programas de mejoramiento  ya que usualmente es asociado con la actividad fotosint\'etica.
+
+El contenido relativo de clorofila a los 29 DDS son similares en entre los tratamientos entre plantas bien regadas y plantas sometidas a estr\'es, esto hace referencia a que las plantas aun no son sometidas al tratamiento de estr\'es y no muestras diferencias entre las mediciones del contenido relativo de clorofila (Fig. \ref{fig:SPAD}). M\'as si existe diferencia entre los genotipos debido que el verdor de las hojas est\'e asociado a caracter\'isticas propias de cada genotipo \citep{THOMAS1993}.
+
+A los 83 DDS (38 DDT), se puede notar una disminuci\'on general del contenido relativo de clorofila en los 15 genotipos (Fig. \ref{fig:SPAD}) posiblemente debido a la senescencia de la planta producto de la translocaci\'on de nutrientes. Tambi\'en existe diferencia significativa entre la interacci\'on genotipo por tratamiento ($P<0.05$). Siendo el tratamiento de sequ\'ia regulada el que mantiene valores m\'as altos (44.09 SPAD) que las plantas bajo riego (39.71 SPAD). Pero lo cual no conllev\'o a que los genotipos en sequ\'ia tengan mayor eficiencia fotosint\'etica reflejada en el aumento del rendimiento, como lo denomina, \citet{Hortensteiner2009} ``verde cosm\'etico'', que al parecer est\'a m\'as relacionado a la aceleraci\'on de la senescencia que a la actividad fotosint\'etica. No se presenta ning\'un indicio o tendencia en el contenido relativo de clorofila con la tolerancia a la sequ\'ia, m\'as si nos muestra que existe diferencia entre tratamientos.
+
+Seg\'un \citet{Ramirez2014} existe diferencia en la concentraci\'on de contenido relativo de clorofila entre tratamientos de plantas con sequ\'ia y plantas bien regadas durante la etapa de senescencia en experimentos de campo, el cual tiene una correlaci\'on negativa con los resultados de rendimiento. Seg\'un los an\'alisis de correlaci\'on de Pearson para el presente estudio existe cierto grado de asociaci\'on inversa del SPAD con los componentes del rendimiento a los 83 DDS (Cosecha 85 DDS) con \'indice de Cosecha ($r=-0.83$), peso seco de tub\'erculo ($r=-0.47$), Eficiencia de uso de agua en tub\'erculos ($r=-0.7$) y al \'indice te tolerancia a la reducci\'on del agua ($r=-0.56$) (Anexo \ref{percor}).
+
+\subsection{Interacci\'on del agua en la c\'elula} 
+
+
+% Es obvio que el potencial osm\'otico es m\'as negativo en en plantas con estr\'es....pero que significa, hay alg\'un mecanismo de resistencia......t\'u tienes en el punto 2.6.1 de tu revisi\'on de literatura ESTRATEGIAS FRENTE AL ESTRES HIDRICO......usa esa revisi\'on para dar soporte a esta parte.
+
+
+<<echo=FALSE,results='hide'>>=
+
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,CRA)
+av <- aov(CRA ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("Tratamientos","GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+rs
+
+@
+
+Referente al contenido relativo de agua (\%) se observa una interacci\'on entre los tratamientos y los genotipos, siendo el tratamiento en el cual las plantas estaban bien regadas de 69.36 \% y la plantas en tratamiento de sequ\'ia de 57.39 \% ($p < 0.01$) (Anexo \ref{acra}) . Los genotipos que mantuvieron un mayor contenido relativo de agua bajo condiciones de riego normal fueron, CIP398208.219 con 74.31 \% ; CIP397077.16 con  73.92 \% y el CIP720088  con   73.15 \%. Mientras que los genotipos que mostraron altos valores de CRA bajo sequ\'ia controlada fueron, CIP720088 con 64.96 \% ; CIP398203.5  con 64.06 \% y CIP392797.22  con  60.18 \% (Fig. \ref{fig:CRA}).
+
+
+% Themore drought resistant cultivar, Raritan, had greater RWC in young and mature leaves than the drought sensitive cultivar, Shepody. The greater level of cellular hydration as exemplified by a higher RWC level may have been due to osmotic adjustment (OA). \cite{Levy2013}
+
+% Verificar que los que tienen mad RWC son mas tolerantes!!
+
+
+% Relative water content (RWC) was demonstrated to be a relevant screening tool of drought-tolerance in cereals, as well as a good indicator of plant water-status \cite{Li2007}.
+
+
+<<echo=FALSE,results='hide'>>=
+
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,PO)
+av <- aov(PO ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("Tratamientos"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+rs
+
+@
+ 
+Para el potencial osm\'otico (Mpa) los resultados muestran diferencia significativa entre tratamientos siendo las plantas sometidas a sequ\'ia controlada $ -2.84 Mpa $ mientras que las plantas bien regadas $ -2.24 Mpa $ ($p < 0.001$) (Anexo \ref{osmp}). 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./Rsweave/EEAGP/CRA}
+\caption{Contenido relativo de agua}
+\label{fig:CRA}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./Rsweave/EEAGP/PO}
+\caption{Potencial osm\'otico}
+\label{fig:OP}
+\end{figure}
+ 
+ 
+Con relaci\'on al potencial osm\'otico los resultados de la investigaci\'on muestran que las plantas sometidas a estr\'es h\'idrico por sequ\'ia muestran  valores m\'as negativos comparados con las plantas bien regadas \citep{Yactayo2013, Xu2011} (Fig. \ref{fig:CRA}) . Lo cual es atribuido a una alta concentraci\'on de solutos en la c\'elulas \citep{Blum2011}. Bajo un balance h\'idrico desfavorable con un desequilibrio h\'idrico interno, un mecanismo de defensa es el ``ajuste osm\'otico'', al disminuir el potencial osm\'otico ($\pi$) para mantener la turgencia \citep{Troyo-Dieguez2007, Warwick2006}. 
+
+La disminuci\'on del $\pi$ celular ante el d\'eficit h\'idrico puede deberse a un aumento de solutos y se logra abatiendo el volumen de agua celular. Las variedades de papa que muestran un rendimiento alto bajo condiciones restringidas de agua poseen un alto ajuste osm\'otico. En numerosas especies, la acumulaci\'on de solutos durante el declive en el potencial h\'idrico de la hoja es esencial para mantener la hidrataci\'on foliar, evitando el da\~no por la desecaci\'on celular y promueve la resistencia a la sequ\'ia en las plantas \citep{Blum2011, Levy2013, Jones1978}
+
+Para los resultados de ambas variables, se puede observar que existe diferencia entre tratamientos, m\'as esta diferencia no presenta una tendencia para correlacionar los genotipos de mayores rendimientos con el contenido relativo de agua o el potencial osm\'otico.
+
+% In numerous species, the accumulation of solutes during a decline in leaf water potential is essential for maintaining leaf hydration, avoiding cellular desiccation damage and promoting drought resistance in crop plants (Blum 2011; Chaves and Oliveira 2004; Girma and Krieg 1992; Jones and Turner 1978; Oosterhuis and Wullschleger 1987; Verslues and Bray 2004)
+
+% Stomatal adjustment is a common drought avoidance strategy in crops \cite{Anyia2004}.
+
+\subsection{Transpiraci\'on total y \'area foliar}
+
+
+% Debes explicar la transpiraci\'on porque se da mayor o menor.....factores ambientales, factores intr\'insecos, etc.....hay un mont\'on de razones. Tu relaci\'on de la transpiraci\'on y el \'area foliar es buena.......explota esos resultados para explicar mejor el comportamiento de tus clones.
+
+<<echo=FALSE,results='hide'>>=
+
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,TTRN)
+av <- aov(TTRN ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("Tratamientos","GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+rs
+
+@
+ 
+La transpiraci\'on total presenta una interacci\'on genotipo con tratamiento ($p = 0.018$) lo que indica que existe influencia del efecto de la sequ\'ia regulada sobre las plantas en donde las plantas que presentaron mayor transpiraci\'on fueron las plantas bien regadas (Anexo \ref{ttransp}). Los clones con mayor transpiraci\'on bajo condiciones de riego fueron los genotipos CIP398098.119 con 10.43 l ; CIP398208.219 con 9.99 l y  CIP398192.592 con  9.54 l. Y los genotipos que tuvieron un tasa mayor de transpiraci\'on en sequ\'ia regulada fueron los genotipos CIP398098.119 con 6.29 l; CIP398208.620 con 5.47 l y CIP398192.592 con 5.33 l. Tambi\'en se observa un comportamiento at\'ipico del genotipo CIP720088, que tanto en condiciones de riego y de sequ\'ia controlada posee una tasa baja de transpiraci\'on, 3.37 l y 2.33 l respectivamente (Fig. \ref{fig:AF}).
+
+<<echo=FALSE,results='hide'>>=
+
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,AF)
+av <- aov(AF ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("Tratamientos","GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+rs
+
+@
+
+Para la variable \'area foliar, se observa una interacci\'on significativa del tratamiento sobre los genotipos estudiados ($p < 0.001$) (Anexo \ref{leafarea}). Lo que nos indica que las plantas de papa responden a la sequ\'ia con cambios en el \'area foliar. Los genotipos en riego que presentaron mayor \'area foliar fueron CIP398098.119 con 10287.8 $cm^2$ ; CIP398208.219  con 9669 $cm^2$ y CIP398208.704 con 8878.8 $cm^2$. Y el genotipo CIP720088 presenta un comportamiento at\'ipico ya que su \'area foliar en sequ\'ia regulada como riego presenta \'area foliar reducida  680.6 y 1374 $cm^2$ respectivamente (Fig. \ref{fig:AF}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./Rsweave/EEAGP/AF}
+\caption{\'Area Foliar}
+\label{fig:AF}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./Rsweave/EEAGP/Transpiracion}
+\caption{Transpiraci\'on Total}
+\label{fig:Trans}
+\end{figure}
+
+
+<<echo=FALSE,results='hide'>>=
+correlation(TTRN,AF ,"pearson")
+correlation(TTRN,BIOM.PS, "pearson")
+correlation(TTRN, TUB.PS,"pearson")
+@
+
+Los resultados muestran que la transpiraci\'on tiene una correlaci\'on alta con el \'area foliar ($r= 0.88$) y la biomasa total ($r = 0.93$)  y con el peso seco de tub\'erculo ($r = 0.75$) (Anexo \ref{percor}) . La reducci\'on del \'area foliar y la aceleraci\'on de la senescencia son respuestas comunes del estr\'es por sequ\'ia. El \'area foliar contribuye al rendimiento pero al mismo tiempo es el factor de la supervivencia de la planta bajo d\'eficit h\'idrico \citep{Ludlow1990}. La p\'erdida de cobertura de la planta es causada por el marchitamiento de la hoja, lo que conlleva a la perdida de turgencia durante la senescencia \citep{Nilsen1996}, relacionado tambi\'en a la reducci\'on del contenido relativo de agua.  
+
+El vigor prematuro (desarrollo r\'apido del \'area foliar) es una adaptaci\'on importante en trigo y cebada para tolerancia al estr\'es abi\'otico. Lo que convierte un objetivo de los programas de mejoramiento, para encontrar parentales con crecimiento foliar prematuro \citep{Condon2004}. Sin embargo, una de las complicaciones es que las plantas con \'area espec\'ifica baja, est\'a asociado con un bajo \'indice de cosecha \citep{Wright1993}. Tambi\'en la tendencia a la selecci\'on de individuos con \'area foliar alta debe ser evitada durante la selecci\'on ya que no significa que estas plantas tengan mayores rendimientos.
+
+La selecci\'on de plantas para una alta producci\'on de biomasa bajo condiciones de sequ\'ia requiere del balance entre la maximizaci\'on de la asimilaci\'on de carbono (lo que requiere valores elevados de \'area foliar y conductancia estom\'atica), y/o la minimizaci\'on de la transpiraci\'on para el mantenimiento de un alto Contenido Relativo de Agua de la hoja (lo que requiere reducida \'area foliar y baja conductancia estom\'atica) \citep{TEULAT1997}.
+
+% Reduction of transpiration surfaces is another drought avoiding strategy in plants and this was shown by the cultivars used in this study by the strong negative cor- relation between RWC and leaf area. Blum (1974)
+
+% Drought affects potato canopy architecture by decreasing leaf size and leaf expansion rate while limiting formation of new leaves and increasing the rate of senescence (Fleisher et al. 2008b).
+
+
+% Increased transpiration efficiency has often been cited as a useful goal,provided harvest index does not decrease significantly (Yoo et al. 2009).
+
+% The selection for high WUE in breeding for water-limited growing conditions may lead to reduced drought tolerance and to reduced yields (Blum 2009).
+
+Los resultados muestran que existe diferencia entre tratamientos y genotipos, m\'as esto no muestra una tendencia entre los genotipos con mayores rendimientos, en dos genotipos tanto el \'area foliar como la transpiraci\'on  no muestran diferencia significativa, esto se puede deber a la precocidad de los dichos genotipos que le permiti\'o escapar de la sequ\'ia controlada y cumpliendo su periodo fenol\'ogico sin causar alguna diferencia entre tratamientos.
+
+\subsection{Eficiencia de Uso de Agua en la biomasa y tub\'erculos} 	
+
+% Usa el punto "anterior" para soportar esto resultados, concatena ambos resultados hay una explicaci\'on interesante entre las tres variables.
+
+
+<<echo=FALSE,results='hide'>>=
+
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,EUAT)
+av <- aov(EUAT ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+rs
+
+@
+
+De acuerdo a los resultados no que existe diferencia significativa entre tratamientos ($p = 0.08$) para la eficiencia de uso de agua en tub\'erculo ($EUA_T$) m\'as si entre genotipos con ($p < 0.001$) \citep{Anyia2004} (Anexo \ref{euatub}) . Los genotipos que presentaron mayor EUAT fueron CIP397077.16 con  7.95 $g/l$; CIP398208.620  con  7.34 $g/l$ y CIP392797.22 con  7.31 $g/l$. Los genotipos que presentaron los valores m\'as bajos en EUAT fueron CIP398201.510 con 3.54 $g/l$ ; CIP398180.612 con 3.19 $g/l$ y CIP398203.244 con 1.53 $g/l$ (Fig. \ref{fig:EUAt}).
+
+
+<<echo=FALSE,results='hide'>>=
+
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,EUA)
+av <- aov(EUA ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+mc <- HSD.test(av,c("Tratamientos"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+rs
+
+@
+
+Para le eficiencia de uso de agua en relaci\'on a la biomasa, existe diferencia significativa tanto para los tratamientos y los genotipos con $p = 0.002$ y $p < 0.001$ respectivamente (Anexo \ref{percor}). El promedio para el tratamiento de sequ\'ia regulada fue 11.12 $g/l$ y 9.41 $g/l$ para las plantas bien regadas. Los genotipos que presentaron mayor EUA fueron los genotipos CIP397077.16 con  12.51 $g/l$; CIP392797.22 con 12.04 $g/l$ y CIP398208.620 con 11.51 $g/l$ y los genotipos que presentaron los valores m\'as bajos fueron CIP720088 con   9.37 $g/l$ ; CIP398201.510 con 9.29 $g/l$ y CIP398180.612 con 9.17 $g/l$ Fig. \ref{fig:EUAb}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./Rsweave/EEAGP/EUAtub}
+\caption{Eficiencia de uso de agua en tub\'erculos}
+\label{fig:EUAt}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./Rsweave/EEAGP/EUAbiom}
+\caption{Eficiencia de uso de agua en  biomasa}
+\label{fig:EUAb}
+\end{figure}
+
+
+La eficiencia de uso de agua de toda la planta, a menudo es referida como eficiencia de transpiraci\'on, es definida como la relaci\'on de la biomasa producida de la planta relacionada con la transpiraci\'on \citep{Morison2008}. Seg\'un \citet{Condon2004} el potencial para mejorar la eficiencia de uso agua es mejorar la eficiencia de transpiraci\'on. El cultivo de papa es particularmente sensible al estr\'es por sequ\'ia y por consecuente usa una cantidad desproporcionada de agua para mantener el rendimiento y la calidad de tub\'erculo \citep{Porter1999}. 
+
+La eficiencia de uso de agua bajo condiciones de estr\'es es uno de las variables m\'as prometedoras para mejorar y estabilizar el rendimiento de los cultivos antes deficiencias de agua intermitentes \citep{Bhatnagar-Mathur2007}. La eficiencia de uso de agua en papa es un factor ampliamente variable, dependiendo de las condiciones medioambientales y su magnitud espacial y temporal \citep{Monneveux2013}. 
+
+Para los fisi\'ologos, la unidad b\'asica de la producci\'on est\'a dado por los moles de carbono ganado en la fotos\'entesis en el intercambio de agua usada en la transpiraci\'on. Por eso la definici\'on fisiol\'ogica puede ser representada en los niveles m\'as b\'asicos como la eficiencia de uso de agua instant\'anea durante intercambio de gases de la hoja. Para los agricultores y agr\'onomos, la unidad de producci\'on est\'a m\'as asociada al rendimiento de las cosecha en relaci\'on a la cantidad de agua disponible para el cultivo durante su periodo vegetativo \citep{Condon2004}.
+
+Los resultados muestran, que para ambos casos para la variable eficiencia de uso de agua en biomasa y en tub\'erculo, existe una tendencia  a que los genotipos que muestran mayor eficiencia de uso de agua en promedio, como en tratamiento de sequ\'ia son los que presentan mayor rendimiento. Siendo esta variable un indicador para la selecci\'on de genotipos con tolerancia al estr\'es h\'idrico que presenten rendimientos aceptables.
+
+
+\subsection{Eficiencia de Uso de Agua en tub\'erculos e \'indice de Cosecha}
+
+% Este tema esta demasiado poco explicado, necesitas presenter tablas, ANVA, explicar los genotipos por que serian resistenes o susceptibles.
+
+
+% En este punto indicas cuales son tus clones tolerantes y usas varias variables.......usa esa informaci\'on de los resultados en las variables integrado a tu evaluaci\'on estad\'astica para explicar como llegaste a establecer quienes son clones tolerantes.
+
+
+<<echo=FALSE,results='hide'>>=
+
+av <- aov(TRA ~ Bloques + GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+rs
+
+@
+
+Existe diferencia significativa entre los genotipos para \'indice de tolerancia a la reducci\'on de agua ($p = 0.029$) (Anexo \ref{ATRA}). Los genotipos que presentaron mayores promedio para esta variable fueron CIP398190.89 con 104.09 ; CIP392797.22  con 75.75 y CIP398208.33 con 71.96 y los genotipos que presentaron los valores m\'as bajos fueron CIP398201.510 con  48.88 ;  CIP398208.219 con 46.75 y CIP398203.244 con 31.56 (Fig. \ref{fig:TDWS}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./Rsweave/EEAGP/TRA-EUAtub}
+\caption{Clones con tolerancia al estr\'es por sequ\'ia en base a la eficiencia de uso de agua}
+\label{fig:TDWS}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./Rsweave/EEAGP/TRA-IC}
+\caption{Clones con tolerancia al estr\'es por sequ\'ia en base al \'indice de cosecha}
+\label{fig:TDWS2}
+\end{figure}
+
+
+La papa, es un cultivo sensible a la sequ\'ia \citep{Yuan2003}, pero bajo condiciones de secano, rinde m\'as por metro cuadrado que otros cultivos \citep{FAO2008a}. Sin embargo esa vulnerabilidad esta atribuida a su sistema de ra\'ices poco profundas y su baja capacidad de recuperaci\'on despu\'es de un periodo de estr\'es por agua. La sequ\'ia reduce el crecimiento de las plantas, acorta el ciclo del cultivo y reduce el n\'umero y tama\~no de los tub\'erculos en papa. Los cultivares modernos de papa son altamente susceptibles al estr\'es por sequ\'ia \citep{Wishart2012}
+
+El reto, como el ejemplo en los cereales es encontrar los componentes del rendimiento que son cr\'iticamente afectados por el estr\'es por sequ\'ia y la combinaci\'on de variables que mejoren la tolerancia a la sequ\'ia sin causar disminuci\'on de la calidad y el rendimiento. La aplicaci\'on gradual de estr\'es por periodos superiores a 3 semanas lleva a la reducci\'on de la altura de las plantas, reducci\'on del \'area foliar, reducci\'on en la biomasa del brote y disminuci\'on del \'area espec\'ifica de la hojas \citep{Coleman2008} y el \'indice de cosecha. Cabe recalcar que la tolerancia tiende a ser espec\'ifica para cada ambiente y depende del tipo de suelo, la intensidad de la luz, la demanda evapotranspirativa entre otros \citep{Tardieu2012}.  
+
+
+% Esto para que lo usas.....es \'util....qu\'e te indica......necesitas m\'as soporte te\'orico, est\'a muy fofo.
+ 
+La eficiencia de uso de agua en tub\'erculos ($g/l$) posee una correlaci\'on alta con el \'indice de cosecha ($r = 0.912$) (Fig. \ref{fig:IC}) . Adicionalmente el peso seco de la biomasa tiene correlaci\'on alta con la transpiraci\'on total $r = 0.928$ ($p < 0.001$) (Anexo \ref{percor}).  
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./Rsweave/EEAGP/TRA-ICc}
+\caption{Transpiraci\'on e \'Indice de Cosecha}
+\label{fig:IC}
+\end{figure}
+
+<<echo=FALSE,results='hide'>>=
+correlation(EUAT,IC ,"pearson")
+@
+
+Esto se debe a que si comparamos matem\'aticamente las 2 variables guardan en si relaci\'on en el c\'alculo:
+
+
+\begin{displaymath}
+EUA = \frac{PS_{Tuberculo}}{TT}
+\end{displaymath}
+
+\begin{displaymath}
+IC = \frac{PS_{Tuberculo}}{PS_{Biomasa}}
+\end{displaymath}
+
+Donde:
+
+\begin{itemize}
+\item $PS_{Tuberculo}$ (g): Peso Seco de Tub\'erculo
+\item TT (ml): Transpiraci\'on Total
+\item $PS_{Biomasa}$ (g): Peso Seco de Biomasa
+\end{itemize}
+
+<<echo=FALSE,results='hide'>>=
+correlation(TTRN,BIOM.PS ,"pearson")
+@
+
+\citet{Donald1962} defini\'o el \'indice de cosecha, como el rendimiento econ\'omico expresado en relaci\'on a la fracci\'on total de rendimiento biol\'ogico en cereales. Este valor ser\'a expresado en peso seco \citep{Donald1976}. Existe una creciente evidencia, por la alta heredabilidad del \'indice de Cosecha, puede ser un \'indice de la respuesta de los cultivos al cambio clim\'atico \citep{HAY1995}.
+
+Cultivos con tub\'erculos, la papa en particular, existe una serie de dificultades en particular el problema con la cosecha por debajo del suelo. El \'indice de cosecha en papa aumenta progresivamente desde el inicio de la tuberizaci\'on \citep{Hay1989}. Si el cultivo es permitido y llevado m\'as all\'a de la madurez, mucha biomasa a\'erea es perdida por senescencia, dando como resultado un valor alto y no real \citep{Ezekiel1990}. Esto demuestra claramente la importancia de la fecha de muestreo. La papa posee un \'indice de cosecha entre 0.47 - 0.62 \citep{Knowles1992}.
+
+Existen numerosos \'indices basados en el rendimiento, relacionando matem\'aticamente el rendimiento bajo sequ\'ia y plantas bien regadas, tambi\'en ha sido propuesto caracterizar el comportamiento de los genotipos en ambientes con estr\'es y sin estr\'es para seleccionar genotipos con tolerancia \citep{Mitra2001}. Los resultados de este estudio demuestran que el \'indice de Cosecha es una herramienta importante y de c\'alculo f\'acil que puede ayudar en la selecci\'on prematura de materiales que posean alta eficiencia en el uso del agua y rendimientos aceptables en condiciones de sequ\'ia.
+
+% Resultados muestran un relacion entre IC y Peso seco de tuberculos 0.62
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\section{Conclusiones}
+
+\begin{enumerate}
+
+    \item De las variables estudiadas, el \'indice de cosecha es f\'acil de ser calculada y muestra una correlaci\'on alta con la eficiencia de uso de agua en tub\'erculos, por lo que podr\'ia ser utilizado como criterio de selecci\'on para genotipos que presenten tolerancia a la sequ\'ia. La metodolog\'ia del lis\'imetro para calcular eficiencia de uso de agua es un m\'etodo muy preciso para experimentos fisiol\'ogicos sin embargo es costoso, poco pr\'actico y dificulta su uso en campo.
+  
+
+    \item Los genotipos, CIP398190.89 , CIP397077.16 , CIP392797.22 , CIP398208.620 mostraron una mayor eficiencia en el uso de agua bajo condiciones de sequ\'ia sin que esto produzca una reducci\'on dr\'astica en el rendimiento. 
+  
+\end{enumerate}
+
+
+\section{Recomendaciones}
+
+\begin{enumerate}
+
+  \item Trabajar con genotipos que posean similar madurez fisiol\'ogica para determinar si la tolerancia a la sequ\'ia es causada por la precocidad de los genotipos o por los mecanismos que despliega la planta para tolerar la sequ\'ia.
+  
+  \item Evaluar la cobertura de las plantas a trav\'es de su crecimiento para determinar si los genotipos que presentan un desarrollo r\'apido al inicio de su crecimiento son los que toleran mejor el estr\'es h\'idrico por sequ\'ia.
+  
+  \item Realizar las mediciones fisiol\'ogicas con mayor frecuencia, en intervalos no muy amplios para determinar el cambio que existe en las plantas sometidas a sequ\'ia y poder correlacionar la respuesta con la evaluaci\'on de variables.
+  
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\addcontentsline{toc}{section}{Bibliograf\'ia}
+\renewcommand\refname{Bibliograf\'ia}
+\bibliographystyle{newapa}
+\bibliography{library}
+
+
+%%%%%%%%%%%%%%%%
+\newpage
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
+\renewcommand{\appendixname}{Anexo}
+
+
+\begin{appendices}
+%\renewcommand*{\thesection}{\arabic{section}}
+
+\section{Partici\'on de la biomasa total \label{DBM}}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Rsweave/EEAGP/DBM}
+\caption{Partici\'on de la biomasa total por tratamiento y genotipo}
+\label{fig:DBM}
+\end{figure}
+
+\section{An\'alisis de componentes principales} 
+ 
+\begin{figure}[H]
+\centering
+<<Principal Components Analyse,echo=FALSE,fig.height=8,fig.width=8>>=
+
+smry <- summaryBy(. ~ GENOTIPOS, dta, keep.names = T ,na.rm=T )
+
+pca <- PCA(smry[3:17],graph = F)
+
+plot(pca,choix=c("var"),habillage="none",cex=0.8,shadow=T,autoLab="yes",title = "")
+#summary(pca,nbelements=Inf,file="Principal Components Analisys.txt")
+@
+\caption{An\'alisis de componentes principales para las variables en estudio}
+\label{fig:PCA}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+<<Principal Components Analysis Genotypes,echo=FALSE,fig.height=8,fig.width=8>>=
+pca <- PCA(smry, quali.sup = 1 , graph = F)
+
+plot(pca,choix=c("ind"),habillage="none",cex=0.9,shadow=T,autoLab="yes",title = "")
+#summary(pca,nbelements=Inf,file="Principal Components Analisys.txt")
+@
+\caption{An\'alisis de componentes principales para los genotipos en estudio}
+\label{fig:PCA2}
+\end{figure}
+
+\section{Tabla de correlaci\'on de Pearson \label{percor}}
+
+\begin{landscape}
+\begin{table}
+\centering
+<<echo=FALSE,size="footnotesize">>=
+cor <- correlation(smry[3:17],method = "pearson",alternative = "greater")
+kable(cor$correlation)
+@
+\end{table}
+\end{landscape}
+
+\section{An\'alisis de variancias (ANVA)}
+
+\subsection{SPAD 29 d\'ias despu\'es de la siembra \label{AOV:SPAD29}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,SPAD.29)
+av <- aov(SPAD.29 ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+
+\subsection{SPAD 83 d\'ias despu\'es de la siembra \label{AOV:SPAD83}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,SPAD.83)
+av <- aov(SPAD.83 ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS", "Tratamientos"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Contenido Relativo de Agua \label{acra}}
+
+<<echo=FALSE >>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,CRA)
+av <- aov(CRA ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS", "Tratamientos"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Potencial Osm\'otico \label{osmp}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,PO)
+av <- aov(PO~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("Tratamientos"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Transpiraci\'on Total \label{ttransp}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,TTRN)
+av <- aov(TTRN ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS", "Tratamientos"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{\'Area Foliar \label{leafarea}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,AF)
+av <- aov(AF ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS", "Tratamientos"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Eficiencia de uso de agua en tub\'erculos \label{euatub}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,EUAT)
+av <- aov(EUAT ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Eficiencia de uso de agua en la Biomasa \label{euabiom}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,EUA)
+av <- aov(EUA ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Biomasa \label{biom}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,BIOM.PS)
+av <- aov(BIOM.PS ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Peso seco de Hojas} \label{psh}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,HOJA.PS)
+av <- aov(HOJA.PS ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Peso Seco de Tallos}\label{pst}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,TALLO.PS)
+av <- aov(TALLO.PS ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Peso Seco de Ra\'iz \label{psr}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,RAIZ.PS)
+av <- aov(RAIZ.PS ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Peso Seco de Tub\'erculo \label{pstub}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,TUB.PS)
+av <- aov(TUB.PS ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{\'Indice de cosecha \label{HI}}
+
+<<echo=FALSE>>=
+sp <- sp.plot(Bloques,Tratamientos,Genotipos,IC)
+av <- aov(IC ~ Bloques + Tratamientos*GENOTIPOS, dta)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\subsection{Tolerancia a la reducci\'on de agua \label{ATRA}}
+
+<<echo=FALSE>>=
+av <- aov(TRA ~ Bloques + GENOTIPOS , dta)
+anova(av)
+mc <- HSD.test(av,c("GENOTIPOS"))
+rs <- list("Parametros" = mc$statistics , "Resumen" = mc$means , "Tukey" = mc$groups)
+@
+
+\end{appendices}
+
+%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%
