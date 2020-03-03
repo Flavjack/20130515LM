@@ -243,14 +243,18 @@ cr <- fb %>%
   unite(gnt, treat, col = "rn") %>% 
   column_to_rownames("rn") 
 
-cg <- heatmaply_cor(
+cp <- heatmaply_cor(
   cor(cr),
   k_col = 5, 
   dendrogram = c("column"),
   grid_gap = 1,
-  cellnote = cor(cr)
-      )
-plotly::orca(p = cg, file = "files/fig_corr.png")
+  cellnote = round(cor(cr),2),
+  cellnote_textposition = "middle center",
+  cellnote_size = 10,
+  file = "files/fig_cor.png"
+)
+
+include_graphics("files/fig_cor.png")
 
 ```
 
