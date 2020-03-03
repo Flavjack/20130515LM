@@ -1,4 +1,8 @@
-# Data Analysis
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 
 ```{r import, include=FALSE}
 # source("cnfg/debug.r")
@@ -8,11 +12,9 @@ url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcz
 gs <- as_sheets_id(url)
 # browseURL(url)
 xl <- gs %>% drive_download("files/fieldbook.xlsx", overwrite = T) %>% pluck(2)
-fb <- xl %>% readxl::read_excel("fb") 
 
-
-fb <- gs %>%
-  sheets_read(sheet = "fb") %>%
+fb <- xl %>% 
+  readxl::read_excel("fb") %>% 
   select_all("tolower") %>% 
   select_all(~gsub("\\s+|\\.", "_", .)) %>% 
   mutate(treat = ifelse(treat == "wellwater", "WW", "WD")) %>% 
@@ -53,7 +55,9 @@ fb <- gs %>%
                       "CIP398203.5" = "G12",
                       "CIP398208.219" = "G13",
                       "CIP398208.33" = "G14",
-                      "CIP398208.620" = "G15"))
+                      "CIP398208.620" = "G15")) %>% 
+  select(genotype, gnt, treat, block, everything()) %>% 
+  mutate_if(is.character, as.factor)
 
 ```
 
@@ -78,7 +82,7 @@ gs %>%
 
 ```
 
-```{r rnk}
+```{r rnk, eval=FALSE, include=FALSE}
 
 rnk <- fb %>%
   filter(treat == "WD") %>%
@@ -153,11 +157,104 @@ plot <- ggdraw(xlim = c(0, 0.5), ylim = c(0, 0.5))+
             x = c(0.45, 0.45),
             y = c(0.43, 0.23))
 
-save_plot(plot = plot, base_asp = 1.2, "files/fig_trans.png")
-
+save_plot(plot = plot, base_asp = 1.0, "files/fig_trans.png")
 include_graphics("files/fig_trans.png")
 
 ```
+
+```{r mlt, fig.align='center', fig.cap="Principal component analysis"}
+
+mvd <- fb %>%
+  select(-block, -gnt) %>%
+  group_by(treat, genotype) %>%
+  summarise_all(funs(mean), na.rm = TRUE) %>%
+  mutate(coln = paste(genotype, treat,  sep = "_")) %>%
+  column_to_rownames("coln") %>%
+  select(-genotype)
+
+pca <- PCA(mvd, graph = F, scale.unit = TRUE, quali.sup = 1)
+
+# PCA
+
+ppi <- 300
+png("files/pca_var.png", width=8*ppi, height=8*ppi, res=ppi)
+
+plot.PCA(pca,choix="var",
+         title="",
+         autoLab = "y", 
+         cex = 0.8, 
+         shadowtext = T)
+
+graphics.off()
+
+
+ppi <- 300
+png("files/pca_ind.png", width=8*ppi, height=8*ppi, res=ppi)
+
+plot.PCA(pca,choix="ind", habillage = 1, col.hab=c("red","blue"),
+         title="",
+         autoLab = "y", cex = 0.7, shadowtext = T)
+
+graphics.off()
+
+# Results
+
+# summary(pca, nbelements = Inf)
+
+# Correlation de dimensiones
+
+# dimdesc(pca)
+
+# Analysis de Hierarchical Clustering
+
+ppi <- 300
+png("files/pca_clu.png", width=8*ppi, height=8*ppi, res=ppi)
+
+clus <- HCPC(pca, nb.clust=-1)
+
+graphics.off()
+
+pcv <- png::readPNG("files/pca_var.png") %>%
+  grid::rasterGrob(interpolate = TRUE)
+
+pcc <- png::readPNG("files/pca_clu.png") %>%
+  grid::rasterGrob(interpolate = TRUE)
+
+plot <- ggdraw(xlim = c(0.05, 0.8), ylim = c(0, 0.5))+
+  draw_plot(pcv,  width = 0.5, height = 0.5, x = 0.0, y = 0.0) +
+  draw_plot(pcc,  width = 0.5, height = 0.5, x = 0.35, y = 0.0) +
+          draw_plot_label(
+            label = c("A", "B"),
+            x = c(0.37, 0.723),
+            y = c(0.45, 0.45))
+
+save_plot(plot = plot, base_asp = 2.15, "files/fig_mv.png")
+include_graphics("files/fig_mv.png")
+
+```
+
+
+```{r cor, fig.cap="Correlation analysis"}
+cr <- fb %>% 
+  group_by(gnt, treat) %>% 
+  summarise_all(list(mean), na.rm = TRUE) %>% 
+  as.data.frame() %>% 
+  select(-c( genotype, block)) %>% 
+  unite(gnt, treat, col = "rn") %>% 
+  column_to_rownames("rn") 
+
+cg <- heatmaply_cor(
+  cor(cr),
+  k_col = 5, 
+  dendrogram = c("column"),
+  grid_gap = 1,
+  cellnote = cor(cr)
+      )
+plotly::orca(p = cg, file = "files/fig_corr.png")
+
+```
+
+
 
 
 ```{r var, fig.cap="Harvest Index, tuber water use efficency"}
@@ -231,93 +328,21 @@ plt3 <- fplot(data = mc, type = "line", color = F,
              erb =  T)
 
 
-# plot <- ggdraw(xlim = c(-0.02, 0.5), ylim = c(0, 0.7))+
-#   draw_plot(plt1,  width = 0.5, height = 0.25, x = 0.0, y = 0.452) +
-#   draw_plot(plt2,  width = 0.497, height = 0.25, x = 0.003, y = 0.226) +
-#   draw_plot(plt3,  width = 0.522, height = 0.25, x = -0.022, y = 0.0) +
-#           draw_plot_label(
-#             label = c("A", "B", "C"),
-#             x = c(0.45, 0.45, 0.45),
-#             y = c(0.63, 0.455, 0.24))
+plot <- ggdraw(xlim = c(-0.02, 0.5), ylim = c(0, 0.7))+
+  draw_plot(plt1,  width = 0.5, height = 0.25, x = 0.0, y = 0.452) +
+  draw_plot(plt2,  width = 0.497, height = 0.25, x = 0.003, y = 0.226) +
+  draw_plot(plt3,  width = 0.522, height = 0.25, x = -0.022, y = 0.0) +
+          draw_plot_label(
+            label = c("A", "B", "C"),
+            x = c(0.45, 0.45, 0.45),
+            y = c(0.63, 0.455, 0.24))
 
 
-# cowplot::ggsave("img/fig02.png", dpi= 300, width = 210*0.5 , height = 297*0.5, units = "mm")
-#
-# knitr::include_graphics("img/fig02.png")
-
+save_plot(plot = plot, base_asp = 1.2, "files/fig_ylc.png")
+include_graphics("files/fig_ylc.png")
 
 ```
 
-
-```{r mlt, fig.align='center', fig.cap="Principal component analysis"}
-
-mvd <- fb %>%
-  select(-block, -gnt) %>%
-  group_by(treat, genotype) %>%
-  summarise_all(funs(mean), na.rm = TRUE) %>%
-  mutate(coln = paste(genotype, treat,  sep = "_")) %>%
-  column_to_rownames("coln") %>%
-  select(-genotype)
-
-pca <- PCA(mvd, graph = F, scale.unit = TRUE, quali.sup = 1)
-
-# Analalisis de componentes principales
-
-# ppi <- 300
-# png("img/pca_var.png", width=8*ppi, height=8*ppi, res=ppi)
-# 
-# plot.PCA(pca,choix="var",
-#          title="",
-#          autoLab = "y", cex = 0.8, shadowtext = T)
-# 
-# graphics.off()
-# 
-# 
-# ppi <- 300
-# png("img/pca_ind.png", width=8*ppi, height=8*ppi, res=ppi)
-# 
-# plot.PCA(pca,choix="ind", habillage = 1, col.hab=c("red","blue"),
-#          title="",
-#          autoLab = "y", cex = 0.7, shadowtext = T)
-# 
-# graphics.off()
-
-# Resumen de resultados
-
-#  summary(pca, nbelements = Inf)
-
-# Correlacion de dimensiones
-
-# dimdesc(pca)
-
-# Analisis de Hierarchical Clustering
-
-# ppi <- 300
-# png("img/Fig_03.png", width=8*ppi, height=8*ppi, res=ppi)
-#
-# clus <- HCPC(pca, nb.clust=-1)
-#
-# graphics.off()
-
-# pcv <- png::readPNG("img/pca_var.png") %>%
-#   grid::rasterGrob(interpolate = TRUE)
-#
-# pci <- png::readPNG("img/pca_ind.png") %>%
-#   grid::rasterGrob(interpolate = TRUE)
-#
-# plot <- ggdraw(xlim = c(0.05, 0.8), ylim = c(0, 0.5))+
-#   draw_plot(pcv,  width = 0.5, height = 0.5, x = 0.0, y = 0.0) +
-#   draw_plot(pci,  width = 0.5, height = 0.5, x = 0.35, y = 0.0) +
-#           draw_plot_label(
-#             label = c("A", "B"),
-#             x = c(0.37, 0.723),
-#             y = c(0.45, 0.45))
-
-# cowplot::ggsave("img/fig03.png", dpi= 300, width = 210*0.9 , height = 297*0.3, units = "mm")
-#
-# knitr::include_graphics("img/fig03.png")
-
-```
 
 ```{r p4, fig.align='center', fig.cap="SPAD at 29 and 83 days after planting"}
 
@@ -505,7 +530,5 @@ plt3 <- fplot(data = mc, type = "line", color = F,
   # theme(axis.title.x=element_blank(),
   #       axis.text.x=element_blank(),
   #       axis.ticks.x=element_blank())
-
-
 
 ```

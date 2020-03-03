@@ -20,7 +20,8 @@ packages <- c(
   "cowplot", # For export and mergue figures 
   "grid", # For mergue figures 
   "png", # Import png files
-  "jpeg" # Import jpeg files
+  "jpeg", # Import jpeg files
+  "heatmaply"
 )
 
 installed_packages <- packages %in% rownames(installed.packages())

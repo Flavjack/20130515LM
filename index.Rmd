@@ -33,8 +33,6 @@ sheets_auth(T)
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY/edit#gid=142311263"
 gs <- as_sheets_id(url)
 # browseURL(url)
-xl <- gs %>% drive_download("files/fieldbook.xlsx", overwrite = T) %>% pluck(2)
-fb <- xl %>% readxl::read_excel("fb") 
 ```
 
 # Abstract {-}
