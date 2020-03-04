@@ -15,13 +15,13 @@ packages <- c(
   "readxl", # Read excel files
   "agricolae", # Agriculture data analisys
   "GerminaR", # Germination analisys and line and bar easy plots
-  "compareGroups", # Tables for compare treatments
   "FactoMineR", # Multivariate data anallisys
   "cowplot", # For export and mergue figures 
   "grid", # For mergue figures 
   "png", # Import png files
   "jpeg", # Import jpeg files
-  "heatmaply"
+  "heatmaply",
+  "gtsummary" # Tables for compare treatments
 )
 
 installed_packages <- packages %in% rownames(installed.packages())

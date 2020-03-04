@@ -1,10 +1,10 @@
 ---
 title: "Impact of water deficit on growth, productivity, and water use efficiency in potato (*Solanum tuberosum* L.)"
 author:
-  - "Flavio Lozano-Isla $^{1*}$, Farfan-Vignolo, Evelyn$^{1}$, Gutierrez, Raymundo $^{1}$, Blas Raul$^{2}$, Khan Awais$^{1}$"
+  - "Flavio Lozano-Isla$^{1*}$, Farfan-Vignolo, Evelyn$^{1}$, Gutierrez, Raymundo$^{1}$, Blas Raul$^{2}$, Khan Awais$^{1}$"
   - "$^{1}$ International Potato Center (CIP), Av. La Molina 1895, La Molina, 1558, Peru"
-  - "$^{2}$Universidad Nacional Agraria La Molina (UNALM), Av. La Molina, 1558, Peru"
-  - "$^{*}$ Corresponding author. E-mail address: flavjack@gmail.com (F. Lozano-Isla)"
+  - "$^{2}$ Universidad Nacional Agraria La Molina (UNALM), Av. La Molina, 1558, Peru"
+  - "$^{*}$Corresponding author. E-mail address: flavjack@gmail.com (F. Lozano-Isla)"
 date: "`r if (knitr:::is_html_output()) Sys.Date()`"
 description: document template for scientific report
 github-repo: flavjack/20130515LM/issues

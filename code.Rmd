@@ -5,8 +5,7 @@ editor_options:
 ---
 
 ```{r import, include=FALSE}
-# source("cnfg/debug.r")
-source("cnfg/setup.r")
+# source("cnfg/setup.r")
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY/edit#gid=142311263"
 gs <- as_sheets_id(url)
 # browseURL(url)
@@ -14,7 +13,7 @@ xl <- gs %>% drive_download("files/fieldbook.xlsx", overwrite = T) %>% pluck(2)
 
 fb <- xl %>% 
   readxl::read_excel("fb") %>% 
-  select_all("tolower") %>% 
+  select_all("tolower") %>%
   select_all(~gsub("\\s+|\\.", "_", .)) %>% 
   mutate(treat = ifelse(treat == "wellwater", "WW", "WD")) %>% 
   select(block, treat, genotype, 
@@ -68,6 +67,7 @@ xl %>%
   readxl::read_excel(sheet = "var") %>% 
   filter(include == "x") %>% 
   select(Variable, Abbreviation) %>% 
+  mutate_at("Abbreviation", "tolower") %>% 
   kable(caption = "List of abbreviations")
 
 ```
@@ -81,26 +81,15 @@ xl %>%
 
 ```
 
-```{r rnk, eval=FALSE, include=FALSE}
+```{r}
 
-rnk <- fb %>%
-  filter(treat == "WD") %>%
-  as.data.frame() %>% 
-  st4gi::elston(traits = c("tdw", "ntub", "rwd", "lfa", "hi", "twue"),
-                       geno = "genotype", env = "treat", dfr = .) %>%
-  dplyr::arrange(E.Rank) %>% 
-  rename(Genotype = geno)
-
-rnk %>% 
-  kable(caption = "The best genotypes ranking accroding Elston index for best tuber dry weight (TDW), tuber number (NTUB), root dry weight (RWD), leaf area (LFA), harvest index (HI), tuber water use efficency (TWUE). Ref: Elston, R. C. (1963). A weight-free index for the purpose of ranking or selection with respect to several traits at a time. Biometrics. 19(1): 85-97.")
-
-```
-
-```{r cmv}
-
-cg <- compareGroups(treat ~ . -block -gnt -genotype, data = fb)
-cgt <- createTable(cg)
-export2md(cgt)
+fb %>%
+  select(-block, -gnt, -genotype) %>% 
+  tbl_summary(by = treat, missing = "no") %>% 
+  add_p() %>% 
+  bold_labels() %>% 
+  as_tibble() %>% 
+  knitr::kable(caption = "List of variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) treatment. Where: Tuber dry weight (TDW), tuber number (NTUB), root dry weight (RWD), leaf area (LFA), harvest index (HI), tuber water use efficency (TWUE).")
 
 ```
 
@@ -236,6 +225,7 @@ include_graphics("files/fig_mv.png")
 ```
 
 ```{r cor, fig.cap="Correlation analysis"}
+
 cr <- fb %>% 
   group_by(gnt, treat) %>% 
   summarise_all(list(mean), na.rm = TRUE) %>% 
@@ -257,6 +247,7 @@ cp <- heatmaply_cor(
 # plotly::orca(p = cp, file = "files/fig_cor.png")
 
 include_graphics("files/fig_cor.png")
+
 ```
 
 
