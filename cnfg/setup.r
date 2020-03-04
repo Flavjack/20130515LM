@@ -15,7 +15,7 @@ packages <- c(
   "readxl", # Read excel files
   "agricolae", # Agriculture data analisys
   "GerminaR", # Germination analisys and line and bar easy plots
-  # "compareGroups", # Tables for compare treatments 
+  "compareGroups", # Tables for compare treatments
   "FactoMineR", # Multivariate data anallisys
   "cowplot", # For export and mergue figures 
   "grid", # For mergue figures 
@@ -73,3 +73,8 @@ if(dir.exists("docs"))
 # Packages citation -------------------------------------------------------
 
 knitr::write_bib(c(.packages()),'cnfg/pkgs.bib')
+
+# authorize googledrive & googlesheets ------------------------------------
+
+sheets_auth(T)
+drive_auth(T)

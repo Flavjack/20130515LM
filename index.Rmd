@@ -1,5 +1,5 @@
 ---
-title: "Impact of water deficit on growth, productivity, and water use and transpiration efficiency in potato (*Solanum tuberosum* L.)"
+title: "Impact of water deficit on growth, productivity, and water use efficiency in potato (*Solanum tuberosum* L.)"
 author:
   - "Flavio Lozano-Isla $^{1*}$, Farfan-Vignolo, Evelyn$^{1}$, Gutierrez, Raymundo $^{1}$, Blas Raul$^{2}$, Khan Awais$^{1}$"
   - "$^{1}$ International Potato Center (CIP), Av. La Molina 1895, La Molina, 1558, Peru"
@@ -29,7 +29,6 @@ csl: https://www.zotero.org/styles/apa
 ```{r dataset, include=FALSE}
 # source("cnfg/debug.r")
 source("cnfg/setup.r")
-sheets_auth(T)
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY/edit#gid=142311263"
 gs <- as_sheets_id(url)
 # browseURL(url)
