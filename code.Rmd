@@ -82,11 +82,14 @@ xl %>%
 
 ```
 
-```{r}
+```{r svt}
 
 fb %>%
   select(-block, -gnt, -genotype) %>% 
-  tbl_summary(by = treat, missing = "no") %>% 
+  tbl_summary(
+    by = treat, 
+    statistic = list(all_continuous() ~ "{mean} ± {sd}"),
+    missing = "no") %>% 
   add_p() %>% 
   bold_labels() %>% 
   as_tibble() %>% 
@@ -204,6 +207,10 @@ ppi <- 300
 png("files/pca_clu.png", width=8*ppi, height=8*ppi, res=ppi)
 clus <- HCPC(pca, nb.clust=-1)
 graphics.off()
+
+# clt$call$t$tree
+# clt$desc.ind
+# clt$desc.var
 
 pcv <- png::readPNG("files/pca_var.png") %>%
   grid::rasterGrob(interpolate = TRUE)
