@@ -56,7 +56,7 @@ The WUE was found to be greater in the summer due to the greater harvest index (
 
 This study elucidate the mechanisms for drought tolerance and yield in thirteen advanced potato clones and compared with two commercial varieties that are likely to arise in water-limited conditions, and explores the interrelationship between traits that help plants to mitigate yield losses under water-limited conditions. Chlorophyll content (spad), relative water content, osmotic potential, specific leaf area (sla), tuber water use efficiency (twue), harvest index (hi), among other traits, were evaluated to identify convenient indicators of plant water status that helps in the selection of clones with high tolerance to water deficit.
 
-> Indirect selection between HI vs TWUE!
+> Indirect selection between HI vs TWUE vs SPAD!
 
 > Include in the intro
 
@@ -87,7 +87,7 @@ Thirteen potato clones were selected from advanced breeding population collectio
 
 Single plants were grown in a greenhouse in 5 liters plastic pots and It was sown containing 5 kg of dry commercial Sogemix SM2 (75% Peat Moss, perlite, vermiculite, and limestone). Fertilization was done twice with ammonium nitrate; triple superphosphate and potassium sulphate, one before planting mixed with the substrate and the other applied at the surface at 40 days after planting (DAP).
 
-The pots from both well water (WW) and water deficit (WD) treatments were watered to soaking and then allowed to drain overnight. Next day, soil evaporation was minimised by sealed with a plastic bag and all the pots were weighed and it was defined as the initial pot weight. Water deficits were imposed at 45 DAP that coincides with the beginning of the development of the stolons.
+The pots from both well water (WW) and water deficit (WD) treatments were watered to soaking and then allowed to drain overnight. Next day, soil evaporation was minimized by sealed with a plastic bag and all the pots were weighed and it was defined as the initial pot weight. Water deficits were imposed at 45 DAP that coincides with the beginning of the development of the stolons.
 
 Transpiration was calculated by weighing the pots every two days in the between 13:00 and 15:00 hours (GMT -05:00). The transpiration (trs) of each plant was calculated by the procedure previously described by @bhatnagar-mathur2007Stressinducible and @ray1998effect. The inter-daily transpiration rates of WD plants were normalized against WW plant rates to reduce the influence of day-to-day variation ($TRS=\left(\frac{WD_{transpiration}}{WW_{transpiration\ average}}\right)$). The normalization was achieved by dividing transpiration of each individual plant in the WD regime by the mean transpiration of the WW plants. For compare the TRS between plants, a second normalization was done so that the normalized transpiration rate (NTR) of each plant was defined in 1.0 when the soil water content in each pot was at field capacity [@sinclair1986Influence]. The available soil water or the fraction of transpirable soil water (ftsw), for each pot was calculated by dividing the pot weight minus the final pot weight by the transpirable soil water of that pot ($FTSW=\left(\frac{pot\ weight_{inter-daily}-pot\ weight_{final}}{pot\ weight_{initial}-pot\ weight_{final}}\right)$). 
 
@@ -113,27 +113,42 @@ The experiment was carried out in a complete randomize block design with two fac
 
 ## Treatment application
 
-The drought treatment were apply at 35 day after planting (dap) and the fraction of transpirable soil water (ftsw) shown differences 14 day since treatment application. Plants in WW maintain the water availability in the pots between 70% and 100% while the restriction in the water supply for the WD treatment decrease the water availability until the finalization of the experiment when the plant in WD in average had less than 10% of ftsw, Figure \@ref(fig:srl)A. In the case of the transpiration the plants in WD reduce the transpiration rate from  16 days after not water irrigation, Figure \@ref(fig:srl)B. Exist and increase in the transpiration in both treatments since 49 dap and 69 dap (20 day).
+The drought treatment were apply at 35 day after planting (dap) and the fraction of transpirable soil water (ftsw) shown differences 14 day since treatment application. Plants in WW were maintained the water availability in the pots between 70% and 100% while the restriction in the water supply for the WD treatment decrease the water availability until the finalization of the experiment when the plant in WD in average had less than 10% of ftsw, Figure \@ref(fig:srl)A. In the case of the transpiration the plants in WD reduce the transpiration rate from  16 days after not water irrigation, Figure \@ref(fig:srl)B. Exist and increase in the transpiration in both treatments since 49 dap and 69 dap (20 day).
 
 ## Multivariate analysis
 
+The Principal Component Analysis (PCA) the two first dimension explain 64.9% of the variance in the experiment. In the first dimension trs (r=0.90), lfa (r=0.89), tbd (r=0.84), sla (r=0.83), tdw (r=0.77) and rwc (r=0.71) show a high correlation and association with WW treatment, in the other side the spad_76 (r=-0,77) shown an negatives correlation and association with WD treatment.  In the second dimension the rdw (r=0.87), rdl (r=0.86) have a high correlation and associated at WD treatment and negate correlated with hi (-0.89) and twue (-0.9) and associated to WW treatment, Figure \@ref(fig:mva)A.
 
+The clustering analysis show 5 groups and it could be associated in 2 different ways. The first association could by classified by the treatment applied, the blue and cyan are the well water treatments and the black and red associated at the water deficit treatment; and the second group in green, cyan and red color associated according to their tolerate to water stress because their correlated with twue, hi and tdw, traits important in the yield component, Figure \@ref(fig:mva)B.   
 
+The association between the cluster an the variables shown that the genotypes in the cluster 1 are positive correlated with the spad, rdl and rdw and negative correlated to hi, tdw, twue, sla. The genoytpes in the cluster 2 are only positive associated with the hi and negative associated with ldw, tdb, sdw. In the cluster 3 the genotypes are positive correlated at wue, twue and negative correlated for rwc, lop and sla. The cluster 4 positive association with rdw, ldw, lfa, sdw, trs and negative correlated with wue and twue. And the cluster 5 is associated with sla, tdw, rwc, lfa and negative associated with spad and rdw, Figure \@ref(fig:mva).
 
+> SPAD a good indicator for select best genotypes, because it have negative correlation with the tdw
 
-<!-- SPAD units taken over the course of plant development (29, 59, 76, and 83 DAP) showed that at 29 DAP all plants were at the same stress level as no treatment difference was found (Supplementary Table 1). By the end of the experiment, difference between treatment (T), genotypes (G), and G*T were found and the values were lower than at 29 DAP. WD values for all the genotypes were higher than the ones at WW conditions. The genotypes CIP398190.89 and CIP720088 had the lowest differences among treatments for SPAD at 83 DAP (2.06 and 0.30%, respectively), while CIP398203.244 and CIP398208.33 had the largest (14.48 and 17.54%, respectively) (Supplementary Table 1). -->
+> Menor contendido de clorofila --> mayor contenido de otros pigmentos que ayuden a luchar contra el stress por sequia???
+
+> Selection basado en genotipos de alto HI y mayor SPAD para selección de líneas promisorias!
+
+## Morpho-phisological traits 
+
+SPAD units taken over the course of plant development (29, 59, 76, and 83 dap) showed that at 29 dap all plants were at the same stress level as no treatment difference was found, Table \@ref(tab:svt). At 59, 76 and 83 the spad shown difference en each evaluation and at the end of the experiment the values were lower than at 29 dap and the WD values for all the genotypes were higher than the ones at WW conditions. The genotypes CIP398190.89 and CIP720088 had the lowest differences among treatments for spad at 83 dap (2.06 and 0.30, respectively), while CIP398203.244 and CIP398208.33 had the largest (14.48 and 17.54, respectively).
+
+> Acompanhado de la senecencia o que sucede, buscar explicación??
+
 
 <!-- Leaf relative water content (RWC) significantly (p < 0.01) decreased in response to WD in all the genotypes (Supplementary Table 1). The values ranged between 64.96% and 50.09% for CIP720088 and CIP398201.510, respectively. Differences in osmotic potential (OP) among genotypes and treatments were also significant (P < .001) (Supplementary Table 1). -->
 
 <!-- The values of total biomass (kgDW.m-2) and total transpiration (L) were strongly and positively correlated across (r= 0.92, P < .0001) all genotypes and per treatment (Fig.5a). WUE was also correlated with both total biomass and tuber yield (r = 0 .55, p < .05; and r = 0.78, p < 0.001 respectively) (Figure 5b and Supplemental Table 1). The efficiency of use of transpired water was 34.9% higher in CIP397077.16, compared to CIP398180.612. Genotypic variability was also noted in terms of TDWS and HI and three clear groups (tolerant, medium, sensitive) can be distinguished based on TDWS and HI. CIP397077.16, UNICA, CIP398208.620, and Achirana-INTA were ranked as tolerant while CIP398203.244 was rated as sensitive (Figure 5c). The leaf (r = 0.79), stem (r = 0.69), and tuber biomass (r = 0.56) were also positively correlated with transpiration. Almost all characteristics evaluated showed significant differences between treatments (Supplementary Table 2). Only SPAD29, before the start of the drought treatment, and root length did not show significant differences.  -->
 
 
+
+
 ## Yield components
 
-Differences existed among genotypes in total biomass dry weight (g) of well-watered (WW) plants at the end of the experiment, table. Water deficit (WD) treatment had a significant effect (P < 0.001) with an average reduction of around 31% in comparison with the well-watered treatment \@ref(fig:svt). 
+Differences existed among genotypes in total biomass dry weight (g) of well-watered (WW) plants at the end of the experiment, table. Water deficit (WD) treatment had a significant effect (P < 0.001) with an average reduction of around 31% in comparison with the well-watered treatment \@ref(tab:svt). 
 
 
-CIP398190.89 was the only genotype with a 5% increase in biomass, and CIP398208.219 was the most affected by WD (~44% reduction in comparison with WW). In terms of productivity, WD decreased tuber yield (kgDW.m2) across genotypes by an average of 39% (P < 0.01), however, CIP398190.89 increased its productivity by 5%, while others like CIP398203.5 and CIP398203.244 presented up to 56% and 48% reduced tuber production (Figure 2a). CIP398190.89 had greater tuber dry weight (g) in WD compared to its yield in WW treatment, with a TDWS of 104.09%, indicating drought tolerance (Figure 1a). Most genotypes had similar performance under drought, such as UNICA (CIP392797.22) with 75.76% and CIP398208.33 with 71.9% TDWS. The genotypes CIP398203.244, CIP398208.219, and CIP398201.510 were among the most sensitive genotypes at 31.56, 46.75 and 48.88% respectively (Figure 1a).
+CIP398190.89 was the only genotype with a 5% increase in biomass, and CIP398208.219 was the most affected by WD (~44% reduction in comparison with WW). In terms of productivity, WD decreased tuber yield (kgDW.m2) across genotypes by an average of 39% (P < 0.01), however, CIP398190.89 increased its productivity by 5%, while others like CIP398203.5 and CIP398203.244 presented up to 56% and 48% reduced tuber production (Figure 2a). CIP398190.89 had greater tuber dry weight (g) in WD compared to its yield in WW treatment, with a TDWS of 104.09%, indicating drought tolerance (Figure 1a). Most genotypes had similar performance under drought, such as UNICA (CIP392797.22) with 75.76% and CIP398208.33 with 71.9% TDWS. The genotypes CIP398203.244, CIP398208.219, and CIP398201.510 were among the most sensitive genotypes at 31.56, 46.75 and 48.88% respectively.
 
 
 

@@ -162,7 +162,7 @@ include_graphics("files/fig_trans.png")
 
 ```
 
-```{r mlt, fig.align='center', fig.cap="Principal component analysis"}
+```{r mva, fig.align='center', fig.cap="Principal component analysis"}
 
 mvd <- fb %>%
   select(-block, -gnt) %>%
@@ -195,11 +195,13 @@ plot.PCA(pca,choix="ind", habillage = 1, col.hab=c("red","blue"),
 
 graphics.off()
 
-# Results
-# summary(pca, nbelements = Inf)
 
-# Correlation de dimensiones
+# sink("files/pca.txt")
+# # Results
+# summary(pca, nbelements = Inf, nb.dec = 2)
+# # Correlation de dimensions
 # dimdesc(pca)
+# sink()
 
 # Analysis de Hierarchical Clustering
 
@@ -208,9 +210,11 @@ png("files/pca_clu.png", width=8*ppi, height=8*ppi, res=ppi)
 clus <- HCPC(pca, nb.clust=-1)
 graphics.off()
 
-# clt$call$t$tree
-# clt$desc.ind
-# clt$desc.var
+# sink("files/clu.txt")
+# clus$call$t$tree
+# clus$desc.ind
+# clus$desc.var
+# sink()
 
 pcv <- png::readPNG("files/pca_var.png") %>%
   grid::rasterGrob(interpolate = TRUE)
