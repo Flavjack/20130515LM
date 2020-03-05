@@ -5,7 +5,8 @@ editor_options:
 ---
 
 ```{r import, include=FALSE}
-# source("cnfg/setup.r")
+# source("cnfg/debug.r")
+source("cnfg/setup.r")
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY/edit#gid=142311263"
 gs <- as_sheets_id(url)
 # browseURL(url)
@@ -16,7 +17,7 @@ fb <- xl %>%
   select_all("tolower") %>%
   select_all(~gsub("\\s+|\\.", "_", .)) %>% 
   mutate(treat = ifelse(treat == "wellwater", "WW", "WD")) %>% 
-  select(block, treat, genotype, 
+  select(block, treat, genotype,
          spad_29 = spad_29dap, 
          spad_59 = spad_59dap, 
          spad_76 = spad_76dap, 
@@ -92,7 +93,6 @@ fb %>%
   knitr::kable(caption = "List of variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) treatment. Where: Tuber dry weight (TDW), tuber number (NTUB), root dry weight (RWD), leaf area (LFA), harvest index (HI), tuber water use efficency (TWUE).")
 
 ```
-
 
 # Figures {-}
 
