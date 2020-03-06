@@ -178,9 +178,10 @@ pca <- PCA(mvd, graph = F, scale.unit = TRUE, quali.sup = 1)
 
 ppi <- 300
 png("files/pca_var.png", width=8*ppi, height=8*ppi, res=ppi)
-plot.PCA(pca,choix="var",
+plot(pca,
+         choix="var",
          title="",
-         autoLab = "y", 
+         autoLab = "auto", 
          cex = 0.8, 
          shadowtext = T)
 graphics.off()
@@ -248,17 +249,17 @@ cr <- fb %>%
 cp <- heatmaply_cor(
   cor(cr),
   k_col = 5, 
-  dendrogram = c("column"),
+  dendrogram = c("column"),  
   grid_gap = 1,
   cellnote = round(cor(cr),2),
   cellnote_textposition = "middle center",
-  cellnote_size = 10
+  cellnote_size = 10 
 )
 
+cp
+
 # plotly::orca(p = cp, file = "files/fig_cor.png")
-
-include_graphics("files/fig_cor.png")
-
+# include_graphics("files/fig_cor.png")
 ```
 
 

@@ -109,6 +109,9 @@ Transpiration was calculated by weighing the pots every two days in the between 
 
 The experiment was carried out in a complete randomize block design with two factors; the irrigation with well water (WW) and water deficit (WD) treatments and the fifteen potato genotypes. Each treatment consisted of five replicates with one potato plant for each experimental unit. Statistical analysis and graphs were performed in the statistical software R [@R-base]. The analysis of variance (ANOVA) was performed to evaluate the differences between the factors and the comparison of the means with the Student-Newman-Keuls test (p<0.05) from agricoale and GerminaR package [@lozano-isla2019GerminaR; @R-agricolae]. For the multivariate analysis correlation analysis was performed and principal components analysis were made with FactoMineR and heatmaply package [@galili2018heatmaply; @R-FactoMineR].
 
+> Autoclustering
+> Euclidean distance
+
 # Result
 
 ## Treatment application
@@ -129,19 +132,15 @@ The association between the cluster an the variables shown that the genotypes in
 
 > Selection basado en genotipos de alto HI y mayor SPAD para selección de líneas promisorias!
 
+The values of tdb and trs were strongly and positively correlated across (r= 0.93, P < 0.05), Figure  \@ref(fig:cor). WUE was also correlated with both total biomass and tuber yield (r = 0 .55, p < .05; and r = 0.78, p < 0.001 respectively) (Figure 5b and Supplemental Table 1). The efficiency of use of transpired water was 34.9% higher in CIP397077.16, compared to CIP398180.612. Genotypic variability was also noted in terms of TDWS and HI and three clear groups (tolerant, medium, sensitive) can be distinguished based on TDWS and HI. CIP397077.16, UNICA, CIP398208.620, and Achirana-INTA were ranked as tolerant while CIP398203.244 was rated as sensitive (Figure 5c). The leaf (r = 0.79), stem (r = 0.69), and tuber biomass (r = 0.56) were also positively correlated with transpiration. Almost all characteristics evaluated showed significant differences between treatments (Supplementary Table 2). Only SPAD29, before the start of the drought treatment, and root length did not show significant differences.
+
 ## Morpho-phisological traits 
 
 SPAD units taken over the course of plant development (29, 59, 76, and 83 dap) showed that at 29 dap all plants were at the same stress level as no treatment difference was found, Table \@ref(tab:svt). At 59, 76 and 83 the spad shown difference en each evaluation and at the end of the experiment the values were lower than at 29 dap and the WD values for all the genotypes were higher than the ones at WW conditions. The genotypes CIP398190.89 and CIP720088 had the lowest differences among treatments for spad at 83 dap (2.06 and 0.30, respectively), while CIP398203.244 and CIP398208.33 had the largest (14.48 and 17.54, respectively).
 
 > Acompanhado de la senecencia o que sucede, buscar explicación??
 
-
-<!-- Leaf relative water content (RWC) significantly (p < 0.01) decreased in response to WD in all the genotypes (Supplementary Table 1). The values ranged between 64.96% and 50.09% for CIP720088 and CIP398201.510, respectively. Differences in osmotic potential (OP) among genotypes and treatments were also significant (P < .001) (Supplementary Table 1). -->
-
-<!-- The values of total biomass (kgDW.m-2) and total transpiration (L) were strongly and positively correlated across (r= 0.92, P < .0001) all genotypes and per treatment (Fig.5a). WUE was also correlated with both total biomass and tuber yield (r = 0 .55, p < .05; and r = 0.78, p < 0.001 respectively) (Figure 5b and Supplemental Table 1). The efficiency of use of transpired water was 34.9% higher in CIP397077.16, compared to CIP398180.612. Genotypic variability was also noted in terms of TDWS and HI and three clear groups (tolerant, medium, sensitive) can be distinguished based on TDWS and HI. CIP397077.16, UNICA, CIP398208.620, and Achirana-INTA were ranked as tolerant while CIP398203.244 was rated as sensitive (Figure 5c). The leaf (r = 0.79), stem (r = 0.69), and tuber biomass (r = 0.56) were also positively correlated with transpiration. Almost all characteristics evaluated showed significant differences between treatments (Supplementary Table 2). Only SPAD29, before the start of the drought treatment, and root length did not show significant differences.  -->
-
-
-
+Leaf relative water content (RWC) significantly (p < 0.01) decreased in response to WD in all the genotypes (Supplementary Table 1). The values ranged between 64.96% and 50.09% for CIP720088 and CIP398201.510, respectively. Differences in osmotic potential (OP) among genotypes and treatments were also significant (P < .001), Table \@ref(tab:svt).
 
 ## Yield components
 
