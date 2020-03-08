@@ -32,7 +32,20 @@ source("cnfg/setup.r")
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY/edit#gid=142311263"
 gs <- as_sheets_id(url)
 # browseURL(url)
+xl <- gs %>% drive_download("files/fieldbook.xlsx", overwrite = T) %>% pluck(2)
 ```
+
+# List of abbreviations {-}
+
+```{r abrv}
+xl %>% 
+  readxl::read_excel(sheet = "var") %>% 
+  filter(include == "x") %>% 
+  select(Variable, Abbreviation) %>% 
+  mutate_at("Abbreviation", "tolower") %>% 
+  kable()
+```
+
 
 # Abstract {-}
 
@@ -42,7 +55,7 @@ Tolerant genotypes such as CIP397077.16, CIP398190.89, and UNICA were able to pr
 
 **Key words:** abiotic stress, harvest index, lisimeter, drought tolerance
 
-> Incluse some info about the potato!
+> Include info about potato!
 
 # Introduction
 
@@ -59,23 +72,6 @@ This study elucidate the mechanisms for drought tolerance and yield in thirteen 
 > Indirect selection between HI vs TWUE vs SPAD!
 
 > Include in the intro
-
-Plant biomass accumulation, and consequently yield, was shown to be inextricably linked to transpiration. The ratio of plant productivity to water loss, water-use efficiency, was very conservative [@sinclair1984WaterUse].
-
-This ratio is called harvest index (H) and has been found to be relatively stable for a particular cultivar over a fairly wide range of conditions (Donald and Hamblin 1976).
-
-Evans (1980) suggested that one of the main variables for yield increases seen to date has been increases in harvest index.
-
-Evans (1980) further suggested that additional large increases in harvest indices are unlikely. Therefore, further increases in water-use efficiency based on marketable yield are not likely from increasesin the harvest index.
-
-Passioura (1977) and Fischer (1979) have argued that obtaining high harvest indexes underwater-limitedconditions is especially importantin obtaining high water-use efficiencies.
-
-
-Passioura (1977) proposed that cereals for water-limited environments be developed with roots with restricted water uptake rates. Again, such an alteration would, in principle, conserve water during vegetative growth leaving more soil waterfor extraction during grain development. The key aspect of both strategies is that sustained reproductive growth is essential for a high harvest index.
-
-However, a deeper and more extensive rooting system may have drawbacks. A greater root biomass would almost surely result in lowered harvest index (in potato can be advantage?)
-
-Improved harvest index. As illustrated in equations(7) and(9) improvements in harvest index result directly in increased water-use efficiency. The difficulty is that for many crops it appears that further substantial improvements in harvest index are unlikely.
 
 # Materials and Methods
 
@@ -107,16 +103,29 @@ Transpiration was calculated by weighing the pots every two days in the between 
 
 ## Statistical analysis
 
-The experiment was carried out in a complete randomize block design with two factors; the irrigation with well water (WW) and water deficit (WD) treatments and the fifteen potato genotypes. Each treatment consisted of five replicates with one potato plant for each experimental unit. Statistical analysis and graphs were performed in the statistical software R [@R-base]. The analysis of variance (ANOVA) was performed to evaluate the differences between the factors and the comparison of the means with the Student-Newman-Keuls test (p<0.05) from agricoale and GerminaR package [@lozano-isla2019GerminaR; @R-agricolae]. For the multivariate analysis correlation analysis was performed and principal components analysis were made with FactoMineR and heatmaply package [@galili2018heatmaply; @R-FactoMineR].
-
-> Autoclustering
-> Euclidean distance
+The experiment was carried out in a complete randomize block design with two factors; the irrigation, well water (WW) and water deficit (WD) treatments and fifteen potato genotypes. Each treatment consisted of five replicates with one potato plant for each experimental unit. Statistical analysis and graphs were performed in the statistical software R [@R-base]. The analysis of variance (ANOVA) was performed to evaluate the differences between the factors and the comparison of the means with the Student-Newman-Keuls test (p<0.05) with agricoale and GerminaR package [@lozano-isla2019GerminaR; @R-agricolae]. For the multivariate analysis, correlation and principal components analysis were performed with FactoMineR and heatmaply package [@galili2018heatmaply; @R-FactoMineR]. The hierarchical clustering between treatments and genotypes were computed with the Euclidean distance [@le2008FactoMineR]
 
 # Result
 
 ## Treatment application
 
 The drought treatment were apply at 35 day after planting (dap) and the fraction of transpirable soil water (ftsw) shown differences 14 day since treatment application. Plants in WW were maintained the water availability in the pots between 70% and 100% while the restriction in the water supply for the WD treatment decrease the water availability until the finalization of the experiment when the plant in WD in average had less than 10% of ftsw, Figure \@ref(fig:srl)A. In the case of the transpiration the plants in WD reduce the transpiration rate from  16 days after not water irrigation, Figure \@ref(fig:srl)B. Exist and increase in the transpiration in both treatments since 49 dap and 69 dap (20 day).
+
+## Morpho-phisological traits 
+
+SPAD units taken over the course of plant development (29, 59, 76, and 83 dap) showed that at 29 dap all plants were at the same stress level as no treatment difference was found, Table \@ref(tab:svt). At 59, 76 and 83 the spad shown difference en each evaluation and at the end of the experiment the values were lower than at 29 dap and the WD values for all the genotypes were higher than the ones at WW conditions. The genotypes CIP398190.89 and CIP720088 had the lowest differences among treatments for spad at 83 dap (2.06 and 0.30, respectively), while CIP398203.244 and CIP398208.33 had the largest (14.48 and 17.54, respectively).
+
+Leaf relative water content (RWC) significantly (p < 0.01) decreased in response to WD in all the genotypes (Supplementary Table 1). The values ranged between 64.96% and 50.09% for CIP720088 and CIP398201.510, respectively. Differences in osmotic potential (OP) among genotypes and treatments were also significant (P < .001), Table \@ref(tab:svt).
+
+## Yield components
+
+Differences existed among genotypes in total biomass dry weight (g) of well-watered (WW) plants at the end of the experiment, table. Water deficit (WD) treatment had a significant effect (P < 0.001) with an average reduction of around 31% in comparison with the well-watered treatment, Table \@ref(tab:svt). 
+
+CIP398190.89 was the only genotype with a 5% increase in biomass, and CIP398208.219 was the most affected by WD (~44% reduction in comparison with WW). In terms of productivity, WD decreased tuber yield (kgDW.m2) across genotypes by an average of 39% (P < 0.01), however, CIP398190.89 increased its productivity by 5%, while others like CIP398203.5 and CIP398203.244 presented up to 56% and 48% reduced tuber production (Figure 2a). CIP398190.89 had greater tuber dry weight (g) in WD compared to its yield in WW treatment, with a TDWS of 104.09%, indicating drought tolerance (Figure 1a). Most genotypes had similar performance under drought, such as UNICA (CIP392797.22) with 75.76% and CIP398208.33 with 71.9% TDWS. The genotypes CIP398203.244, CIP398208.219, and CIP398201.510 were among the most sensitive genotypes at 31.56, 46.75 and 48.88% respectively.
+
+Differences among genotypes (p<0.001) and treatments (p<0.01) were found for harvest index (HI), Table \@ref(tab:svt). A strong negative correlation among rdw and HI was found in both treatments (r= -0.73), Figure \@ref(fig:cor). The sla reduction was 48% under WD compared to WW, Table \@ref(tab:svt). CIP398190.89 together with CIP398203.5 were among the clones with lowest reduction (24 and 21% respectively), while CIP398208.219, CIP398098.119, and CIP398208.704 were among the clones with highest SLA reduction (53, 65, and 64% respectively.
+
+Water use efficiency (WUE) was generally higher in WD than WW plants Table \@ref(tab:svt). Under WD treatment, CIP397077.16, CIP398208.620, CIP392797.22 and CIP398190.89 showed the highest wue (13.06, 12.03, and 11.59 g.L-1, respectively), while the lowest efficiencies (8.50 and 9.24 g.L-1) were presented by CIP398180.612 and CIP398203.5, respectively. CIP398208.620) (10.80 g.L-1 for WW and 12.03 g.L-1 for WD) and CIP398180.612 (8.36 g.L-1 for WW and 8.50 g.L-1) maintained similar WUE (higher or lower) in both treatments (Figure 3a). Tubers used a great portion of the water uptake (Figure 4b), at least for the tolerant genotypes (CIP398190.89, CIP397077.16, and UNICA), in which tubers either from WW or WD are alike (Sup.Fig.1). On the other hand, the sensitive genotype CIP398203.244 produced more leaves and stems rather than tubers.
 
 ## Multivariate analysis
 
@@ -126,41 +135,36 @@ The clustering analysis show 5 groups and it could be associated in 2 different 
 
 The association between the cluster an the variables shown that the genotypes in the cluster 1 are positive correlated with the spad, rdl and rdw and negative correlated to hi, tdw, twue, sla. The genoytpes in the cluster 2 are only positive associated with the hi and negative associated with ldw, tdb, sdw. In the cluster 3 the genotypes are positive correlated at wue, twue and negative correlated for rwc, lop and sla. The cluster 4 positive association with rdw, ldw, lfa, sdw, trs and negative correlated with wue and twue. And the cluster 5 is associated with sla, tdw, rwc, lfa and negative associated with spad and rdw, Figure \@ref(fig:mva).
 
+The values of tdb and trs were strongly and positively correlated across (r= 0.93, P < 0.05), Figure  \@ref(fig:cor). WUE was also correlated with both total biomass and tuber yield (r = 0 .55, p < .05; and r = 0.78, p < 0.001 respectively) (Figure 5b and Supplemental Table 1). The efficiency of use of transpired water was 34.9% higher in CIP397077.16, compared to CIP398180.612. Genotypic variability was also noted in terms of TDWS and HI and three clear groups (tolerant, medium, sensitive) can be distinguished based on TDWS and HI. CIP397077.16, UNICA, CIP398208.620, and Achirana-INTA were ranked as tolerant while CIP398203.244 was rated as sensitive (Figure 5c). The leaf (r = 0.79), stem (r = 0.69), and tuber biomass (r = 0.56) were also positively correlated with transpiration. Almost all characteristics evaluated showed significant differences between treatments (Supplementary Table 2). Only SPAD29, before the start of the drought treatment, and root length did not show significant differences.
+
+
+
+# Dicussion
+
 > SPAD a good indicator for select best genotypes, because it have negative correlation with the tdw
 
 > Menor contendido de clorofila --> mayor contenido de otros pigmentos que ayuden a luchar contra el stress por sequia???
 
 > Selection basado en genotipos de alto HI y mayor SPAD para selección de líneas promisorias!
 
-The values of tdb and trs were strongly and positively correlated across (r= 0.93, P < 0.05), Figure  \@ref(fig:cor). WUE was also correlated with both total biomass and tuber yield (r = 0 .55, p < .05; and r = 0.78, p < 0.001 respectively) (Figure 5b and Supplemental Table 1). The efficiency of use of transpired water was 34.9% higher in CIP397077.16, compared to CIP398180.612. Genotypic variability was also noted in terms of TDWS and HI and three clear groups (tolerant, medium, sensitive) can be distinguished based on TDWS and HI. CIP397077.16, UNICA, CIP398208.620, and Achirana-INTA were ranked as tolerant while CIP398203.244 was rated as sensitive (Figure 5c). The leaf (r = 0.79), stem (r = 0.69), and tuber biomass (r = 0.56) were also positively correlated with transpiration. Almost all characteristics evaluated showed significant differences between treatments (Supplementary Table 2). Only SPAD29, before the start of the drought treatment, and root length did not show significant differences.
+> SPAD Acompanhado de la senecencia o que sucede, buscar explicación??
 
-## Morpho-phisological traits 
+Plant biomass accumulation, and consequently yield, was shown to be inextricably linked to transpiration. The ratio of plant productivity to water loss, water-use efficiency, was very conservative [@sinclair1984WaterUse].
 
-SPAD units taken over the course of plant development (29, 59, 76, and 83 dap) showed that at 29 dap all plants were at the same stress level as no treatment difference was found, Table \@ref(tab:svt). At 59, 76 and 83 the spad shown difference en each evaluation and at the end of the experiment the values were lower than at 29 dap and the WD values for all the genotypes were higher than the ones at WW conditions. The genotypes CIP398190.89 and CIP720088 had the lowest differences among treatments for spad at 83 dap (2.06 and 0.30, respectively), while CIP398203.244 and CIP398208.33 had the largest (14.48 and 17.54, respectively).
+This ratio is called harvest index (H) and has been found to be relatively stable for a particular cultivar over a fairly wide range of conditions (Donald and Hamblin 1976).
 
-> Acompanhado de la senecencia o que sucede, buscar explicación??
+Evans (1980) suggested that one of the main variables for yield increases seen to date has been increases in harvest index.
 
-Leaf relative water content (RWC) significantly (p < 0.01) decreased in response to WD in all the genotypes (Supplementary Table 1). The values ranged between 64.96% and 50.09% for CIP720088 and CIP398201.510, respectively. Differences in osmotic potential (OP) among genotypes and treatments were also significant (P < .001), Table \@ref(tab:svt).
+Evans (1980) further suggested that additional large increases in harvest indices are unlikely. Therefore, further increases in water-use efficiency based on marketable yield are not likely from increasesin the harvest index.
 
-## Yield components
-
-Differences existed among genotypes in total biomass dry weight (g) of well-watered (WW) plants at the end of the experiment, table. Water deficit (WD) treatment had a significant effect (P < 0.001) with an average reduction of around 31% in comparison with the well-watered treatment \@ref(tab:svt). 
+Passioura (1977) and Fischer (1979) have argued that obtaining high harvest indexes underwater-limitedconditions is especially importantin obtaining high water-use efficiencies.
 
 
-CIP398190.89 was the only genotype with a 5% increase in biomass, and CIP398208.219 was the most affected by WD (~44% reduction in comparison with WW). In terms of productivity, WD decreased tuber yield (kgDW.m2) across genotypes by an average of 39% (P < 0.01), however, CIP398190.89 increased its productivity by 5%, while others like CIP398203.5 and CIP398203.244 presented up to 56% and 48% reduced tuber production (Figure 2a). CIP398190.89 had greater tuber dry weight (g) in WD compared to its yield in WW treatment, with a TDWS of 104.09%, indicating drought tolerance (Figure 1a). Most genotypes had similar performance under drought, such as UNICA (CIP392797.22) with 75.76% and CIP398208.33 with 71.9% TDWS. The genotypes CIP398203.244, CIP398208.219, and CIP398201.510 were among the most sensitive genotypes at 31.56, 46.75 and 48.88% respectively.
+Passioura (1977) proposed that cereals for water-limited environments be developed with roots with restricted water uptake rates. Again, such an alteration would, in principle, conserve water during vegetative growth leaving more soil waterfor extraction during grain development. The key aspect of both strategies is that sustained reproductive growth is essential for a high harvest index.
 
+However, a deeper and more extensive rooting system may have drawbacks. A greater root biomass would almost surely result in lowered harvest index (in potato can be advantage?)
 
-
-<!-- Differences among genotypes (p<0.001) and treatments (p<0.01) were found for harvest index (HI) (Figure 2b). Dry matter partitioning in CIP3977077.16 and CIP398190.89 under WD as shown by HI were not significantly different from that of the WW treatment. A strong negative correlation among root length and HI was found in both treatments (r= -0.73) -->
-<!-- The specific leaf area (SLA) reduction was 48% under WD compared to WW (Figure 2c). CIP398190.89 together with CIP398203.5 were among the clones with lowest reduction (24 and 21% respectively), while CIP398208.219, CIP398098.119, and CIP398208.704 were among the clones with highest SLA reduction (53, 65, and 64% respectively). -->
-
-
-
-<!-- Water use efficiency (WUE) was generally higher in WD than WW plants (Figure 4a). Under WD treatment, CIP397077.16, CIP398208.620 and CIP398190.89 showed the highest efficiency (13.06, 12.03, and 11.59 g.L-1, respectively), while the lowest efficiencies (8.50 and 9.24 g.L-1) were presented by CIP398180.612 and CIP398203.5, respectively. CIP398208.620) (10.80 g.L-1 for WW and 12.03 g.L-1 for WD) and CIP398180.612 (8.36 g.L-1 for WW and 8.50 g.L-1) maintained similar WUE (higher or lower) in both treatments (Figure 3a). Tubers used a great portion of the water uptake (Figure 4b), at least for the tolerant genotypes (CIP398190.89, CIP397077.16, and UNICA), in which tubers either from WW or WD are alike (Sup.Fig.1). On the other hand, the sensitive genotype CIP398203.244 produced more leaves and stems rather than tubers.  -->
-
-
-
-# Dicussion
+Improved harvest index. As illustrated in equations(7) and(9) improvements in harvest index result directly in increased water-use efficiency. The difficulty is that for many crops it appears that further substantial improvements in harvest index are unlikely.
 
 <!-- SPAD measurements of the leaf were used as an indicator of nitrogen status and leaf senescence.  -->
 
@@ -178,7 +182,7 @@ CIP398190.89 was the only genotype with a 5% increase in biomass, and CIP398208.
 
 # Acknowledgments
 
-Authors acknowledge the financial support by BMZ/GIZ through a research grant for “Improved potato varieties and water management technologies to enhance water use efficiency, resilience, cost-effectiveness, and productivity of smallholder farms in stress-prone Central Asian environments”.We also thank Jorge Vega and David Saravia for their help during installation and evaluation of the experiment.
+Authors acknowledge the financial support by BMZ/GIZ through a research grant for “Improved potato varieties and water management technologies to enhance water use efficiency, resilience, cost-effectiveness, and productivity of smallholder farms in stress-prone Central Asian environments”. We also thank Jorge Vega and David Saravia for their help during installation and evaluation of the experiment.
 
 
 `r if (knitr::is_html_output()){'

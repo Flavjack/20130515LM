@@ -27,7 +27,7 @@
 <meta name="author" content="^{*}Corresponding author. E-mail address: flavjack@gmail.com (F. Lozano-Isla)" />
 
 
-<meta name="date" content="2020-03-06" />
+<meta name="date" content="2020-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,10 +60,17 @@
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/dt-ext-scroller-1.10.20/css/scroller.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-scroller-1.10.20/js/dataTables.scroller.min.js"></script>
 
 
 
-<link rel="stylesheet" href="cnfg/style.css" type="text/css" />
+<link rel="stylesheet" href="cnfg\style.css" type="text/css" />
 </head>
 
 <body>
@@ -79,7 +86,8 @@
 <li> <a href="https://www.linkedin.com/in/flavjack/" target="blank"> Flavio Lozano Isla </a> </li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>List of abbreviations</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="materials-and-methods.html"><a href="materials-and-methods.html"><i class="fa fa-check"></i><b>2</b> Materials and Methods</a><ul>
 <li class="chapter" data-level="2.1" data-path="materials-and-methods.html"><a href="materials-and-methods.html#plant-material-and-experimental-design"><i class="fa fa-check"></i><b>2.1</b> Plant material and experimental design</a></li>
@@ -89,9 +97,9 @@
 </ul></li>
 <li class="chapter" data-level="3" data-path="result.html"><a href="result.html"><i class="fa fa-check"></i><b>3</b> Result</a><ul>
 <li class="chapter" data-level="3.1" data-path="result.html"><a href="result.html#treatment-application"><i class="fa fa-check"></i><b>3.1</b> Treatment application</a></li>
-<li class="chapter" data-level="3.2" data-path="result.html"><a href="result.html#multivariate-analysis"><i class="fa fa-check"></i><b>3.2</b> Multivariate analysis</a></li>
-<li class="chapter" data-level="3.3" data-path="result.html"><a href="result.html#morpho-phisological-traits"><i class="fa fa-check"></i><b>3.3</b> Morpho-phisological traits</a></li>
-<li class="chapter" data-level="3.4" data-path="result.html"><a href="result.html#yield-components"><i class="fa fa-check"></i><b>3.4</b> Yield components</a></li>
+<li class="chapter" data-level="3.2" data-path="result.html"><a href="result.html#morpho-phisological-traits"><i class="fa fa-check"></i><b>3.2</b> Morpho-phisological traits</a></li>
+<li class="chapter" data-level="3.3" data-path="result.html"><a href="result.html#yield-components"><i class="fa fa-check"></i><b>3.3</b> Yield components</a></li>
+<li class="chapter" data-level="3.4" data-path="result.html"><a href="result.html#multivariate-analysis"><i class="fa fa-check"></i><b>3.4</b> Multivariate analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="dicussion.html"><a href="dicussion.html"><i class="fa fa-check"></i><b>4</b> Dicussion</a></li>
 <li class="chapter" data-level="5" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>5</b> Conclusions</a></li>
@@ -99,6 +107,7 @@
 <li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
 <li class="chapter" data-level="" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i>Tables</a></li>
 <li class="chapter" data-level="" data-path="figures.html"><a href="figures.html"><i class="fa fa-check"></i>Figures</a></li>
+<li class="chapter" data-level="" data-path="supplementary-information.html"><a href="supplementary-information.html"><i class="fa fa-check"></i>Supplementary information</a></li>
 <li class="divider"></li>
 <li> <a href="https://scholar.google.com/citations?user=3RAsRPAAAAAJ&hl=en&oi=ao" target="blank"> Google Scholar </a> </li>
 
@@ -126,7 +135,7 @@
 <p>Bhatnagar-Mathur, P., Devi, M. J., Reddy, D. S., Lavanya, M., Vadez, V., Serraj, R., Yamaguchi-Shinozaki, K., &amp; Sharma, K. K. (2007). Stress-inducible expression of At DREB1A in transgenic peanut (Arachis hypogaea L.) Increases transpiration efficiency under water-limiting conditions. <em>Plant Cell Reports</em>, <em>26</em>(12), 2071–2082. <a href="https://doi.org/10.1007/s00299-007-0406-8">https://doi.org/10.1007/s00299-007-0406-8</a></p>
 </div>
 <div id="ref-blum2005Drought">
-<p>Blum, A. (2005). Drought resistance, water-use efficiency, and yield potentialAre they compatible, dissonant, or mutually exclusive? <em>Australian Journal of Agricultural Research</em>, <em>56</em>(11), 1159. <a href="https://doi.org/10.1071/AR05069">https://doi.org/10.1071/AR05069</a></p>
+<p>Blum, A. (2005). Drought resistance, water-use efficiency, and yield potentialare they compatible, dissonant, or mutually exclusive? <em>Australian Journal of Agricultural Research</em>, <em>56</em>(11), 1159. <a href="https://doi.org/10.1071/AR05069">https://doi.org/10.1071/AR05069</a></p>
 </div>
 <div id="ref-blum2011Drought">
 <p>Blum, A. (2011). Drought resistance - is it really a complex trait? <em>Functional Plant Biology</em>, <em>38</em>(10), 753. <a href="https://doi.org/10.1071/FP11101">https://doi.org/10.1071/FP11101</a></p>
@@ -164,6 +173,9 @@
 <div id="ref-lahlou2003effect">
 <p>Lahlou, O., Ouattar, S., &amp; Ledent, J.-F. (2003). The effect of drought and cultivar on growth parameters, yield and yield components of potato. <em>Agronomie</em>, <em>23</em>(3), 257–268. <a href="https://doi.org/10.1051/agro:2002089">https://doi.org/10.1051/agro:2002089</a></p>
 </div>
+<div id="ref-le2008FactoMineR">
+<p>Lê, S., Josse, J., &amp; Husson, F. (2008). FactoMineR: An R Package for Multivariate Analysis. <em>Journal of Statistical Software</em>, <em>25</em>(1), 1–18. <a href="https://doi.org/10.18637/jss.v025.i01">https://doi.org/10.18637/jss.v025.i01</a></p>
+</div>
 <div id="ref-lozano-isla2019GerminaR">
 <p>Lozano-Isla, F., Benites-Alfaro, O. E., &amp; Pompelli, M. F. (2019). GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R”. <em>Ecological Research</em>, <em>34</em>(2), 339–346. <a href="https://doi.org/10.1111/1440-1703.1275">https://doi.org/10.1111/1440-1703.1275</a></p>
 </div>
@@ -174,7 +186,7 @@
 <p>Ray, J. D., &amp; Sinclair, T. R. (1998). The effect of pot size on growth and transpiration of maize and soybean during water deficit stress. <em>Journal of Experimental Botany</em>, <em>49</em>(325), 1381–1386. <a href="https://doi.org/10.1093/jxb/49.325.1381">https://doi.org/10.1093/jxb/49.325.1381</a></p>
 </div>
 <div id="ref-R-base">
-<p>R Core Team. (2020). <em>R: A language and environment for statistical computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a></p>
+<p>R Core Team. (2019). <em>R: A language and environment for statistical computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a></p>
 </div>
 <div id="ref-sinclair1986Influence">
 <p>Sinclair, T., &amp; Ludlow, M. (1986). Influence of Soil Water Supply on the Plant Water Balance of Four Tropical Grain Legumes. <em>Australian Journal of Plant Physiology</em>, <em>13</em>(3), 329. <a href="https://doi.org/10.1071/PP9860329">https://doi.org/10.1071/PP9860329</a></p>
@@ -198,7 +210,7 @@
 <p>Vasquez-Robinet, C., Mane, S. P., Ulanov, A. V., Watkinson, J. I., Stromberg, V. K., De Koeyer, D., Schafleitner, R., Willmot, D. B., Bonierbale, M., Bohnert, H. J., &amp; Grene, R. (2008). Physiological and molecular adaptations to drought in Andean potato genotypes. <em>Journal of Experimental Botany</em>, <em>59</em>(8), 2109–2123. <a href="https://doi.org/10.1093/jxb/ern073">https://doi.org/10.1093/jxb/ern073</a></p>
 </div>
 <div id="ref-zarate-salazar2018Comparacao">
-<p>Zárate-Salazar, J. R., Santos, M. N., Santos, J. N. B., &amp; Lozano-Isla, F. (2018). Comparação de softwares de análise de imagem para a determinação da área foliar. <em>Revista Brasileira de Meio Ambiente</em>, <em>3</em>(1).</p>
+<p>Zárate-Salazar, J. R., Santos, M. N., Santos, J. N. B., &amp; Lozano-Isla, F. (2018). Comparação de softwares de análise de imagem para a determinação da área foliar. <em>Revista Brasileira de Meio Ambiente</em>, <em>3</em>(1). <a href="https://revistabrasileirademeioambiente.com/index.php/RVBMA/article/view/44">https://revistabrasileirademeioambiente.com/index.php/RVBMA/article/view/44</a></p>
 </div>
 </div>
 </div>
@@ -247,7 +259,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": null,
+"link": "https://github.com/flavjack/rticles/blob/master/index.Rmd",
 "text": null
 },
 "download": [["rticles.docx", "word"]],

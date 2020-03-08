@@ -60,18 +60,11 @@ fb <- xl %>%
 
 ```
 
+`r if (knitr::is_html_output()){'
 # Tables {-}
+'}`
 
-```{r abrv}
-
-xl %>% 
-  readxl::read_excel(sheet = "var") %>% 
-  filter(include == "x") %>% 
-  select(Variable, Abbreviation) %>% 
-  mutate_at("Abbreviation", "tolower") %>% 
-  kable(caption = "List of abbreviations")
-
-```
+\newpage
 
 ```{r gnt}
 
@@ -81,6 +74,8 @@ xl %>%
   kable(caption = "Potatos (*Solanum tuberosum* L.) genotypes used for water deficit experiment with  13 lines from advanced breeding population at International Potato Center (CIP) and two comercial varieties.")
 
 ```
+
+\newpage
 
 ```{r svt}
 
@@ -97,7 +92,10 @@ fb %>%
 
 ```
 
+
+`r if (knitr::is_html_output()){'
 # Figures {-}
+'}`
 
 ```{r srl, fig.cap= "Soil transpiration fraction and transpiration during the experiment"}
 
@@ -161,6 +159,8 @@ save_plot(plot = plot, "files/fig_trans.png")
 include_graphics("files/fig_trans.png")
 
 ```
+
+\newpage
 
 ```{r mva, fig.align='center', fig.cap="Principal component analysis"}
 
@@ -236,7 +236,14 @@ include_graphics("files/fig_mv.png")
 
 ```
 
-```{r cor, fig.cap="Correlation analysis"}
+
+`r if (knitr::is_html_output()){'
+# Supplementary information {-}
+'}`
+
+\newpage
+
+```{r cor, fig.cap= "Correlation analysis"}
 
 cr <- fb %>% 
   group_by(gnt, treat) %>% 
@@ -256,10 +263,28 @@ cp <- heatmaply_cor(
   cellnote_size = 10 
 )
 
-cp
-
 # plotly::orca(p = cp, file = "files/fig_cor.png")
-# include_graphics("files/fig_cor.png")
+
+if(is_html_output()){cp} else {
+  
+  include_graphics("files/fig_cor.png")
+}
+
 ```
 
+
+```{r smrt}
+
+if(knitr::is_html_output()){
+
+fb %>%
+  select(-block, -gnt) %>%
+  group_by(treat, genotype) %>%
+  summarise_all(funs(mean), na.rm = TRUE) %>% 
+  select(genotype, treat, everything()) %>% 
+  web_table(buttons = "none", title = "Supplementary table")
+  
+}
+
+```
 

@@ -27,7 +27,7 @@
 <meta name="author" content="^{*}Corresponding author. E-mail address: flavjack@gmail.com (F. Lozano-Isla)" />
 
 
-<meta name="date" content="2020-03-06" />
+<meta name="date" content="2020-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,10 +60,17 @@
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/dt-ext-scroller-1.10.20/css/scroller.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-scroller-1.10.20/js/dataTables.scroller.min.js"></script>
 
 
 
-<link rel="stylesheet" href="cnfg/style.css" type="text/css" />
+<link rel="stylesheet" href="cnfg\style.css" type="text/css" />
 </head>
 
 <body>
@@ -79,7 +86,8 @@
 <li> <a href="https://www.linkedin.com/in/flavjack/" target="blank"> Flavio Lozano Isla </a> </li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>List of abbreviations</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="materials-and-methods.html"><a href="materials-and-methods.html"><i class="fa fa-check"></i><b>2</b> Materials and Methods</a><ul>
 <li class="chapter" data-level="2.1" data-path="materials-and-methods.html"><a href="materials-and-methods.html#plant-material-and-experimental-design"><i class="fa fa-check"></i><b>2.1</b> Plant material and experimental design</a></li>
@@ -89,9 +97,9 @@
 </ul></li>
 <li class="chapter" data-level="3" data-path="result.html"><a href="result.html"><i class="fa fa-check"></i><b>3</b> Result</a><ul>
 <li class="chapter" data-level="3.1" data-path="result.html"><a href="result.html#treatment-application"><i class="fa fa-check"></i><b>3.1</b> Treatment application</a></li>
-<li class="chapter" data-level="3.2" data-path="result.html"><a href="result.html#multivariate-analysis"><i class="fa fa-check"></i><b>3.2</b> Multivariate analysis</a></li>
-<li class="chapter" data-level="3.3" data-path="result.html"><a href="result.html#morpho-phisological-traits"><i class="fa fa-check"></i><b>3.3</b> Morpho-phisological traits</a></li>
-<li class="chapter" data-level="3.4" data-path="result.html"><a href="result.html#yield-components"><i class="fa fa-check"></i><b>3.4</b> Yield components</a></li>
+<li class="chapter" data-level="3.2" data-path="result.html"><a href="result.html#morpho-phisological-traits"><i class="fa fa-check"></i><b>3.2</b> Morpho-phisological traits</a></li>
+<li class="chapter" data-level="3.3" data-path="result.html"><a href="result.html#yield-components"><i class="fa fa-check"></i><b>3.3</b> Yield components</a></li>
+<li class="chapter" data-level="3.4" data-path="result.html"><a href="result.html#multivariate-analysis"><i class="fa fa-check"></i><b>3.4</b> Multivariate analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="dicussion.html"><a href="dicussion.html"><i class="fa fa-check"></i><b>4</b> Dicussion</a></li>
 <li class="chapter" data-level="5" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>5</b> Conclusions</a></li>
@@ -99,6 +107,7 @@
 <li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
 <li class="chapter" data-level="" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i>Tables</a></li>
 <li class="chapter" data-level="" data-path="figures.html"><a href="figures.html"><i class="fa fa-check"></i>Figures</a></li>
+<li class="chapter" data-level="" data-path="supplementary-information.html"><a href="supplementary-information.html"><i class="fa fa-check"></i>Supplementary information</a></li>
 <li class="divider"></li>
 <li> <a href="https://scholar.google.com/citations?user=3RAsRPAAAAAJ&hl=en&oi=ao" target="blank"> Google Scholar </a> </li>
 
@@ -121,6 +130,26 @@
             <section class="normal" id="section-">
 <div id="dicussion" class="section level1">
 <h1><span class="header-section-number">4</span> Dicussion</h1>
+<blockquote>
+<p>SPAD a good indicator for select best genotypes, because it have negative correlation with the tdw</p>
+</blockquote>
+<blockquote>
+<p>Menor contendido de clorofila –&gt; mayor contenido de otros pigmentos que ayuden a luchar contra el stress por sequia???</p>
+</blockquote>
+<blockquote>
+<p>Selection basado en genotipos de alto HI y mayor SPAD para selección de líneas promisorias!</p>
+</blockquote>
+<blockquote>
+<p>SPAD Acompanhado de la senecencia o que sucede, buscar explicación??</p>
+</blockquote>
+<p>Plant biomass accumulation, and consequently yield, was shown to be inextricably linked to transpiration. The ratio of plant productivity to water loss, water-use efficiency, was very conservative <span class="citation">(Sinclair et al., <a href="references.html#ref-sinclair1984WaterUse" role="doc-biblioref">1984</a>)</span>.</p>
+<p>This ratio is called harvest index (H) and has been found to be relatively stable for a particular cultivar over a fairly wide range of conditions (Donald and Hamblin 1976).</p>
+<p>Evans (1980) suggested that one of the main variables for yield increases seen to date has been increases in harvest index.</p>
+<p>Evans (1980) further suggested that additional large increases in harvest indices are unlikely. Therefore, further increases in water-use efficiency based on marketable yield are not likely from increasesin the harvest index.</p>
+<p>Passioura (1977) and Fischer (1979) have argued that obtaining high harvest indexes underwater-limitedconditions is especially importantin obtaining high water-use efficiencies.</p>
+<p>Passioura (1977) proposed that cereals for water-limited environments be developed with roots with restricted water uptake rates. Again, such an alteration would, in principle, conserve water during vegetative growth leaving more soil waterfor extraction during grain development. The key aspect of both strategies is that sustained reproductive growth is essential for a high harvest index.</p>
+<p>However, a deeper and more extensive rooting system may have drawbacks. A greater root biomass would almost surely result in lowered harvest index (in potato can be advantage?)</p>
+<p>Improved harvest index. As illustrated in equations(7) and(9) improvements in harvest index result directly in increased water-use efficiency. The difficulty is that for many crops it appears that further substantial improvements in harvest index are unlikely.</p>
 <!-- SPAD measurements of the leaf were used as an indicator of nitrogen status and leaf senescence.  -->
 <!-- Water deficit (WD) triggered a range of morphological and physiological mechanisms in the potato genotypes tested, leading to different yield penalties and indicating a variety of survival strategies by potato. We found root length, SPAD, and SLA to be good indicators for water use efficient (WUE) plants useful for drought tolerance breeding. Most characteristics measure showed differences between treatments, pointing to their value in evaluating the impact of drought. According to (Songsri et al. 2009), enhanced extraction of water and nutrients from the soil due to large root system and long roots is a drought resistance mechanism in potato. Our study showed that the minimal yield losses in some genotypes like CIP398190.89 under WD could be related to its ability to increase its WUE (Figure 4a), by absorbing the limited water and nutrients available in the soil without changing its morphology. However, in our study, the genotype with the longest roots (CIP398201.510) (Fig. 3a) showed the lowest yield (Fig. 2a) and HI (Fig. 2b) under both stressed and non-stressed conditions. In this genotype, the long roots seem to contribute to vegetative growth rather than harvestable yield.  -->
 <!-- Another drought resistance mechanism can be the reduction of transpiration achieved by the reduction of leaf area, for example, thick leaves often have greater photosynthetic capacity than thin leaves, due to their higher chlorophyll per leaf area counts (Songsri et al. 2009). SPAD is an indicator of the photosynthetically active light transmittance characteristics of the leaf, which is dependent on the unit amount of chlorophyll per unit leaf area. SPAD units have been correlated with chlorophyll and carotenoid content in potato and other crops (Ramírez et al. 2014: Marenco et al. 2009) and are used in selecting genotypes tolerant to drought in breeding programs. In this study, some genotypes reduced specific leaf area (SLA) (Fig. 2c), and changed the ratio of root to shoot (Sup. Table 1), while others, like CIP3977077.16 and CIP398190.89 maintained SLA, as well as harvest index (HI) (Fig. 2b), root length and stolon mass (Fig. 3) under WD. These genotypes may have lower sink competition and allocated a proportionally higher fraction of assimilates to tubers by reducing the evaporative surface area above-ground and efficiently employing the resources (water saved and N) located in the soil. Conversely, sensitive genotypes such as CIP398203.244 preferred to produce leaves and stems in preference to tubers. Our study also found a lower specific leaf area (SLA) under WD (Figure 2c), principally explained by decreases in new leaf production, number of leaves, and leaf size. This decrease might have had allowed a reduction in leaf transpiration, saving water for tuber bulking as suggested by Lahlou, et al. (2003). Hence, potato genotypes with the ability to maintain higher SPAD and lower SLA under WD conditions, can maintain higher WUE under WD conditions. -->
@@ -172,7 +201,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": null,
+"link": "https://github.com/flavjack/rticles/blob/master/index.Rmd",
 "text": null
 },
 "download": [["rticles.docx", "word"]],
