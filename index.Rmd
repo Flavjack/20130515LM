@@ -139,43 +139,19 @@ The values of tdb and trs were strongly and positively correlated with 0.93 (P<0
 
 For correlation between hi and twue was strong (r=0.92) with an euclidean distance of 0.68, shown not only a good correlation but also a good association between these two variables, Figure \@ref(fig:cor). While tuber dry weight (tdw) shown better correlation with hi (r=0.61) and twue (r=0.55) than wue (r=0.05) with a euclidean distance of the traits 4.21, shown low association with tdw, Figure \@ref(fig:mva) and Figure \@ref(fig:cor).
 
-Interesting association since the application of the drought treatment (Table \@ref(tab:svt)) is between spad with tdw that have negative correlation (r=~0.60) and an euclidean distance of 4.21 shown no assoction between them. Apparently spad measure is sensitive to the detect the drought stress and it is related with the tuber production, Figure \@ref(fig:mva) and Figure \@ref(fig:cor). 
+Interesting association since the application of the drought treatment (Table \@ref(tab:svt)) is between spad with tdw that have negative correlation (r=~0.60) and an euclidean distance of 4.21 shown no association between them. Apparently spad measure is sensitive to the detect the drought stress and it is related with the tuber production, Figure \@ref(fig:mva) and Figure \@ref(fig:cor). 
 
 # Dicussion
 
-Water stress triggered a range of morphological and physiological mechanisms in the potato genotypes tested, leading to different yield penalties and indicating a variety of survival strategies by potato. Most characteristics measure showed differences between treatments, pointing to their value in evaluating the impact of drought. According to (Songsri et al. 2009), enhanced extraction of water and nutrients from the soil due to large root system and long roots is a drought resistance mechanism in potato. But in our study showed that the minimal yield losses in some genotypes like CIP398190.89 under WD could be related to its ability to increase its twue, by absorbing the limited water and nutrients available in the soil without changing have a high reduction in the final yield, Figure \@ref(fig:mva). 
+Water stress triggered a range of morphological and physiological mechanisms in the potato genotypes tested, leading to different yield penalties and indicating a variety of survival strategies by potato. Most characteristics measure showed differences between treatments, pointing to their value in evaluating the impact of drought. Under WW conditions, soil can supply water at a steady rate to meet the transpiration demand. However, as the soil becomes dry, water flux from soil to root surface decreases and cannot satisfy the demand of transpiration. Additionally, in WD conditions, mineralization and supply of nutrients, especially N, is reduced, forcing the plant to use their resources efficiently as the only solution to not compromise yield (Motalebifard et al. 2013). According to (Songsri et al. 2009), enhanced extraction of water and nutrients from the soil due to large root system and long roots is a drought resistance mechanism in potato. But in our study showed that the minimal yield losses in some genotypes like CIP398190.89 under WD could be related to its ability to increase its twue, by absorbing the limited water and nutrients available in the soil without changing have a high reduction in the final yield, Figure \@ref(fig:mva). 
 
-Plant biomass accumulation, and consequently yield, was shown to be inextricably linked to transpiration  [@sinclair1984WaterUse]. A drought resistance mechanism can be the reduction of transpiration achieved by the reduction of leaf area with thick leaves often have greater photosynthetic capacity than thin leaves, due to their higher chlorophyll per leaf area counts (Songsri et al. 2009). Sensitive genotypes such as CIP398203.244 and CIP398201.510 preferred to produce leaves and more roots in preference to tubers. A lower specific leaf area (SLA) under WD, principally explained by decreases in new leaf production, number of leaves, and leaf size. This decrease might have had allowed a reduction in leaf transpiration, saving water for tuber bulking as suggested by Lahlou, et al. (2003). Hence, potato genotypes with the ability to maintain low SPAD and high SLA under WD conditions, can maintain higher twue and increase the tuber production. SPAD is an indicator of the photosynthetically active light transmittance characteristics of the leaf, which is dependent on the unit amount of chlorophyll per unit leaf area. SPAD units have been correlated with chlorophyll and carotenoid content in potato and other crops (Ramírez et al. 2014: Marenco et al. 2009) and are used in selecting genotypes tolerant to drought in breeding programs. 
+Plant biomass accumulation, and consequently yield, was shown to be inextricably linked to transpiration  [@sinclair1984WaterUse]. A drought resistance mechanism can be the reduction of transpiration achieved by the reduction of leaf area with thick leaves often have greater photosynthetic capacity than thin leaves, due to their higher chlorophyll per leaf area counts (Songsri et al. 2009). Sensitive genotypes such as CIP398203.244 and CIP398201.510 preferred to produce leaves and more roots in preference to tubers. A lower specific leaf area (SLA) under WD, principally explained by decreases in new leaf production, number of leaves, and leaf size. This decrease might have had allowed a reduction in leaf transpiration, saving water for tuber bulking as suggested by Lahlou, et al. (2003). Payne et al. (1995) found that N uptake was linearly related to plant transpiration, and that about twice as much N is taken up per kg of transpiration in water-stressed plants than in non-water-stressed plants. Hence, potato genotypes with the ability to maintain low SPAD and high SLA under WD conditions, can maintain higher twue and increase the tuber production. SPAD is an indicator of the photosynthetically active light transmittance characteristics of the leaf, which is dependent on the unit amount of chlorophyll per unit leaf area. SPAD units have been correlated with chlorophyll and carotenoid content in potato and other crops (Ramírez et al. 2014: Marenco et al. 2009) and are used in selecting genotypes tolerant to drought in breeding programs. 
 
+The genotypes like CIP398201.510 and CIP398203.244 with the longest roots showed the lowest yield and hi under both stressed and non-stressed conditions. In this genotype, the long roots seem to contribute to vegetative growth rather than yield components.We found root dry weight, spad and hi to be good indicators for tuber water use efficient and useful traits for drought tolerance breeding programs  Figure \@ref(fig:mva). The genotypes like CIP398201.510 and CIP398203.244 with the longest roots showed the lowest yield and hi under both stressed and non-stressed conditions. In this genotype, the long roots seem to contribute to vegetative growth rather than yield components.
 
+High correlation between tdw with twue and hi than wue indicates direct association between them, and at the same time, reflected the conservative relationship between biomass production and wue through a range of limited soil water availability. We found root dry weight, spad and hi to be good indicators for tuber water use efficient and useful traits for drought tolerance breeding programs, Figure \@ref(fig:mva). SPAD measurements of the leaf were used as an indicator of nitrogen status and leaf senescence. Passioura (1977) proposed that cereals for water-limited environments be developed with roots with restricted water uptake rates. Again, such an alteration would, in principle, conserve water during vegetative growth leaving more soil waterfor extraction during grain development. The key aspect of both strategies is that sustained reproductive growth is essential for a high harvest index. However, a deeper and more extensive rooting system may have drawbacks. A greater root biomass would almost surely result in lowered harvest index (in potato can be advantage?
 
-We found root dry weight, spad and hi to be good indicators for tuber water use efficient and useful traits for drought tolerance breeding programs  Figure \@ref(fig:mva). The genotypes like CIP398201.510 and CIP398203.244 with the longest roots showed the lowest yield and hi under both stressed and non-stressed conditions. In this genotype, the long roots seem to contribute to vegetative growth rather than yield components.
-
-
-
-It is important to remember that under WW conditions, soil can supply water at a steady rate to meet the transpiration demand. However, as the soil becomes dry, water flux from soil to root surface decreases and cannot satisfy the demand of transpiration. Additionally, in WD conditions, mineralization and supply of nutrients, especially N, is reduced, forcing the plant to use their resources efficiently as the only solution to not compromise yield (Motalebifard et al. 2013). Payne et al. (1995) found that N uptake was linearly related to plant transpiration, and that about twice as much N is taken up per kg of transpiration in water-stressed plants than in non-water-stressed plants. In our study, we found that CIP397077.16 and CIP398208.620 could maintain turgor, which, combined with the reduction of SLA, helped them to conserve water. Additionally, increased amounts of RWC under WD treatment in CIP720088 may have been the result of higher stomata conductivity, since the root length of CIP720088 in WW and WD treated plants were comparable (Figure 3a).
-
-The strong correlation between WUE in this experiment and tuber yield (r = 0 .78, p < .001) indicates direct association between them, and at the same time, reflected the conservative relationship between biomass production and WUE through a range of limited soil water availability.  Reduced stomatal conductance can constrain the diffusion of CO2 for photosynthesis, and accordingly the average total biomass in the WD treatment was significantly lower than that of the corresponding genotypes in WW treatment. Different studies have measured WUE at the leaf, whole plant, and crop levels (Guoju et al. 2013; Hochman et al. 2009) and have found no significant differences at plant or crop levels (Deblonde et al. 1999). In this study, WUE is considered a critical trait that can affect yield and its increase can lead a plant to tolerate or avoid water deficit conditions.
-
-
-This ratio is called harvest index (H) and has been found to be relatively stable for a particular cultivar over a fairly wide range of conditions (Donald and Hamblin 1976).
-
-Evans (1980) suggested that one of the main variables for yield increases seen to date has been increases in harvest index.
-
-Evans (1980) further suggested that additional large increases in harvest indices are unlikely. Therefore, further increases in water-use efficiency based on marketable yield are not likely from increasesin the harvest index.
-
-Passioura (1977) and Fischer (1979) have argued that obtaining high harvest indexes underwater-limitedconditions is especially importantin obtaining high water-use efficiencies.
-
-
-Passioura (1977) proposed that cereals for water-limited environments be developed with roots with restricted water uptake rates. Again, such an alteration would, in principle, conserve water during vegetative growth leaving more soil waterfor extraction during grain development. The key aspect of both strategies is that sustained reproductive growth is essential for a high harvest index.
-
-However, a deeper and more extensive rooting system may have drawbacks. A greater root biomass would almost surely result in lowered harvest index (in potato can be advantage?)
-
-Improved harvest index. As illustrated in equations(7) and(9) improvements in harvest index result directly in increased water-use efficiency. The difficulty is that for many crops it appears that further substantial improvements in harvest index are unlikely.
-
-SPAD measurements of the leaf were used as an indicator of nitrogen status and leaf senescence.
-
-
+Evans (1980) suggested that one of the main variables for yield increases seen to date has been increases in harvest index. Harvest index (hi) and has been found to be relatively stable for a particular cultivar over wide range of conditions (Donald and Hamblin 1976). Passioura (1977) and Fischer (1979) have argued that obtaining high harvest indexes underwater-limited conditions is especially important obtaining high water-use efficiencies even if many crops it appears that further substantial improvements in harvest index are unlikely [Evans (1980)]. 
 
 > SPAD a good indicator for select best genotypes, because it have negative correlation with the tdw
 
@@ -187,16 +163,13 @@ SPAD measurements of the leaf were used as an indicator of nitrogen status and l
 
 > Lo que desmuestra que se puede usar hi and spad para saleccionar papas con mayor efficiencia de uso de agua para formar tuberculos
 
-
 # Conclusions
 
-<!-- Based on our results, the genotypes with reduced SLA, longest root length and that maintain relatively high WUE under WD conditions, like CIP398201.510, are drought avoidant. Additionally, we found that tolerant genotypes like CIP397077.16, CIP398190.89, and UNICA preferentially use available water for tuber production rather than above ground biomass (Figure 5b). Our study demonstrated that root length, SPAD and SLA are important traits related to WUE and could be useful as selection criteria of new genotypes. However, there are additional strategies of the below-ground plant parts that need to be explored for their role in yield stability under water stress conditions. -->
-
+The genotypes with high hi, low spad content under WD and WW conditions present mechanisms for drought avoiding. Additionally, tolerant genotypes like CIP397077.16, CIP398190.89, and CIP392797.22 (UNICA) preferentially use available water for tuber production rather than above ground biomass represented by their high twue. Traits like spad and hi are associated to yield under drought stress and could be useful as selection criteria for first stage breeding programs because are easy and chip to measure in large populations. However, there are additional strategies of the below-ground plant parts that need to be explored for their role in yield stability under water stress conditions.
 
 # Acknowledgments
 
 Authors acknowledge the financial support by BMZ/GIZ through a research grant for “Improved potato varieties and water management technologies to enhance water use efficiency, resilience, cost-effectiveness, and productivity of smallholder farms in stress-prone Central Asian environments”. We also thank Jorge Vega and David Saravia for their help during installation and evaluation of the experiment.
-
 
 `r if (knitr::is_html_output()){'
 # References 
@@ -206,8 +179,5 @@ Authors acknowledge the financial support by BMZ/GIZ through a research grant fo
 # References
 <div id="refs"></div>'}`
 
-
 ```{r chunk_name, child = 'code.Rmd'}
 ```
-
-
