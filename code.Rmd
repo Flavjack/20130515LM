@@ -32,7 +32,8 @@ fb <- xl %>%
          ntub,
          trs = ttrns,
          lfa = la,
-         rdl = rlg) %>% 
+         rdl = rlg
+         ) %>% 
   mutate(tdb = (ldw+sdw+rdw+tdw),
          hi = tdw/(ldw+sdw+rdw+tdw),
          sla = lfa/ldw,
