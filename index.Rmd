@@ -35,18 +35,6 @@ gs <- as_sheets_id(url)
 xl <- gs %>% drive_download("files/fieldbook.xlsx", overwrite = T) %>% pluck(2)
 ```
 
-# List of abbreviations {-}
-
-```{r abrv}
-xl %>% 
-  readxl::read_excel(sheet = "var") %>% 
-  filter(include == "x") %>% 
-  select(Variable, Abbreviation) %>% 
-  mutate_at("Abbreviation", "tolower") %>% 
-  kable()
-```
-
-
 # Abstract {-}
 
 Drought stress is a serious constraint affecting yields of almost all crops worldwide. The problem is only expected to get worse with water deficits stemming from climate change and population expansion. In this study, we aim to find traits that can help understand the relation between traits and mechanisms of tolerance in potato, and provide useful information for selection of drought tolerance in potato breeding programs. In order to explore the different responses of potato under drought stress, we evaluated fifteen genotypes under well watered (WD) and water deficit (WD) conditions for a range of agro-physiological traits. Tolerant genotypes such as CIP397077.16, CIP398190.89, and CIP392797.22 (UNICA) were able to preferentially put limited water toward tuber production rather than biomass. Lower specific leaf area (sla) and relative water content (rwc) under WD, and that potato genotypes with the ability to maintain high  harvest index (hi) and tuber water use efficiency (twue). We also found correlation between hi and twue was 0.92 with a euclidean distance 0.91 and a negative correlation with spad (-0.7) at 38 days after treatment application. 
@@ -58,6 +46,9 @@ Drought stress is a serious constraint affecting yields of almost all crops worl
 # Introduction
 
 Water has become a scarce and precious resource and its efficient utilization in the production of food is a key challenge in agriculture worldwide. Yield losses due to water deficit are one of the global problems limiting production. Tracking the consequences of water deficit in plants is a difficult task, as it depends on the timing, intensity, type of crop, and duration of stress [@blum2011Drought]. Besides this, abiotic stresses never come alone but are coupled in nature with other location-specific environmental stress factors, such as high irradiance and temperature, which makes describing the effect of one single stress in the field nearly impossible _cita_.
+
+
+> Potato is the most important non-grain food crop in the world (FAO 2011)
 
 Potato is an important non-grain food crop and is a key component of world food security. Potato is known to be sensitive to water deficit because of its shallow root system, and its fast-closing leaf stomata that reduce transpiration and photosynthesis, considerably reducing tuber yields [@deblonde2001Effects]. Nevertheless, potato has a high harvest index in comparison with cereals and relatively low demand for water _cita_.
 
@@ -73,13 +64,17 @@ This study elucidate the mechanisms for drought tolerance and yield in fifteen a
 
 # Materials and Methods
 
-## Plant material and experimental design
+## Plant material
 
-Thirteen potato clones were selected from advanced breeding population collection at International Potato Center (CIP) and two commercial varieties were grown in an environmentally controlled greenhouse at CIP (La Molina Experimental Station) at 28/15°C day/night with 70±5% average relative humidity. The experiment was carried out in complete randomize block design where the first factor was the two irrigation treatments: well-watered (WW), treatment where the moisture was maintained at field capacity and water deficit (WD) and the second factor were compound by the fifteen potato genotypes, Table (\@ref(tab:gnt)).
+Thirteen potato clones were selected from advanced breeding population collection at International Potato Center (CIP) and two commercial varieties, Table (\@ref(tab:gnt)). UNICA (CIP392797.22) and Achirana INTA (CIP720088) known for their earliness and drought tolerance _(Schafleitner et al. 2007)_. UNICA has a good response to warm and dry environments _(Gutiérrez et al., 2007)_. 
+
+## Experimental design and conditions
+
+The experiment was carried out in complete randomize block design where the first factor was the two irrigation treatments: well-watered (WW), treatment where the moisture was maintained at field capacity and water deficit (WD) and the second factor were compound by the fifteen potato genotypes, Table (\@ref(tab:gnt)).  Each treatment consisted of five replicates with one potato plant for each experimental unit. 
 
 ## Cultivation and management
 
-Single plants were grown in a greenhouse in 5 liters plastic pots and It was sown containing 5 kg of dry commercial Sogemix SM2 (75% Peat Moss, perlite, vermiculite, and limestone). The potato tubers were pre-sprouted for 2 weeks and
+The experiment was conducted at the International Potato Center (CIP) experimental station in Lima, Peru (12.1◦ S, 77.0◦ W, 244 m.a.s.l.). The plants were grown in an environmentally controlled greenhouse at 28/15°C day/night with 70±5% average relative humidity (HOBO U12 Outdoor/Industrial model, Onset Computer Corporation, Bourne, MA, USA). Single plants were grown in a greenhouse in 5 liters plastic pots and It was sown containing 5 kg of dry commercial Sogemix SM2 (75% Peat Moss, perlite, vermiculite, and limestone). The potato tubers were pre-sprouted for 2 weeks and
 planted at 5–7 cm depth. Fertilization was done twice with ammonium nitrate; triple superphosphate and potassium sulphate, one before planting mixed with the substrate and the other applied at the surface at 40 days after planting (dap).
 
 ## Transpiration rate and soil water supply
@@ -96,7 +91,7 @@ Transpiration was calculated by weighing the pots every two days in the between 
 
 **Leaf osmotic potential (lop).** was determined using a dew point microvoltmeter (HR-33T Wescor Inc., Logan, UT, USA) with leaf discs of 5 mm diameter, taken from the third fully extended leaf. The leaf discs were put in 1 ml cryogenic tubes and frozen in liquid nitrogen for further analysis. The frozen leaves were incubated at 22°C for 30 min in a sealed C-52 chamber (Wescor Inc., Logan, UT, USA). 
 
-**Chlorophyll content (spad).** The chlorophyll content of the plant was evaluated by taking SPAD measurements using a SPAD-502 chlorophyll meter (Konica Minolta Sensing, Inc., Osaka, Japan) from the third youngest fully expanded leaf from three points (upper, middle and lower leaflet of a leaf). Individual readings of leaflets were averaged to represent individual measurement of a leaf. The evaluations were done on light adapted leaves at 29, 59, 76, and 83 day after planting (dap). 
+**Chlorophyll concentration (Chl~spad~).** The chlorophyll content of the plant was evaluated by taking SPAD measurements using a SPAD-502 chlorophyll meter (Konica Minolta Sensing, Inc., Osaka, Japan) from the third youngest fully expanded leaf from three points (upper, middle and lower leaflet of a leaf). Individual readings of leaflets were averaged to represent individual measurement of a leaf. The evaluations were done on light adapted leaves at 29, 59, 76, and 83 day after planting (dap). SPAD values were highly significantly correlated with a + b chlorophyll concentration per unit leaf area ($\mu$g cm~−2~) as determined by _Lichtenthaler and Wellburn (1983)_.
 
 **Post-harvest traits.** The harvest was at 90 dap. The plants were separated in four components: leaves, stems, roots and tubers. The dry weight (g) components were determined by drying them at 80°C for 3 days in a forced air oven: leaf (ldw), stem (sdw), root (rdw), tuber (tdw). The leaf area (lfa) of the plants was measured in cm^2^ by taking photographs of all the leaves arranged on a wooden board and analyzing the pictures using ImageJ software [@zarate-salazar2018Comparacao]. 
 
@@ -104,9 +99,11 @@ Transpiration was calculated by weighing the pots every two days in the between 
 
 ## Statistical analysis
 
-The experiment was carried out in a complete randomize block design with two factors; the irrigation, well water (WW) and water deficit (WD) treatments and fifteen potato genotypes. Each treatment consisted of five replicates with one potato plant for each experimental unit. Statistical analysis and graphs were performed in the statistical software R [@R-base]. The analysis of variance (ANOVA) was performed to evaluate the differences between the factors and the comparison of the means with the Student-Newman-Keuls test (p<0.05) with agricoale and GerminaR package [@lozano-isla2019GerminaR; @R-agricolae]. For the multivariate analysis, correlation and principal components analysis were performed with FactoMineR and heatmaply package [@galili2018heatmaply; @R-FactoMineR]. The hierarchical clustering between treatments and genotypes were computed with the Euclidean distance [@le2008FactoMineR].
+Statistical analysis and graphs were performed in the statistical software R [@R-base]. The analysis of variance (ANOVA) was performed to evaluate the differences between the factors and the comparison of the means with the Student-Newman-Keuls test (p<0.05) with agricoale and GerminaR package [@lozano-isla2019GerminaR; @R-agricolae]. A t-student test between well water and water deficit treatment (p<0.05). For the multivariate analysis, correlation and principal components analysis were performed with FactoMineR and heatmaply package [@galili2018heatmaply; @R-FactoMineR]. The hierarchical clustering between treatments and genotypes were computed with the Euclidean distance [@le2008FactoMineR].
 
 # Result
+
+> Include graph? tdw | twue | spad_83 / hi | sla | spad_28
 
 ## Treatment application
 
@@ -199,9 +196,41 @@ The physiological mechanisms of potato plants response to various environmental 
 
 > Lo que desmuestra que se puede usar hi and spad para saleccionar papas con mayor efficiencia de uso de agua para formar tuberculos
 
+[@rolando2015Leaf]{
+
+However, in the three genotypes tested, an increase in greenness was noted one week after the initiation of water restriction and maintained for 4–6 weeks.
+
+In our work, a decrease in leaf growth a week after the initiation of water restriction coincided with the leaf greenness increase. Reduced leaf growth under water restriction was evidenced by both reduced leaf length and total above ground biomass accumulation, the latter measured three weeks after the restriction started. 
+
+Unica had the highest DSI, its final TB under water restriction was higher than Désirée. DSI compares the ratio between TB under water restricted and control treatments, thus Unica higher DSI is the result of a much higher TB under control treatment than Désirée. This higher TB, among other reasons, is a result of a longer vegetative period during which the crop accumulated biomass (Tardieu, 2013).
+
+Finally, as the increase of greenness promoted by water stress likely depends on the stage of application and intensity of water restriction, further research on the timing effect of drought stress on the senescence process and its impact on the photosynthetic apparatus should be considered.
+
+}
+
+
+Drought stress reduce the harvest index in 11% for WD plants, similar results were found in potato _(Schafleitner et al., 2007)_ with 14% under terminal drought and more drastic with 57% Jerusalem artichoke [@ruttanaprasert2016Effects] showing that potato have moderate reduction under drought stress including in the present study that the number of tuber did not have variation between treatments.
+
+_Jefferies (1992)_ found that long term drought stress increased harvest index of potato in some early maturity varieties (from 0.41 to 0.50) but reduced one late maturity variety (from 0.54 to 0.25). 
+
+Nevertheless, harvest index of a tuber crop is an important trait determining yield under drought conditions _(Deguchi et al., 2010)_.
+
+
+[@saravia2016Yield]{
+
+UNICA was the most efficient genotype at using the N present in the soil and tolerating drought stress, while Achirana-INTA was most affected by drought in terms of NUE. 
+
+Both UNICA and CIP397077.16 tolerated drought in terms of yield maintenance and used the N present in the soil more efficiently, also under drought, than Achirana-INTA.
+
+@saravia2016Yield show that UNICA and CIP397077.16 while they did not have difference for harvest index under well water and drought treatment the Chl~spad~ can discriminate the relation between the tuber yield under drought stress with less Chl~spad~ shown that Chl~spad~ could allow to discriminate drought tolerance genotypes under field conditions.
+
+}
+
+
+
 # Conclusions
 
-The genotypes with high hi, low spad content under WD and WW conditions present mechanisms for drought avoiding. Additionally, tolerant genotypes like CIP397077.16, CIP398190.89, and CIP392797.22 (UNICA) preferentially use available water for tuber production rather than above ground biomass represented by their high twue. Traits like spad and hi are associated to yield under drought stress and could be useful as selection criteria for first stage breeding programs because are easy and chip to measure in large populations. However, there are additional strategies of the below-ground plant parts that need to be explored for their role in yield stability under water stress conditions.
+The genotypes with high hi, low spad content under WD present mechanisms for drought avoiding. Additionally, tolerant genotypes like CIP398208.620, CIP398098.119. CIP397077.16 and CIP392797.22 (UNICA) preferentially use available water for tuber production rather than above ground biomass represented by their high twue. Traits like spad and hi are associated to tuber yield under drought stress and could be useful as selection criteria for first stage breeding programs because are easy and chip to measure in large populations. However, there are additional strategies of the below-ground plant parts that need to be explored for their role in yield stability under water stress conditions.
 
 # Acknowledgments
 

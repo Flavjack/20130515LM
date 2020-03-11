@@ -65,6 +65,17 @@ fb <- xl %>%
 # Tables {-}
 '}`
 
+<!-- # List of abbreviations {-} -->
+
+<!-- ```{r abrv} -->
+<!-- xl %>%  -->
+<!--   readxl::read_excel(sheet = "var") %>%  -->
+<!--   filter(include == "x") %>%  -->
+<!--   select(Variable, Abbreviation) %>%  -->
+<!--   mutate_at("Abbreviation", "tolower") %>%  -->
+<!--   kable() -->
+<!-- ``` -->
+
 \newpage
 
 ```{r gnt}
@@ -72,7 +83,7 @@ fb <- xl %>%
 xl %>% 
   readxl::read_excel("gnt") %>% 
   dplyr::select(Number, Genotypes, Adaptability, "Growning period" = GPL, "Heat tolerance" = Heat, "Dry matter (%)") %>% 
-  kable(caption = "Potatos (*Solanum tuberosum* L.) genotypes used for water deficit experiment with  13 lines from advanced breeding population at International Potato Center (CIP) and two comercial varieties.")
+  kable(caption = "Potatos (*Solanum tuberosum* L.) genotypes used for water deficit experiment with 13 lines from advanced breeding population at International Potato Center (CIP) and two comercial varieties.")
 
 ```
 
@@ -93,12 +104,11 @@ fb %>%
 
 ```
 
-
 `r if (knitr::is_html_output()){'
 # Figures {-}
 '}`
 
-```{r srl, fig.cap= "Soil transpiration fraction and transpiration during the experiment"}
+```{r srl, fig.cap= "(A) Soil transpiration fraction (ftsw; %) and (B) Daily transpiration in 15 potato genotypes under well-watered (WW) and water deficit (WD) experiment."}
 
 fts <- xl %>% 
   readxl::read_excel("ftsw") %>%
@@ -163,7 +173,143 @@ include_graphics("files/fig_trans.png")
 
 \newpage
 
-```{r mva, fig.align='center', fig.cap="Principal component analysis"}
+```{r mpv, fig.cap= "Variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) treatment. (A) Tuber dry weight (tdw; g). (B) Specific Leaf Area (sla; cm^2^g^-1^). (C) Harvest Index (hi). (D) Tuber Water Use Efficiency (twue; gl^-1^). D-E Chlorophyll Concentration (spad)."}
+
+# tdw
+av <- aov(tdw ~ gnt*treat + block, fb)
+#summary(av)
+mc <- GerminaR::ger_testcomp(av, c("gnt","treat"))
+
+tdw <- mc %>% 
+  plot_gr(type = "bar", color = F,
+          x = "gnt", x_lab =  "",
+          y = "mean", y_lab = "Tuber dry weight (g)",
+          group = "treat", g_lab = "Treatment",
+          g_brk = "Water Deficit (WD)  Well Watered (WW)",
+          lgd = "top",
+          y_lmt = c(0, 100), y_brk = 20,
+          erb =  T
+          ) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+# sla
+av <- aov(sla ~ gnt*treat+ block, fb)
+#summary(av)
+mc <- GerminaR::ger_testcomp(av, c("gnt","treat"))
+
+sla <- mc %>% 
+  plot_gr(type = "bar", color = F,
+          x = "gnt", x_lab =  "",
+          y = "mean", y_lab = "Specific leaf area (cm^2 g^-1)",
+          group = "treat", g_lab = "Treatment",
+          g_brk = "water deficit (WD)  well watered (WW)",
+          lgd = "none",
+          y_lmt = c(0, 800), y_brk = 200,
+          erb =  T
+          ) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+# hi
+av <- aov(hi ~ gnt*treat + block, fb)
+#summary(av)
+mc <- GerminaR::ger_testcomp(av, c("gnt","treat"))
+
+hi <- mc %>% 
+  plot_gr(type = "bar", color = F,
+          x = "gnt", x_lab =  "",
+          y = "mean", y_lab = "Harvest Index",
+          group = "treat", g_lab = "Treatment",
+          g_brk = "water deficit (WD)  well watered (WW)",
+          lgd = "none",
+          y_lmt = c(0, 1),
+          # y_brk = 0.2,
+          erb =  T
+          ) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+# twue
+av <- aov(twue ~ gnt*treat + block, fb)
+#summary(av)
+mc <- GerminaR::ger_testcomp(av, c("gnt","treat"))
+
+twue <- mc %>% 
+  plot_gr(type = "bar", color = F,
+          x = "gnt", x_lab =  "",
+          y = "mean", y_lab = "Tuber water use efficiency (g.l^-1)",
+          group = "treat", g_lab = "Treatment",
+          g_brk = "water deficit (WD)  well watered (WW)",
+          lgd = "none",
+          y_lmt = c(0, 10),
+          y_brk = 2,
+          erb =  T
+          ) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+# spad_29
+
+av <- aov(spad_29 ~ gnt*treat + block, fb)
+#summary(av)
+mc <- GerminaR::ger_testcomp(aov = av, comp = c("gnt","treat"))
+
+spad_29 <- mc %>% 
+  plot_gr(type = "line", color = F,
+          x = "gnt", x_lab =  "",
+          y = "mean", y_lab = "Chlorophyll concentration (spad)",
+          group = "treat", g_lab = "Treatment",
+          g_brk = "water deficit (WD)  well watered (WW)",
+          lgd = "none",
+          y_lmt = c(30, 70),
+          y_brk = 5,
+          erb =  T
+          ) 
+
+# spad_83
+
+av <- aov(spad_83 ~ gnt*treat + block, fb)
+#summary(av)
+
+mc <- GerminaR::ger_testcomp(aov = av, comp = c("gnt","treat"))
+
+spad_83 <- mc %>% 
+  plot_gr(type = "line", color = F,
+          x = "gnt", x_lab =  "",
+          y = "mean", y_lab = "Chlorophyll concentration (spad)",
+          group = "treat", g_lab = "Treatment",
+          g_brk = "water deficit (WD)  well watered (WW)",
+          lgd = "none",
+          y_lmt = c(30, 70),
+          y_brk = 5,
+          erb =  T
+          ) 
+
+plot <- ggdraw(xlim = c(0.0, 1), ylim = c(0.0, 1)) +
+  draw_plot(tdw, width = 0.49, height = 0.35, x = 0.0, y = 0.6) +
+  draw_plot(sla, width = 0.49, height = 0.3, x = 0.5, y = 0.6) +
+  draw_plot(hi,  width = 0.49, height = 0.3, x = 0.0, y = 0.3) +
+  draw_plot(twue, width = 0.49, height = 0.3, x = 0.5, y = 0.3) +
+  draw_plot(spad_29, width = 0.49, height = 0.3, x = 0.0, y = 0.0) +
+  draw_plot(spad_83, width = 0.49, height = 0.3, x = 0.5, y = 0.0) +
+          draw_plot_label(
+            label = c("A", "B", "C", "D", "E", "F"),
+            x = c(0.06, 0.56, 0.06, 0.56, 0.06, 0.56),
+            y = c(0.89, 0.89, 0.59, 0.59, 0.29, 0.29))
+
+save_plot(plot = plot, "files/fig_mpv.png", base_height = 12, base_width = 12)
+include_graphics("files/fig_mpv.png")
+
+```
+
+\newpage
+
+```{r mva, fig.align='center', fig.cap="Principal component analysis (PCA) from variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) treatment. (A) PCA for the variables. (B) PCA for the genotypes under WW and WD. Where: Tuber dry weight (tdw; g), Specific Leaf Area (sla; cm^2^g^-1^), Harvest Index (hi), Tuber Water Use Efficiency (twue; gl^-1^),  Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber number (ntub; N°), Root length (rdl; cm), Total transpiration (trs; ml), Leaf area (lfa; cm~2~), Total dry biomass (tdb, g), Water use efficiency (wue; gl~-1~)."}
 
 mvd <- fb %>%
   select(-block, -gnt) %>%
@@ -244,7 +390,7 @@ include_graphics("files/fig_mv.png")
 
 \newpage
 
-```{r cor, fig.cap= "Correlation analysis"}
+```{r cor, fig.cap= "Correlation analysis from variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) treatment. Where: Tuber dry weight (tdw; g), Specific Leaf Area (sla; cm^2^g^-1^), Harvest Index (hi), Tuber Water Use Efficiency (twue; gl^-1^),  Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber number (ntub; N°), Root length (rdl; cm), Total transpiration (trs; ml), Leaf area (lfa; cm~2~), Total dry biomass (tdb, g), Water use efficiency (wue; gl~-1~)."}
 
 cr <- fb %>% 
   group_by(gnt, treat) %>% 
