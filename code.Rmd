@@ -4,6 +4,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+<!-- Lista de revistas -->
+<!-- - Planta -->
+
+
+
 ```{r import, include=FALSE}
 # source("cnfg/debug.r")
 source("cnfg/setup.r")
@@ -175,7 +180,7 @@ include_graphics("files/fig_trans.png")
 
 \newpage
 
-```{r mpv, fig.cap= "Variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) treatment. (A) Tuber dry weight (tdw; g). (B) Specific Leaf Area (sla; cm^2^g^-1^). (C) Harvest Index (hi). (D) Tuber Water Use Efficiency (wue~t~; gl^-1^). D-E Chlorophyll Concentration (spad)."}
+```{r mpv, fig.cap= "Variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) treatment. (A) Tuber dry weight (tdw; g). (B) Specific Leaf Area (sla; cm^2^g^-1^). (C) Harvest Index (hi). (D) Tuber Water Use Efficiency (wue~t~; gl^-1^). D-E Chlorophyll Concentration (spad). Error bars indicate standard error (n = 5). dap is days after planting."}
 
 # tdw
 av <- aov(tdw ~ gnt*treat + block, fb)
@@ -196,10 +201,10 @@ tdw <- mc %>%
           ) +
   scale_fill_grey("Treatment",
                   labels = c("Water Deficit (WD)", "Well Watered (WW)"), 
-                  start = 0.5, end = 1) +
-  theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank())
+                  start = 0.5, end = 1) 
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
 
 # sla
 av <- aov(sla ~ gnt*treat+ block, fb)
@@ -219,10 +224,10 @@ sla <- mc %>%
           ) +
   scale_fill_grey("Treatment",
                   labels = c("Water Deficit (WD)", "Well Watered (WW)"), 
-                  start = 0.5, end = 1) +
-  theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank())
+                  start = 0.5, end = 1) 
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
 
 # hi
 av <- aov(hi ~ gnt*treat + block, fb)
@@ -243,10 +248,10 @@ hi <- mc %>%
           ) +
   scale_fill_grey("Treatment",
                   labels = c("Water Deficit (WD)", "Well Watered (WW)"), 
-                  start = 0.5, end = 1) +
-  theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank())
+                  start = 0.5, end = 1) 
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
 
 # twue
 av <- aov(wue_t ~ gnt*treat + block, fb)
@@ -267,10 +272,10 @@ twue <- mc %>%
           ) +
   scale_fill_grey("Treatment",
                   labels = c("Water Deficit (WD)", "Well Watered (WW)"), 
-                  start = 0.5, end = 1) +
-  theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank())
+                  start = 0.5, end = 1) 
+  # theme(axis.title.x=element_blank(),
+  #       axis.text.x=element_blank(),
+  #       axis.ticks.x=element_blank())
 
 # spad_29
 

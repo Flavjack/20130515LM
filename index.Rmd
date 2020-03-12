@@ -37,6 +37,9 @@ xl <- gs %>% drive_download("files/fieldbook.xlsx", overwrite = T) %>% pluck(2)
 
 # Abstract {-}
 
+The physiological responses of potato (Solanum tuberosum L) cultivars to soil drought at the tuberization phase and their impact on agronomically important traits were investigated in potted plants under semi-controlled conditions.
+
+
 Drought stress is a serious constraint affecting yields of almost all crops worldwide. The problem is only expected to get worse with water deficits stemming from climate change and population expansion. In this study, we aim to find traits that can help understand the relation between traits and mechanisms of tolerance in potato, and provide useful information for selection of drought tolerance in potato breeding programs. In order to explore the different responses of potato under drought stress, we evaluated fifteen genotypes under well watered (WD) and water deficit (WD) conditions for a range of agro-physiological traits. Tolerant genotypes such as CIP397077.16, CIP398190.89, and CIP392797.22 (UNICA) were able to preferentially put limited water toward tuber production rather than biomass. Lower specific leaf area (sla) and relative water content (rwc) under WD, and that potato genotypes with the ability to maintain high  harvest index (hi) and tuber water use efficiency (wue~t~). We also found correlation between hi and wue~t~ was 0.92 with a euclidean distance 0.91 and a negative correlation with spad (-0.7) at 38 days after treatment application. 
 
 **Key words:** abiotic stress, harvest index, lisimeter, drought tolerance, SPAD
@@ -61,13 +64,58 @@ This study elucidate the mechanisms for drought tolerance and yield in fifteen a
 
 > Include in the intro
 
+Potato is a food security crop grown for its tubers as a staple food source. The potato tuber is a low-fat source of carbohydrates, and is formed from differentiation of the stolon tissue (CIP, 2013).
+
+
+Potato (Solanum tuberosum L.) is the fourth most important food crop worldwide next to maize (Zea mays L.), rice (Oryza sativa L.) and wheat (Triticum aestivum L.), with an annual production of around 380 million tons (FAO 2017).
+
+In potato, tolerance to drought is a very complex trait (Anithakumari et al. 2011, 2012). About 2000 differentially expressed genes were revealed in potato in response to water deficit (Watkinson et al. 2006). For quantitative traits, the phenotype is controlled by genes derived from both parents. 
+
+Under field conditions, drought caused drastic losses in potato tuber yield and/or quality (Lahlou et al. 2003, Stark et al. 2013). Climate change increases the need to identify potato genotypes that exhibit high tolerance to abiotic stresses (Monneveux et al. 2013)
+
+Potato (Solanum tuberosum) is an important crop around the world, accounting for a significant amount of human food consumption. But the growth and productivity of potato are
+severely affected by drought stress. [@yang2016Identification]. 
+
+The Chl content increased in the Es cultivar under DS from 5 to 7 DAT compared to WW plants [@rodriguez-perez2017Drought]. 
+
+decrease in the photosynthetic rate under water deficit conditions has been reported in plants such
+as potato (Solamun tuberosum L.) (Moorby et al., 1975 Schapendonk et al., 1989; Ierna and Mauromicale, 2006; Liu et al., 2006; Ramírez et al., 2016). 
+
+Stomatal and non-stomatal limitations cause an imbalance between the two phases of photosynthesis and an increase in the production of reactive oxygen species (ROS) (Sanchez-Rodríguez et al., 2010; Farhad et al., 2011). 
+
+The decrease in photosynthesis resulting from drought stress reduces growth, affecting parameters such as foliar area, total dry mass, and distribution of photoassimilates within the plants (Chaves et al., 2002; Lahlou et al., 2003).
+
+
+Differences have been observed in the effects caused by drought stress related to morphological, physiological, biochemical, and molecular changes among species and cultivars (Tourneux et al., 2003a; Liu et al., 2005; Liu et al., 2006; Graca et al., 2010). Likewise, under drought stress, the tolerance of some genotypes has been associated with rapid recuperation after rehydration (Hu et al., 2010; Zegada-Lizarazu and Monti, 2013).
+
+
+Potato plants could respond to drought stress very early and develop strategies to cope with it (Farhad et al., 2011; Monneveux et al., 2013). Therefore, physiological behavior of the plants under this stress could provide information on their capacity to tolerate drought stress.
+
+
+The increase in Chl content found in Es could be associated with the decrease in leaf growth and water turgor loss, as has been described in potato (Teixeira and Pereira, 2007; Ramírez et al., 2014; Rolando et al., 2015)
+
+
+The Car/Chl ratio in all cultivars under drought stress was also higher than that in WW plants [@rodriguez-perez2017Drought]. The Car content and Car/Chl ratio are correlated with the capacity of light protecting mechanisms (Boardman, 1977). 
+
+
+Potato plants (Solanum tuberosum) have relatively shallow root systems and, consequently, potato growth and yield depend on regular rainfall and are sensitive to water shortages (Wisconsin University 2002, Iwama 2008, Joshi et al. 2016).
+
+The potato (Solanum tuberosum L.), the fourth most important food crop in the world (FAO, 2015; Ramirez et al., 2015), is sensitive to periodic water shortage and soil drought throughout the growth and development, but the most critical growth phase is tuber initiation (Monneveux, Ramirez, & Pino, 2013; Sprenger et al., 2016).
+
+
+Thus, the occurrence of soil water deficits in dry areas and temperate climates results in a reduction of tuber yield and quality (Obidiegwu et al., 2015).
+
+The modern potato cultivars are highly sensitive to soil drought (Sprenger et al., 2016) although variability in response to soil drought is observed (Monneveux et al., 2013; Sołtys-Kalina, Plich, Strzelczyk-Zyta, _ Sliwka,  & Marczewski, 2016; Sprenger et al., 2016).
+
+Potato (Solanum tuberosum L.) is the world’s third most important food crop (Bradshaw 2010) with a total global cultivation land area of about 20 million hectares (Haverkort et al. 2013). However, potato plant is also drought sensitive (Obidiegwu et al. 2015).
+
 # Materials and Methods
 
 ## Plant material
 
 Thirteen potato clones were selected from advanced breeding population collection at International Potato Center (CIP) and two commercial varieties, Table (\@ref(tab:gnt)). UNICA (CIP392797.22) and Achirana INTA (CIP720088) known for their earliness and drought tolerance _(Schafleitner et al. 2007)_. UNICA has a good response to warm and dry environments _(Gutiérrez et al., 2007)_. 
 
-## Experimental design and conditions
+## Experimental conditions
 
 The experiment was carried out in complete randomize block design where the first factor was the two irrigation treatments: well-watered (WW), treatment where the moisture was maintained at field capacity and water deficit (WD) and the second factor were compound by the fifteen potato genotypes, Table (\@ref(tab:gnt)).  Each treatment consisted of five replicates with one potato plant for each experimental unit. 
 
@@ -91,7 +139,9 @@ Transpiration was calculated by weighing the pots every two days in the between 
 
 **Chlorophyll concentration (spad).** The chlorophyll content of the plant was evaluated by taking SPAD measurements using a SPAD-502 chlorophyll meter (Konica Minolta Sensing, Inc., Osaka, Japan) from the third youngest fully expanded leaf from three points (upper, middle and lower leaflet of a leaf). Individual readings of leaflets were averaged to represent individual measurement of a leaf. The evaluations were done on light adapted leaves at 29, 59, 76, and 83 day after planting (dap). SPAD values were highly significantly correlated with a + b chlorophyll concentration per unit leaf area ($\mu$g cm~−2~) as determined by _Lichtenthaler and Wellburn (1983)_.
 
-**Post-harvest traits.** The harvest was at 90 dap. The plants were separated in four components: leaves, stems, roots and tubers. The dry weight (g) components were determined by drying them at 80°C for 3 days in a forced air oven: leaf (ldw), stem (sdw), root (rdw), tuber (tdw). The leaf area (lfa) of the plants was measured in cm^2^ by taking photographs of all the leaves arranged on a wooden board and analyzing the pictures using ImageJ software [@zarate-salazar2018Comparacao]. 
+chlorophyll content was scored with the Minolta SPAD 502 Chlorophyll Meter to obtain the relative concentration of chlorophyll molecules per unit area of the leaf surface (Ling et al., 2011) and an impression of the progress of senescence as plants mature (Li et al., 2014)
+
+**Post-harvest traits.** The harvest was at 90 dap. The plants were separated in four components: leaves, stems, roots and tubers. The dry weight (g) components were determined by drying them at 80°C for 3 days in a forced air oven: leaf (ldw), stem (sdw), root (rdw), tuber (tdw). The leaf area (lfa) of the plants was measured in cm^2^ by taking photographs of all the leaves arranged on a wooden board and analyzing the pictures using ImageJ software [@zarate-salazar2018Comparacao; @rueden2017ImageJ2]. 
 
 **Indices.** The harvest index (hi) was calculated as the ratio of tdw related to the total dry biomass (tdb) and specific leaf area (sla) was calculated by dividing the leaf area (lfa) with lead dry weight (ldw). 
 
@@ -221,6 +271,62 @@ Both UNICA and CIP397077.16 tolerated drought in terms of yield maintenance and 
 
 }
 
+
+A fast screening tool would be helpful in selecting valuable genotypes with defined growth strategies that translate to drought tolerance and are suitable for experiments and/or breeding [@soltys-kalina2016effect].
+
+
+Differentiation of the architecture of the potato root system were found in several potato cultivars in the field [@zarzynska2017Differences]. but in our case root lengt and root dry weight have the no statistical differences. In our tent experiment, root growth of all cultivars was limited by the volume of plastic bags, in which plants were grown. Among tested potato cultivars no large differences in plant architecture or canopy size were observed [@soltys-kalina2016effect].
+
+
+
+The closure of stomata also reduces the rate of transpiration and results in the retention of water by the plant. Taken together, lowered rates of transpiration and photosynthesis directly affect water use efficiency (WUE) and drought tolerance (Chaerle, Saibo, & van der Straeten, 2005).
+
+
+From an agronomical point of view, maintaining yield levels during drought is crucial for breeders, and thus, the drought tolerance of cultivars has been quantified from tuber yield under irrigated and soil drought conditions [@boguszewska-mankowska2018Divergent].
+
+In the potato, yield is more affected by water deficiency during tuber formation than any other developmental stage (Ierna & Mauromicale, 2012; Obidiegwu et al., 2015).
+
+Among the earliest plant responses to soil water deficiency is stomatal closure protecting the plant against excessive loss of water but it concomitantly restricts CO2 gas exchange (Feller & Vaseva, 2014; Obidiegwu et al., 2015). 
+
+A substantial increase in the efficiency of water use by Gwiazda was achieved by early stomata closure, and the sensitivity to ABA resulted in a significant reduction in transpiration rate. 
+
+The fluorescence quantum yield (Fv/Fm), the most widely used photosystem II efficiency indicator, did not change in tolerant potato cultivars (Gwiazda and Tajfun) under drought, but a small decrease in the Fv/ Fm ratio was associated with a lower drought tolerance in sensitive cultivars (Owacja and Oberon) [@boguszewska-mankowska2018Divergent]. 
+
+Potato genotypes did not show differences in Fv/Fm values even at relative water deficits below 40% (Tourneux, Devaux, Camacho, Mamani, & Ledent, 2003) and during field drought, which were sufficient to lower the yield of tubers (Schafleitner et al., 2007). This indicates that photosystem II was unaffected by water deficiency, which implies that chlorophyll fluorescence measurements were unable to distinguish between drought-tolerant and -susceptible potato cultivars [@boguszewska-mankowska2018Divergent].
+
+
+Young leaves generally have the highest metabolic activity and presumably the highest photosynthetic capacity under drought as they are less affected by turgor losses than older ones. Hence, synthesis of drought-adaptive proteins such as dehydrins and heat shock proteins is preferentially maintained in younger leaves contributing to increasing total protein contents [@meise2018Impact].
+
+High N contents in leaves were negatively correlated with RWC. Therefore, an excess of leaf N promoted turgor decline under drought emphasizing the importance of a well-balanced N fertilization under water limitation [@meise2018Impact; @saravia2016Yield]. 
+
+breeding of potatoes with advanced drought tolerance by improvement of OA is considered doubtful. Other traits with relevance for drought tolerance as possibly proline accumulation and extended root systems appear more promising for improving drought tolerance in potatoes [@meise2018Impact].
+
+In potato plant, an optimal xylem-phloem transport interaction is critical considering the competition for photoassimilates between the above-ground and underground tissues (Kooman and Rabbinge 1996). 
+
+Drought conditions interfere with stem structure and availability of transport materials (Banik et al. 2016; Zheng et al. 2009).
+
+However, our fndings [@aliche2020Morphological] support the hypothesis that stem growth reduction during dehydration may also serve an advantageous purpose for the plants—to reduce transport distance (Koch et al. 2004). This suggests that stem growth reduction under limited water availability can facilitate an efcient water and nutrient transport in plants. 
+
+The stomatal closure of source leaves under dehydration in our greenhouse study as was observed in Biogold and Hansa [@aliche2020Morphological] may imply that the sink leaves needed to adapt carbon fxation rate, as was shown in another study where younger leaves maintained their stomatal conductance and photosynthesis despite the decline of these attributes in older leaves (Vos and Oyarzun 1987).
+
+ABA signalling is induced by osmotic stress, and is also known to induce the expression of dehydrins (osmoprotectants), which function as chaperones in plant drought responses (Hanin et al., 2011). In our study, we observed that the expression of a dehydrin gene, TAS14, was upregulated under drought up to several hundred-folds [@aliche2020Morphological].
+
+In our study [@aliche2020Morphological], however, the chlorophyll fluorescence of drought-stressed plants did not significantly differ from those of the irrigated plants. Jefferies (1994) demonstrated in field grown potato (cv. Maris Piper) that drought had no significant effect on PSII function because excess light energy was dissipated by photorespiration. 
+
+The dark green-coloured drought-stressed leaves also had higher chlorophyll density [@aliche2020Morphological]. 
+
+
+Chlorophyll Content of Source leaves and Chlorophyll Content of Sink leaves have a positive relation with non-iirgated plant and negative relation with tuber dry weight [@aliche2020Morphological]. Chlorophyll Content could be interesting tool for screen drought tolerance genotypes.
+
+Profiling of drought-resistance mechanisms and identification of drought-resistance genes are helpful ways to achieve this goal [@chen2020Transcriptome].
+
+
+Twenty-three drought-responsive genes were identified by comparing the transcriptomes of drought-tolerant and drought-sensitive potato varieties under water stress [@chen2020Transcriptome]. 
+
+
+Some genes will have memory effect on stress in this process and will show higher expression level when drought occurs again [@chen2020Transcriptome].
+
+Diploid potato species have a wide genetic background, making it easier to isolate drought-resistant genes and analyze the molecular mechanisms of drought resistance, which can be as an effective material for drought resistance research in potato [@khan2015Multiple; @yang2019Transcriptome].
 
 
 # Conclusions
