@@ -417,11 +417,12 @@ include_graphics("files/fig_mv.png")
 ```
 
 
+\newpage
+
 `r if (knitr::is_html_output()){'
 # Supplementary information {-}
 '}`
 
-\newpage
 
 ```{r cor, fig.cap= "Correlation and cluster analysis from variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) treatment. Where: Tuber dry weight (tdw; g), Specific Leaf Area (sla; cm^2^g^-1^), Harvest Index (hi), Tuber Water Use Efficiency (wue~t~; gl^-1^),  Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber number (ntub; N°), Root length (rdl; cm), Total transpiration (trs; ml), Leaf area (lfa; cm^2^), Total dry biomass (tdb; g), Biomass water use efficiency (wue~b~; gl^-1^)."}
 
