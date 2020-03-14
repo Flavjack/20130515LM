@@ -92,7 +92,7 @@ Transpiration was calculated by weighing the pots every two days in the between 
 
 ## Statistical analysis
 
-Statistical analysis and graphs were performed in the statistical software R [@R-base]. The analysis of variance (ANOVA) was performed to evaluate the differences between the factors and the comparison of the means with the Student-Newman-Keuls test (p<0.05) with agricoale and GerminaR package [@lozano-isla2019GerminaR; @R-agricolae]. A t-student test between well water and water deficit treatment (p<0.05). For the multivariate analysis, correlation and principal components analysis were performed with FactoMineR and heatmaply package [@galili2018heatmaply; @R-FactoMineR]. The method for compute the hierarchical clustering between treatments and genotypes was euclidean distance [@le2008FactoMineR].
+Statistical analysis and graphs were performed in the statistical software R [@R-base]. The analysis of variance (ANOVA) was performed to evaluate the differences between the factors and the comparison of the means with the Student-Newman-Keuls test (p<0.05) with agricoale and GerminaR package [@lozano-isla2019GerminaR; @R-agricolae]. A t-student test between well water and water deficit treatment (p<0.05). For the multivariate analysis, correlation and principal components analysis were performed with FactoMineR and heatmaply package [@galili2018heatmaply; @R-FactoMineR]. The method for compute the hierarchical clustering between treatments and genotypes was euclidean distance [@le2008FactoMineR]. The code and statistical analysis for reproducible analysis are available in the following github repository <https://github.com/Flavjack/20130515LM>.
 
 # Result
 
