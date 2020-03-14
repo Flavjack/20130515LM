@@ -371,7 +371,22 @@ A previous study reported that chlorophyll was a useful factor for assessing env
 
 Potato is the most important non-cereal food crop worldwide (Pino et al., 2010)
 
+Potato (Solanum tuberosum L.) is the third most important crop species worldwide after rice and wheat in terms of human consumption, and its global production exceeds 388 million metric tons per year (Deuvax et al. 2014, FAOSTAT 2019)
 
+[@plich2020Relations] It is well known that photosynthetic activity is reduced when plants are exposed to environmental stress (Retuerto et al. 2006; Prinzenberg et al. 2018). Drought stress reduces plant growth by reducing photosynthesis, which is mainly caused by stomatal limitation. Decreases in stomatal conductance reduce water loss through transpiration, but it also decreases carbon dioxide uptake, reducing the production of photoassimilates and plant growth.
+
+[@plich2020Relations] These results suggest that measurements of chlorophyll a fluorescence may serve as a useful tool for estimating the level of tolerance to drought stress in potato.
+
+
+With the change in environment and the scarcity of resources, abiotic stress has become an important factor which restricts the growing development of plants, having serious impact on quality of the agricultural products (Thao and Tran, 2012).
+
+Drought is one of the most uncontrollable and pervasive factors (Obidiegwu et al., 2015).
+
+[@qi2020potato] In this study, it found that the StRFP2 gene was significantly up-regulated during drought stress which shows similar result as in previous transcriptome studies in potato under drought stress. 
+
+[@reddy2020Leaf] Increased water use efficiency (WUE) by virtue of higher carbon assimilatory capacity can significantly circumvent this trade-off. Here, we report leaf mass area (LMA) has an important canopy architecture trait which when combined with superior carboxylation efficiency (CE) would achieve higher water productivity in rice.
+
+[@reddy2020Leaf]  Increased WUE through improved chloroplast capacity to fix carbon has a greater relevance in enhancing water productivity in rice.
 
 # Conclusions
 
