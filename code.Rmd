@@ -180,7 +180,7 @@ include_graphics("files/fig_trans.png")
 
 \newpage
 
-```{r mpv, fig.cap= "Variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) treatment. (A) Tuber dry weight (tdw; g). (B) Specific Leaf Area (sla; cm^2^g^-1^). (C) Harvest Index (hi). (D) Tuber Water Use Efficiency (wue~t~; gl^-1^). D-E Chlorophyll Concentration (spad). Error bars indicate standard error (n = 5). dap is days after planting."}
+```{r mpv, fig.cap= "Variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) treatment. (A) Tuber dry weight (tdw; g). (B) Leaf Area (lfa; cm^2^). (C) Harvest Index (hi). (D) Tuber Water Use Efficiency (wue~t~; gl^-1^). D-E Chlorophyll Concentration (spad). Error bars indicate standard error (n = 5). dap is days after planting."}
 
 # tdw
 av <- aov(tdw ~ gnt*treat + block, fb)
@@ -206,19 +206,20 @@ tdw <- mc %>%
   #       axis.text.x=element_blank(),
   #       axis.ticks.x=element_blank())
 
-# sla
-av <- aov(sla ~ gnt*treat+ block, fb)
+# lfa
+av <- aov(lfa ~ gnt*treat+ block, fb)
 #summary(av)
-mc <- GerminaR::ger_testcomp(av, c("gnt","treat"))
+mc <- GerminaR::ger_testcomp(av, c("gnt","treat")) %>% 
+  mutate(mean = mean/1000, ste = ste/1000)
 
-sla <- mc %>% 
+lfa <- mc %>% 
   plot_gr(type = "bar", color = F,
           x = "gnt", x_lab =  "",
-          y = "mean", y_lab = "Specific leaf area (cm^2 g^-1)",
+          y = "mean", y_lab = "Leaf area (cm^2*10^3)",
           group = "treat", g_lab = "Treatment",
           g_brk = "water deficit (WD)  well watered (WW)",
           lgd = "none",
-          y_lmt = c(0, 800), y_brk = 200,
+          y_lmt = c(0, 12), y_brk = 2,
           # sig = "sg",
           erb =  T
           ) +
@@ -326,7 +327,7 @@ spad_83 <- mc %>%
 
 plot <- ggdraw(xlim = c(0.0, 1), ylim = c(0.0, 1)) +
   draw_plot(tdw, width = 0.49, height = 0.35, x = 0.0, y = 0.6) +
-  draw_plot(sla, width = 0.49, height = 0.3, x = 0.5, y = 0.6) +
+  draw_plot(lfa, width = 0.49, height = 0.3, x = 0.5, y = 0.6) +
   draw_plot(hi,  width = 0.49, height = 0.3, x = 0.0, y = 0.3) +
   draw_plot(twue, width = 0.49, height = 0.3, x = 0.5, y = 0.3) +
   draw_plot(spad_29, width = 0.49, height = 0.3, x = 0.0, y = 0.0) +
