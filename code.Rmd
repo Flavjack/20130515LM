@@ -386,7 +386,6 @@ plot.PCA(pca,
          choix="var",
          title="",
          autoLab = "auto", 
-         cex = 0.8, 
          shadowtext = T)
 graphics.off()
 
