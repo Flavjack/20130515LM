@@ -241,7 +241,7 @@ rcc <- mc %>%
           group = "treat", g_lab = "Treatment",
           g_brk = "water deficit (WD)  well watered (WW)",
           lgd = "none",
-          y_lmt = c(0, 12), y_brk = 2,
+          y_lmt = c(0, 10), y_brk = 2,
           # sig = "sg",
           erb =  T
           ) +
