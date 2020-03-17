@@ -1,19 +1,6 @@
-However, there are additional strategies of the below-ground plant parts that need to be explored for their role in yield stability under water stress conditions.
 
 
-Additionally, in WD conditions, mineralization and supply of nutrients, especially N, is reduced, forcing the plant to use their resources efficiently as the only solution to not compromise yield (Motalebifard et al. 2013).
-
-
-At all growth stages, water stress reduces photosynthetic efficiency, but drought during tuber initiation and bulking has the most drastic effect on yield (Yuan et al., 2003; Onder et al., 2005). 
-
-Previous studies have shown that reduced soil water availability at diff erent growth stages results in earlier crop maturity (Karafyllidis et al., 1996) and decreased plant growth, tuber yield, tubers per plant and tuber size and quality (Lynch et al., 1995; Dalla Costa et al., 1997; Yuan et al., 2003).
-
-The 80% treatment was more efficient or equally efficient compared with the 100 and 120% treatments, and had higher WUE in the first year; thus, this level of irrigation can be recommended as a good strategy in situations with limited water supplies or high water costs. The 80% treatment was more efficient or equally efficient compared with the 100 and 120% treatments, and had higher WUE in the first year; thus, this level of irrigation can be recommended as a good strategy in situations with limited water supplies or high water costs [@camargo2015Potato]. 
-
-The leaf chlorophyll content was lower in the high-WUE group indicating that the higher net photosynthesis rate was not due to higher leaf-N status [@kaminski2015Contrasting]. 
-
-
-The leaf chlorophyll content was lower in the high-WUE group indicating that the higher net photosynthesis rate was not due to higher leaf-N status [@kaminski2015Contrasting]. 
+The leaf chlorophyll content was lower in the high-WUE group indicating that the higher net photosynthesis rate was not due to higher leaf-N status [@kaminski2015Contrasting].
 
 
 Agriculture accounts for around 85 % of global water consumption (Shiklomanov and Rodda 2003), and the amount of water used for crop irrigation is predicted to double by 2050 (Tilman et al. 2002).

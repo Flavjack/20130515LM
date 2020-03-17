@@ -172,8 +172,8 @@ plot <- ggdraw(xlim = c(0, 0.5), ylim = c(0,0.8))+
             x = c(0.47, 0.47),
             y = c(0.68, 0.38))
 
-save_plot(plot = plot, "files/fig_trans.png")
-include_graphics("files/fig_trans.png")
+save_plot(plot = plot, "files/fig_srl.png")
+include_graphics("files/fig_srl.png")
 
 ```
 
@@ -440,8 +440,8 @@ plot <- ggdraw(xlim = c(0.0, 1.0), ylim = c(0, 0.5))+
             x = c(0.03, 0.53),
             y = c(0.48, 0.48))
 
-save_plot(plot = plot, "files/fig_mv.png")
-include_graphics("files/fig_mv.png")
+save_plot(plot = plot, "files/fig_mva.png")
+include_graphics("files/fig_mva.png")
 
 ```
 
