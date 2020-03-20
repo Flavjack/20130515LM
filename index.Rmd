@@ -1,7 +1,7 @@
 ---
 title: "Impact of water deficit on growth, productivity, and water use efficiency in potato (*Solanum tuberosum* L.)"
 author:
-  - "Flavio Lozano-Isla$^{1}$, Evelyn Farfan-Vignolo$^{1}$, Raymundo Gutierrez$^{1}$, Raul Blas$^{2}$, Khan Awais$^{1*}$"
+  - "Flavio Lozano-Isla$^{1}$, Raymundo Gutierrez$^{1}$, Evelyn Farfan-Vignolo$^{1}$, Raul Blas$^{2}$, Khan Awais$^{1*}$"
   - "$^{1}$ International Potato Center (CIP), Av. La Molina 1895, La Molina, 1558, Peru."
   - "$^{2}$ Universidad Nacional Agraria La Molina (UNALM), Av. La Molina, 1558, Peru."
   - "$^{*}$Corresponding author."
