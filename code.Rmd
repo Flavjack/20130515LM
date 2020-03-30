@@ -85,7 +85,7 @@ xl %>%
 xl %>% 
   readxl::read_excel("gnt") %>% 
   dplyr::select(Number, Genotypes, Adaptability, "Growning period" = GPL, "Heat tolerance" = Heat, "Dry matter (%)") %>% 
-  kable(caption = "Potatos (*Solanum tuberosum* L.) genotypes used for water deficit experiment with 13 lines from advanced breeding population at International Potato Center (CIP) and two comercial varieties.")
+  kable(caption = "Potato genotypes (*Solanum tuberosum* L.) used for water deficit experiment with two commercial varieties and 13 genotypes from advanced breeding population developed by the International Potato Center (CIP).")
 
 ```
 
@@ -106,7 +106,7 @@ fb %>%
                                  "__wue_b__" = "__wue~b~__",
                                  "__wue_t__" = "__wue~t~__")) %>% 
   rename(`**Variable**` = `**Characteristic**`) %>% 
-  knitr::kable(caption = "Treatment comparison for seventeen variables between Well-Watered (WW) and Water Deficit (WD) in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; ml), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gl^-1^), Tuber Water Use Efficiency (wue~t~; gl^-1^). The vales are represented by the mean ± standard deviation with the significance under T-test with their respective p-values.")
+  knitr::kable(caption = "Treatment comparison for seventeen variables between Well-Watered (WW) and Water Deficit (WD) in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; ml), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gl^-1^), Tuber Water Use Efficiency (wue~t~; gl^-1^). The values are represented by the mean ± standard deviation with the significance under t-test with their respective p-values.")
 
 ```
 
@@ -114,7 +114,7 @@ fb %>%
 # Figures {-}
 '}`
 
-```{r srl, fig.cap= "(A) Soil transpiration fraction (ftsw; %) and (B) Daily transpiration in 15 potato genotypes under well-watered (WW) and water deficit (WD) condition."}
+```{r srl, fig.cap= "(A) Soil transpiration fraction (ftsw) and (B) Daily transpiration in 15 potato genotypes under well-watered (WW) and water deficit (WD) condition."}
 
 fts <- xl %>% 
   readxl::read_excel("ftsw") %>%
@@ -445,12 +445,13 @@ include_graphics("files/fig_mva.png")
 
 ```
 
-
 \newpage
 
 # Supplementary information {-}
 
-```{r cor, fig.cap= "Relationships among agro-morphological traits evaluated in well-watered (WW) and twater deficit (WD) condition based on Pearson correlation and Euclidean distance measured in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; ml), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gl^-1^), Tuber Water Use Efficiency (wue~t~; gl^-1^)."}
+> The number of the supplementary figure will be change manually at the manuscript submission.
+
+```{r cor, fig.cap= "Relationships among agro-morphological traits evaluated in well-watered (WW) and water deficit (WD) condition based on Pearson correlation and Euclidean distance measured in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; ml), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gl^-1^), Tuber Water Use Efficiency (wue~t~; gl^-1^)."}
 
 cr <- fb %>% 
   group_by(gnt, treat) %>% 
@@ -493,3 +494,74 @@ fb %>%
 }
 
 ```
+
+
+\newpage
+
+> Ajuste osmotico
+
+De acuerdo a los sugeridó incluí "ajuste osmotico" como "loa", que es el división entre rwc/lop, esta variable esta siendo proyectanda de forma opuesta a las 2 variables individuales (rwc y lop) y la agrupación de los invididuos continua siendo la misma. Ya que en el cuadrante donde esta el cluster 5, estan los genotipos con mayor rwc y mayor potencial osmotico. Lo que puedo observar que ese indice esta mas asociado a plantas bien regadas que al tratamiento sequía.
+
+
+```{r , fig.cap= "loa = rwc/lop"}
+mvd <- fb %>%
+  select(-block, -gnt) %>%
+  mutate(loa = rwc/lop) %>% 
+  group_by(treat, genotype) %>%
+  summarise_all(funs(mean), na.rm = TRUE) %>%
+  mutate(coln = paste(genotype, treat,  sep = "_")) %>%
+  column_to_rownames("coln") %>%
+  select(-genotype)
+
+pca <- PCA(mvd, graph = F, scale.unit = TRUE, quali.sup = 1)
+
+# PCA
+
+ppi <- 300
+png("files/pca_var_oa.png", width=8*ppi, height=8*ppi, res=ppi)
+plot.PCA(pca,
+         choix="var",
+         title="",
+         autoLab = "auto", 
+         shadowtext = T)
+graphics.off()
+
+
+# Analysis de Hierarchical Clustering
+
+clus <- HCPC(pca, nb.clust=-1, graph = F)
+
+ppi <- 300
+png("files/pca_clu_oa.png", width=8*ppi, height=8*ppi, res=ppi)
+
+plot.HCPC(clus,
+          choice = "map",
+          legend = list(bty = "y", x = "topright"), 
+          draw.tree = F)
+
+graphics.off()
+
+# sink("files/clu.txt")
+# clus$call$t$tree
+# clus$desc.ind
+# clus$desc.var
+# sink()
+
+pcv <- png::readPNG("files/pca_var_oa.png") %>%
+  grid::rasterGrob(interpolate = TRUE)
+
+pcc <- png::readPNG("files/pca_clu_oa.png") %>%
+  grid::rasterGrob(interpolate = TRUE)
+
+plot <- ggdraw(xlim = c(0.0, 1.0), ylim = c(0, 0.5))+
+  draw_plot(pcv,  width = 0.5, height = 0.5, x = 0.0, y = 0.0) +
+  draw_plot(pcc,  width = 0.5, height = 0.5, x = 0.5, y = 0.0) +
+          draw_plot_label(
+            label = c("A", "B"),
+            x = c(0.03, 0.53),
+            y = c(0.48, 0.48))
+
+save_plot(plot = plot, "files/fig_mva_oa.png")
+include_graphics("files/fig_mva_oa.png")
+```
+
