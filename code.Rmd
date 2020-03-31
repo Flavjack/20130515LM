@@ -449,8 +449,6 @@ include_graphics("files/fig_mva.png")
 
 # Supplementary information {-}
 
-> The number of the supplementary figure will be change manually at the manuscript submission.
-
 ```{r cor, fig.cap= "Relationships among agro-morphological traits evaluated in well-watered (WW) and water deficit (WD) condition based on Pearson correlation and Euclidean distance measured in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; ml), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gl^-1^), Tuber Water Use Efficiency (wue~t~; gl^-1^)."}
 
 cr <- fb %>% 
@@ -498,10 +496,25 @@ fb %>%
 
 \newpage
 
+# Comentarios de los autores {-}
+
+## Evelyn {-}
+
+Gracias por los comentarios y las correciones del manuscrito, describí mejor la metodología de irrigación e incluí las dosis de fertilización.
+
+> Your discussion is unclear. I suggest you to rewrite it using your conclusions as a way to drive the lector through your results.
+
+Estoy incluyendo subtitulos a las discusiones como para resaltar la información principal y orgaizar mejor las discusiones.
+    
+Para la numeración del material suplementarios, como lo estoy escribiendo en R, las figuras y tablas son automaticamente numeradas de forma sucesiva, ya en la submission del articulo lo voy a corregir manualmente.
+
+## Raymundo {-}
+
 > Ajuste osmotico
 
-De acuerdo a los sugeridó incluí "ajuste osmotico" como "loa", que es el división entre rwc/lop, esta variable esta siendo proyectanda de forma opuesta a las 2 variables individuales (rwc y lop) y la agrupación de los invididuos continua siendo la misma. Ya que en el cuadrante donde esta el cluster 5, estan los genotipos con mayor rwc y mayor potencial osmotico. Lo que puedo observar que ese indice esta mas asociado a plantas bien regadas que al tratamiento sequía.
+De acuerdo a los sugeridó incluí "ajuste osmotico" como "loa", que es el división entre rwc/lop, esta variable esta siendo proyectanda de forma opuesta a las 2 variables individuales (rwc y lop) y la agrupación de los invididuos continua siendo la misma. Ya que en el cuadrante donde esta el cluster 5, estan los genotipos con mayor rwc y mayor potencial osmotico. Lo que puedo observar que ese indice esta más asociado a plantas bien regadas que a plantas en sequía.
 
+La inclusion de esta variable no va modificar los resultados generales, más si tendria que incluir su información en los resultados y discusiones. Me comunica si de todas maneras es recomendable la inclusión de dicha variable en el manuscrito.
 
 ```{r , fig.cap= "loa = rwc/lop"}
 mvd <- fb %>%
@@ -564,4 +577,14 @@ plot <- ggdraw(xlim = c(0.0, 1.0), ylim = c(0, 0.5))+
 save_plot(plot = plot, "files/fig_mva_oa.png")
 include_graphics("files/fig_mva_oa.png")
 ```
+
+> FTSW vs TN
+
+Este gráfico me pareción interesante. Pero no logre entender como hacerlo. En la figura \@ref(fig:srl) lo que estoy intentando mostrar a mi parecer es algo similar; la transpiración y la FTSW en el lapso del experimento
+
+```{r}
+include_graphics("files/tn.png")
+```
+
+Voy a compartirlos datos de la información de los cálculos de la irrigación para que me pueda ayudar con ese gráfico y poder adicionarlo al artíuclo como  supplementary information, seria bueno hacer uno para todos los genotipos juntos y mostrar la caida de FTSW vs TN
 
