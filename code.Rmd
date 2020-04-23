@@ -106,7 +106,7 @@ fb %>%
                                  "__wue_b__" = "__wue~b~__",
                                  "__wue_t__" = "__wue~t~__")) %>% 
   rename(`**Variable**` = `**Characteristic**`) %>% 
-  knitr::kable(caption = "Treatment comparison for seventeen variables between Well-Watered (WW) and Water Deficit (WD) in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; ml), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gl^-1^), Tuber Water Use Efficiency (wue~t~; gl^-1^). The values are represented by the mean ± standard deviation with the significance under t-test with their respective p-values.")
+  knitr::kable(caption = "Treatment comparison for seventeen variables between Well-Watered (WW) and Water Deficit (WD) in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gL^-1^), Tuber Water Use Efficiency (wue~t~; gL^-1^). The values are represented by the mean ± standard deviation with the significance under t-test with their respective p-values.")
 
 ```
 
@@ -155,7 +155,7 @@ plt2 <- fplot(data = mc, type = "line", color = F,
              x = "day",
              y = "mean",
              z = "Treatment",
-             ylab = "Transpiration (ml)",
+             ylab = "Transpiration (mL)",
              xlab =  "Days",
              lgl = "Irrigation",
              zbl = "water deficit  well watered",
@@ -179,7 +179,7 @@ include_graphics("files/fig_srl.png")
 
 \newpage
 
-```{r mpv, fig.cap= "Traits measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) condition. (A) Tuber dry weight (tdw; g). (B) Relative Chlorophyll Content (rcc). (C) Harvest Index (hi). (D) Tuber Water Use Efficiency (wue~t~; gl^-1^). D-E Chlorophyll Concentration (spad). Error bars indicate standard error (n = 5). dap is days after planting."}
+```{r mpv, fig.cap= "Traits measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) condition. (A) Tuber dry weight (tdw; g). (B) Relative Chlorophyll Content (rcc). (C) Harvest Index (hi). (D) Tuber Water Use Efficiency (wue~t~; gL^-1^). D-E Chlorophyll Concentration (spad). Error bars indicate standard error (n = 5). dap is days after planting."}
 
 # tdw
 av <- aov(tdw ~ gnt*treat + block, fb)
@@ -284,7 +284,7 @@ mc <- GerminaR::ger_testcomp(av, c("gnt","treat"))
 twue <- mc %>% 
   plot_gr(type = "bar", color = F,
           x = "gnt", x_lab =  "",
-          y = "mean", y_lab = "Tuber water use efficiency (g.l^-1)",
+          y = "mean", y_lab = "Tuber water use efficiency (gL^-1)",
           group = "treat", g_lab = "Treatment",
           g_brk = "water deficit (WD)  well watered (WW)",
           lgd = "none",
@@ -366,7 +366,7 @@ include_graphics("files/fig_mpv.png")
 
 \newpage
 
-```{r mva, fig.align='center', fig.cap= "Principal Component Analysis (PCA) from variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) condition. (A) PCA for the variables. (B) PCA for the genotypes under WW and WD. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; ml), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gl^-1^), Tuber Water Use Efficiency (wue~t~; gl^-1^)."}
+```{r mva, fig.align='center', fig.cap= "Principal Component Analysis (PCA) from variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) condition. (A) PCA for the variables. (B) PCA for the genotypes under WW and WD. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gL^-1^), Tuber Water Use Efficiency (wue~t~; gL^-1^)."}
 
 mvd <- fb %>%
   select(-block, -gnt) %>%
@@ -447,9 +447,9 @@ include_graphics("files/fig_mva.png")
 
 \newpage
 
-# Supplementary information {-}
+# Supplementary figure 1 {-}
 
-```{r cor, fig.cap= "Relationships among agro-morphological traits evaluated in well-watered (WW) and water deficit (WD) condition based on Pearson correlation and Euclidean distance measured in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; ml), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gl^-1^), Tuber Water Use Efficiency (wue~t~; gl^-1^)."}
+```{r cor, fig.cap= "Relationships among agro-morphological traits evaluated in well-watered (WW) and water deficit (WD) condition based on Pearson correlation and Euclidean distance measured in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gL^-1^), Tuber Water Use Efficiency (wue~t~; gL^-1^)."}
 
 cr <- fb %>% 
   group_by(gnt, treat) %>% 
@@ -478,113 +478,81 @@ if(is_html_output()){cp} else {
 
 ```
 
-```{r smrt, eval=FALSE, include=FALSE}
+\newpage
 
-if(knitr::is_html_output()){
+# Supplementary figure 2 {-}
 
-fb %>%
-  select(-block, -gnt) %>%
-  group_by(treat, genotype) %>%
-  summarise_all(funs(mean), na.rm = TRUE) %>%
-  select(genotype, treat, everything()) %>%
-  web_table(buttons = "none", title = "Supplementary table")
+```{r}
+library(factoextra)
+library(corrplot)
 
-}
+var <- get_pca_var(pca)
+
+ppi <- 300
+png("files/pca_cor.png", width=3.8*ppi, height=10*ppi, res=ppi)
+corrplot(var$cor, 
+         method="number",
+         tl.col="black", 
+         tl.srt=45,)
+graphics.off()
+
+eig <- fviz_eig(pca, 
+                addlabels=TRUE,
+                hjust = 0.05,
+                barfill="white",
+                barcolor ="darkblue",
+                linecolor ="red") + 
+  ylim(0, 50) + 
+  labs(
+    title = "PCA - percentage of explained variances",
+    y = "Variance (%)") +
+  theme_minimal()
+
+cont1 <- fviz_contrib(pca,
+                     choice = "var", 
+                     axes = 1, 
+                     top = 10,
+                     fill="white",
+                     color ="darkblue",
+                     sort.val = "desc") +
+  ylim(0, 18) + 
+  labs(title = "Dim 1 - variables contribution") 
+
+cont2 <- fviz_contrib(pca,
+                     choice = "var", 
+                     axes = 2, 
+                     top = 10,
+                     fill="white",
+                     color ="darkblue",
+                     sort.val = "desc") +
+  ylim(0, 18) + 
+  labs(title = "Dim 2 - variables contribution") 
+
+gcor <- png::readPNG("files/pca_cor.png") %>%
+  grid::rasterGrob(interpolate = TRUE)
+
+plot <- ggdraw(xlim = c(0.0, 1.0), ylim = c(0, 1.0))+
+  draw_plot(gcor,  width = 0.4, height = 0.99, x = 0.6, y = 0.0) +  
+  draw_plot(eig,  width = 0.6, height = 0.34, x = 0.03, y = 0.66) +
+  draw_plot(cont1, width = 0.6, height = 0.34, x = 0.03, y = 0.33) + 
+  draw_plot(cont2, width = 0.6, height = 0.34, x = 0.03, y = 0.0) +
+        draw_plot_label(
+    label = c("A", "B", "C", "D"),
+    x = c(0.005, 0.005, 0.005, 0.65),
+    y = c(0.999, 0.67, 0.34, 0.999))
+
+save_plot(plot = plot, "files/fig_pca.png", base_height = 10, base_width = 10)
+include_graphics("files/fig_pca.png")
 
 ```
-
 
 \newpage
 
-# Comentarios de los autores {-}
+# Supplementary figure 3 {-}
 
-## Evelyn {-}
+```{r potatos, fig.cap="Tuber yield from five plants of CIP 398203.244 and CIP 398190.89 each, under well-watered (WW) and water deficit (WD) treatments. Pictures were taken using the scale displayed alongside the tubers."}
 
-Gracias por los comentarios y las correciones del manuscrito, describí mejor la metodología de irrigación e incluí las dosis de fertilización.
+include_graphics("files/fig_potatos.png")
 
-> Your discussion is unclear. I suggest you to rewrite it using your conclusions as a way to drive the lector through your results.
-
-Estoy incluyendo subtitulos a las discusiones como para resaltar la información principal y orgaizar mejor las discusiones.
-    
-Para la numeración del material suplementarios, como lo estoy escribiendo en R, las figuras y tablas son automaticamente numeradas de forma sucesiva, ya en la submission del articulo lo voy a corregir manualmente.
-
-## Raymundo {-}
-
-> Ajuste osmotico
-
-De acuerdo a los sugeridó incluí "ajuste osmotico" como "loa", que es el división entre rwc/lop, esta variable esta siendo proyectanda de forma opuesta a las 2 variables individuales (rwc y lop) y la agrupación de los invididuos continua siendo la misma. Ya que en el cuadrante donde esta el cluster 5, estan los genotipos con mayor rwc y mayor potencial osmotico. Lo que puedo observar que ese indice esta más asociado a plantas bien regadas que a plantas en sequía.
-
-La inclusion de esta variable no va modificar los resultados generales, más si tendria que incluir su información en los resultados y discusiones. Me comunica si de todas maneras es recomendable la inclusión de dicha variable en el manuscrito.
-
-```{r , fig.cap= "loa = rwc/lop"}
-mvd <- fb %>%
-  select(-block, -gnt) %>%
-  mutate(loa = rwc/lop) %>% 
-  group_by(treat, genotype) %>%
-  summarise_all(funs(mean), na.rm = TRUE) %>%
-  mutate(coln = paste(genotype, treat,  sep = "_")) %>%
-  column_to_rownames("coln") %>%
-  select(-genotype)
-
-pca <- PCA(mvd, graph = F, scale.unit = TRUE, quali.sup = 1)
-
-# PCA
-
-ppi <- 300
-png("files/pca_var_oa.png", width=8*ppi, height=8*ppi, res=ppi)
-plot.PCA(pca,
-         choix="var",
-         title="",
-         autoLab = "auto", 
-         shadowtext = T)
-graphics.off()
-
-
-# Analysis de Hierarchical Clustering
-
-clus <- HCPC(pca, nb.clust=-1, graph = F)
-
-ppi <- 300
-png("files/pca_clu_oa.png", width=8*ppi, height=8*ppi, res=ppi)
-
-plot.HCPC(clus,
-          choice = "map",
-          legend = list(bty = "y", x = "topright"), 
-          draw.tree = F)
-
-graphics.off()
-
-# sink("files/clu.txt")
-# clus$call$t$tree
-# clus$desc.ind
-# clus$desc.var
-# sink()
-
-pcv <- png::readPNG("files/pca_var_oa.png") %>%
-  grid::rasterGrob(interpolate = TRUE)
-
-pcc <- png::readPNG("files/pca_clu_oa.png") %>%
-  grid::rasterGrob(interpolate = TRUE)
-
-plot <- ggdraw(xlim = c(0.0, 1.0), ylim = c(0, 0.5))+
-  draw_plot(pcv,  width = 0.5, height = 0.5, x = 0.0, y = 0.0) +
-  draw_plot(pcc,  width = 0.5, height = 0.5, x = 0.5, y = 0.0) +
-          draw_plot_label(
-            label = c("A", "B"),
-            x = c(0.03, 0.53),
-            y = c(0.48, 0.48))
-
-save_plot(plot = plot, "files/fig_mva_oa.png")
-include_graphics("files/fig_mva_oa.png")
 ```
-
-> FTSW vs TN
-
-Este gráfico me pareción interesante. Pero no logre entender como hacerlo. En la figura \@ref(fig:srl) lo que estoy intentando mostrar a mi parecer es algo similar; la transpiración y la FTSW en el lapso del experimento
-
-```{r}
-include_graphics("files/tn.png")
-```
-
-Voy a compartirlos datos de la información de los cálculos de la irrigación para que me pueda ayudar con ese gráfico y poder adicionarlo al artíuclo como  supplementary information, seria bueno hacer uno para todos los genotipos juntos y mostrar la caida de FTSW vs TN
 
