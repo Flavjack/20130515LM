@@ -4,9 +4,6 @@ editor_options:
   chunk_output_type: console
 ---
 
-<!-- Lista de revistas -->
-<!-- - Planta -->
-
 ```{r import, include=FALSE}
 # source("cnfg/debug.r")
 source("cnfg/setup.r")
@@ -466,15 +463,14 @@ cp <- heatmaply_cor(
   grid_gap = 1,
   cellnote = round(cor(cr),2),
   cellnote_textposition = "middle center",
-  cellnote_size = 10 
+  cellnote_size = 10,
+  file = "files/fig_cor.html"
 )
 
+# browseURL("files/fig_cor.html")
 # plotly::orca(p = cp, file = "files/fig_cor.png")
 
-if(is_html_output()){cp} else {
-  
-  include_graphics("files/fig_cor.png")
-}
+include_graphics("files/fig_cor.png")
 
 ```
 
@@ -482,7 +478,8 @@ if(is_html_output()){cp} else {
 
 # Supplementary figure 2 {-}
 
-```{r}
+```{r pca, fig.cap= "Principal Component Analysis (PCA). (A) Percentage of the explained variance for each dimension. (B) Variance contribution of the first 10 variables in the dimension 1.   (C) Variance contribution of the first 10 variables in the dimension 2. (D) Correlation between the studied variables and among the first 5 dimensions.  The reference dashed lines on the bar plot corresponds to the expected value if the contribution between the variables where uniform."}
+
 library(factoextra)
 library(corrplot)
 
@@ -550,7 +547,7 @@ include_graphics("files/fig_pca.png")
 
 # Supplementary figure 3 {-}
 
-```{r potatos, fig.cap="Tuber yield from five plants of CIP 398203.244 and CIP 398190.89 each, under well-watered (WW) and water deficit (WD) treatments. Pictures were taken using the scale displayed alongside the tubers."}
+```{r potatos, fig.cap= "Tuber yield performance from two contrasting potato genotype. Genotype CIP 398203.244 with good performance under well-watered (WW) with reduced yields during water deficit (WD) condition. Genotype CIP 398190.89 with good response under well-watered (WW) and water deficit (WD) treatment. Each group represent one replication (n = 5). Scale displayed alongside the tubers with 5 cm (black/white segment = 1 cm)."}
 
 include_graphics("files/fig_potatos.png")
 

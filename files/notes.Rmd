@@ -1,4 +1,8 @@
 
+Under well water conditions, soil can supply water at a steady rate to meet the transpiration demand. However, as the soil becomes dry, water flux from soil to root surface decreases and cannot satisfy the demand of transpiration. Water stress reduces photosynthetic efficiency which is mainly caused by stomatal limitation and have a negative effect during tuber initiation and bulking reducing the production of photo-assimilates and plant growth [@onder2005Different; @obidiegwu2015Coping; @plich2020Relations]. 
+
+
+
 Among the earliest plant responses to soil water deficiency is stomatal closure protecting the plant against excessive loss of water but it concomitantly restricts CO2 gas exchange (Feller & Vaseva, 2014; Obidiegwu et al., 2015). 
 
 A substantial increase in the efficiency of water use by Gwiazda was achieved by early stomata closure, and the sensitivity to ABA resulted in a significant reduction in transpiration rate. 
