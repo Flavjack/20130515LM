@@ -14,7 +14,7 @@ packages <- c(
   "googledrive", # Download files from googledrive
   "readxl", # Read excel files
   "agricolae", # Agriculture data analysis
-  "GerminaR", # Germination analysis and line and bar easy plots
+  "inti", # Germination analysis and line and bar easy plots
   "gtsummary", # Tables for compare treatments 
   "FactoMineR", # Multivariate data analysis
   "heatmaply", # Correlation plot

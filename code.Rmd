@@ -7,6 +7,7 @@ editor_options:
 ```{r import, include=FALSE}
 # source("cnfg/debug.r")
 source("cnfg/setup.r")
+library(GerminaR)
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY/edit#gid=142311263"
 gs <- as_sheets_id(url)
 # browseURL(url)
@@ -89,8 +90,7 @@ xl %>%
 \newpage
 
 ```{r svt}
-
-fb %>%
+smr.trt <- fb %>%
   select(-block, -gnt, -genotype) %>% 
   tbl_summary(
     by = treat, 
@@ -99,12 +99,34 @@ fb %>%
   add_p() %>% 
   bold_labels() %>% 
   as_tibble() %>% 
-  mutate(`**Characteristic**` = recode(`**Characteristic**`,
-                                 "__wue_b__" = "__wue~b~__",
-                                 "__wue_t__" = "__wue~t~__")) %>% 
+  mutate(`**Characteristic**` = recode(
+    `**Characteristic**`
+    , "__spad_29__" = "Chlorophyll Concentration (spad) at 29 DAP"
+    , "__spad_59__" = "Chlorophyll Concentration (spad) at 59 DAP"
+    , "__spad_76__" = "Chlorophyll Concentration (spad) at 76 DAP"
+    , "__spad_83__" = "Chlorophyll Concentration (spad) at 83 DAP"
+    , "__hgt__" = "Plant height (cm)"
+    , "__rwc__" = "Relative water content (%)"
+    , "__lop__" = "Leaf osmotic potential (MPa)"
+    , "__ldw__" = "Leaf dry weight (g)"
+    , "__sdw__" = "Stem dry weight (g)"
+    , "__rdw__" = "Root dry weight (g)"
+    , "__tdw__" = "Tuber dry weight (g)"
+    , "__ntub__" = "Tuber number (N°)" 
+    , "__trs__" = "Total transpiration (mL)"
+    , "__lfa__" = "Leaf area (cm^2^)"
+    , "__rdl__" = "Root length (cm)"
+    , "__tdb__" = "Total dry biomass (g)"
+    , "__hi__"  = "Harvest Index (hi)" 
+    , "__sla__" = "Specific Leaf Area (cm^2^g^-1^)"
+    , "__rcc__" = "Relative Chlorophyll Content (rcc)"
+    , "__wue_b__" = "Biomass water use efficiency (gL^-1^)"
+    , "__wue_t__" = "Tuber Water Use Efficiency (gL^-1^)"
+    )) %>% 
   rename(`**Variable**` = `**Characteristic**`) %>% 
-  knitr::kable(caption = "Treatment comparison for seventeen variables between Well-Watered (WW) and Water Deficit (WD) in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gL^-1^), Tuber Water Use Efficiency (wue~t~; gL^-1^). The values are represented by the mean ± standard deviation with the significance under t-test with their respective p-values.")
+  knitr::kable(caption = "Treatment comparison for seventeen variables between Well-Watered (WW) and Water Deficit (WD) in 15 potato genotypes. The values are represented by the mean ± standard deviation with the significance under t-test with their respective p-values.")
 
+smr.trt
 ```
 
 `r if (knitr::is_html_output()){'
@@ -444,7 +466,7 @@ include_graphics("files/fig_mva.png")
 
 \newpage
 
-# Supplementary figure 1 {-}
+# Supplementary Figure 1 {-}
 
 ```{r cor, fig.cap= "Relationships among agro-morphological traits evaluated in well-watered (WW) and water deficit (WD) condition based on Pearson correlation and Euclidean distance measured in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gL^-1^), Tuber Water Use Efficiency (wue~t~; gL^-1^)."}
 
@@ -476,7 +498,7 @@ include_graphics("files/fig_cor.png")
 
 \newpage
 
-# Supplementary figure 2 {-}
+# Supplementary Figure 2 {-}
 
 ```{r pca, fig.cap= "Principal Component Analysis (PCA). (A) Percentage of the explained variance for each dimension. (B) Variance contribution of the first 10 variables in the dimension 1.   (C) Variance contribution of the first 10 variables in the dimension 2. (D) Correlation between the studied variables and among the first 5 dimensions.  The reference dashed lines on the bar plot corresponds to the expected value if the contribution between the variables where uniform."}
 
@@ -545,7 +567,7 @@ include_graphics("files/fig_pca.png")
 
 \newpage
 
-# Supplementary figure 3 {-}
+# Supplementary Figure 3 {-}
 
 ```{r potatos, fig.cap= "Tuber yield performance from two contrasting potato genotype. Genotype CIP 398203.244 with good performance under well-watered (WW) with reduced yields during water deficit (WD) condition. Genotype CIP 398190.89 with good response under well-watered (WW) and water deficit (WD) treatment. Each group represent one replication (n = 5). Scale displayed alongside the tubers with 5 cm (black/white segment = 1 cm)."}
 
@@ -553,3 +575,27 @@ include_graphics("files/fig_potatos.png")
 
 ```
 
+\newpage
+
+# Supplementary Table 1 {-}
+
+```{r gnt.dif, eval=F}
+
+gnt.dif <- fb %>% 
+  inti::adjmeans_lm_fb(data = .
+                       , trait = 5
+                       , lm.model = "block + genotype*treat"
+                       , comparison = "genotype"
+                       , test = "DUNCAN"
+                       , tab_vars = "groups"
+                       , sep = "  "
+                       , digits = 2
+                       )
+
+gnt.dif %>% 
+  pluck("means") %>%
+  inti::web_table() %>% 
+  
+print("Comparison of 15 potato genotypes under Well-Watered (WW) and Water Deficit (WD) condition. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gL^-1^), Tuber Water Use Efficiency (wue~t~; gL^-1^). The values are represented by the mean with the significance difference under Student-Newman-Keuls test (p-value<0.05).")
+
+```

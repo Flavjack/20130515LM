@@ -1,5 +1,29 @@
+---
+bibliography:  
+- ../cnfg/book.bib
+---
 
 Under well water conditions, soil can supply water at a steady rate to meet the transpiration demand. However, as the soil becomes dry, water flux from soil to root surface decreases and cannot satisfy the demand of transpiration. Water stress reduces photosynthetic efficiency which is mainly caused by stomatal limitation and have a negative effect during tuber initiation and bulking reducing the production of photo-assimilates and plant growth [@onder2005Different; @obidiegwu2015Coping; @plich2020Relations]. 
+
+
+[@plich2020Relations] wheat
+
+It is well known that photosynthetic activity is reduced when plants are exposed to
+environmental stress (Retuerto et al. 2006; Prinzenberg et al. 2018). Drought stress
+reduces plant growth by reducing photosynthesis, which is mainly caused by stomatal
+limitation. Decreases in stomatal conductance reduce water loss through transpiration,
+but it also decreases carbon dioxide uptake, reducing the production of
+photoassimilates and plant growth. 
+
+<!-- [@plich2020Relations] -->
+
+[@silva-perez2020Genetic] wheat
+
+Heritability values of SPAD from the current study were always positive, varying from 0.53 to 0.9. SPAD values have been shown to have a high correlation with yield in wheat (Tang et al., 2017) although it has been pointed out that this relationship varies between cultivars (Monostori et al., 2016). 
+
+Genotypic variation and heritability of traits show that there is scope for these traits to be used in pre-breeding programmes to improve photosynthesis with the ultimate objective of raising yield potential.
+
+<!-- [@silva-perez2020Genetic] -->
 
 
 
