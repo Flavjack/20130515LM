@@ -28,8 +28,8 @@ csl: https://www.zotero.org/styles/apa
 ---
 
 ```{r dataset, include=FALSE}
-# source("cnfg/debug.r")
-source("cnfg/setup.r")
+source("https://lozanoisla.com/packages.r")
+source("https://lozanoisla.com/rticles.r")
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY/edit#gid=142311263"
 gs <- as_sheets_id(url)
 # browseURL(url)

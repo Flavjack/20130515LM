@@ -5,9 +5,10 @@ editor_options:
 ---
 
 ```{r import, include=FALSE}
-# source("cnfg/debug.r")
-source("cnfg/setup.r")
+source("https://lozanoisla.com/packages.r")
+source("https://lozanoisla.com/rticles.r")
 library(GerminaR)
+library(gtsummary)
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY/edit#gid=142311263"
 gs <- as_sheets_id(url)
 # browseURL(url)
@@ -127,6 +128,7 @@ smr.trt <- fb %>%
   knitr::kable(caption = "Treatment comparison for seventeen variables between Well-Watered (WW) and Water Deficit (WD) in 15 potato genotypes. The values are represented by the mean ± standard deviation with the significance under t-test with their respective p-values.")
 
 smr.trt
+
 ```
 
 `r if (knitr::is_html_output()){'
@@ -579,23 +581,56 @@ include_graphics("files/fig_potatos.png")
 
 # Supplementary Table 1 {-}
 
-```{r gnt.dif, eval=F}
+```{r gdif}
 
 gnt.dif <- fb %>% 
   inti::adjmeans_lm_fb(data = .
                        , trait = 5
                        , lm.model = "block + genotype*treat"
-                       , comparison = "genotype"
+                       , comparison = c("genotype", "treat")
                        , test = "DUNCAN"
-                       , tab_vars = "groups"
-                       , sep = "  "
+                       , tab_vars = "std"
+                       , sep = " ± "
                        , digits = 2
                        )
 
-gnt.dif %>% 
-  pluck("means") %>%
-  inti::web_table() %>% 
+gnt.dif$means %>% 
+  knitr::kable(., caption = "Comparison of 15 potato genotypes under Well-Watered (WW) and Water Deficit (WD) condition. The values are represented by the mean with the significance difference under Student-Newman-Keuls test (p-value<0.05).")
+
+gnt.dif$means %>% 
+  inti::web_table(., caption = "Comparison of 15 potato genotypes under Well-Watered (WW) and Water Deficit (WD) condition. The values are represented by the mean with the significance difference under Student-Newman-Keuls test (p-value<0.05).")
   
-print("Comparison of 15 potato genotypes under Well-Watered (WW) and Water Deficit (WD) condition. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gL^-1^), Tuber Water Use Efficiency (wue~t~; gL^-1^). The values are represented by the mean with the significance difference under Student-Newman-Keuls test (p-value<0.05).")
+```
+
+**Note:** Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm2), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm2g-1), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wueb; gL-1), Tuber Water Use Efficiency (wuet; gL-1).
+
+\newpage
+
+# Supplementary Table 2 {-}
+
+```{r heritability}
+
+library(emmeans)
+library(lme4)
+library(lmerTest)
+
+td <- fb %>% H2cal_fb(data = .
+                , trait = 5
+                , gen.name = "genotype"
+                , rep.n = 4
+                , fix.model = "(1|block) + genotype"
+                , ran.model = "(1|block) + (1|genotype)"
+                , blues = T
+                )
+
+td$tabsmr %>% 
+  select(-c(env, year, rep, geno, V.gxl, V.gxy)) %>% 
+  knitr::kable(., caption = "Broad sense heritability in 15 potatos genotypes. Genetic variance (V.g), Error variance (V.e), Standard (h2.s), Cullis (h2.c) and Piepho heritability")
+
+td$tabsmr %>% 
+  select(-c(env, year, rep, geno, V.gxl, V.gxy)) %>% 
+  inti::web_table(., caption = "Broad sense heritability in 15 potatos genotypes. Genetic variance (V.g), Error variance (V.e), Standard (h2.s), Cullis (h2.c) and Piepho heritability")
 
 ```
+
+**Note:** Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm2), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm2g-1), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wueb; gL-1), Tuber Water Use Efficiency (wuet; gL-1).
