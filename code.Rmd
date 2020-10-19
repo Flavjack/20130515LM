@@ -6,7 +6,6 @@ editor_options:
 
 ```{r import, include=FALSE}
 source("https://lozanoisla.com/setup.r")
-source("https://lozanoisla.com/rticles.r")
 library(GerminaR)
 library(gtsummary)
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY/edit#gid=142311263"
@@ -39,7 +38,7 @@ fb <- xl %>%
   mutate(tdb = (ldw+sdw+rdw+tdw),
          hi = tdw/(ldw+sdw+rdw+tdw),
          sla = lfa/ldw,
-         rcc = (spad_83/lfa)*100,
+         rcc = (spad_83/lfa),
          wue_b = (ldw+sdw+rdw+tdw)/trs,
          wue_t = tdw/trs
          ) %>% 
@@ -64,11 +63,9 @@ fb <- xl %>%
 
 ```
 
-`r if (knitr::is_html_output()){'
 # Tables {-}
-'}`
 
-```{r abrv, eval=FALSE, include=FALSE}
+```{r abrv}
 xl %>%
   readxl::read_excel(sheet = "var") %>%
   filter(include == "x") %>%
@@ -77,21 +74,21 @@ xl %>%
   kable(caption = "List of abbreviations")
 ```
 
-\newpage
-
 ```{r gnt}
 
-xl %>% 
+tab <- xl %>% 
   readxl::read_excel("gnt") %>% 
   dplyr::select(Number, Genotypes, Adaptability, "Growning period" = GPL, "Heat tolerance" = Heat, "Dry matter (%)") %>% 
-  kable(caption = "Potato genotypes (*Solanum tuberosum* L.) used for water deficit experiment with two commercial varieties and 13 genotypes from advanced breeding population developed by the International Potato Center (CIP).")
+  tibble::add_row(Number = "caption"
+                  , Genotypes = "Potato genotypes (*Solanum tuberosum* L.) used for water deficit experiment with two commercial varieties and 13 genotypes from advanced breeding population developed by the International Potato Center (CIP).")
+
+# tab %>% sheet_write(gs, data = .,  sheet = "tab1")
 
 ```
 
-\newpage
 
 ```{r svt}
-smr.trt <- fb %>%
+tab <- fb %>%
   select(-block, -gnt, -genotype) %>% 
   tbl_summary(
     by = treat, 
@@ -124,18 +121,17 @@ smr.trt <- fb %>%
     , "__wue_b__" = "Biomass water use efficiency (gL^-1^)"
     , "__wue_t__" = "Tuber Water Use Efficiency (gL^-1^)"
     )) %>% 
-  rename(`**Variable**` = `**Characteristic**`) %>% 
-  knitr::kable(caption = "Treatment comparison for seventeen variables between Well-Watered (WW) and Water Deficit (WD) in 15 potato genotypes. The values are represented by the mean ± standard deviation with the significance under t-test with their respective p-values.")
+  rename(Variable = `**Characteristic**`) %>% 
+  tibble::add_row(Variable = "caption"
+                  , '**WD**, N = 75' = "Treatment comparison for seventeen variables between Well-Watered (WW) and Water Deficit (WD) in 15 potato genotypes. The values are represented by the mean ± standard deviation with the significance under t-test with their respective p-values.")
 
-smr.trt
+# tab %>% sheet_write(gs, data = .,  sheet = "stab2")
 
 ```
 
-`r if (knitr::is_html_output()){'
 # Figures {-}
-'}`
 
-```{r srl, fig.cap= "(A) Soil transpiration fraction (ftsw) and (B) Daily transpiration in 15 potato genotypes under well-watered (WW) and water deficit (WD) condition."}
+```{r srl}
 
 fts <- xl %>% 
   readxl::read_excel("ftsw") %>%
@@ -145,18 +141,18 @@ fts <- xl %>%
 av <- aov(fts ~ Treatment*day, fts)
 mc <- GerminaR::ger_testcomp(av, c("Treatment", "day"))
 
-plt1 <- fplot(data = mc, type = "line", color = F,
-             x = "day",
-             y = "mean",
-             z = "Treatment",
-             ylab = "Soil transpiration fraction",
-             xlab =  "Days",
-             lgl = "Irrigation",
-             zbl = "water deficit  well watered",
-             lgd = "top",
-             lmt = c(0,1.1),
-             brk = 0.1,
-             erb =  T) +
+plt1 <- mc$table %>% fplot(
+  type = "line", color = F
+  , x = "day"
+  , y = "fts"
+  , groups = "Treatment"
+  , ylab = "Soil transpiration fraction"
+  , xlab =  "Days"
+  , glab = "Irrigation"
+  , limits = c(0,1.1)
+  , brakes = 0.1
+  , error =  "ste"
+  ) +
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
@@ -169,181 +165,144 @@ trns <- xl %>%
   drop_na()
 
 av <- aov(trans ~ Treatment*day, trns)
-mc <- GerminaR::ger_testcomp(av, c("Treatment", "day")) %>% 
-  mutate_at("day", as.numeric)
+mc <- GerminaR::ger_testcomp(av, c("Treatment", "day")) 
 
-plt2 <- fplot(data = mc, type = "line", color = F,
-             x = "day",
-             y = "mean",
-             z = "Treatment",
-             ylab = "Transpiration (mL)",
-             xlab =  "Days",
-             lgl = "Irrigation",
-             zbl = "water deficit  well watered",
-             lgd = "none",
-             lmt = c(0,790),
-             brk = 100,
-             erb =  T)
+plt2 <- mc$table %>% 
+  mutate(across(day, as.numeric)) %>% 
+  fplot(type = "line", color = F
+        , x = "day"
+        , y = "trans"
+        , groups = "Treatment"
+        , ylab = "Transpiration (mL)"
+        , xlab =  "Days"
+        , glab = "Irrigation"
+        # , zbl = "water deficit  well watered"
+        , legend = "none"
+        , limits = c(0,790)
+        , brakes = 100
+        , error = "ste"
+        )
 
-plot <- ggdraw(xlim = c(0, 0.5), ylim = c(0,0.8))+
-  draw_plot(plt1,  width = 0.494, height = 0.43, x = 0.00555, y = 0.362) +
+plot <- ggdraw(xlim = c(0, 0.5), ylim = c(0,0.8)) +
+  draw_plot(plt1,  width = 0.495, height = 0.43, x = 0.004, y = 0.375) +
   draw_plot(plt2,  width = 0.5, height = 0.4, x = 0.0, y = 0.0) +
           draw_plot_label(
             label = c("A", "B"),
             x = c(0.47, 0.47),
             y = c(0.68, 0.38))
 
-save_plot(plot = plot, "files/fig_srl.png")
+plot
+
+save_plot(plot = plot, "files/fig_srl.png", base_width = 6, base_height = 5)
 include_graphics("files/fig_srl.png")
 
 ```
 
-\newpage
 
-```{r mpv, fig.cap= "Traits measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) condition. (A) Tuber dry weight (tdw; g). (B) Relative Chlorophyll Content (rcc). (C) Harvest Index (hi). (D) Tuber Water Use Efficiency (wue~t~; gL^-1^). D-E Chlorophyll Concentration (spad). Error bars indicate standard error (n = 5). dap is days after planting."}
+```{r mpv}
 
 # tdw
 av <- aov(tdw ~ gnt*treat + block, fb)
 #summary(av)
 mc <- GerminaR::ger_testcomp(av, c("gnt","treat"))
 
-tdw <- mc %>% 
-  plot_gr(type = "bar", color = F,
-          x = "gnt", x_lab =  "",
-          y = "mean", y_lab = "Tuber dry weight (g)",
-          group = "treat",
-          g_lab = "Treatment",
-          g_brk = "Water Deficit (WD)  Well Watered (WW)",
-          lgd = "top",
-          y_lmt = c(0, 100), y_brk = 20, 
-          # sig = "sg",
-          erb =  T
-          ) +
+tdw <- mc$table %>% 
+  fplot(type = "bar", color = F
+        , x = "gnt"
+        , xlab =  ""
+        , y = "tdw"
+        , ylab = "Tuber dry weight (g)"
+        , group = "treat"
+        , glab = "Treatment"
+        , legend = "top"
+        , limits = c(0, 100)
+        , brakes = 20
+        ) +
   scale_fill_grey("Treatment",
                   labels = c("Water Deficit (WD)", "Well Watered (WW)"), 
                   start = 0.5, end = 1) 
-  # theme(axis.title.x=element_blank(),
-  #       axis.text.x=element_blank(),
-  #       axis.ticks.x=element_blank())
-
-# # lfa
-# av <- aov(lfa ~ gnt*treat+ block, fb)
-# #summary(av)
-# mc <- GerminaR::ger_testcomp(av, c("gnt","treat")) %>% 
-#   mutate(mean = mean/1000, ste = ste/1000)
-# 
-# lfa <- mc %>% 
-#   plot_gr(type = "bar", color = F,
-#           x = "gnt", x_lab =  "",
-#           y = "mean", y_lab = "Leaf area (cm^2*10^3)",
-#           group = "treat", g_lab = "Treatment",
-#           g_brk = "water deficit (WD)  well watered (WW)",
-#           lgd = "none",
-#           y_lmt = c(0, 12), y_brk = 2,
-#           # sig = "sg",
-#           erb =  T
-#           ) +
-#   scale_fill_grey("Treatment",
-#                   labels = c("Water Deficit (WD)", "Well Watered (WW)"), 
-#                   start = 0.5, end = 1) 
-#   # theme(axis.title.x=element_blank(),
-#   #       axis.text.x=element_blank(),
-#   #       axis.ticks.x=element_blank())
 
 # rcc
 av <- aov(rcc ~ gnt*treat+ block, fb)
 #summary(av)
 mc <- GerminaR::ger_testcomp(av, c("gnt","treat")) 
 
-rcc <- mc %>% 
-  plot_gr(type = "bar", color = F,
-          x = "gnt", x_lab =  "",
-          y = "mean", y_lab = "Relative Chlorophyll Content",
-          group = "treat", g_lab = "Treatment",
-          g_brk = "water deficit (WD)  well watered (WW)",
-          lgd = "none",
-          y_lmt = c(0, 10), y_brk = 2,
-          # sig = "sg",
-          erb =  T
-          ) +
+rcc <- mc$table %>% 
+  fplot(type = "bar", color = F
+        , x = "gnt"
+        , xlab =  ""
+        , y = "rcc"
+        , ylab = "Relative Chlorophyll Content"
+        , group = "treat"
+        , glab = "Treatment"
+        , legend = "none"
+        ) +
   scale_fill_grey("Treatment",
                   labels = c("Water Deficit (WD)", "Well Watered (WW)"), 
-                  start = 0.5, end = 1) 
-  # theme(axis.title.x=element_blank(),
-  #       axis.text.x=element_blank(),
-  #       axis.ticks.x=element_blank())
+                  start = 0.5, end = 1)
 
 # hi
 av <- aov(hi ~ gnt*treat + block, fb)
 #summary(av)
 mc <- GerminaR::ger_testcomp(av, c("gnt","treat"))
 
-hi <- mc %>% 
-  plot_gr(type = "bar", color = F,
-          x = "gnt", x_lab =  "",
-          y = "mean", y_lab = "Harvest Index",
-          group = "treat", g_lab = "Treatment",
-          g_brk = "water deficit (WD)  well watered (WW)",
-          lgd = "none",
-          y_lmt = c(0, 1),
-          # sig = "sg",
-          # y_brk = 0.2,
-          erb =  T
-          ) +
+hi <- mc$table %>% 
+  fplot(type = "bar", color = F
+        , x = "gnt"
+        , xlab =  ""
+        , y = "hi"
+        , ylab = "Harvest Index"
+        , group = "treat"
+        , glab = "Treatment"
+        , legend = "none"
+        , limits = c(0, 1)
+        ) +
   scale_fill_grey("Treatment",
                   labels = c("Water Deficit (WD)", "Well Watered (WW)"), 
-                  start = 0.5, end = 1) 
-  # theme(axis.title.x=element_blank(),
-  #       axis.text.x=element_blank(),
-  #       axis.ticks.x=element_blank())
+                  start = 0.5, end = 1)
 
 # twue
 av <- aov(wue_t ~ gnt*treat + block, fb)
 #summary(av)
 mc <- GerminaR::ger_testcomp(av, c("gnt","treat"))
 
-twue <- mc %>% 
-  plot_gr(type = "bar", color = F,
-          x = "gnt", x_lab =  "",
-          y = "mean", y_lab = "Tuber water use efficiency (gL^-1)",
-          group = "treat", g_lab = "Treatment",
-          g_brk = "water deficit (WD)  well watered (WW)",
-          lgd = "none",
-          y_lmt = c(0, 10),
-          y_brk = 2,
-          # sig = "sg",
-          erb =  T
-          ) +
+twue <- mc$table %>% 
+  fplot(type = "bar", color = F
+        , x = "gnt"
+        , xlab =  ""
+        , y = "wue_t"
+        , ylab = "Tuber water use efficiency (gL^-1)"
+        , group = "treat"
+        , glab = "Treatment"
+        , legend = "none"
+        , limits = c(0, 10)
+        , brakes = 2
+        ) +
   scale_fill_grey("Treatment",
                   labels = c("Water Deficit (WD)", "Well Watered (WW)"), 
                   start = 0.5, end = 1) 
-  # theme(axis.title.x=element_blank(),
-  #       axis.text.x=element_blank(),
-  #       axis.ticks.x=element_blank())
 
 # spad_29
 
 av <- aov(spad_29 ~ gnt*treat + block, fb)
-#summary(av)
 mc <- GerminaR::ger_testcomp(aov = av, comp = c("gnt","treat"))
 
-spad_29 <- mc %>% 
-  plot_gr(type = "line", color = F,
-          x = "gnt", x_lab =  "",
-          y = "mean", y_lab = "Chlorophyll concentration 29 dap (spad)",
-          group = "treat", g_lab = "Treatment",
-          g_brk = "water deficit (WD)  well watered (WW)",
-          lgd = "none",
-          y_lmt = c(30, 70),
-          y_brk = 5,
-          # sig = "sg",
-          erb =  T
-          ) +
+spad_29 <- mc$table %>% 
+  fplot(type = "line"
+        , color = F
+        , x = "gnt"
+        , xlab =  ""
+        , y = "spad_29"
+        , ylab = "Chlorophyll concentration 29 dap (spad)"
+        , group = "treat"
+        , glab = "Treatment"
+        , legend = "none"
+        , limits = c(30, 70)
+        , brakes = 5
+        ) +
      geom_point(colour="black", shape=21, size = 3, 
      aes(fill = factor(treat))) + 
      scale_fill_manual(values=c("gray", "white"))
-
-
 
 # spad_83
 
@@ -352,18 +311,18 @@ av <- aov(spad_83 ~ gnt*treat + block, fb)
 
 mc <- GerminaR::ger_testcomp(aov = av, comp = c("gnt","treat"))
 
-spad_83 <- mc %>% 
-  plot_gr(type = "line", color = F,
-          x = "gnt", x_lab =  "",
-          y = "mean", y_lab = "Chlorophyll concentration 83 dap (spad)",
-          group = "treat", g_lab = "Treatment",
-          g_brk = "water deficit (WD)  well watered (WW)",
-          lgd = "none",
-          y_lmt = c(30, 70),
-          y_brk = 5,
-          # sig = "sg",
-          erb =  T
-          ) +
+spad_83 <- mc$table %>% 
+  fplot(type = "line", color = F
+        , x = "gnt"
+        , xlab =  ""
+        , y = "spad_83"
+        , ylab = "Chlorophyll concentration 83 dap (spad)"
+        , group = "treat"
+        , glab = "Treatment"
+        , legend= "none"
+        , limits = c(30, 70)
+        , brakes= 5 
+        ) +
      geom_point(colour="black", shape=21, size = 3, 
      aes(fill = factor(treat))) + 
      scale_fill_manual(values=c("gray", "white"))
@@ -385,9 +344,8 @@ include_graphics("files/fig_mpv.png")
 
 ```
 
-\newpage
 
-```{r mva, fig.align='center', fig.cap= "Principal Component Analysis (PCA) from variables measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) condition. (A) PCA for the variables. (B) PCA for the genotypes under WW and WD. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gL^-1^), Tuber Water Use Efficiency (wue~t~; gL^-1^)."}
+```{r mva}
 
 mvd <- fb %>%
   select(-block, -gnt) %>%
@@ -409,16 +367,6 @@ plot.PCA(pca,
          autoLab = "auto", 
          shadowtext = T)
 graphics.off()
-
-
-# ppi <- 300
-# png("files/pca_ind.png", width=8*ppi, height=8*ppi, res=ppi)
-# 
-# plot.PCA(pca,choix="ind", habillage = 1, col.hab=c("red","blue"),
-#          title="",
-#          autoLab = "y", cex = 0.7, shadowtext = T)
-# 
-# graphics.off()
 
 # sink("files/pca.txt")
 # # Results
@@ -466,11 +414,9 @@ include_graphics("files/fig_mva.png")
 
 ```
 
-\newpage
-
 # Supplementary Figure 1 {-}
 
-```{r cor, fig.cap= "Relationships among agro-morphological traits evaluated in well-watered (WW) and water deficit (WD) condition based on Pearson correlation and Euclidean distance measured in 15 potato genotypes. Where: Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm^2^), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm^2^g^-1^), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wue~b~; gL^-1^), Tuber Water Use Efficiency (wue~t~; gL^-1^)."}
+```{r cor}
 
 cr <- fb %>% 
   group_by(gnt, treat) %>% 
@@ -498,11 +444,9 @@ include_graphics("files/fig_cor.png")
 
 ```
 
-\newpage
-
 # Supplementary Figure 2 {-}
 
-```{r pca, fig.cap= "Principal Component Analysis (PCA). (A) Percentage of the explained variance for each dimension. (B) Variance contribution of the first 10 variables in the dimension 1.   (C) Variance contribution of the first 10 variables in the dimension 2. (D) Correlation between the studied variables and among the first 5 dimensions.  The reference dashed lines on the bar plot corresponds to the expected value if the contribution between the variables where uniform."}
+```{r pca}
 
 library(factoextra)
 library(corrplot)
@@ -567,62 +511,163 @@ include_graphics("files/fig_pca.png")
 
 ```
 
-\newpage
-
 # Supplementary Figure 3 {-}
 
-```{r potatos, fig.cap= "Tuber yield performance from two contrasting potato genotype. Genotype CIP 398203.244 with good performance under well-watered (WW) with reduced yields during water deficit (WD) condition. Genotype CIP 398190.89 with good response under well-watered (WW) and water deficit (WD) treatment. Each group represent one replication (n = 5). Scale displayed alongside the tubers with 5 cm (black/white segment = 1 cm)."}
+```{r potatos}
 
 include_graphics("files/fig_potatos.png")
 
 ```
 
-\newpage
-
 # Supplementary Table 1 {-}
+
+
+```{r}
+
+means_lm_fb <- function(data, trait){
+  
+smt <- map(c(trait:length(data))
+    , .f = function (x) {
+  
+trait <- names(data)[x]
+
+mc <- data %>% 
+  means_lm(
+    data = .
+    , trait 
+    , model = "block + genotype*treat"
+    , comparison = c("genotype", "treat")
+    , test = "DUNCAN"
+    , tab_vars = "std"
+    , sep = " ± "
+    , digits = 2
+    )
+})
+
+tab <- Reduce(function(...) merge(..., by = c("genotype", "treat"), all = TRUE)
+                , map(1:length(smt)
+                         , function(i) smt[[i]][[2]]))
+  
+}
+
+```
+
 
 ```{r gdif}
 
-gnt.dif <- fb %>% 
-  inti::adjmeans_lm_fb(data = .
-                       , trait = 5
-                       , lm.model = "block + genotype*treat"
-                       , comparison = c("genotype", "treat")
-                       , test = "DUNCAN"
-                       , tab_vars = "std"
-                       , sep = " ± "
-                       , digits = 2
-                       )
+tab <- fb %>% means_lm_fb(trait = 5)
 
-gnt.dif$means %>% 
-  inti::include_table(caption = "Comparison of 15 potato genotypes under Well-Watered (WW) and Water Deficit (WD) condition. The values are represented by the mean with the significance difference under Student-Newman-Keuls test (p-value<0.05)."
-                      , notes = "Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm2), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm2g-1), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wueb; gL-1), Tuber Water Use Efficiency (wuet; gL-1)."
-                      )
+exp <- tab %>% 
+  add_row(genotype = "caption"
+          , treat = "Comparison of 15 potato genotypes under Well-Watered (WW) and Water Deficit (WD) condition. The values are represented by the mean with the significance difference under Student-Newman-Keuls test (p-value<0.05)."
+          ) %>% 
+  add_row(genotype = "notes"
+          , treat = "Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm2), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm2g-1), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wueb; gL-1), Tuber Water Use Efficiency (wuet; gL-1)."
+          )
+
+# exp %>% write_sheet(gs, sheet = "stab1")
+
 ```
-
-\newpage
 
 # Supplementary Table 2 {-}
 
+```{r}
+
+H2cal_fb <- function(data
+                     , from
+                     , gen.name
+                     , rep.n
+                     , loc.n = 1
+                     , loc.name = NULL
+                     , fix.model 
+                     , ran.model
+                     , summary = TRUE
+                     , plot_diag = TRUE
+                     , file = c("year", "location", "population")
+                     , emmeans = FALSE
+                     , outliers.rm = FALSE
+                     ) {
+  
+h2cal <- map(c(from:length(data))
+    , .f = function (x) {
+  
+trait <- names(data)[x]
+
+h2 <- data %>% 
+  H2cal(data = .
+        , trait = trait
+        , gen.name = gen.name
+        , rep.n = rep.n
+        , loc.n = loc.n
+        , loc.name = loc.name
+        , fix.model = fix.model
+        , ran.model = ran.model
+        , emmeans = emmeans
+        , outliers.rm = outliers.rm
+        , summary = summary
+        , plot_diag = plot_diag
+        )
+})
+
+h2sm <- do.call(rbind
+                , map(1:length(h2cal)
+                          , function(i) h2cal[[i]][[1]])) %>%
+  select(!c(env, year, V.gxl, V.gxy)) %>%
+  mutate(year = file[1], location = file[2], cross = file[3]) %>%
+  select(year, location, cross, dplyr::everything())
+
+path <- paste0("h2_", file[1], "_", file[2], "_", file[3], ".xlsx")
+h2sm %>% writexl::write_xlsx(path = path)
+
+blups <- Reduce(function(...) merge(..., by = gen.name, all = TRUE)
+                , map(1:length(h2cal)
+                         , function(i) h2cal[[i]][[2]])) %>%
+  mutate(year = file[1], location = file[2], cross = file[3]) %>%
+  select(year, location, cross, dplyr::everything())
+
+path <- paste0("blups_", file[1], "_", file[2], "_", file[3], ".xlsx")
+blups %>% writexl::write_xlsx(path = path)
+
+blues <- Reduce(function(...) merge(..., by = gen.name, all = TRUE)
+                , map(1:length(h2cal)
+                         , function(i) h2cal[[i]][[3]] %>%
+                        dplyr::select(1:2)
+                  )
+                ) %>%
+  mutate(year = file[1], location = file[2], cross = file[3]) %>%
+  select(year, location, cross, dplyr::everything())
+
+path <- paste0("blues_", file[1], "_", file[2], "_", file[3], ".xlsx")
+blues %>% writexl::write_xlsx(path = path)
+  
+list(h2 = h2sm, blups = blups, blues = blues)
+
+}
+
+```
+
 ```{r heritability}
 
-library(emmeans)
-library(lme4)
-library(lmerTest)
+tab <- fb %>% 
+  H2cal_fb(data = .
+        , from = 5
+        , gen.name = "genotype"
+        , rep.n = 4
+        , fix.model = "0 + (1|block) + genotype"
+        , ran.model = "1 + (1|block) + (1|genotype)"
+        , emmeans = T
+        , outliers.rm = T
+        )
 
-td <- fb %>% H2cal_fb(data = .
-                , trait = 5
-                , gen.name = "genotype"
-                , rep.n = 4
-                , fix.model = "(1|block) + genotype"
-                , ran.model = "(1|block) + (1|genotype)"
-                , blues = T
-                )
+exp <- tab$h2 %>% 
+  select(!c(year, location, cross, rep, geno, min, max, h2.s)) %>% 
+  mutate(across(where(is.numeric), ~ round(.x, digits = 2))) %>% 
+  unite("mean ± std", c("mean", "std"), sep = " ± ") %>% 
+  drop_na() %>% 
+  tibble::add_row(variable = "caption"
+                  , "mean ± std" = "Broad sense heritability in 15 potatos genotypes. Genetic variance (V.g), Error variance (V.e), Cullis (h2.c) and Piepho (h2.p) heritability") 
 
-td$tabsmr %>% 
-  select(-c(env, year, rep, geno, V.gxl, V.gxy)) %>% 
-  inti::include_table(caption = "Broad sense heritability in 15 potatos genotypes. Genetic variance (V.g), Error variance (V.e), Standard (h2.s), Cullis (h2.c) and Piepho heritability"
-                      , notes = "Chlorophyll Concentration (spad), Plant height (hgt; cm), Relative water content (rwc; %), Leaf osmotic potential (lop; MPa), Leaf dry weight (ldw; g), Stem dry weight (sdw; g), Root dry weight (rdw; g), Tuber dry weight (tdw; g), Tuber number (ntub; N°), Total transpiration (trs; mL), Leaf area (lfa; cm2), Root length (rdl; cm), Total dry biomass (tdb; g), Harvest Index (hi), Specific Leaf Area (sla; cm2g-1), Relative Chlorophyll Content (rcc), Biomass water use efficiency (wueb; gL-1), Tuber Water Use Efficiency (wuet; gL-1)."
-                      )
+# exp %>% write_sheet(ss = gs, sheet = "stab2")  
+  
 ```
 
