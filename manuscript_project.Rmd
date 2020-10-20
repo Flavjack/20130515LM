@@ -1,0 +1,240 @@
+﻿________________
+
+
+Impact of water deficit on growth, productivity, and water use efficiency in potatoes (Solanum tuberosum L.)
+Flavio Lozano-Isla 1#, Evelyn Farfan-Vignolo 2#, Raymundo Gutierrez 3#, Raul Blas 3, Khan Awais 5#+
+1 Institute of Plant Breeding, Seed Science and Population Genetics, University of Hohenheim, Stuttgart, Germany.
+2 Dirección de Recursos Genéticos y Biotecnología, Instituto Nacional de Innovación Agraria (INIA), La Molina, Lima, Perú.
+3  Universidad Nacional Agraria La Molina (UNALM), Av. La Molina, 1558, Peru.
+4 Plant Pathology and Plant-Microbe Biology Section, Cornell University, Geneva, NY, 14456, USA.
+# International Potato Center (CIP), Av. La Molina 1895, La Molina, 1558, Peru.
++ Corresponding author
+
+
+________________
+# Abstract
+
+
+Drought stress, a serious constraint affecting yields of almost all major crops, is expected to get worse with water deficits stemming from global climate change and human population expansion. Modern cultivars of potato (Solanum tuberosum L), the fourth most important food crop worldwide, are highly sensitive to drought stress. We evaluated a range of agro-physiological traits of fifteen potato genotypes under well-watered (WW) and water deficit (WD) conditions to understand the impact of drought stress on potato productivity and to identify traits for selection of drought tolerant potato genotypes. Our results showed that the drought stress tolerant genotypes, CIP392797.22 (UNICA), CIP397077.16, CIP398190.89, CIP398208.219 and CIP398208.620, were able to preferentially put limited water toward tuber production rather than biomass. These genotypes have high tuber production under WW conditions and increased photosynthetic activity and water use efficiency under WD. Variables such as harvest index, root dry weight, relative chlorophyll content and chlorophyll concentration can be used to select drought tolerant potato genotypes in breeding programs.
+
+
+Key words: abiotic stress, harvest index, physiological traits, drought tolerance, SPAD
+
+
+________________
+# Introduction
+
+
+Water has become a scarce and precious resource and its efficient utilization in food production is a key challenge worldwide. Specifically, yield losses due to drought are a global problem limiting agricultural production (Obidiegwu et al., 2015). Tracking the consequences of drought stress in plants is a difficult task, as it depends on the timing, intensity, type of crop, and duration of stress (Abraham Blum, 2011). Potato (Solanum tuberosum L.), the fourth most important food crop worldwide with an annual production of around 380 million tons, suffers drastic losses in tuber yield and/or quality due to drought stress (Stark et al., 2013; Yang et al., 2016). In general, potato has a high harvest index (HI) in comparison with cereals and relatively low demand for water i.e., 400 to 600 L for 1kg of tuber dry matter (Philippe Monneveux et al., 2013; Sprenger et al., 2016; Stark et al., 2013). However, potatoes are sensitive to drought stress because of their shallow root system, and fast closure of stomata, which reduces transpiration and photosynthesis, considerably reducing tuber yields (Deblonde & Ledent, 2001; Joshi et al., 2016). Periodic water shortages are critical, particularly at the tuber initiation stage. Therefore, potato cultivars with effective water-saving mechanisms leading to higher tolerance are highly desirable for semi-arid areas (P. Monneveux et al., 2014). The majority of modern potato cultivars are very sensitive but with variable responses to drought stress (Philippe Monneveux et al., 2013; Soltys-Kalina et al., 2016; Sprenger et al., 2016). Drought stress tolerance in potatoes is a complex trait controlled by a large number of minor effect QTLs (quantitative trait loci). Significant QTLs and differentially expressed genes under drought stress have been identified in potato (Anithakumari et al., 2012; Chen et al., 2020; Khan et al., 2015; Watkinson et al., 2006). Also, wild species and potato cultivars have been shown to vary in morphological and physiological traits as well as biochemical and molecular pathways under drought stress (Liu et al., 2006).
+In Peru, the center of origin of potatoes, landraces and wild potato relatives have great diversity for physiological traits desirable for breeding potatoes with enhanced drought tolerance. Water use efficiency (WUE), the efficiency of the amount of water applied and used for transpiration that goes toward dry matter production, is an important trait for adaptation to drought stress.  Enhanced WUE can reduce crop water requirements and significantly increase crop yield (Tolk & Howell, 2009). When a higher WUE under drought stress is maintained, the effects of water deficiency are reduced and the competitiveness for water under drought conditions is enhanced (Ogaya & Peñuelas, 2003). WUE was found to be greater in the summer due to the greater HI and more-efficient interception of solar radiation per unit of applied water by drought-exposed than by well-watered plots (Trebejo & Midmore, 1990). Cultivars can be bred for WUE, increasing yield per unit of water, by capturing traits that help the plants develop faster, flower earlier, have a lower leaf area index, and be more efficient in capturing radiation (A. Blum, 2005; Hochman et al., 2009). Cultivars with low stomatal conductance (gs) during vegetative stages, higher transpiration efficiency (TE), and an improved relationship between dry matter produced and the quantity of soil water utilized, can ensure good tuber yield and quality under drought stress (Carli et al., 2014; Condon et al., 2004). In normal conditions when irrigation is sufficient to meet the transpiration needs of the crop, genotypes with higher stomatal conductance and low WUE and thus able to extract more water from the soil will have higher yields. In contrast, when water is not sufficient, the low WUE arising from a high rate of transpiration leads to low yields in favor of dry matter partitioning to reproductive organs (Tuberosa, 2012).
+The aim of the present study is to understand the mechanisms for drought tolerance and growth, physiological, and yield responses in fifteen potato genotypes under water deficit conditions. In addition, the relationships between different agro-physiological, root traits, and yield under water-limited conditions were explored and traits to select drought  tolerant potato genotypes were identified.
+
+
+________________
+# Materials and Methods
+
+
+## Plant material and experimental design
+
+
+Two commercial varieties and thirteen potato genotypes from the advanced breeding population at the International Potato Center (CIP) were used in this study (Table 1). The commercial varieties were: UNICA (CIP392797.22) with a good yield in warm and dry environments (Demirel et al., 2020; Gutiérrez-Rosales et al., 2007; Rolando et al., 2015); and Achirana INTA (CIP720088) known for its earliness and drought tolerance (Schafleitner et al., 2007). The plants were grown in a controlled greenhouse at 28/15°C day/night with 70±5% average relative humidity and had a weather station ‘HOBO U12 Outdoor/Industrial model’ (Onset Computer Corporation, Bourne, MA, USA).
+The potato tubers were pre-sprouted for 2 weeks in a dark chamber before planting. Afterwards, one tuber/genotype was sown at at 5–7cm depth in a 5L plastic pot containing 5kg of dry commercial Sogemix SM2 (75% Peat Moss, perlite, vermiculite, and limestone). Fertilization was done twice during the experiment with ammonium nitrate; triple superphosphate and potassium sulphate, one before planting (mix with the substrate) and the other applied at the surface at 40 DAP (Days after planting).
+## Irrigation treatments
+
+
+The experiment was carried out in a complete randomized block design (Zystro et al., 2018) with two irrigation treatments and had 5 replications of each genotype per treatment. In well-watered (WW) treatment, plants were irrigated according to their transpiration demand (Figure 1B) and in water deficit (WD) treatment, water supply was gradually reduced until wilting  (Ray & Sinclair, 1998). At 35 DAP, prior to the stress initiation, the pots from both WW and WD treatments were watered to soaking and then allowed to drain overnight (Bhatnagar-Mathur et al., 2007). Next morning, the pots were sealed in a plastic bag secured with a twist tie to prevent water loss except by transpiration. Thereafter, all the pots were weighed and this weight was defined as the initial pot weight. The inter-daily weight of the pots was measured for 10 days to calculate the initial dry down parameters for treatment application (Figure 1A). WD treatment was imposed at 45 DAP to coincide with the beginning of tuber initiation and water was reduced by 150 mL in each irrigation.
+
+
+## Transpiration rate
+
+
+The transpiration rate of each plant was calculated by the procedure previously described by Ray & Sinclair (1998). Transpiration was calculated by weighing the pots every two days in the afternoon between 13:00 and 15:00 hours (GMT -05:00), subtracting the amount of water added, and calculating the difference in weight between two days.  On average, a total of 275.69 ml and 72.51 ml of water were added to each pot in WW and WD treatment (Figure 1B). The inter-daily transpiration rates of WD plants were normalized against WW plant rates to reduce the influence of day-to-day variation, as follow, . The normalization was achieved by dividing transpiration of each individual plant in the WD regime by the mean transpiration of the WW plants. For comparing the transpiration between plants, a second normalization was done so that the normalized transpiration rate (NTR) of each plant was defined as 1.0 when the soil water content in each pot was at field capacity (Sinclair & Ludlow, 1986). The available soil water or the fraction of transpirable soil water (FTSW), for each pot was calculated by dividing the pot weight minus the final pot weight by the transpirable soil water of that pot, using the following formula, .
+## Trait evaluation[a]
+
+
+### Water Use Efficiency (WUE)
+
+
+We have calculated the biomass water use efficiency (wueb) and tuber water use efficiency (wuet). The wueb was calculated as the total biomass in dry weight (g) produced divided by the cumulative water transpired (Dalla Costa et al., 1997); for wuet we used the dry weight (g) from tuber production divided by the total water transpired (mL) during the treatment.
+
+
+### Relative Water content (RWC)
+
+
+Relative water content (RWC) was determined by weighing the 3rd leaflet from the youngest fully expanded leaf (third leaf from the apical part) of each plant (FW), and then placing it in a 4x3 inch Ziploc bag containing distilled water for 24 hours. Excess water was removed by blotting each leaf in a paper towel prior to taking turgid weight (TW) and afterwards dried in an oven overnight at 90 ºC. After drying, leaves were reweighed (dry weight, DW). RWC was calculated following the formula described by Vasquez-Robinet et al., 2008.
+.
+
+
+### Leaf Osmotic Potential (LOP)
+
+
+Leaf Osmotic Potential (LOP) was determined using a dew point microvoltmeter (HR-33T Wescor Inc., Logan, UT, USA) with leaf discs of 5 mm diameter, taken from the third fully extended leaf. The leaf discs were put in 1 ml cryogenic tubes and frozen in liquid nitrogen for further analysis. The frozen leaves were incubated at 22°C for 30 min in a sealed C-52 chamber (Wescor Inc., Logan, UT, USA). The degree of total osmotic adjustment (OA) was defined as the difference in OP between the WW and the WD plants (Hessini et al., 2009).
+
+
+### Chlorophyll content (SPAD)
+
+
+Chlorophyll content of leaves was evaluated by taking SPAD (Soil Plant Analysis Development) measurements using a SPAD-502 chlorophyll meter (Konica Minolta Sensing, Inc., Osaka, Japan) from the youngest fully expanded leaf (third leaf from the apical part), from three points (upper, middle and lower leaflet of a leaf). Individual readings of leaflets were averaged to represent individual measurement of a leaf. Measurements were done on light adapted leaves at 29, 59, 76, and 83 DAP. SPAD measurements of the leaf were used as an indicator of nitrogen status and leaf senescence. 
+
+
+### Post-harvest traits
+
+
+At harvest (90 DAP), four components were separated out: leaves, stems, roots and tubers and used to determine total leaf area (cm2) and dry weight (DW) of leaves, stems, roots, and tubers. Dry weight (g) was determined by drying all the components at 80 °C for 3 days in a forced air oven.[b] The leaf area (cm2) of the plants was measured by taking photographs of all the leaves arranged on a wooden board and analyzing the images using ImageJ software (Rueden et al., 2017; Zárate-Salazar et al., 2018).
+
+
+### Indices
+
+
+The harvest index (HI) was calculated as the ratio of TDW related to the total dry biomass (TDB; g) and specific leaf area (SLA) was calculated by dividing the leaf area (LFA) with lead dry weight (LDW). Relative chlorophyll content (rcc) was calculated with the relation between SPAD at 83 dap (SPAD_83) and leaf area (LFA).[c]
+
+
+## Statistical analysis
+
+
+Statistical analysis was performed with the statistical software R (R Core Team, 2020). The analysis of variance (ANOVA) was performed to evaluate the differences between the factors and the comparison of the means with the Student-Newman-Keuls test (p<0.05) with agricolae  and GerminaR package (Lozano-Isla et al., 2019; Mendiburu, 2019). A Student’s t-test was performed between WW and WD treatment (p<0.05). Multivariate analysis, principal components analysis (PCA) and correlation were performed with FactoMineR (Lê et al., 2008)  and heatmaply (Galili et al., 2017) packages respectively. Euclidean distance was used for computing hierarchical clustering between treatments and genotypes (Galili et al., 2017). The heritabilities were calculated using linear mixed models using fixed and random effects according to Schmidt et al. (2019) implemented in the function H2cal in the package inti (Lozano-Isla, 2020).
+________________
+
+
+# ResultS[d]
+
+
+## Impact of treatments on soil water supply and transpiration
+
+
+The fraction of transpirable soil water (FTSW) differences among treatments every 4 days and inter-daily transpiration rates (TRS) in potato genotypes were recorded. The FTSW in WW plants was maintained above 70%, while for the WD treatment the gradual restriction in water supply decreased the water availability. By the end of the experiment the plants in WD had less than 10% of FTSW (Figure 1A). In the case of the transpiration rate, the reduction in the plants in WD was visible after 8 days of water restriction (Figure 1B).[e]
+
+
+## Agro-physiological traits[f]
+
+
+The chlorophyll concentration (SPAD units) taken over the course of plant development (29, 59, 76, and 83 DAP) showed that at 29 DAP all plants were at the same stress level (Figure 2E)[g]. By the end of the experiment, difference between treatment (T), genotypes (G), and G*T were found and the values were lower than at 29 DAP (Table S1). SPAD values in WD treatment for all the genotypes were higher than the ones at WW conditions (Table 2). The genotypes CIP398190.89 and CIP720088 had the lowest differences for SPAD at 83 DAP among treatments (2.06 and 0.30%, respectively), while CIP398203.244 and CIP398208.33 had the largest (14.48 and 17.54%, respectively) (Figure 2F).
+Leaf relative water content (RWC) and leaf osmotic potential (LOP) significantly (p<0.01) decreased in response to WD in all the genotypes (Table 2). The values ranged between 64.96% and 50.09% for CIP720088 and CIP398201.510, respectively. The specific leaf area (SLA) reduction was 48% under WD treatment compared to WW (Table 2). CIP398190.89 together with CIP398203.5 were among the clones with lowest reduction (24 and 21% respectively), while CIP398208.219, CIP398098.119, and CIP398208.704 were among the clones with highest SLA reduction (53, 65, and 64% respectively).
+        Plant height (HGT), leaf dry weight (LDW), stem dry weight (STD), and leaf area (LFA) decreased significantly (p<0.01) under drought treatment (Table 2). In the case of LFA, there was a drastic reduction of 65% in plants under WD treatment compared to WW plants (Table 2 and Figure 2B). While the components such as number of tubers (NTUB), root dry weight (RDW) and root length (RDL) did not show significant differences between the treatments.
+The relative chlorophyll content (RCC), the relation between the chlorophyll concentration in the leaves (SPAD) in relation with the leaf area, has been shown to have a significant (p<0.001) difference between treatments. RCC was able to discriminate genotypes under WW and WD treatments (Figure 2B). The genotypes with best performance for RCC were CIP720088 (Achirana-INTA), CIP398208.620, CIP398208.704, CIP398201.510, CIP392797.22 (UNICA) and CIP397077.16 (Figure 3B).
+
+
+## Yield components
+
+
+Large differences existed among genotypes in total dry biomass (TDB) of genotypes under WW treatment at the end of the experiment (Table 2, Table S1). WD treatment had a significant effect (p<0.001) with an average reduction of around 32% in comparison with the WW treatment (Table 2). In terms of productivity, WD treatment decreased tuber yield (TDW) across genotypes by an average of 40% (p<0.001). CIP398190.89 had greater tuber dry weight (g) in WD treatment compared to its yield in WW treatment with a 5% increase in biomass, while others genotypes like CIP398203.5 and CIP398203.244 presented up to 56% and 48% reduced tuber production (Figure 2A). The genotypes CIP398203.244, CIP398180.612, and CIP398201.510 were among the most sensitive genotypes at 31.56, 46.75 and 48.88% respectively under WD. Significant differences were also found among genotypes (p<0.001) and treatments (p<0.02) for harvest index (Table 2). 
+Biomass water use efficiency (WUEb) was generally higher for genotypes under WD treatment than WW treatment (p<0.001) (Table 2). Under WD treatment, CIP397077.16, CIP398208.620, CIP392797.22 and CIP398190.89 showed the highest WUEb with 13.06, 12.03, and 11.59 gL-1, respectively (Figure 3A). The lowest WUEb with 8.50 and 9.24 gL-1 were presented by CIP398180.612 and CIP398203.5, respectively. For tuber water use efficiency (WUEt) there is no significant difference between treatments (Table 2). The genotypes with better WUEt under WD treatment were CIP397077.16, CIP392797.22, CIP720088 and CIP398208.620 (Figure 1 and 2D).
+
+
+## Multivariate analysis[h]
+
+
+The Principal Component Analysis (PCA) identified the first two dimensions explaining 64.9% of the variance in the experiment (Figure S2A). In the first dimension the variables with highest contribution are TRS (r=0.94), LFA (r=0.93), TBD (r=0.87), SLA (r=0.81), TDW (r=0.74) and LDW (r=0.73) (Figure S2B). These variables showed a high correlation among each other under WW treatment. On the other side, RCC (r=-0.73), and SPAD (r~-0,63) showed negative correlations and are associated with WD treatment (Figure S2D). In the second dimension the variables with major contribution are RDL (r=0.88) and RDW (r=0.87), with a high correlation under WW treatment and negative correlation with HI (r=-0.92) and WUEt (r=-0.90) under  WD treatment (Figure S2C-D).
+PCA showed five clusters of genotypes (Figure 3B). These groups were separated by the treatment applied. Genotypes in the cluster 4 and 5 are under WW treatment, and the cluster 2 and 3 had genotypes under WD treatment. The genotypes in the cluster 1, 3 and 5 can tolerate water stress and have shown a significant correlation with WUEt, HI and TDW, traits that are important in the yield component (Figure 3B). The relationship between the clusters and variables showed that the genotypes in cluster 2 are positively correlated with the SPAD, RDL and RDW and negatively correlated to TDW, HI and WUEt. The genotypes in the cluster 3 and 1 are positively correlated with the RCC and WUEb. In cluster 4, the genotypes are positively correlated with LDW, TDB, LFA and TRS. The genotypes in cluster 5 are correlated with SLA, TDW and RWC and negatively correlated with SPAD and RDW (Figure 3).
+According to the Pearson correlation analysis (Figure S4) values of TDB and TRS were strongly and positively correlated with 0.93 (p<0.05) with Euclidean distance of 0.91 (Figure S4). The SPAD measurements showed strong correlation between them (r~0.80) and at negative correlation with HI (r=-0.07). A negative correlation (r= -0.73) among RDW and HI was found with a Euclidean distance of 4.96. A strong correlation between HI and WUEt was found (r=0.92) with an Euclidean distance of 0.68 (Figure S4). Tuber dry weight (TDW) showed correlation with HI (r=0.61) and WUEt (r=0.55) and WUEb (r=0.05) with a Euclidean distance of the traits 4.96 (Figure 3 and S4). We also found correlation between HI and WUEt was 0.92 with a Euclidean distance 0.91 and a negative correlation with spad (-0.7) at 38 DAP.
+The negative (r~0.62.7) correlation (Table 2) and Euclidean distance of 4.21 between SPAD and TDW since the application of the drought treatment indicates no association between them. Apparently SPAD measure is sensitive to detect the drought stress and it is related with the tuber production (Figure 3 and S4). The inclusion in the analysis of the relative chlorophyll content (RCC) was able to differentiate the genotypes by their photosynthetic and water use efficiency (Figure 3 and 2B).
+________________
+
+
+# Discussion
+
+
+Water deficit (WD) triggered a range of morphological and physiological mechanisms in the potato genotypes tested, leading to different yield penalties and indicating a variety of survival strategies by potato. We found root length, SPAD, and SLA to be good indicators for water use efficient (WUE) plants useful for drought tolerance breeding. Most characteristics measured showed differences between treatments, pointing to their value in evaluating the impact of drought. According to (Songsri et al., 2009), enhanced extraction of water and nutrients from the soil due to a large root system and long roots is a drought resistance mechanism in potatoes. Our study showed that the minimal yield losses in some genotypes like CIP398190.89 under WD could be related to its ability to increase its WUE, by absorbing the limited water and nutrients available in the soil without changing its morphology. However, in our study, the genotype with the longest roots (CIP398201.510) showed the lowest yield and HI under both stressed and non-stressed conditions. In this genotype, the long roots seem to contribute to vegetative growth rather than harvestable yield. 
+Another drought resistance mechanism can be the reduction of transpiration achieved by the reduction of leaf area, for example, thick leaves often have greater photosynthetic capacity than thin leaves, due to their higher chlorophyll per leaf area counts (Songsri et al., 2009). SPAD is an indicator of the photosynthetically active light transmittance characteristics of the leaf, which is dependent on the unit amount of chlorophyll per unit leaf area. SPAD units have been correlated with chlorophyll and carotenoid content in potato and other crops (Ramírez et al., 2014) and are used in selecting genotypes tolerant to drought in breeding programs. In this study, some genotypes reduced specific leaf area (SLA), and changed the ratio of root to shoot, while others, like CIP3977077.16 and CIP398190.89 maintained SLA, as well as harvest index (HI), root length and stolon mass under WD. These genotypes may have lower sink competition and allocated a proportionally higher fraction of assimilates to tubers by reducing the evaporative surface area above-ground and efficiently employing the resources (water saved and N) located in the soil. Conversely, sensitive genotypes such as CIP398203.244 preferred to produce leaves and stems in preference to tubers. Our study also found a lower specific leaf area (SLA) under WD, principally explained by decreases in new leaf production, number of leaves, and leaf size. This decrease might have allowed a reduction in leaf transpiration, saving water for tuber bulking as suggested by Lahlou et al., 2003. Hence, potato genotypes with the ability to maintain higher SPAD and lower SLA under WD conditions, can maintain higher WUE under WD conditions.
+It is important to remember that under WW conditions, soil can supply water at a steady rate to meet the transpiration demand. However, as the soil becomes dry, water flux from soil to root surface decreases and cannot satisfy the demand of transpiration. Additionally, in WD conditions, mineralization and supply of nutrients, especially N, is reduced, forcing the plant to use their resources efficiently as the only solution to not compromise yield (Motalebifard et al., 2013). Payne et al. (1995) found that N uptake was linearly related to plant transpiration, and that about twice as much N is taken up per kg of transpiration in water-stressed plants than in non-water-stressed plants. In our study, we found that CIP397077.16 and CIP398208.620 could maintain turgor, which, combined with the reduction of SLA, helped them to conserve water. Additionally, increased amounts of RWC under WD treatment in CIP720088 may have been the result of higher stomatal conductivity, since the root length of CIP720088 in WW and WD treated plants were comparable. 
+The strong correlation between WUE in this experiment and tuber yield (r = 0 .78, p < .001) indicates direct association between them, and at the same time, reflected the conservative relationship between biomass production and WUE through a range of limited soil water availability. Reduced stomatal conductance can constrain the diffusion of CO2 for photosynthesis, and accordingly the average total biomass in the WD treatment was significantly lower than that of the corresponding genotypes in WW treatment. Different studies have measured WUE at the leaf, whole plant, and crop levels (Guoju et al., 2013; Hochman et al., 2009) and have found no significant differences at plant or crop levels (Deblonde et al., 1999). In this study, WUE is considered a critical trait that can affect yield and its increase can lead a plant to tolerate or avoid water deficit conditions. 
+Based on our results, the genotypes with reduced SLA, longest root length and that maintain relatively high WUE under WD conditions, like CIP398201.510, are drought avoidant. Additionally, we found that tolerant genotypes like CIP397077.16, CIP398190.89, and UNICA preferentially use available water for tuber production rather than above ground biomass. Our study demonstrated that root length, SPAD and SLA are important traits related to WUE and could be useful as selection criteria of new genotypes. However, there are additional strategies of the below-ground plant parts that need to be explored for their role in yield stability under water stress conditions.
+________________
+
+
+# Acknowledgments
+
+
+Authors acknowledge the financial support by BMZ/GIZ through a research grant for “Improved potato varieties and water management technologies to enhance water use efficiency, resilience, cost-effectiveness, and productivity of smallholder farms in stress-prone Central Asian environments”. We also thank Jorge Vega and David Saravia for their help during installation and evaluation of the experiment.
+________________
+
+
+# References
+
+
+Anithakumari, A. M., Nataraja, K. N., Visser, R. G. F., & van der Linden, C. G. (2012). Genetic dissection of drought tolerance and recovery potential by quantitative trait locus mapping of a diploid potato population. Molecular Breeding, 30(3), 1413–1429. https://doi.org/10.1007/s11032-012-9728-5
+Bhatnagar-Mathur, P., Devi, M. J., Reddy, D. S., Lavanya, M., Vadez, V., Serraj, R., Yamaguchi-Shinozaki, K., & Sharma, K. K. (2007). Stress-inducible expression of At DREB1A in transgenic peanut (Arachis hypogaea L.) increases transpiration efficiency under water-limiting conditions. Plant Cell Reports, 26(12), 2071–2082. https://doi.org/10.1007/s00299-007-0406-8
+Blum, A. (2005). Drought resistance, water-use efficiency, and yield potential—Are they compatible, dissonant, or mutually exclusive? Australian Journal of Agricultural Research, 56(11), 1159. https://doi.org/10.1071/AR05069
+Blum, Abraham. (2011). Drought resistance—Is it really a complex trait? Functional Plant Biology, 38(10), 753. https://doi.org/10.1071/FP11101
+Carli, C., Yuldashev, F., Khalikov, D., Condori, B., Mares, V., & Monneveux, P. (2014). Effect of different irrigation regimes on yield, water use efficiency and quality of potato (Solanum tuberosum L.) in the lowlands of Tashkent, Uzbekistan: A field and modeling perspective. Field Crops Research, 163, 90–99. https://doi.org/10.1016/j.fcr.2014.03.021
+Chen, Y., Li, C., Yi, J., Yang, Y., Lei, C., & Gong, M. (2020). Transcriptome Response to Drought, Rehydration and Re-Dehydration in Potato. International Journal of Molecular Sciences, 21(1), 159. https://doi.org/10.3390/ijms21010159
+Condon, A. G., Richards, R. A., Rebetzke, G. J., & Farquhar, G. D. (2004). Breeding for high water-use efficiency. Journal of Experimental Botany, 55(407), 2447–2460.
+Dalla Costa, L., Delle Vedove, G., Gianquinto, G., Giovanardi, R., & Peressotti, A. (1997). Yield, water use efficiency and nitrogen uptake in potato: Influence of drought stress. Potato Research, 40(1), 19–34. https://doi.org/10.1007/BF02407559
+Deblonde, P. M. K., Haverkort, A. J., & Ledent, J. F. (1999). Responses of early and late potato cultivars to moderate drought conditions: Agronomic parameters and carbon isotope discrimination. European Journal of Agronomy, 11(2), 91–105. https://doi.org/10.1016/S1161-0301(99)00019-2
+Deblonde, P. M. K., & Ledent, J. F. (2001). Effects of moderate drought conditions on green leaf number, stem height, leaf length and tuber yield of potato cultivars. European Journal of Agronomy, 14(1), 31–41. https://doi.org/10.1016/S1161-0301(00)00081-2
+Demirel, U., Morris, W. L., Ducreux, L. J. M., Yavuz, C., Asim, A., Tindas, I., Campbell, R., Morris, J. A., Verrall, S. R., Hedley, P. E., Gokce, Z. N. O., Caliskan, S., Aksoy, E., Caliskan, M. E., Taylor, M. A., & Hancock, R. D. (2020). Physiological, Biochemical, and Transcriptional Responses to Single and Combined Abiotic Stress in Stress-Tolerant and Stress-Sensitive Potato Genotypes. Frontiers in Plant Science, 11. https://doi.org/10.3389/fpls.2020.00169
+Galili, Tal, O’Callaghan, Alan, Sidi, Jonathan, Sievert, & Carson. (2017). heatmaply: An R package for creating interactive cluster heatmaps for online publishing. Bioinformatics. https://doi.org/10.1093/bioinformatics/btx657
+Guoju, X., Fengju, Z., Zhengji, Q., Yubi, Y., Runyuan, W., & Juying, H. (2013). Response to climate change for potato water use efficiency in semi-arid areas of China. Agricultural Water Management, 127, 119–123. https://doi.org/10.1016/j.agwat.2013.06.004
+Gutiérrez-Rosales, R. O., Espinoza-Trelles, J. A., & Bonierbale, M. (2007). UNICA: Variedad Peruana para mercado fresco y papa frita con tolerancia y resistencia para condiciones climáticas adversas. Revista Latinoamericana de la Papa, 14(1), 41–50.
+Hessini, K., Martínez, J. P., Gandour, M., Albouchi, A., Soltani, A., & Abdelly, C. (2009). Effect of water stress on growth, osmotic adjustment, cell wall elasticity and water-use efficiency in Spartina alterniflora. Environmental and Experimental Botany, 67(2), 312–319. https://doi.org/10.1016/j.envexpbot.2009.06.010
+Hochman, Z., Holzworth, D., & Hunt, J. R. (2009). Potential to improve on-farm wheat yield and WUE in Australia. Crop and Pasture Science, 60(8), 708. https://doi.org/10.1071/CP09064
+Joshi, M., Fogelman, E., Belausov, E., & Ginzberg, I. (2016). Potato root system development and factors that determine its architecture. Journal of Plant Physiology, 205, 113–123. https://doi.org/10.1016/j.jplph.2016.08.014
+Khan, M. A., Saravia, D., Munive, S., Lozano-Isla, F., Farfan, E., Eyzaguirre, R., & Bonierbale, M. (2015). Multiple QTLs Linked to Agro-Morphological and Physiological Traits Related to Drought Tolerance in Potato. Plant Molecular Biology Reporter, 33(5), 1286–1298. https://doi.org/10.1007/s11105-014-0824-z
+Lahlou, O., Ouattar, S., & Ledent, J.-F. (2003). The effect of drought and cultivar on growth parameters, yield and yield components of potato. Agronomie, 23(3), 257–268. https://doi.org/10.1051/agro:2002089
+Lê, S., Josse, J., & Husson, F. (2008). FactoMineR: A package for multivariate analysis. Journal of Statistical Software, 25(1), 1–18. https://doi.org/10.18637/jss.v025.i01
+Liu, F., Shahnazari, A., Andersen, M. N., Jacobsen, S.-E., & Jensen, C. R. (2006). Effects of deficit irrigation (DI) and partial root drying (PRD) on gas exchange, biomass partitioning, and water use efficiency in potato. Scientia Horticulturae, 109(2), 113–117. https://doi.org/10.1016/j.scienta.2006.04.004
+Lozano-Isla, F. (2020). inti: Tools and statistical procedures in plant science [Manual]. https://flavjack.github.io/inti/
+Lozano-Isla, Flavio, Benites-Alfaro, Omar Eduardo, Pompelli, & Marcelo Francisco. (2019). GerminaR: An R package for germination analysis with the interactive web application “GerminaQuant for R.” Ecological Research, 34(2), 339–346. https://doi.org/10.1111/1440-1703.1275
+Mendiburu, F. de. (2019). agricolae: Statistical Procedures for Agricultural Research (1.3-1) [R]. https://CRAN.R-project.org/package=agricolae
+Monneveux, P., Ramírez, D. A., Khan, M. A., Raymundo, R. M., Loayza, H., & Quiroz, R. (2014). Drought and Heat Tolerance Evaluation in Potato (Solanum tuberosum L.). Potato Research, 57(3), 225–247. https://doi.org/10.1007/s11540-014-9263-3
+Monneveux, Philippe, Ramírez, D. A., & Pino, M.-T. (2013). Drought tolerance in potato (S. tuberosum L.): Can we learn from drought tolerance research in cereals? Plant Science, 205–207, 76–86. https://doi.org/10.1016/j.plantsci.2013.01.011
+Motalebifard, R., Najafi, N., Oustan, S., Nyshabouri, M. R., & Valizadeh, M. (2013). The combined effects of phosphorus and zinc on evapotranspiration, leaf water potential, water use efficiency and tuber attributes of potato under water deficit conditions. Scientia Horticulturae, 162, 31–38. https://doi.org/10.1016/j.scienta.2013.07.043
+Obidiegwu, J. E., Bryan, G. J., Jones, H. G., & Prashar, A. (2015). Coping with drought: Stress and adaptive responses in potato and perspectives for improvement. Frontiers in Plant Science, 6. https://doi.org/10.3389/fpls.2015.00542
+Ogaya, R., & Peñuelas, J. (2003). Comparative field study of Quercus ilex and Phillyrea latifolia: Photosynthetic response to experimental drought conditions. Environmental and Experimental Botany, 50(2), 137–148. https://doi.org/10.1016/S0098-8472(03)00019-4
+Payne, W. A., Hossner, L. R., Onken, A. B., & Wendt, C. W. (1995). Nitrogen and Phosphorus Uptake in Pearl Millet and Its Relation to Nutrient and Transpiration Efficiency. Agronomy Journal, 87(3), 425–431. https://doi.org/10.2134/agronj1995.00021962008700030007x
+R Core Team. (2020). R: A language and environment for statistical computing [Manual]. https://www.R-project.org/
+Ramírez, D. A., Yactayo, W., Gutiérrez, R., Mares, V., De Mendiburu, F., Posadas, A., & Quiroz, R. (2014). Chlorophyll concentration in leaves is an indicator of potato tuber yield in water-shortage conditions. Scientia Horticulturae, 168, 202–209. https://doi.org/10.1016/j.scienta.2014.01.036
+Ray, J. D., & Sinclair, T. R. (1998). The effect of pot size on growth and transpiration of maize and soybean during water deficit stress. Journal of Experimental Botany, 49(325), 1381–1386. https://doi.org/10.1093/jxb/49.325.1381
+Rolando, J. L., Ramírez, D. A., Yactayo, W., Monneveux, P., & Quiroz, R. (2015). Leaf greenness as a drought tolerance related trait in potato (Solanum tuberosum L.). Environmental and Experimental Botany, 110, 27–35. https://doi.org/10.1016/j.envexpbot.2014.09.006
+Rueden, C. T., Schindelin, J., Hiner, M. C., DeZonia, B. E., Walter, A. E., Arena, E. T., & Eliceiri, K. W. (2017). ImageJ2: ImageJ for the next generation of scientific image data. BMC Bioinformatics, 18(1), 529. https://doi.org/10.1186/s12859-017-1934-z
+Schafleitner, R., Gutierrez Rosales, R. O., Gaudin, A., Alvarado Aliaga, C. A., Martinez, G. N., Tincopa Marca, L. R., Bolivar, L. A., Delgado, F. M., Simon, R., & Bonierbale, M. (2007). Capturing candidate drought tolerance traits in two native Andean potato clones by transcription profiling of field grown plants under water stress. Plant Physiology and Biochemistry, 45(9), 673–690. https://doi.org/10.1016/j.plaphy.2007.06.003
+Schmidt, P., Hartung, J., Bennewitz, J., & Piepho, H.-P. (2019). Heritability in Plant Breeding on a Genotype-Difference Basis. Genetics, 212(4), 991–1008. https://doi.org/10.1534/genetics.119.302134
+Sinclair, T., & Ludlow, M. (1986). Influence of Soil Water Supply on the Plant Water Balance of Four Tropical Grain Legumes. Australian Journal of Plant Physiology, 13(3), 329. https://doi.org/10.1071/PP9860329
+Soltys-Kalina, D., Plich, J., Strzelczyk-Żyta, D., Śliwka, J., & Marczewski, W. (2016). The effect of drought stress on the leaf relative water content and tuber yield of a half-sib family of ‘Katahdin’-derived potato cultivars. Breeding Science, 66(2), 328–331. https://doi.org/10.1270/jsbbs.66.328
+Songsri, P., Jogloy, S., Holbrook, C. C., Kesmala, T., Vorasoot, N., Akkasaeng, C., & Patanothai, A. (2009). Association of root, specific leaf area and SPAD chlorophyll meter reading to water use efficiency of peanut under different available soil water. Agricultural Water Management, 96(5), 790–798. https://doi.org/10.1016/j.agwat.2008.10.009
+Sprenger, H., Kurowsky, C., Horn, R., Erban, A., Seddig, S., Rudack, K., Fischer, A., Walther, D., Zuther, E., Köhl, K., Hincha, D. K., & Kopka, J. (2016). The drought response of potato reference cultivars with contrasting tolerance. Plant, Cell & Environment, 39(11), 2370–2389. https://doi.org/10.1111/pce.12780
+Stark, J. C., Love, S. L., King, B. A., Marshall, J. M., Bohl, W. H., & Salaiz, T. (2013). Potato Cultivar Response to Seasonal Drought Patterns. American Journal of Potato Research, 90(3), 207–216. https://doi.org/10.1007/s12230-012-9285-9
+Tolk, J. A., & Howell, T. A. (2009). Transpiration and Yield Relationships of Grain Sorghum Grown in a Field Environment. Agronomy Journal, 101(3), 657–662. https://doi.org/10.2134/agronj2008.0079x
+Trebejo, I., & Midmore, D. J. (1990). Effect of water stress on potato growth, yield and water use in a hot and a cool tropical climate. The Journal of Agricultural Science, 114(03), 321. https://doi.org/10.1017/S0021859600072713
+Tuberosa, R. (2012). Phenotyping for drought tolerance of crops in the genomics era. Frontiers in Physiology, 3. https://doi.org/10.3389/fphys.2012.00347
+Vasquez-Robinet, C., Mane, S. P., Ulanov, A. V., Watkinson, J. I., Stromberg, V. K., De Koeyer, D., Schafleitner, R., Willmot, D. B., Bonierbale, M., Bohnert, H. J., & Grene, R. (2008). Physiological and molecular adaptations to drought in Andean potato genotypes. Journal of Experimental Botany, 59(8), 2109–2123. https://doi.org/10.1093/jxb/ern073
+Watkinson, J. I., Hendricks, L., Sioson, A. A., Vasquez-Robinet, C., Stromberg, V., Heath, L. S., Schuler, M., Bohnert, H. J., Bonierbale, M., & Grene, R. (2006). Accessions of Solanum tuberosum ssp. Andigena show differences in photosynthetic recovery after drought stress as reflected in gene expression profiles. Plant Science, 171(6), 745–758. https://doi.org/10.1016/j.plantsci.2006.07.010
+Yang, J., Zhang, N., Zhou, X., Si, H., & Wang, D. (2016). Identification of four novel stu-miR169s and their target genes in Solanum tuberosum and expression profiles response to drought stress. Plant Systematics and Evolution, 302(1), 55–66. https://doi.org/10.1007/s00606-015-1242-x
+Zárate-Salazar, J. R., Santos, M. N., Santos, J. N. B., & Lozano-Isla, F. (2018). Comparison of image analysis softwares for the determination of leaf area. Revista Brasileira de Meio Ambiente, 3(1). https://revistabrasileirademeioambiente.com/index.php/RVBMA/article/view/44
+Zystro, J., Colley, M., & Dawson, J. (2018). Alternative Experimental Designs for Plant Breeding. In Plant Breeding Reviews (pp. 87–117). John Wiley & Sons, Ltd. https://doi.org/10.1002/9781119521358.ch3
+
+
+
+
+
+
+
+
+[a]Describe briefly and accurately, 
+ How biomass was dried (days, temperature etc) and biomass dry weight was obtained.
+ How tubers were dried (days, temperature etc) and biomass dry weight was obtained.
+I see that some information on drying is in post-harvest. Either mention that it is provided in post-harvest trait evaluation or write it here and refer it in post-harvest section.
+
+
+ How total and comulative transipired water data was obtained.
+
+
+You need to write complete protocols so that anyone who reads the paper can repeat the experiment.
+[b]You need to also mention how fresh weight was taken, what balance you have used, what was the model number? Within how many days of harvest, did you take fresh weights? Did you separate all comonents, put them in separate bags, weigh them for fresh weight? And dried each componenent separately and then combined to have total fresh and dried weight? This section needs more details.
+[c]Any references, formula’s or more details here? 
+
+
+If this information has enogh details for someone else to repeat what you have done? Please keep this question for all materials and method sections.
+[d]Did you write results from Table S2 about heritabilities?
+[e]This only result you see in Figure 1? Anything about days after treatments were initiated and FTSW? When you started to see diffrences? When were the major differences?
+
+
+
+
+I suggest that you need to look at figures and tables carefully and describe most important results. If there is no key result/finding in a figure or table, then it means it is not important and should be taken out from the paper.
+[f]As suggested earlier, look at figures and tables carefully and describe most important results. I see very brief results from Figure 2E, 2F etc.
+[g]You are starting with Figure 2E. Why not to edit the figure and make Figure 2E and F as Figure 2A and 2B? 
+
+
+It will be good if plots in figure 2 are ordered in the sequence of their citation in the text.
+[h]This section needs improvement of entences. It is not easy to follow some of the sentences.
