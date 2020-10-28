@@ -1,6 +1,9 @@
 ---
-title: "Impact of water deficit on growth, productivity, and water use efficiency in potatoes (_Solanum tuberosum_ L.)"
+title: &nbsp
 output: 
+  # bookdown::word_document2: 
+  #   reference_docx: files/style_rticles.docx
+  #   number_sections: false
   bookdown::html_document2:
     toc: true
     number_sections: false
@@ -68,19 +71,17 @@ fb <- xl %>%
   mutate(across(where(is.character), as.factor)) 
 ```
 
-# Abbreviations {-}
+##### Abbreviations {-}
 
 ```{r abrv}
 xl %>%
   readxl::read_excel(sheet = "var") %>%
   filter(include == "x") %>%
   select(Variable, Abbreviation) %>%
-  kable(caption = "List of abbreviations")
+  kable()
 ```
 
-# Tables {-}
-
-## Table 1
+##### Tables 1 {-}
 
 ```{r gnt}
 tab <- xl %>% 
@@ -90,10 +91,10 @@ tab <- xl %>%
   
 # tab %>% sheet_write(gs, data = .,  sheet = "tab1")
 
-tab %>% include_table(notation = "none")
+tab %>% include_table()
 ```
 
-## Table 2
+##### Tables 2 {-}
 
 ```{r svt}
 tab <- fb %>%
@@ -140,9 +141,7 @@ tab <- fb %>%
 tab %>% include_table()
 ```
 
-# Figures {-}
-
-## Figure 1
+##### Figure 1 {-}
 
 ```{r mpv, fig.cap= fig$caption}
 
@@ -311,7 +310,7 @@ fig <- info_figure(
 fig %>% include_figure()
 ```
 
-## Figure 2
+##### Figure 2 {-}
 
 ```{r cor, fig.cap=fig$caption}
 
@@ -366,7 +365,7 @@ fig <- info_figure(
 fig %>% include_figure()
 ```
 
-## Figure 3
+##### Figure 3 {-}
 
 ```{r mva, fig.cap= fig$caption}
 
@@ -466,9 +465,7 @@ fig <- info_figure(
 fig %>% include_figure()
 ```
 
-# Supplementary information {-}
-
-## Table S1
+##### Tables S1 {-}
 
 ```{r}
 
@@ -502,6 +499,7 @@ tab
 
 ```
 
+
 ```{r gdif}
 
 tab <- fb %>% 
@@ -533,10 +531,11 @@ info <- tab %>%
   
 # info %>% write_sheet(gs, sheet = "tabS1")
 
-tab %>% web_table(caption = "Comparison of 15 potato genotypes under Well-Watered (WW) and Water Deficit (WD) condition. The values are represented by the mean with the significance difference under Student-Newman-Keuls test (p-value<0.05).")
+tab %>% web_table(
+  caption = "Comparison of 15 potato genotypes under Well-Watered (WW) and Water Deficit (WD) condition. The values are represented by the mean with the significance difference under Student-Newman-Keuls test (p-value<0.05).")
 ```
 
-## Table S2
+##### Tables S2 {-}
 
 ```{r}
 
@@ -648,14 +647,15 @@ info <- tab$h2 %>%
     )) %>% 
   drop_na() %>% 
   rename(Variable = variable) %>% 
-  info_table(caption = "Broad sense heritability in 15 potatos genotypes. Genetic variance (V.g), Error variance (V.e), Cullis (h2.c) and Piepho (h2.p) heritability")
+  info_table(
+    caption = "Broad sense heritability in 15 potatos genotypes. Genetic variance (V.g), Error variance (V.e), Cullis (h2.c) and Piepho (h2.p) heritability")
 
 # info %>% write_sheet(ss = gs, sheet = "tabS2")  
 
 info  %>%  include_table()
 ```
 
-## Figure S1
+##### Figure S1 {-}
 
 ```{r srl, fig.cap= fig$caption}
 
@@ -740,7 +740,7 @@ fig <- info_figure(
 fig %>% include_figure()
 ```
 
-## Figure S2
+##### Figure S2 {-}
 
 ```{r pca, fig.cap=fig$caption}
 
@@ -819,15 +819,12 @@ fig <- info_figure(
 fig %>% include_figure()
 ```
 
-## Figure S3
+##### Figure S3 {-}
 
-```{r potatos, fig.cap=fig$caption}
+```{r potatos, fig.cap= fig$caption}
 
 fig <- info_figure(
-  caption = "Tuber yield performance from two contrasting potato genotype. Genotype CIP 398203.244 with good performance under well-watered (WW) with reduced yields during water deficit (WD) condition.
-  Genotype CIP 398190.89 with good response under well-watered (WW) and water deficit (WD) treatment. 
-  Each group represent one replication (n = 5).
-  Pictures were taken using the 5 cm scale (black/white segment = 1 cm) displayed alongside the tubers."
+  caption = "Tuber yield performance from two contrasting potato genotype. Genotype CIP 398203.244 with good performance under well-watered (WW) with reduced yields during water deficit (WD) condition. Genotype CIP 398190.89 with good response under well-watered (WW) and water deficit (WD) treatment. Each group represent one replication (n = 5). Pictures were taken using the 5 cm scale (black/white segment = 1 cm) displayed alongside the tubers."
   , url = "files/fig_potatos.png"
   )
   
