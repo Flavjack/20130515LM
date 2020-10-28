@@ -1,5 +1,10 @@
 ---
-output: html_document
+title: "Impact of water deficit on growth, productivity, and water use efficiency in potatoes (_Solanum tuberosum_ L.)"
+output: 
+  bookdown::html_document2:
+    toc: true
+    number_sections: false
+    toc_float: true
 editor_options: 
   chunk_output_type: console
 ---
@@ -34,7 +39,7 @@ fb <- xl %>%
          ntub,
          trs = ttrns,
          lfa = la,
-         rdl = rlg
+         rtl = rlg
          ) %>% 
   mutate(tdb = (ldw+sdw+rdw+tdw),
          hi = tdw/(ldw+sdw+rdw+tdw),
@@ -116,7 +121,7 @@ tab <- fb %>%
     , "__ntub__" = "Tuber number (N°)" 
     , "__trs__" = "Total transpiration (mL)"
     , "__lfa__" = "Leaf area (cm^2^)"
-    , "__rdl__" = "Root length (cm)"
+    , "__rtl__" = "Root length (cm)"
     , "__tdb__" = "Total dry biomass (g)"
     , "__hi__"  = "Harvest index (HI)" 
     , "__sla__" = "Specific leaf area (cm^2^g^-1^)"
@@ -278,8 +283,8 @@ spad_83 <- mc$table %>%
 plot <- ggdraw(xlim = c(0.0, 1), ylim = c(0.0, 1)) +
   draw_plot(spad_29 , width = 0.49, height = 0.35, x = 0.0, y = 0.6) +
   draw_plot(spad_83, width = 0.49, height = 0.3, x = 0.5, y = 0.6) +
-  draw_plot(tdw ,  width = 0.49, height = 0.3, x = 0.0, y = 0.3) +
-  draw_plot(rcc, width = 0.49, height = 0.3, x = 0.5, y = 0.3) +
+  draw_plot(rcc,  width = 0.49, height = 0.3, x = 0.0, y = 0.3) +
+  draw_plot(tdw, width = 0.49, height = 0.3, x = 0.5, y = 0.3) +
   draw_plot(hi , width = 0.49, height = 0.3, x = 0.0, y = 0.0) +
   draw_plot(twue, width = 0.49, height = 0.3, x = 0.5, y = 0.0) +
           draw_plot_label(
@@ -319,7 +324,7 @@ cr <- fb %>%
   column_to_rownames("rn") %>% 
   rename_with(toupper, where(is.numeric)) 
 
-cp <- heatmaply_cor(
+cp <- heatmaply::heatmaply_cor(
   cor(cr),
   k_col = 5, 
   dendrogram = c("column"),  
@@ -327,11 +332,10 @@ cp <- heatmaply_cor(
   cellnote = round(cor(cr),2),
   cellnote_textposition = "middle center",
   cellnote_size = 10,
-  file = "files/fig_cor.png"
+  file = "files/fig_cor.html"
 )
 
 # browseURL("files/fig_cor.html")
-# plotly::orca(p = cp, file = )
 
 fig <- info_figure(
   caption = "Relationships among agro-morphological traits evaluated in well-watered (WW) and water deficit (WD) condition based on Pearson correlation and Euclidean distance measured in 15 potato genotypes."
@@ -346,7 +350,7 @@ fig <- info_figure(
   Tuber number (NTUB; N°), 
   Total transpiration (TRS; mL), 
   Leaf area (LFA; cm^2^), 
-  Root length (RDL; cm), 
+  Root length (RTL; cm), 
   Total dry biomass (TDB; g), 
   Harvest index (HI), 
   Specific leaf area (SLA; cm^2^g^-1^), 
@@ -354,11 +358,12 @@ fig <- info_figure(
   Biomass water use efficiency (WUE~B~; gL^-1^), 
   Tuber water use efficiency (WUE~T~; gL^-1^)."
   , url = "files/fig_cor.png"
+  , label = "Where:"
   )
   
 # fig$info %>% write_sheet(gs, sheet = "fig2")
 
-fig %>% include_figure(label = "Where:")
+fig %>% include_figure()
 ```
 
 ## Figure 3
@@ -445,13 +450,14 @@ fig <- info_figure(
   Tuber number (NTUB; N°), 
   Total transpiration (TRS; mL), 
   Leaf area (LFA; cm^2^), 
-  Root length (RDL; cm), 
+  Root length (RTL; cm), 
   Total dry biomass (TDB; g), 
   Harvest index (HI), 
   Specific leaf area (SLA; cm^2^g^-1^), 
   Relative chlorophyll content (RCC), 
   Biomass water use efficiency (WUE~B~; gL^-1^), 
   Tuber water use efficiency (WUE~T~; gL^-1^)."
+  , label = "Where:"
   , url = "files/fig_mva.png"
   )
   
@@ -516,7 +522,7 @@ info <- tab %>%
   Tuber number (NTUB; N°), 
   Total transpiration (TRS; mL), 
   Leaf area (LFA; cm^2^), 
-  Root length (RDL; cm), 
+  Root length (RTL; cm), 
   Total dry biomass (TDB; g), 
   Harvest index (HI), 
   Specific leaf area (SLA; cm^2^g^-1^), 
@@ -632,7 +638,7 @@ info <- tab$h2 %>%
     , "NTUB" = "Tuber number (N°)" 
     , "TRS" = "Total transpiration (mL)"
     , "LFA" = "Leaf area (cm^2^)"
-    , "RDL" = "Root length (cm)"
+    , "RTL" = "Root length (cm)"
     , "TDB" = "Total dry biomass (g)"
     , "HI"  = "Harvest index (HI)" 
     , "SLA" = "Specific leaf area (cm^2^g^-1^)"

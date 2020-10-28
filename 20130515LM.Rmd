@@ -1,7 +1,7 @@
 ---
 title: "Impact of water deficit on growth, productivity, and water use efficiency in potato genotypes (*Solanum tuberosum* L.)"
 author:
-  - "Flavio Lozano-Isla ^#^, Evelyn Farfan-Vignolo ^#^, Raymundo Gutierrez ^#^, Raul Blas ^1^, Khan Awais ^2#+^"
+  - "Flavio Lozano-Isla ^1#^, Evelyn Farfan-Vignolo ^2#^, Raymundo Gutierrez ^3#^, Raul Blas ^3^, Khan Awais ^2#+^"
   - "^1^ Institute of Plant Breeding, Seed Science and Population Genetics, University of Hohenheim, Stuttgart, Germany."
   - "^2^ Dirección de Recursos Genéticos y Biotecnología, Instituto Nacional de Innovación Agraria (INIA), La Molina, Lima, Perú."
   - "^3^ Universidad Nacional Agraria La Molina (UNALM), Av. La Molina, 1558, Peru."
@@ -17,6 +17,7 @@ bookdown::gitbook:
 output: 
   bookdown::word_document2: 
     reference_docx: files/style_rticles.docx
+    number_sections: false
   bookdown::html_document2:
     toc: yes
     number_sections: yes
