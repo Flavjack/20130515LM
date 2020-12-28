@@ -32,29 +32,16 @@ xl <- gs %>% drive_download("files/fieldbook.xlsx", overwrite = T) %>% pluck(2)
 # fb <- xl %>% readxl::read_excel("fb") 
 ```
 
-```{r igdocs, include=FALSE}
-gdoc <- paste0("https://docs.google.com/document/d/"
-               , "1osSykdzy6Kt20hK7yVL2fDLuA7kEHNsug6ejQFOpjUc")
-# browseURL(gdoc)
-googledrive::drive_download(file = gdoc
-                            , path = "manuscript.txt"
-                            , overwrite = T)
-if(file.exists("manuscript.txt"))
-  file.rename("manuscript.txt"
-              , "manuscript.Rmd")
+```{r manuscript, include=FALSE}
+file <- list.files(pattern = '*.zip')
+unzip(file, overwrite = T)
+path <- unzip(file, list = T)$Name
+file.rename(path, "manuscript.Rmd")
 ```
 
-```{r child = "manuscript.Rmd", eval = T}
+```{r child = "manuscript.Rmd"}
 ```
 
-<!-- # REFERENCIAS -->
-
-::: {#refs}
-:::
-
-```{r references}
-if(!file.exists("files/pkgs.bib")) {write_bib(c(.packages()), "files/pkgs.bib")}
+```{r child = "code.Rmd", eval = F}
 ```
 
-```{r child = "code.Rmd", eval = T}
-``
