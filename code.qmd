@@ -56,10 +56,10 @@ traits <- c("SPAD_29" = "Chlorophyll concentration (SPAD) at 29 dap"
             , "RTL" = "Root length (cm)"
             , "TDB" = "Total dry biomass (g)"
             , "HI"  = "Harvest index (HI)" 
-            , "SLA" = "Specific leaf area (cm^2^g^-1^)"
+            , "SLA" = "Specific leaf area (cm^2^/g)"
             , "RCC" = "Relative chlorophyll content (RCC)"
-            , "WUE_B" = "Biomass water use efficiency (gL^-1^)"
-            , "WUE_T" = "Tuber water use efficiency (gL^-1^)"
+            , "WUE_B" = "Biomass water use efficiency (g/L)"
+            , "WUE_T" = "Tuber water use efficiency (g/L)"
             )
 ```
 
@@ -109,12 +109,16 @@ fb %>% web_table()
 
 # Abbreviations
 
+See @tbl-1920 for an illustration.
+
 ```{r}
+#| label: tbl-1920
+#| tbl-cap: "Abbreviations"
 gs %>% 
   range_read("var") %>% 
   filter(include == "x") %>%
   select(Variable, Abbreviation) %>%
-  web_table()
+  kable()
 ```
 
 # Table 1
@@ -164,10 +168,10 @@ tab <- fb %>%
     , "__rtl__" = "Root length (cm)"
     , "__tdb__" = "Total dry biomass (g)"
     , "__hi__"  = "Harvest index (HI)" 
-    , "__sla__" = "Specific leaf area (cm^2^g^-1^)"
+    , "__sla__" = "Specific leaf area (cm^2^/g)"
     , "__rcc__" = "Relative chlorophyll content (RCC)"
-    , "__wue_b__" = "Biomass water use efficiency (gL^-1^)"
-    , "__wue_t__" = "Tuber water use efficiency (gL^-1^)"
+    , "__wue_b__" = "Biomass water use efficiency (g/L)"
+    , "__wue_t__" = "Tuber water use efficiency (g/L)"
     )) %>% 
   rename(Variable = `**Characteristic**`
          , `Water deficit` = `**WD**, N = 75`
@@ -181,7 +185,10 @@ tab %>% include_table()
 
 # Figure 1
 
+See @fig-1920 for an illustration.
+
 ```{r}
+#| label: fig-1920
 #| fig-cap: "Traits measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) condition. (A-B) Chlorophyll concentration. (C) Tuber dry weight. (D) Relative chlorophyll content. (E) Harvest Index. (F) Tuber Water Use Efficiency. Error bars indicate standard error (n = 5). Days after planting (dap)."
 
 # tdw
@@ -427,7 +434,6 @@ Where: Chlorophyll Concentration (SPAD), Plant height (HGT; cm), Relative water 
 
 ```{r}
 #| tbl-cap: "Genetic variance (V.g), Error variance (V.e), and repeatability in 15 potatoes genotypes."
-
 
 vars <- names(fb)
 
