@@ -14,15 +14,19 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r include=FALSE}
-source("http://inkaverse.com/docs.r")
-doc <- gdoc2rmd(file = "manuscript.zip")
+```{r}
+#| include: false
 
+source("http://inkaverse.com/docs.r")
+doc <- inti::gdoc2rmd(file = "manuscript.zip")
 #> https://docs.google.com/document/d/14GM04tKBOTPZh5OUUY3qQHlpYH5kSRW_YRWuJ6hOgMw/edit#
 ```
 
-```{r, echo=FALSE, results='asis', eval=T}
+```{r}
+#| results: 'asis'
+
 rticle <- knitr::knit_child(doc, quiet = TRUE)
 cat(rticle, sep = '\n')
+# unlink("docs", recursive = T)
 ```
 
