@@ -1,5 +1,4 @@
 ---
-date: "`r if (knitr:::is_html_output()) Sys.Date()`"
 format:
   html:
     toc: true
@@ -12,14 +11,21 @@ format:
     reference-doc: files/style.docx
 editor_options: 
   chunk_output_type: console
+execute:
+  echo: false
+  warning: false
+crossref:
+  fig-title: Fig.
+  fig-prefix: Fig.
 ---
 
 ```{r}
-#| include: false
+#| label: setup
 
 source("http://inkaverse.com/docs.r")
-doc <- inti::gdoc2rmd(file = "manuscript.zip")
 #> https://docs.google.com/document/d/14GM04tKBOTPZh5OUUY3qQHlpYH5kSRW_YRWuJ6hOgMw/edit#
+
+doc <- inti::gdoc2qmd(file = "manuscript.zip")
 ```
 
 ```{r}
@@ -27,6 +33,5 @@ doc <- inti::gdoc2rmd(file = "manuscript.zip")
 
 rticle <- knitr::knit_child(doc, quiet = TRUE)
 cat(rticle, sep = '\n')
-# unlink("docs", recursive = T)
 ```
 

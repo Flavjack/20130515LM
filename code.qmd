@@ -1,5 +1,5 @@
 ---
-title: "Impact of water deficit on growth, productivity, and water use efficiency in potato genotypes (Solanum tuberosum L.)"
+title: "Impact of water deficit on growth, productivity, and water use efficiency in potato genotypes (*Solanum tuberosum* L.)"
 author-title: "Flavio Lozano-Isla, Evelyn Roxana Farfan-Vignolo, Raymundo Gutierrez, Raul Blas, Khan Awais"
 format:
   html:
@@ -9,20 +9,35 @@ format:
     self-contained: true
 editor_options: 
   chunk_output_type: console
+execute: 
+  warning: false
 ---
+
+# Setup
 
 ```{r}
 #| label: setup
 
-source("https://inkaverse.com/setup.r")
-knitr::opts_chunk$set(echo = TRUE)
+setup <- tempfile(fileext = ".r")
+readLines(con = 'https://inkaverse.com/setup.r') |> 
+  gsub("echo = FALSE", "echo = TRUE", x = _) |>
+  writeLines(setup)
+source(setup)
+
 library(gtsummary)
 library(factoextra)
 library(corrplot)
+```
+
+# Googlesheets connect
+
+```{r}
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY"
 gs <- as_sheets_id(url)
 # browseURL(url)
 ```
+
+# Trait rename
 
 ```{r}
 #| label: labels
@@ -137,7 +152,7 @@ tab <- gs %>%
 tab %>% web_table()
 ```
 
-# Tables 2
+# Table 2
 
 ```{r}
 #| tbl-cap: "Treatment comparison for 17 variables between Well-Watered (WW) and Water Deficit (WD) in 15 potato genotypes. The values for different variables are represented by the mean ± standard deviation with the significance under t-test with their respective p-values."
@@ -240,16 +255,16 @@ plt2 <- model$comparison %>%
     , Treatment == "wellwater" ~ "Well Watered (WW)"
   )) %>% 
   mutate(across(day, as.numeric)) %>% 
-  fplot(type = "line", color = F
-        , x = "day"
-        , y = "trans"
-        , group = "Treatment"
-        , ylab = "Transpiration (mL)"
-        , xlab =  "Days"
-        , glab = "Irrigation"
-        , ylimits = c(0, 700, 100)
-        , error = "ste"
-        ) +
+  plot_smr(type = "line", color = F
+            , x = "day"
+            , y = "trans"
+            , group = "Treatment"
+            , ylab = "Transpiration (mL)"
+            , xlab =  "Days"
+            , glab = "Irrigation"
+            , ylimits = c(0, 700, 100)
+            , error = "ste"
+            ) +
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
@@ -264,7 +279,7 @@ plot <- ggdraw(xlim = c(0, 0.5), ylim = c(0,0.9)) +
 
 ggsave2(plot = plot, "files/Fig1.tiff", width = 18, height = 15, units = "cm")
 
-"files/Fig1.tiff" %>% include_graphics()
+"files/Fig1.jpg" %>% include_graphics()
 ```
 
 # Figure 2
@@ -414,7 +429,7 @@ plot <- ggdraw(xlim = c(0.0, 1), ylim = c(0.0, 1)) +
 
 ggsave(plot = plot, "files/Fig2.tiff", units = "cm", width = 28, height = 25)
 
-"files/Fig2.tiff" %>% include_graphics()
+"files/Fig2.jpg" %>% include_graphics()
 ```
 
 # Figure 3
@@ -448,7 +463,7 @@ fig <- magick::image_read_pdf("files/correlation.pdf") %>%
   
 unlink("files/correlation.pdf")
 
-"files/Fig3.tiff" %>% include_graphics()
+"files/Fig3.jpg" %>% include_graphics()
 ```
 
 Where: Chlorophyll Concentration (SPAD), Plant height (HGT; cm), Relative water content (RWC; %), Leaf osmotic potential (LOP; MPa), Leaf dry weight (LDW; g), Stem dry weight (SDW; g), Root dry weight (RDW; g), Tuber dry weight (TDW; g), Tuber number (NTUB; N°), Total transpiration (TRS; mL), Leaf area (LFA; cm^2^), Root length (RTL; cm), Total dry biomass (TDB; g), Harvest index (HI), Specific leaf area (SLA; cm^2^g^-1^), Relative chlorophyll content (RCC), Biomass water use efficiency (WUE~B~; gL^-1^), Tuber water use efficiency (WUE~T~; gL^-1^).
@@ -517,12 +532,12 @@ plot <- plot_grid(pt1, pt2, nrow = 1, labels = "auto")
 
 ggsave2(plot = plot, "files/Fig4.tiff", units = "cm", width = 20, height = 11)
 
-"files/Fig4.tiff" %>% include_graphics()
+"files/Fig4.jpg" %>% include_graphics()
 ```
 
 Where: Chlorophyll Concentration (SPAD), Plant height (HGT; cm), Relative water content (RWC; %), Leaf osmotic potential (LOP; MPa), Leaf dry weight (LDW; g), Stem dry weight (SDW; g), Root dry weight (RDW; g), Tuber dry weight (TDW; g), Tuber number (NTUB; N°), Total transpiration (TRS; mL), Leaf area (LFA; cm^2^), Root length (RTL; cm), Total dry biomass (TDB; g), Harvest index (HI), Specific leaf area (SLA; cm^2^g^-1^), Relative chlorophyll content (RCC), Biomass water use efficiency (WUE~B~; gL^-1^), Tuber water use efficiency (WUE~T~; gL^-1^).
 
-# Supplementary Information 1
+# Supplementary Table 1
 
 ```{r}
 #| tbl-cap: "Genetic variance (V.g), Error variance (V.e), and repeatability in 15 potatoes genotypes."
@@ -559,7 +574,7 @@ tabsmr  %>% web_table()
 # tabsmr %>% sheet_write(gs, data = .,  sheet = "tabS1")
 ```
 
-# Supplementary Information 2
+# Supplementary Figure 1
 
 ```{r}
 #| fig-cap: "Principal Component Analysis (PCA). (A) Percentage of the explained variance for each dimension. (B) Variance contribution of the first 10 variables in the dimension 1. (C) Variance contribution of the first 10 variables in the dimension 2. (D) Correlation between the studied variables and among the first 5 dimensions. The reference dashed lines on the bar plot corresponds to the expected value if the contribution between the variables where uniform."
@@ -620,20 +635,38 @@ plot <- ggdraw(xlim = c(0.0, 1.0), ylim = c(0, 1.0))+
     x = c(0.005, 0.005, 0.005, 0.65),
     y = c(0.999, 0.67, 0.34, 0.999))
 
-ggsave2(plot = plot, "files/ESM_2.tiff", height = 25, width = 30, units = "cm")
+ggsave2(plot = plot, "files/SFig1.tiff", height = 25, width = 30, units = "cm")
 
-"files/ESM_2.tiff" %>% include_graphics()
+"files/SFig1.jpg" %>% include_graphics()
 ```
 
-# Supplementary Information 3
+# Supplementary Figure 2
 
 ```{r potatos}
 #| fig-cap: "Tuber yield performance from two contrasting potatoes genotypes. Genotype CIP 398203.244 with good performance under well-watered (WW) with reduced yields during water deficit (WD) condition. Genotype CIP 398190.89 with good response under well-watered (WW) and water deficit (WD) treatment. Each group represent one replication (n = 5). Pictures were taken using the 5 cm scale (black/white segment = 1 cm) displayed alongside the tubers."
 
 fig <- magick::image_read("files/potatos.png") %>% 
   grid::rasterGrob() %>%
-  ggsave("files/ESM_3.tiff", plot =  ., width = 15, height = 15)
+  ggsave("files/SFig2.tiff", plot =  ., width = 15, height = 15)
 
-"files/ESM_3.tiff" %>% include_graphics()
+"files/SFig2.jpg" %>% include_graphics()
+```
+
+# Convert figures to jpg format
+
+```{r}
+library(tidyverse)
+
+figs <- "files/"  %>%  list.files(pattern = "tiff", full.names = T)
+
+convert <- 1:length(figs) %>% map(\(x) {
+  
+  figname <- figs[x] %>% basename() %>% gsub("tiff", "jpg", .)
+  
+  figs[x] %>% 
+    tiff::readTIFF(., native=TRUE) %>% 
+    jpeg::writeJPEG(., target = file.path("files", figname))
+  
+})
 ```
 
