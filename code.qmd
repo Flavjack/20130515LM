@@ -647,7 +647,7 @@ ggsave2(plot = plot, "files/SFig1.tiff", height = 25, width = 30, units = "cm")
 
 fig <- magick::image_read("files/potatos.png") %>% 
   grid::rasterGrob() %>%
-  ggsave("files/SFig2.tiff", plot =  ., width = 15, height = 15)
+  ggsave("files/SFig2.tiff", plot =  ., width = 13, height = 13)
 
 "files/SFig2.jpg" %>% include_graphics()
 ```
