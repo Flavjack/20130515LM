@@ -1,6 +1,6 @@
 ---
 title: "Impact of water deficit on growth, productivity, and water use efficiency in potato genotypes (*Solanum tuberosum* L.)"
-author-title: "Flavio Lozano-Isla, Evelyn Roxana Farfan-Vignolo, Raymundo Gutierrez, Raul Blas, Khan Awais"
+author: "Flavio Lozano-Isla, Evelyn Roxana Farfan-Vignolo, Raymundo Gutierrez, Raul Blas, Khan Awais"
 format:
   html:
     toc: true
@@ -27,14 +27,16 @@ source(setup)
 library(gtsummary)
 library(factoextra)
 library(corrplot)
+
+sessionInfo()
 ```
 
 # Googlesheets connect
 
 ```{r}
 url <- "https://docs.google.com/spreadsheets/d/1dfgpmCKdPmxRHozrZp0iE_xMGsvKTIcztDpMWYSEGaY"
-gs <- as_sheets_id(url)
 # browseURL(url)
+gs <- as_sheets_id(url)
 ```
 
 # Trait rename
@@ -655,7 +657,7 @@ fig <- magick::image_read("files/potatos.png") %>%
 # Convert figures to jpg format
 
 ```{r}
-library(tidyverse)
+#| eval: false
 
 figs <- "files/"  %>%  list.files(pattern = "tiff", full.names = T)
 
