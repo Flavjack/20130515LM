@@ -35,3 +35,14 @@ rticle <- knitr::knit_child(doc, quiet = TRUE)
 cat(rticle, sep = '\n')
 ```
 
+```{r}
+knitr::knit_exit()
+```
+
+
+# Journals
+
+- https://www.springer.com/journal/12892/
+- https://rae.agriculturejournals.cz/
+- https://agronomy.emu.ee/index.php/
+
