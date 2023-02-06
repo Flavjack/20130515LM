@@ -1,5 +1,5 @@
 ---
-title: "Harvest Index a key trait to select tolerant potato genotypes (Solanum tuberosum) under drought stress condition"
+title: "Harvest Index a key trait to select tolerant potato genotypes (*Solanum tuberosum*) under drought stress condition"
 subtitle: "Journal of Crop Science and Biotechnology"
 format:
   html:
@@ -21,7 +21,7 @@ execute:
 ```{r}
 #| label: setup
 
-source("files/setup.r")
+source("https://inkaverse.com/setup.r")
 library(gtsummary)
 library(factoextra)
 library(corrplot)
@@ -73,10 +73,10 @@ traits <- c("SPAD_29" = "Chlorophyll concentration (SPAD) at 29 dap"
             , "RTL" = "Root length (cm)"
             , "TDB" = "Total dry biomass (g)"
             , "HI"  = "Harvest index (HI)" 
-            , "SLA" = "Specific leaf area (cm^2^/g)"
+            , "SLA" = "Specific leaf area (cm^2^ g^-1^)"
             , "RCC" = "Relative chlorophyll content (RCC)"
-            , "WUE_B" = "Biomass water use efficiency (g/L)"
-            , "WUE_T" = "Tuber water use efficiency (g/L)"
+            , "WUE_B" = "Biomass water use efficiency (g L^-1^)"
+            , "WUE_T" = "Tuber water use efficiency (g L^-1^)"
             )
 ```
 
@@ -176,10 +176,10 @@ tab <- fb %>%
     , "__RTL__" = "Root length (cm)"
     , "__TDB__" = "Total dry biomass (g)"
     , "__HI__"  = "Harvest index (HI)" 
-    , "__SLA__" = "Specific leaf area (cm^2^/g)"
+    , "__SLA__" = "Specific leaf area (cm^2^ g^-1^)"
     , "__RCC__" = "Relative chlorophyll content (RCC)"
-    , "__WUE_B__" = "Biomass water use efficiency (g/L)"
-    , "__WUE_T__" = "Tuber water use efficiency (g/L)"
+    , "__WUE_B__" = "Biomass water use efficiency (g L^-1^)"
+    , "__WUE_T__" = "Tuber water use efficiency (g L^-1^)"
     )) %>% 
   rename(Variable = `**Characteristic**`
          , `Water deficit` = `**WD**, N = 75`
@@ -621,8 +621,6 @@ ggsave2(plot = plot, "files/FigS1.pdf", height = 25, width = 30, units = "cm")
 # Convert figures to pdf to png
 
 ```{r}
-#| eval: false
-
 figs <- "files/"  %>%  list.files(pattern = "pdf", full.names = T)
 
 convert <- 1:length(figs) %>% map(\(x) {
