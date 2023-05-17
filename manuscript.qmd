@@ -26,7 +26,7 @@ crossref:
 source("http://inkaverse.com/docs.r")
 #> https://docs.google.com/document/d/14GM04tKBOTPZh5OUUY3qQHlpYH5kSRW_YRWuJ6hOgMw/edit#
 
-doc <- inti::gdoc2qmd(file = "articul8.zip")
+doc <- inti::gdoc2qmd(file = "manuscript.zip")
 ```
 
 ```{r}
