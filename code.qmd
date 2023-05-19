@@ -1,5 +1,5 @@
 ---
-title: "Harvest Index a key trait to select tolerant potato genotypes (*Solanum tuberosum*) under drought stress condition"
+title: "Harvest index is a key trait for screening drought-tolerant potato genotypes (_Solanum tuberosum_)"
 subtitle: "Journal of Crop Science and Biotechnology"
 format:
   html:
@@ -25,6 +25,8 @@ source("https://inkaverse.com/setup.r")
 library(gtsummary)
 library(factoextra)
 library(corrplot)
+library(emmeans)
+library(multcomp)
 
 devtools::session_info()
 ```
@@ -89,7 +91,7 @@ fb <- gs %>%
   rename_with(~gsub("\\s+|\\.", "_", .)) %>% 
   mutate(treat = case_when(treat %in% "wellwater" ~ "WW"
                            , treat %in% "drydown" ~ "WD")) %>% 
-  select(block, treat, genotype,
+  dplyr::select(block, treat, genotype,
          spad_29 = spad_29dap, 
          spad_59 = spad_59dap, 
          spad_76 = spad_76dap, 
@@ -114,7 +116,7 @@ fb <- gs %>%
          wue_t = tdw/trs
          ) %>% 
   mutate(gnt = recode(genotype, !!!geno), .after = genotype) %>% 
-  select(genotype, gnt, treat, block, everything()) %>% 
+  dplyr::select(genotype, gnt, treat, block, everything()) %>% 
   mutate(across(where(is.character), as.factor)) %>% 
   rename_with(., toupper, where(is.numeric)) 
 
@@ -129,7 +131,7 @@ fb %>% web_table()
 gs %>% 
   range_read("var") %>% 
   filter(include == "x") %>%
-  select(Variable, Abbreviation) %>%
+  dplyr::select(Variable, Abbreviation) %>%
   kable()
 ```
 
@@ -149,7 +151,7 @@ tab %>% web_table()
 
 ```{r}
 tab <- fb %>%
-  select(!c(block, gnt, genotype)) %>% 
+  dplyr::select(!c(block, gnt, genotype)) %>% 
   tbl_summary(
     by = treat, 
     statistic = list(all_continuous() ~ "{mean} ± {sd}"),
@@ -254,17 +256,22 @@ plt2 <- model$comparison %>%
             , ylimits = c(0, 700, 100)
             , error = "ste"
             ) +
+  scale_x_continuous(breaks = c(0:100)*2
+                     , limits = c(34, 88)
+                     ) +
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 
 plot <- ggdraw(xlim = c(0, 0.5), ylim = c(0,0.9)) +
   draw_plot(plt2, width = 0.5, height = 0.43 , x = 0.0, y = 0.47 ) +
-  draw_plot(plt1, width = 0.495, height = 0.5, x = 0.005, y = 0.0 ) +
+  draw_plot(plt1, width = 0.496, height = 0.5, x = 0.004, y = 0.0 ) +
           draw_plot_label(
-            label = c("a", "b"),
-            x = c(0.465, 0.465),
-            y = c(0.79, 0.49))
+            label = c("a", "b")
+            , size = c(16, 15)
+            , x = c(0.465, 0.465)
+            , y = c(0.79, 0.49)
+            )
 
 plot %>% 
   ggsave2(plot = .
@@ -279,94 +286,153 @@ plot %>%
 # tdw
 
 model <- fb %>% 
-  inti::mean_comparison(response = "TDW"
-                        , model_factors = "block + gnt*treat"
-                        , c("gnt","treat"))
+  lm(TDW ~ block + gnt*treat, data = .)
+  
+anova(model)
 
-tdw <- model$comparison %>% 
-  plot_smr(type = "bar"
+mc <- emmeans(model, ~ treat | gnt) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws))
+
+mcTDW <- emmeans(model, ~ gnt | treat) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws)) %>% 
+  mutate(across(emmean, ~round(., 2))) %>% 
+  unite(TDW, c(emmean, .group), sep = " ") %>% 
+  dplyr::select(1:3)
+
+tdw <- mc %>% 
+  plot_smr(type = "line"
           , color = F
           , x = "gnt"
           , xlab = ""
-          , y = "TDW"
+          , y = "emmean"
           , ylab = "Tuber dry weight (g)"
           , group = "treat"
           , glab = "Treatment"
           , legend = "none"
-          , error = "ste"
+          , error = "SE"
           , ylimits = c(0, 100, 20)
+          , sig = ".group"
           )
 
 # rcc
 
 model <- fb %>% 
-  inti::mean_comparison(response = "RCC"
-                        , model_factors = "block + gnt*treat"
-                        , c("gnt","treat"))
+  lm(RCC ~ block + gnt*treat, data = .)
+  
+anova(model)
 
-rcc <- model$comparison %>% 
-  plot_smr(type = "bar"
+mc <- emmeans(model, ~ treat | gnt) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws))
+
+mcRCC <- emmeans(model, ~ gnt | treat) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws)) %>% 
+  mutate(across(emmean, ~round(., 2))) %>% 
+  unite(RCC, c(emmean, .group), sep = " ") %>% 
+  dplyr::select(1:3)
+
+rcc <- mc %>% 
+  plot_smr(type = "line"
         , color = F
         , x = "gnt"
         , xlab =  ""
-        , y = "RCC"
+        , y = "emmean"
         , ylab = "Relative chlorophyll content"
         , ylimits = c(0, 0.1, 0.02)
         , group = "treat"
         , glab = "Treatment"
         , legend = "none"
-        , error = "ste"
+        , error = "SE"
+        , sig = ".group"
         ) 
 
 # hi
 
 model <- fb %>% 
-  inti::mean_comparison(response = "HI"
-                        , model_factors = "block + gnt*treat"
-                        , c("gnt","treat"))
+  lm(HI ~ block + gnt*treat, data = .)
+  
+anova(model)
 
-hi <- model$comparison %>% 
-  plot_smr(type = "bar"
+mc <- emmeans(model, ~ treat | gnt) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws))
+
+mcHI <- emmeans(model, ~ gnt | treat) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws)) %>% 
+  mutate(across(emmean, ~round(., 2))) %>% 
+  unite(HI, c(emmean, .group), sep = " ") %>% 
+  dplyr::select(1:3)
+
+hi <- mc %>% 
+  plot_smr(type = "line"
         , color = F
         , x = "gnt"
         , xlab =  ""
-        , y = "HI"
+        , y = "emmean"
         , ylab = "Harvest Index"
         , group = "treat"
         , glab = "Treatment"
         , legend = "none"
         , ylimits = c(0, 1, 0.2)
-        , error = "ste"
+        , error = "SE"
+        , sig = ".group"
         ) 
 
 # wue_t
 
 model <- fb %>% 
-  inti::mean_comparison(response = "WUE_T"
-                        , model_factors = "block + gnt*treat"
-                        , c("gnt","treat"))
+  lm(WUE_T ~ block + gnt*treat, data = .)
+  
+anova(model)
 
-wue_t <- model$comparison %>% 
-  plot_smr(type = "bar", color = F
+mc <- emmeans(model, ~ treat | gnt) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws))
+
+mcWUE_T <- emmeans(model, ~ gnt | treat) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws)) %>% 
+    mutate(across(emmean, ~round(., 2))) %>% 
+  unite(WUE_T, c(emmean, .group), sep = " ") %>% 
+  dplyr::select(1:3)
+
+wue_t <- mc %>% 
+  plot_smr(type = "line", color = F
         , x = "gnt"
         , xlab =  ""
-        , y = "WUE_T"
+        , y = "emmean"
         , ylab = "Tuber water use efficiency (g/L)"
         , group = "treat"
         , glab = "Treatment"
         , legend = "none"
         , ylimits = c(0, 10, 2)
-        , error = "ste"
+        , error = "SE"
+        , sig = ".group"
         ) 
 
 # spad_29
 
 model <- fb %>% 
-  inti::mean_comparison(response = "SPAD_29"
-                        , model_factors = "block + gnt*treat"
-                        , c("gnt","treat"))
+  lm(SPAD_29 ~ block + gnt*treat, data = .)
+  
+anova(model)
 
-spad_29 <- model$comparison %>% 
+mc <- emmeans(model, ~ treat | gnt) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws))
+
+mcSPAD_29 <- emmeans(model, ~ gnt | treat) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws)) %>% 
+    mutate(across(emmean, ~round(., 2))) %>% 
+  unite(SPAD_29, c(emmean, .group), sep = " ") %>% 
+  dplyr::select(1:3)
+
+spad_29 <- mc %>% 
     mutate(treat  = case_when(
     treat  == "WD" ~ "Water Deficit (WD)"
     , treat  == "WW" ~ "Well Watered (WW)"
@@ -374,34 +440,47 @@ spad_29 <- model$comparison %>%
   plot_smr(type = "line"
         , x = "gnt"
         , xlab =  ""
-        , y = "SPAD_29"
+        , y = "emmean"
         , ylab = "SPAD at 29 dap"
         , group = "treat"
         , glab = "Treatment"
         , legend = "top"
         , ylimits = c(30, 70, 5)
-        , error = "ste"
+        , error = "SE"
         , color = F
+        , sig = ".group"
         )
 
 # spad_83
 
 model <- fb %>% 
-  inti::mean_comparison(response = "SPAD_83"
-                        , model_factors = "block + gnt*treat"
-                        , c("gnt","treat"))
+  lm(SPAD_83 ~ block + gnt*treat, data = .)
+  
+anova(model)
 
-spad_83 <- model$comparison %>% 
+mc <- emmeans(model, ~ treat | gnt) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws))
+
+mcSPAD_83 <- emmeans(model, ~ gnt | treat) %>% 
+  cld(Letters = letters, reversed = T) %>% 
+  mutate(across(.group, trimws)) %>% 
+    mutate(across(emmean, ~round(., 2))) %>% 
+  unite(SPAD_83, c(emmean, .group), sep = " ") %>% 
+  dplyr::select(1:3)
+
+spad_83 <- mc %>% 
   plot_smr(type = "line", color = F
         , x = "gnt"
         , xlab =  ""
-        , y = "SPAD_83"
+        , y = "emmean"
         , ylab = "SPAD at 83 dap"
         , group = "treat"
         , glab = "Treatment"
         , legend= "none"
         , ylimits = c(30, 70, 5)
-        , error = "ste"
+        , error = "SE"
+        , sig = ".group"
         ) 
 
 plot <- ggdraw(xlim = c(0.0, 1), ylim = c(0.0, 1)) +
@@ -422,6 +501,17 @@ plot %>%
          , units = "cm", width = 28, height = 25)
 
 "files/Fig2.pdf" %>% include_graphics()
+
+
+geno4treat <- merge(mcSPAD_29, mcSPAD_83) %>% 
+  merge(., mcRCC) %>% 
+  merge(., mcTDW) %>%
+  merge(., mcHI) %>%
+  merge(., mcWUE_T) %>% 
+  arrange(desc(treat)) %>% 
+  rename(Genotype = gnt, Treatment = treat)
+  
+# geno4treat %>% sheet_write(gs, data = .,  sheet = "tabS1")
 ```
 
 # Rename variables in PCA
@@ -450,9 +540,9 @@ tabsmr <- 1:length(model) %>% map(function(x) {
   bind_rows()
 
 varnames <- tabsmr %>% 
-  select(trait, repeatability) %>% 
+  dplyr::select(trait, repeatability) %>% 
   mutate(name = paste0("(",round(repeatability, 2), ") ", trait)) %>% 
-  select(!repeatability) %>% 
+  dplyr::select(!repeatability) %>% 
   deframe()
 ```
 
@@ -478,8 +568,8 @@ mvdata <- fb %>%
 plot <- tempfile(fileext = ".pdf")
 pdf(file = plot, width = 20, height = 20)
 mvdata %>% 
-  select(where(is.numeric)) %>% 
-  select(!ends_with(c("29", "59", "76"))) %>% 
+  dplyr::select(where(is.numeric)) %>% 
+  dplyr::select(!ends_with(c("29", "59", "76"))) %>% 
   pairs.panels(x = .
                , hist.col="red"
                , pch = 21
@@ -544,7 +634,7 @@ plot %>%
 ```{r}
 h2plot <- tabsmr %>% 
   mutate(trait = recode(trait, !!!traits)) %>% 
-  select(trait, mean, std, min, max, V.g, V.e, repeatability) %>% 
+  dplyr::select(trait, mean, std, min, max, V.g, V.e, repeatability) %>% 
   mutate(across(where(is.numeric), ~ round(.x, digits = 2))) %>% 
   mutate(trait = recode(trait, !!!traits)) %>% 
   rename(Trait = trait, H2 = repeatability)
