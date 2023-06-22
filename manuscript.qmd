@@ -50,10 +50,3 @@ pdf2read <- "LA MOLINA 2013-05-15 (potato wue).pdf" %>%
   qpdf::pdf_subset(pages = 28:30, output = "JCSB/ESM_2.pdf")
 ```
 
-# Journals
-
-- https://www.springer.com/journal/12892/
-- https://rae.agriculturejournals.cz/
-- https://agronomy.emu.ee/index.php/
-- https://www.springer.com/journal/42452/submission-guidelines
-
