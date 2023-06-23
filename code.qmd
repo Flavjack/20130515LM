@@ -278,6 +278,10 @@ plot %>%
           , "files/Fig1.pdf", width = 18, height = 15, units = "cm")
 
 "files/Fig1.pdf" %>% include_graphics()
+
+plot %>% 
+  ggsave2(plot = .
+          , "files/Fig1.eps", width = 18, height = 15, units = "cm")
 ```
 
 # Figure 2
@@ -502,6 +506,11 @@ plot %>%
 
 "files/Fig2.pdf" %>% include_graphics()
 
+plot %>% 
+  ggsave(plot = .
+         , "files/Fig2.eps"
+         , units = "cm", width = 28, height = 25)
+
 
 geno4treat <- merge(mcSPAD_29, mcSPAD_83) %>% 
   merge(., mcRCC) %>% 
@@ -553,37 +562,52 @@ fig <- magick::image_read("files/potatos.png") %>%
   grid::rasterGrob() %>%
   ggsave("files/Fig3.pdf", plot =  ., width = 13, height = 13)
 
+fig <- magick::image_read("files/potatos.png") %>% 
+  grid::rasterGrob() %>%
+  ggsave("files/Fig3.eps", plot =  ., width = 13, height = 13)
+
 "files/Fig3.pdf" %>% include_graphics()
 ```
 
 # Figure 4
 
 ```{r}
+library(gridGraphics)
+
 mvdata <- fb %>% 
   group_by(genotype, treat) %>% 
   summarise(across(where(is.numeric), ~mean(.x, na.rm = T))) %>% 
   ungroup() %>% 
   unite(trait, c(genotype, treat), sep = "-") 
 
-plot <- tempfile(fileext = ".pdf")
-pdf(file = plot, width = 20, height = 20)
-mvdata %>% 
-  dplyr::select(where(is.numeric)) %>% 
-  dplyr::select(!ends_with(c("29", "59", "76"))) %>% 
-  pairs.panels(x = .
-               , hist.col="red"
-               , pch = 21
-               , stars = TRUE
-               , scale = FALSE
-               , lm = TRUE
-               ) 
-graphics.off()
+plot <- ~{
+  
+  mvdata %>% 
+    dplyr::select(where(is.numeric)) %>% 
+    dplyr::select(!ends_with(c("29", "59", "76"))) %>% 
+    pairs.panels(x = .
+                 , hist.col="red"
+                 , pch = 21
+                 , stars = TRUE
+                 , scale = FALSE
+                 , lm = TRUE
+                 , cex.axis = 0.6
+                 ) 
+  }
 
-fig <- magick::image_read_pdf(plot) %>% 
-  grid::rasterGrob() %>%
-  ggsave2("files/Fig4.pdf", plot =  ., width = 20, height = 20, units = "cm")
+list(plot)  %>%  
+  plot_grid(plotlist = .
+            , nrow = 1
+            ) %>% 
+  ggsave2("files/Fig4.pdf", plot =  ., width = 30, height = 30, units = "cm")
 
 "files/Fig4.pdf" %>% include_graphics()
+
+list(plot)  %>%  
+  plot_grid(plotlist = .
+            , nrow = 1
+            ) %>% 
+  ggsave("files/Fig4.eps", plot =  ., width = 30, height = 30, units = "cm")
 ```
 
 # Figure 5
@@ -598,21 +622,20 @@ mv <- mvdata %>%
 
 hcpc <- HCPC(mv, graph = F)
 
-outfile <- tempfile(fileext = ".pdf")
-pdf(outfile, width = 9, height = 9)
-plot.HCPC(x = hcpc
+tree <- ~ {
+  
+  par(cex=0.7)
+  
+  plot.HCPC(x = hcpc
           , choice = "map"
-              , legend = list(x = "topright"
-                              , cex = 0.6
-                              , inset = 0.001
-                              , box.lty=0
-                              )
-              , draw.tree = F
+          , legend = list(x = "topright"
+                          , cex = 0.7
+                          , inset = 0.001
+                          , box.lty=0
+                          )
+          , draw.tree = F
           )
-graphics.off()
-
-tree <- magick::image_read_pdf(outfile) %>% 
-  grid::rasterGrob()
+}
 
 pca <- mv %>% 
   plot.PCA(choix = "var", autoLab = "auto", cex = 0.6)
@@ -625,6 +648,11 @@ plot %>%
           , units = "cm", width = 30, height = 15)
 
 "files/Fig5.pdf" %>% include_graphics()
+
+plot %>% 
+  ggsave2(plot = .
+          , "files/Fig5.eps"
+          , units = "cm", width = 30, height = 15)
 ```
 
 # Supplementary information
@@ -708,17 +736,22 @@ ggsave2(plot = plot, "files/FigS1.pdf", height = 25, width = 30, units = "cm")
 "files/FigS1.pdf" %>% include_graphics()
 ```
 
-# Convert figures to pdf to png
+# Convert figures to pdf to jpg
 
 ```{r}
-figs <- "files/"  %>%  list.files(pattern = "pdf", full.names = T)
+library(magick)
+
+figs <- list.files(path = "files/", pattern = "eps", full.names = T)
 
 convert <- 1:length(figs) %>% map(\(x) {
-  figname <- figs[x] %>% basename() %>% gsub("pdf", "png", .)
+  
+  figname <- figs[x] %>% basename() %>% gsub("eps", "jpeg", .)
+  
+  path2xport <- dirname(figs[x])
   
   figs[x] %>% 
-    image_read_pdf() %>% 
-    image_write(file.path("files", figname))
+    image_read() %>% 
+    image_write(file.path(path2xport, figname))
 })
 ```
 

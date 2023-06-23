@@ -75,7 +75,7 @@ The identification and selection of genotypes with high water use efficiency (WU
 
 ## Plant material and experimental conditions
 
-Two commercial varieties and thirteen potato genotypes from the advanced breeding population at the International Potato Center (CIP) were used in this study ([Table  @tbl:id.ela3e9ir5gqm]:). The commercial varieties were CIP392797.22 (UNICA) with a good yield in warm and dry environments [(Gutiérrez-Rosales et al. 2007; Rolando et al. 2015; Demirel et al. 2020)](https://www.zotero.org/google-docs/?LcYrXv); and CIP720088 (Achirana INTA) known for its earliness and drought tolerance [(Schafleitner et al. 2007)](https://www.zotero.org/google-docs/?LkdMBJ). 
+Two commercial varieties and thirteen potato genotypes from the advanced breeding population at the International Potato Center (CIP) were used in this study ([@tbl-id.ela3e9ir5gqm]). The commercial varieties were CIP392797.22 (UNICA) with a good yield in warm and dry environments [(Gutiérrez-Rosales et al. 2007; Rolando et al. 2015; Demirel et al. 2020)](https://www.zotero.org/google-docs/?LcYrXv); and CIP720088 (Achirana INTA) known for its earliness and drought tolerance [(Schafleitner et al. 2007)](https://www.zotero.org/google-docs/?LkdMBJ). 
 
 The experiment was conducted at the International Potato Center experimental station in Lima, Peru (12.1◦ S, 77.0◦ W, 244 m.a.s.l.) from May to September 2013. The plants were grown in a controlled greenhouse at 28/15°C average day/night temperature with 70±5% average relative humidity, monitored by a weather station ‘HOBO U12 Outdoor/Industrial model’ (Onset Computer Corporation, Bourne, MA, USA). The potato tubers were pre-sprouted for two weeks in a dark chamber before planting. Afterward, one tuber/genotype was sown at 5–7 cm depth in a 5 L plastic pot containing 5 kg of dry commercial Sogemix SM2 substrate (75% Peat Moss, perlite, vermiculite, and limestone). Fertilization was performed twice during the experiment. The initial application occurred prior to planting, whereby the fertilizers were mixture with the substrate. The second application was administered at the surface and incorporated 40 days after planting (dap). The substrate fertilizer application rates were 7-1-4 de N-P-K consisted of 51.8 kg/ha of N, 33.8 kg/ha of P~2~O~5~, and 75 kg/ha of K~2~O. Nitrogen was applied in the form of ammonium nitrate (34.5% N), phosphorus was provided as triple superphosphate (45% P~2~O~5~), and potassium was delivered using potassium sulphate (50% K~2~O).
 
@@ -92,28 +92,10 @@ The experiment was conducted at the International Potato Center experimental sta
 
 
 
-| **Number**                   | **Genotypes**                | **Adaptability**             | **Growing period**           | **Heat tolerance**           | **Dry matter (%)**            |
-|------------------------------|------------------------------|------------------------------|------------------------------|------------------------------|-------------------------------|
-| G01                          | CIP720088 (Achirana-INTA)    |                              | Early                        |                              | 19                            |
-| G02                          | CIP392797.22 (UNICA)         | Lowland and highland Tropics | Medium                       |                              | 21                            |
-| G03                          | CIP397077.16                 | Lowland tropics              | Medium                       |                              | 20                            |
-| G04                          | CIP398192.213                | Mid elevation tropics        | Medium                       | Tolerant                     | 22                            |
-| G05                          | CIP398180.612                |                              | Medium                       |                              |                               |
-| G06                          | CIP398208.704                | Mid elevation tropics        | Medium                       | Tolerant                     | 24                            |
-| G07                          | CIP398098.119                | Mid elevation tropics        | Medium                       | Tolerant                     | 26                            |
-| G08                          | CIP398190.89                 | Mid elevation tropics        | Medium                       | Tolerant                     | 21                            |
-| G09                          | CIP398192.592                | Mid elevation tropics        | Medium                       | Tolerant                     | 21                            |
-| G10                          | CIP398201.510                | Mid elevation tropics        | Medium                       | Tolerant                     | 20                            |
-| G11                          | CIP398203.244                | Mid elevation tropics        | Medium                       | Tolerant                     | 20                            |
-| G12                          | CIP398203.5                  | Mid elevation tropics        | Medium                       | Tolerant                     | 13                            |
-| G13                          | CIP398208.219                | Mid elevation tropics        | Medium                       | Tolerant                     | 22                            |
-| G14                          | CIP398208.33                 | Mid elevation tropics        | Medium                       | Tolerant                     | 21                            |
-| G15                          | CIP398208.620                | Mid elevation tropics        | Medium                       | Tolerant                     | 21                            |
 
 
 
 
-: Potato genotypes (*Solanum tuberosum* L.) used for water deficit experiment with two commercial varieties and 13 genotypes from an advanced breeding population developed by the International Potato Center (CIP). Source: International Potato Center (CIP). {#tbl:id.ela3e9ir5gqm}
 
 
 
@@ -121,7 +103,7 @@ The experiment was conducted at the International Potato Center experimental sta
 
 ## Experimental design and irrigation treatments 
 
-The experiment was carried out in a complete randomized block design with two irrigation treatments with five replications of each genotype per treatment. In well-watered (WW) treatment, plants were irrigated according to their transpiration demand ([Figure  @fig:id.olts8je85fk5]:a), and in water deficit (WD) treatment, the water supply was gradually reduced until the wilting point [(Ray and Sinclair 1998)](https://www.zotero.org/google-docs/?y2XuVg). At 35 dap, before the stress initiation, the pots were watered to soaking and then allowed to drain overnight [(Bhatnagar-Mathur et al. 2007)](https://www.zotero.org/google-docs/?aBxXpi). The next morning, the pots were sealed in a plastic bag secured with a twist tie to prevent water loss except by transpiration and arranged in the greenhouse according to the experimental design. Thereafter, all the pots were weighed and this weight was defined as the initial pot weight. The inter-daily weight of the pots was measured for ten days to calculate the initial dry-down parameters for treatment application ([Figure  @fig:id.olts8je85fk5]:b). The WD treatment started at 45 dap which coincides with the beginning of tuber initiation.
+The experiment was carried out in a complete randomized block design with two irrigation treatments with five replications of each genotype per treatment. In well-watered (WW) treatment, plants were irrigated according to their transpiration demand ([@fig-id.olts8je85fk5]a), and in water deficit (WD) treatment, the water supply was gradually reduced until the wilting point [(Ray and Sinclair 1998)](https://www.zotero.org/google-docs/?y2XuVg). At 35 dap, before the stress initiation, the pots were watered to soaking and then allowed to drain overnight [(Bhatnagar-Mathur et al. 2007)](https://www.zotero.org/google-docs/?aBxXpi). The next morning, the pots were sealed in a plastic bag secured with a twist tie to prevent water loss except by transpiration and arranged in the greenhouse according to the experimental design. Thereafter, all the pots were weighed and this weight was defined as the initial pot weight. The inter-daily weight of the pots was measured for ten days to calculate the initial dry-down parameters for treatment application ([@fig-id.olts8je85fk5]b). The WD treatment started at 45 dap which coincides with the beginning of tuber initiation.
 
 
 
@@ -129,7 +111,6 @@ The experiment was carried out in a complete randomized block design with two ir
 
 
 
-![Water use efficiency in 15 potato genotypes under well-watered (WW) and water deficit (WD) conditions. (a) Daily transpiration. (b) Fraction of transpirable soil water (FTSW).](img_0.png){#fig:id.olts8je85fk5}
 
 ## Transpiration rate
 
@@ -141,7 +122,7 @@ The normalization of the transpiration (TRS) was achieved by dividing the transp
 
 $$FTSW=\left(\frac{pot.weight_{inter-daily}-pot.weight_{final}}{pot.weight_{initial}-pot.weight_{final}}\right)$$
 
-The inter-diary transpiration rate for each pot on average was 275.7 mL for WW and 72.5 mL for WD plants ([Figure  @fig:id.olts8je85fk5]:a). The FTSW in WW plants was maintained above 70%, while for the WD treatment, the gradual restriction in water supply decreased the water availability. The effect of the FTSW under WD was visible after 8 days of water restriction was applied ([Figure  @fig:id.olts8je85fk5]:b). The plants were harvested when the plants in WD had less than 10% of FTSW ([Figure  @fig:id.olts8je85fk5]:b). 
+The inter-diary transpiration rate for each pot on average was 275.7 mL for WW and 72.5 mL for WD plants ([@fig-id.olts8je85fk5]a). The FTSW in WW plants was maintained above 70%, while for the WD treatment, the gradual restriction in water supply decreased the water availability. The effect of the FTSW under WD was visible after 8 days of water restriction was applied ([@fig-id.olts8je85fk5]b). The plants were harvested when the plants in WD had less than 10% of FTSW ([@fig-id.olts8je85fk5]b). 
 
 ## Agro-physiological traits
 
@@ -181,14 +162,12 @@ The code, dataset, and reproducible data analysis were performed under Quarto [(
 
 The water deficit during the tuber initiation can reduce the yield and the quality of potatoes. To compare the response and the impact of the drought stress in potatoes, 15 genotypes were exposed to water deficit conditions at the beginning of tuber initiation (i.e 45 dap). Eighteen (18) traits among agronomic and physiological traits were evaluated during the water deficit stress-controlled condition.
 
-The plants did not show differences in SPAD at 29 dap (Figure 2a); while SPAD at 83 dap showed differences between treatment and genotypes (Figure 2b). The SPAD values were lower at 83 than at 29 dap (Figure 2a-b, [Table  @tbl:id.dd4ybu8xyln]:). The SPAD under WD were higher for all genotypes compared to the values under WW conditions ([Table  @tbl:id.dd4ybu8xyln]:, Figure 2b). The genotypes CIP398190.89 and CIP720088 had the lowest differences for SPAD at 83 dap among treatments with 2.06% and 0.30% respectively, while CIP398203.244 and CIP398208.33 had the largest values with 14.48 and 17.54%, respectively (Figure 2b).
+The plants did not show differences in SPAD at 29 dap (Figure 2a); while SPAD at 83 dap showed differences between treatment and genotypes (Figure 2b). The SPAD values were lower at 83 than at 29 dap (Figure 2a-b, [@tbl-id.dd4ybu8xyln]). The SPAD under WD were higher for all genotypes compared to the values under WW conditions ([@tbl-id.dd4ybu8xyln], Figure 2b). The genotypes CIP398190.89 and CIP720088 had the lowest differences for SPAD at 83 dap among treatments with 2.06% and 0.30% respectively, while CIP398203.244 and CIP398208.33 had the largest values with 14.48 and 17.54%, respectively (Figure 2b).
 
-All the genotypes decreased the RWC and LOP in response to WD ([Table  @tbl:id.dd4ybu8xyln]:) with values ranging between 64.96% and 50.09% for CIP720088 and CIP398201.510, respectively. The SLA reduction was 48% under WD treatment compared to WW ([Table  @tbl:id.dd4ybu8xyln]:). The lowest reduction for SLA was among the genotypes CIP398190.89 and CIP398203.5 with 24%, and 21% respectively; while the highest SLA reduction where found for CIP398208.219, CIP398098.119, and CIP398208.704 with 53%, 65%, and 64% respectively.
+All the genotypes decreased the RWC and LOP in response to WD ([@tbl-id.dd4ybu8xyln]) with values ranging between 64.96% and 50.09% for CIP720088 and CIP398201.510, respectively. The SLA reduction was 48% under WD treatment compared to WW ([@tbl-id.dd4ybu8xyln]). The lowest reduction for SLA was among the genotypes CIP398190.89 and CIP398203.5 with 24%, and 21% respectively; while the highest SLA reduction where found for CIP398208.219, CIP398098.119, and CIP398208.704 with 53%, 65%, and 64% respectively.
 
-![Traits measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) conditions. (a-b) Chlorophyll concentration. (c) Tuber dry weight. (d) Relative chlorophyll content. (e) Harvest Index. (f) Tuber Water Use Efficiency. Error bars indicate standard error (n = 5). Days after planting (dap). The letters show the differences in treatment by genotype.](img_1.png){#fig:kix.2tel1dvavei7}
 
-The morphological traits HGT, LDW, SDW, and LFA decreased significantly under WD ([Table  @tbl:id.dd4ybu8xyln]:). The LFA plants presented a reduction of 65% in growth under WD compared to WW plants. ([Table  @tbl:id.dd4ybu8xyln]:).  We did not find differences between the irrigation treatment for NTUB, RDW, and RTL ([Table  @tbl:id.dd4ybu8xyln]:). The RCC allowed discriminating genotypes between WD and WW (Figure 2c). The genotypes with best performance for RCC were CIP720088 (Achirana-INTA), CIP398208.620, CIP398208.704, CIP398201.510, CIP392797.22 (UNICA) and CIP397077.16 (Figure 2c, Table S1).
-
+The morphological traits HGT, LDW, SDW, and LFA decreased significantly under WD ([@tbl-id.dd4ybu8xyln]). The LFA plants presented a reduction of 65% in growth under WD compared to WW plants. ([@tbl-id.dd4ybu8xyln]).  We did not find differences between the irrigation treatment for NTUB, RDW, and RTL ([@tbl-id.dd4ybu8xyln]). The RCC allowed discriminating genotypes between WD and WW (Figure 2c). The genotypes with best performance for RCC were CIP720088 (Achirana-INTA), CIP398208.620, CIP398208.704, CIP398201.510, CIP392797.22 (UNICA) and CIP397077.16 (Figure 2c, Table S1).
 
 
 
@@ -196,48 +175,24 @@ The morphological traits HGT, LDW, SDW, and LFA decreased significantly under WD
 
 
 
-| **Variable**                                     | **Water deficit**                                | **Well-Watered**                                 | **p-value**                                       |
-|--------------------------------------------------|--------------------------------------------------|--------------------------------------------------|---------------------------------------------------|
-| Chlorophyll concentration (SPAD) at 29 dap       | 56.1 ± 4.9                                       | 56.7 ± 5.0                                       | 0.4                                               |
-| Chlorophyll concentration (SPAD) at 59 dap       | 47.9 ± 4.4                                       | 45.8 ± 3.7                                       | 0.002                                             |
-| Chlorophyll concentration (SPAD) at 76 dap       | 46.0 ± 5.4                                       | 41.7 ± 3.6                                       | <0.001                                            |
-| Chlorophyll concentration (SPAD) at 83 dap       | 44.1 ± 5.9                                       | 39.7 ± 4.5                                       | <0.001                                            |
-| Plant height (HGT; cm)                           | 132 ± 15                                         | 150 ± 16                                         | <0.001                                            |
-| Relative water content (RWC; %)                  | 58 ± 6                                           | 69 ± 5                                           | <0.001                                            |
-| Leaf osmotic potential (LOP; MPa)                | -2.84 ± 0.30                                     | -2.25 ± 0.29                                     | <0.001                                            |
-| Leaf dry weight (LDW; g)                         | 12.0 ± 3.7                                       | 17.3 ± 5.5                                       | <0.001                                            |
-| Stem dry weight (SDW; g)                         | 11.6 ± 9.1                                       | 14.5 ± 6.1                                       | <0.001                                            |
-| Root dry weight (RDW; g)                         | 3.67 ± 1.94                                      | 3.50 ± 1.96                                      | 0.6                                               |
-| Tuber dry weight (TDW; g)                        | 24 ± 11                                          | 40 ± 19                                          | <0.001                                            |
-| Tuber number (NTUB; N°)                          | 12.0 ± 6.2                                       | 12.0 ± 4.9                                       | 0.8                                               |
-| Total transpiration (TRS; mL)                    | 4.52 ± 1.22                                      | 7.85 ± 2.20                                      | <0.001                                            |
-| Leaf area (LFA; cm^2^)                           | 2,488 ± 797                                      | 7,100 ± 2,380                                    | <0.001                                            |
-| Root length (RTL; cm)                            | 33.1 ± 6.5                                       | 32.5 ± 5.8                                       | 0.4                                               |
-| Total dry biomass (TDB; g)                       | 51 ± 16                                          | 75 ± 24                                          | <0.001                                            |
-| Harvest index (HI)                               | 0.47 ± 0.16                                      | 0.53 ± 0.14                                      | 0.020                                             |
-| Specific leaf area (SLA; cm^2^ g^-1^)            | 218 ± 62                                         | 415 ± 82                                         | <0.001                                            |
-| Relative chlorophyll content (RCC)               | 0.021 ± 0.015                                    | 0.008 ± 0.007                                    | <0.001                                            |
-| Biomass water use efficiency (WUE\~B\~; g L^-1^) | 11.32 ± 2.15                                     | 9.53 ± 1.26                                      | <0.001                                            |
-| Tuber water use efficiency (WUE\~T\~; g L^-1^)   | 5.31 ± 2.03                                      | 5.09 ± 1.75                                      | 0.5                                               |
-
-
-
-
-: Response comparison for 18 traits in 15 potato genotypes under Well-Watered (WW) and Water Deficit (WD) conditions. The values for different traits are represented by the mean ± standard deviation with the significance under the t-test with their respective p-values. {#tbl:id.dd4ybu8xyln}
 
 
 
 
 
-The TDB for WD reduced by ca. 32% in comparison with the WW treatment ([Table  @tbl:id.dd4ybu8xyln]:, [Figure  @fig:id.48y0gz7bezv3]:). In terms of productivity, WD treatment decreased TDW across genotypes by ca. 40% (Figure 2d). The genotype CIP398190.89 had greater TDW in WD treatment compared to its yield in WW treatment with a 5% increase in biomass, while other genotypes like CIP398203.5 and CIP398203.244 presented up to 56% and 48% reduced tuber production (Figure 2d). The genotypes CIP398203.244, CIP398180.612, and CIP398201.510 were among the most sensitive genotypes at 31.6%, 46.7%, and 48.9% respectively under WD (Figure 2d, Table S1). 
 
-Significant differences were found for HI among genotypes and treatments (Figure 2e, [Table  @tbl:id.dd4ybu8xyln]:). Genotypes showed HI at ca. 53% under WW conditions and the water deficit was reduced by 11% ([Table  @tbl:id.dd4ybu8xyln]:). WUE~B~ was generally higher for genotypes under WD treatment than under WW treatment ([Table  @tbl:id.dd4ybu8xyln]:). Under WD treatment, CIP397077.16, CIP398208.620, CIP392797.22, and CIP398190.89 showed the highest WUE~B~ with 13.06, 12.03, and 11.59 g/L, respectively. The lowest WUE~B~ with 8.50 and 9.24 g/L were presented by CIP398180.612 and CIP398203.5, respectively. For WUE~T~ there is no significant difference between treatments ([Table  @tbl:id.dd4ybu8xyln]:). The genotypes with higher WUET under WD treatment were CIP397077.16, CIP392797.22 (UNICA), CIP720088, and CIP398208.620 (Figure 2f, Table S1).
+
+
+
+
+The TDB for WD reduced by ca. 32% in comparison with the WW treatment ([@tbl-id.dd4ybu8xyln], [@fig-id.48y0gz7bezv3]). In terms of productivity, WD treatment decreased TDW across genotypes by ca. 40% (Figure 2d). The genotype CIP398190.89 had greater TDW in WD treatment compared to its yield in WW treatment with a 5% increase in biomass, while other genotypes like CIP398203.5 and CIP398203.244 presented up to 56% and 48% reduced tuber production (Figure 2d). The genotypes CIP398203.244, CIP398180.612, and CIP398201.510 were among the most sensitive genotypes at 31.6%, 46.7%, and 48.9% respectively under WD (Figure 2d, Table S1). 
+
+Significant differences were found for HI among genotypes and treatments (Figure 2e, [@tbl-id.dd4ybu8xyln]). Genotypes showed HI at ca. 53% under WW conditions and the water deficit was reduced by 11% ([@tbl-id.dd4ybu8xyln]). WUE~B~ was generally higher for genotypes under WD treatment than under WW treatment ([@tbl-id.dd4ybu8xyln]). Under WD treatment, CIP397077.16, CIP398208.620, CIP392797.22, and CIP398190.89 showed the highest WUE~B~ with 13.06, 12.03, and 11.59 g/L, respectively. The lowest WUE~B~ with 8.50 and 9.24 g/L were presented by CIP398180.612 and CIP398203.5, respectively. For WUE~T~ there is no significant difference between treatments ([@tbl-id.dd4ybu8xyln]). The genotypes with higher WUET under WD treatment were CIP397077.16, CIP392797.22 (UNICA), CIP720088, and CIP398208.620 (Figure 2f, Table S1).
 
 
 
 ## 
 
-![Tuber yield performance in two contrasting potato genotypes under well-watered (WW) and water deficit (WD) conditions. CIP 398203.244, susceptible genotype shows good yield performance under well-watered (WW) but reduced performance under water deficit (WD) conditions. CIP 398190.89, tolerance genotype with similar yield response under water deficit (WD) and well-watered (WW). Each group represents one replication (n = 5). Pictures were taken using the 5 cm scale (black/white segment = 1 cm) displayed alongside the tubers.](img_2.png){#fig:id.48y0gz7bezv3}
 
 
 
@@ -251,7 +206,7 @@ Significant differences were found for HI among genotypes and treatments (Figure
 
 Selection of genotypes with enhanced yield performance under field conditions is time-consuming and laborious, especially for large populations as required in breeding programs and genetic analysis. Correlation, PCA, and plot-based heritability were performed to identify useful traits for the indirect selection in potato genotypes under water deficit.
 
-The TDW had a positive correlation with TDB (r = 0.84), HI (r = 0.61), and TRN (r=0.71) and a consistent negative correlation in the three measurements of SPAD at 83 dap (r = -0.60) ([Figure  @fig:id.lyc5pu5rw21f]:). LFA showed a high correlation with TRS (r = 0.93) and LDW (r = 0.85) while presenting a negative correlation with RCC (r = -0.76) ([Figure  @fig:id.lyc5pu5rw21f]:). The HI presents a negative correlation with SPAD at 83 dap (r = -0.7), RDW (r = -0.73), and RTL (r = -0.75); while WUE~T~ showed a strong positive correlation with HI (r = 0.92) and negative correlation with RTL (r = -0.73). The RCC presented a negative correlation with TRS (r = -0.76), LFA (r = -0.76), and LDW (r = -0.78) ([Figure  @fig:id.lyc5pu5rw21f]:). 
+The TDW had a positive correlation with TDB (r = 0.84), HI (r = 0.61), and TRN (r=0.71) and a consistent negative correlation in the three measurements of SPAD at 83 dap (r = -0.60) ([@fig-id.lyc5pu5rw21f]). LFA showed a high correlation with TRS (r = 0.93) and LDW (r = 0.85) while presenting a negative correlation with RCC (r = -0.76) ([@fig-id.lyc5pu5rw21f]). The HI presents a negative correlation with SPAD at 83 dap (r = -0.7), RDW (r = -0.73), and RTL (r = -0.75); while WUE~T~ showed a strong positive correlation with HI (r = 0.92) and negative correlation with RTL (r = -0.73). The RCC presented a negative correlation with TRS (r = -0.76), LFA (r = -0.76), and LDW (r = -0.78) ([@fig-id.lyc5pu5rw21f]). 
 
 
 
@@ -263,19 +218,17 @@ The TDW had a positive correlation with TDB (r = 0.84), HI (r = 0.61), and TRN (
 
 
 
-![Pearson correlation among agronomic and physiological traits evaluated in 15 potato genotypes under well-watered (WW) and water deficit (WD) conditions. Correlation coefficients (above diagonal), linear regressions (below diagonal), and trait distribution (diagonal in red color). p-value: 0.05\*, 0.01\*\*, 0.001\*\*\*. Where: Chlorophyll Concentration (SPAD), Plant height (HGT; cm), Relative water content (RWC), Leaf osmotic potential (LOP; MPa), Leaf dry weight (LDW; g), Stem dry weight (SDW; g), Root dry weight (RDW; g), Tuber dry weight (TDW; g), Tuber number (NTUB; N°), Total transpiration (TRS; mL), Leaf area (LFA; cm^2^), Root length (RTL; cm), Total dry biomass (TDB; g), Harvest index (HI), Specific leaf area (SLA; cm^2^ g ^-1^), Relative chlorophyll content (RCC), Biomass water use efficiency (WUE~B~; g L ^-1^), Tuber water use efficiency (WUE~T~; g L ^-1^).](img_3.png){#fig:id.lyc5pu5rw21f}
 
-To understand the interaction and response of the genotypes under WW and WD conditions a PCA for the traits and individuals was performed. The first two components in the PCA explained 64.9% of the variance ([Figure  @fig:id.jdkmq1zbztrg]:, Fig S1a). In the first dimension, the five traits with the highest contribution were TRS, LFA, TBD, SLA, and RCC (Fig. S1b). In the second dimension, the traits with major contributions were HI, WUE~T~, RTL, RDW, and SPAD 83 dap (Fig. S1c). In the first dimension, there was a positive correlation between LDW, LFA, and TRS with a negative correlation with RCC and WUE~B~ ([Figure  @fig:id.jdkmq1zbztrg]:a, Fig. S1d). The genotypes with high LFA presented more TRS and LDW but they have low RCC and WUE~B~ ([Figure  @fig:id.jdkmq1zbztrg]:a, Fig. S1d). In the second dimension, RTL and RWD were correlated and presented negative correlations with HI and WUE~T~ ([Figure  @fig:id.jdkmq1zbztrg]:a, Fig. S1d). The plot-based heritability presented high values for HI (0.96), RDW (0.95), WUE~T~ (0.94), SDW (0.89), and RTL (0.83). And, low values for RWC (0.07), LFA (0.44), SLA (0.03), and OP (<0.001) ([Figure  @fig:id.jdkmq1zbztrg]:a, Table S2)
+To understand the interaction and response of the genotypes under WW and WD conditions a PCA for the traits and individuals was performed. The first two components in the PCA explained 64.9% of the variance ([@fig-id.jdkmq1zbztrg], Fig S1a). In the first dimension, the five traits with the highest contribution were TRS, LFA, TBD, SLA, and RCC (Fig. S1b). In the second dimension, the traits with major contributions were HI, WUE~T~, RTL, RDW, and SPAD 83 dap (Fig. S1c). In the first dimension, there was a positive correlation between LDW, LFA, and TRS with a negative correlation with RCC and WUE~B~ ([@fig-id.jdkmq1zbztrg]a, Fig. S1d). The genotypes with high LFA presented more TRS and LDW but they have low RCC and WUE~B~ ([@fig-id.jdkmq1zbztrg]a, Fig. S1d). In the second dimension, RTL and RWD were correlated and presented negative correlations with HI and WUE~T~ ([@fig-id.jdkmq1zbztrg]a, Fig. S1d). The plot-based heritability presented high values for HI (0.96), RDW (0.95), WUE~T~ (0.94), SDW (0.89), and RTL (0.83). And, low values for RWC (0.07), LFA (0.44), SLA (0.03), and OP (<0.001) ([@fig-id.jdkmq1zbztrg]a, Table S2)
 
-The PCA for the individuals grouped the genotypes in five clusters ([Figure  @fig:id.jdkmq1zbztrg]:b). Cluster 1 was associated with the genotype Achirana-INTA with early maturity ([Table  @tbl:id.ela3e9ir5gqm]:).  Clusters 2 and 3 are associated with the genotypes under WD conditions; while clusters 4 and 5 are related to the genotypes under WW conditions. In the distribution between the individuals and traits, the genotypes UNICA, CIP397077.16, CIP398190.89, and CIP398208.620 are located in clusters 3 and 5 presented higher performance under WD conditions with high WUET, HI, and RCC ([Figure  @fig:id.jdkmq1zbztrg]:, Figure 2c, e-f). The genotypes CIP398203.244, CIP398180.612, CIP398201.510, and CIP398192.592 located in clusters 2 and 4 presented low performance under both treatments ([Figure  @fig:id.jdkmq1zbztrg]:b, Fig. S2).
-
+The PCA for the individuals grouped the genotypes in five clusters ([@fig-id.jdkmq1zbztrg]b). Cluster 1 was associated with the genotype Achirana-INTA with early maturity ([@tbl-id.ela3e9ir5gqm]).  Clusters 2 and 3 are associated with the genotypes under WD conditions; while clusters 4 and 5 are related to the genotypes under WW conditions. In the distribution between the individuals and traits, the genotypes UNICA, CIP397077.16, CIP398190.89, and CIP398208.620 are located in clusters 3 and 5 presented higher performance under WD conditions with high WUET, HI, and RCC ([@fig-id.jdkmq1zbztrg], Figure 2c, e-f). The genotypes CIP398203.244, CIP398180.612, CIP398201.510, and CIP398192.592 located in clusters 2 and 4 presented low performance under both treatments ([@fig-id.jdkmq1zbztrg]b, Fig. S2).
 
 
 
 
 
 
-![Principal Component Analysis (PCA) from traits measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) conditions. (A) PCA for the 18 traits. (B) PCA for 15 potato genotypes under WW and WD conditions. Plot-based heritability values are in brackets.  Where: Chlorophyll Concentration (SPAD), Plant height (HGT; cm), Relative water content (RWC; %), Leaf osmotic potential (LOP; MPa), Leaf dry weight (LDW; g), Stem dry weight (SDW; g), Root dry weight (RDW; g), Tuber dry weight (TDW; g), Tuber number (NTUB; N°), Total transpiration (TRS; mL), Leaf area (LFA; cm^2^), Root length (RTL; cm), Total dry biomass (TDB; g), Harvest index (HI), Specific leaf area (SLA; cm^2^ g ^-1^), Relative chlorophyll content (RCC), Biomass water use efficiency (WUE~B~; g L ^-1^), Tuber water use efficiency (WUE~T~; g L ^-1^).](img_4.png){#fig:id.jdkmq1zbztrg}
+
 
 
 
@@ -288,11 +241,11 @@ In the present research, we studied two commercial varieties and thirteen potato
 
 Plants develop drought tolerance strategies through improved morphological, physiological, biochemical, and cellular mechanisms [(Raza et al. 2022)](https://www.zotero.org/google-docs/?lY6DuT). Our results showed that genotypes with the longest RTL and high LFA as CIP398201.510 and CIP398203.244 have the lowest yield under both water-stressed and non-stressed conditions. These genotypes preferred to increase shoot biomass, leaves and stems over tuber production. The long roots also seem to contribute to vegetative growth rather than tuber production, similar to results found by [Zarzyńska et al. (2017)](https://www.zotero.org/google-docs/?eIPVEU) under greenhouse conditions showing a strong correlation between root length and yield decrease in five potato cultivars. 
 
-The reduction of transpiration due to the reduction of leaf area is another drought-resistance mechanism presented in potatoes. Thick leaves often have greater photosynthetic capacity than thin leaves, due to an increase in chlorophyll content per leaf area [(Songsri et al. 2009; Rolando et al. 2015; Aliche et al. 2020)](https://www.zotero.org/google-docs/?eaatYH). We found that some genotypes have reduced their transpiration and maintained high SPAD values to allow increased WUE~T~ under water deficit conditions. Similar results were also reported by [Rodríguez-Pérez et al. (2017)](https://www.zotero.org/google-docs/?ox0E5R) in Andean potato genotypes. This response is also reflected in our work by the maintenance of high RCC in the drought-stressed genotypes. The inclusion of RCC allows differentiating the genotypes with higher yield performance under WD conditions ([Figure  @fig:id.lyc5pu5rw21f]:, Figure 2c-d). Apparently, genotypes with these characteristics allocate a higher fraction of assimilates to tubers by reducing the evaporative surface area above ground and efficiently utilizing the water and N resources in the soil [(Satognon et al. 2022)](https://www.zotero.org/google-docs/?ujG1CF). Our results suggest SPAD measures were sensitive to detect drought stress even in the early stages of the stress in potatoes ([Table  @tbl:id.dd4ybu8xyln]:). 
+The reduction of transpiration due to the reduction of leaf area is another drought-resistance mechanism presented in potatoes. Thick leaves often have greater photosynthetic capacity than thin leaves, due to an increase in chlorophyll content per leaf area [(Songsri et al. 2009; Rolando et al. 2015; Aliche et al. 2020)](https://www.zotero.org/google-docs/?eaatYH). We found that some genotypes have reduced their transpiration and maintained high SPAD values to allow increased WUE~T~ under water deficit conditions. Similar results were also reported by [Rodríguez-Pérez et al. (2017)](https://www.zotero.org/google-docs/?ox0E5R) in Andean potato genotypes. This response is also reflected in our work by the maintenance of high RCC in the drought-stressed genotypes. The inclusion of RCC allows differentiating the genotypes with higher yield performance under WD conditions ([@fig-id.lyc5pu5rw21f], Figure 2c-d). Apparently, genotypes with these characteristics allocate a higher fraction of assimilates to tubers by reducing the evaporative surface area above ground and efficiently utilizing the water and N resources in the soil [(Satognon et al. 2022)](https://www.zotero.org/google-docs/?ujG1CF). Our results suggest SPAD measures were sensitive to detect drought stress even in the early stages of the stress in potatoes ([@tbl-id.dd4ybu8xyln]). 
 
 Agronomically, maintaining high yield performance under drought stress is a crucial mechanism in potatoes [(Boguszewska‐Mańkowska et al. 2018)](https://www.zotero.org/google-docs/?HdJc2C). Under well-watered conditions, soil can supply water at a steady rate to meet transpiration demand. However, as the soil becomes dry, water flux from the soil to the root surface decreases and cannot satisfy the demand for transpiration [(Aliche et al. 2020)](https://www.zotero.org/google-docs/?OxFr6e).  We found a significant and strong positive correlation between HI and WUE~T~, indicating a direct association between these two traits. We found minimal yield loss in genotypes like CIP720088, CIP392797.22 (UNICA), CIP397077.16, and CIP398190.89 under water stress. This response was related to the ability of these genotypes to increase their WUE~T~ by absorbing the limited water and nutrients available in the soil without decreasing yield [(Kaminski et al. 2015; Reddy et al. 2020)](https://www.zotero.org/google-docs/?dGTr0S). This suggests the relationship between biomass production, WUE~T,~ and HI when limited soil water is available. HI is a stable trait for particular cultivars over a wide range of conditions (Donald and Hamblin, 1976; Khan et al., 2015). In the present study, the HI presented a high plot-based heritability. Suggesting that selecting genotypes with high HI under water-limited conditions is especially important to obtain individuals with high WUE~T~ with high yield performance. 
 
-One significant limitation of this study is that it was conducted in a single experiment, which may not fully capture the impact of environmental variability on complex traits such as drought tolerance. Nonetheless, the study addressed this limitation by conducting the experiment under controlled conditions and using the lysimeter method to calculate water consumption by a plant which would be difficult to do under field conditions. Additionally, the plot-based heritability was estimated for the studied traits ([Figure  @fig:id.jdkmq1zbztrg]:a). The limited space in the greenhouse prevented the inclusion of additional pots to adjust water requirements over time for each treatment. However, the study successfully achieved the difference between the water deficit treatment and stress conditions ([Figure  @fig:id.olts8je85fk5]:), with all pots having the same source of variation and normally distributed errors. To obtain more reliable insights into the variability and stability of drought tolerance traits in potato genotypes, future investigations involving multiple environmental trials and a larger sample size would be necessary.
+One significant limitation of this study is that it was conducted in a single experiment, which may not fully capture the impact of environmental variability on complex traits such as drought tolerance. Nonetheless, the study addressed this limitation by conducting the experiment under controlled conditions and using the lysimeter method to calculate water consumption by a plant which would be difficult to do under field conditions. Additionally, the plot-based heritability was estimated for the studied traits ([@fig-id.jdkmq1zbztrg]a). The limited space in the greenhouse prevented the inclusion of additional pots to adjust water requirements over time for each treatment. However, the study successfully achieved the difference between the water deficit treatment and stress conditions ([@fig-id.olts8je85fk5]), with all pots having the same source of variation and normally distributed errors. To obtain more reliable insights into the variability and stability of drought tolerance traits in potato genotypes, future investigations involving multiple environmental trials and a larger sample size would be necessary.
 
 In conclusion, tolerant genotypes preferentially use available water-increasing to increase their tuber production rather than above-ground biomass whereas susceptible genotypes presented high transpiration and long RTL with low WUE~T~. The SPAD was sensitive to detect early drought stress in potatoes. The HI was related to WUE~T~ and yield performance under water deficit conditions and its present high heritability. Our results suggest HI as an efficient trait to select drought stress tolerance genotypes and could be useful as selection criteria in breeding programs where it is required to evaluate a large number of genotypes under field conditions. 
 
@@ -412,7 +365,98 @@ The authors declare no conflicts of interest.
 
 
 
-#| END
+\newpage
+```{r}
+#| label: tbl-id.ela3e9ir5gqm
+#| tbl-cap: 'Potato genotypes (*Solanum tuberosum* L.) used for water deficit experiment with two commercial varieties and 13 genotypes from an advanced breeding population developed by the International Potato Center (CIP). Source: International Potato Center (CIP).'
+knitr::kable(tibble::tibble(' ' = ''))
+```
+| **Number**                   | **Genotypes**                | **Adaptability**             | **Growing period**           | **Heat tolerance**           | **Dry matter (%)**            |
+|------------------------------|------------------------------|------------------------------|------------------------------|------------------------------|-------------------------------|
+| G01                          | CIP720088 (Achirana-INTA)    |                              | Early                        |                              | 19                            |
+| G02                          | CIP392797.22 (UNICA)         | Lowland and highland Tropics | Medium                       |                              | 21                            |
+| G03                          | CIP397077.16                 | Lowland tropics              | Medium                       |                              | 20                            |
+| G04                          | CIP398192.213                | Mid elevation tropics        | Medium                       | Tolerant                     | 22                            |
+| G05                          | CIP398180.612                |                              | Medium                       |                              |                               |
+| G06                          | CIP398208.704                | Mid elevation tropics        | Medium                       | Tolerant                     | 24                            |
+| G07                          | CIP398098.119                | Mid elevation tropics        | Medium                       | Tolerant                     | 26                            |
+| G08                          | CIP398190.89                 | Mid elevation tropics        | Medium                       | Tolerant                     | 21                            |
+| G09                          | CIP398192.592                | Mid elevation tropics        | Medium                       | Tolerant                     | 21                            |
+| G10                          | CIP398201.510                | Mid elevation tropics        | Medium                       | Tolerant                     | 20                            |
+| G11                          | CIP398203.244                | Mid elevation tropics        | Medium                       | Tolerant                     | 20                            |
+| G12                          | CIP398203.5                  | Mid elevation tropics        | Medium                       | Tolerant                     | 13                            |
+| G13                          | CIP398208.219                | Mid elevation tropics        | Medium                       | Tolerant                     | 22                            |
+| G14                          | CIP398208.33                 | Mid elevation tropics        | Medium                       | Tolerant                     | 21                            |
+| G15                          | CIP398208.620                | Mid elevation tropics        | Medium                       | Tolerant                     | 21                            |
+\newpage
+```{r}
+#| label: tbl-id.dd4ybu8xyln
+#| tbl-cap: 'Response comparison for 18 traits in 15 potato genotypes under Well-Watered (WW) and Water Deficit (WD) conditions. The values for different traits are represented by the mean ± standard deviation with the significance under the t-test with their respective p-values.'
+knitr::kable(tibble::tibble(' ' = ''))
+```
+| **Variable**                                     | **Water deficit**                                | **Well-Watered**                                 | **p-value**                                       |
+|--------------------------------------------------|--------------------------------------------------|--------------------------------------------------|---------------------------------------------------|
+| Chlorophyll concentration (SPAD) at 29 dap       | 56.1 ± 4.9                                       | 56.7 ± 5.0                                       | 0.4                                               |
+| Chlorophyll concentration (SPAD) at 59 dap       | 47.9 ± 4.4                                       | 45.8 ± 3.7                                       | 0.002                                             |
+| Chlorophyll concentration (SPAD) at 76 dap       | 46.0 ± 5.4                                       | 41.7 ± 3.6                                       | <0.001                                            |
+| Chlorophyll concentration (SPAD) at 83 dap       | 44.1 ± 5.9                                       | 39.7 ± 4.5                                       | <0.001                                            |
+| Plant height (HGT; cm)                           | 132 ± 15                                         | 150 ± 16                                         | <0.001                                            |
+| Relative water content (RWC; %)                  | 58 ± 6                                           | 69 ± 5                                           | <0.001                                            |
+| Leaf osmotic potential (LOP; MPa)                | -2.84 ± 0.30                                     | -2.25 ± 0.29                                     | <0.001                                            |
+| Leaf dry weight (LDW; g)                         | 12.0 ± 3.7                                       | 17.3 ± 5.5                                       | <0.001                                            |
+| Stem dry weight (SDW; g)                         | 11.6 ± 9.1                                       | 14.5 ± 6.1                                       | <0.001                                            |
+| Root dry weight (RDW; g)                         | 3.67 ± 1.94                                      | 3.50 ± 1.96                                      | 0.6                                               |
+| Tuber dry weight (TDW; g)                        | 24 ± 11                                          | 40 ± 19                                          | <0.001                                            |
+| Tuber number (NTUB; N°)                          | 12.0 ± 6.2                                       | 12.0 ± 4.9                                       | 0.8                                               |
+| Total transpiration (TRS; mL)                    | 4.52 ± 1.22                                      | 7.85 ± 2.20                                      | <0.001                                            |
+| Leaf area (LFA; cm^2^)                           | 2,488 ± 797                                      | 7,100 ± 2,380                                    | <0.001                                            |
+| Root length (RTL; cm)                            | 33.1 ± 6.5                                       | 32.5 ± 5.8                                       | 0.4                                               |
+| Total dry biomass (TDB; g)                       | 51 ± 16                                          | 75 ± 24                                          | <0.001                                            |
+| Harvest index (HI)                               | 0.47 ± 0.16                                      | 0.53 ± 0.14                                      | 0.020                                             |
+| Specific leaf area (SLA; cm^2^ g^-1^)            | 218 ± 62                                         | 415 ± 82                                         | <0.001                                            |
+| Relative chlorophyll content (RCC)               | 0.021 ± 0.015                                    | 0.008 ± 0.007                                    | <0.001                                            |
+| Biomass water use efficiency (WUE\~B\~; g L^-1^) | 11.32 ± 2.15                                     | 9.53 ± 1.26                                      | <0.001                                            |
+| Tuber water use efficiency (WUE\~T\~; g L^-1^)   | 5.31 ± 2.03                                      | 5.09 ± 1.75                                      | 0.5                                               |
+\newpage
+```{r}
+#| label: fig-id.olts8je85fk5
+#| fig-cap: 'Water use efficiency in 15 potato genotypes under well-watered (WW) and water deficit (WD) conditions. (a) Daily transpiration. (b) Fraction of transpirable soil water (FTSW).'
+#| echo: false
+
+knitr::include_graphics('manuscript/img_0.png')
+```
+\newpage
+```{r}
+#| label: fig-id.48y0gz7bezv3
+#| fig-cap: 'Tuber yield performance in two contrasting potato genotypes under well-watered (WW) and water deficit (WD) conditions. CIP 398203.244, susceptible genotype shows good yield performance under well-watered (WW) but reduced performance under water deficit (WD) conditions. CIP 398190.89, tolerance genotype with similar yield response under water deficit (WD) and well-watered (WW). Each group represents one replication (n = 5). Pictures were taken using the 5 cm scale (black/white segment = 1 cm) displayed alongside the tubers.'
+#| echo: false
+
+knitr::include_graphics('manuscript/img_2.png')
+```
+\newpage
+```{r}
+#| label: fig-kix.2tel1dvavei7
+#| fig-cap: 'Traits measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) conditions. (a-b) Chlorophyll concentration. (c) Tuber dry weight. (d) Relative chlorophyll content. (e) Harvest Index. (f) Tuber Water Use Efficiency. Error bars indicate standard error (n = 5). Days after planting (dap). The letters show the differences in treatment by genotype.'
+#| echo: false
+
+knitr::include_graphics('manuscript/img_1.png')
+```
+\newpage
+```{r}
+#| label: fig-id.jdkmq1zbztrg
+#| fig-cap: 'Principal Component Analysis (PCA) from traits measured in 15 potato genotypes under well-watered (WW) and water deficit (WD) conditions. (A) PCA for the 18 traits. (B) PCA for 15 potato genotypes under WW and WD conditions. Plot-based heritability values are in brackets.  Where: Chlorophyll Concentration (SPAD), Plant height (HGT; cm), Relative water content (RWC; %), Leaf osmotic potential (LOP; MPa), Leaf dry weight (LDW; g), Stem dry weight (SDW; g), Root dry weight (RDW; g), Tuber dry weight (TDW; g), Tuber number (NTUB; N°), Total transpiration (TRS; mL), Leaf area (LFA; cm^2^), Root length (RTL; cm), Total dry biomass (TDB; g), Harvest index (HI), Specific leaf area (SLA; cm^2^ g ^-1^), Relative chlorophyll content (RCC), Biomass water use efficiency (WUE~B~; g L ^-1^), Tuber water use efficiency (WUE~T~; g L ^-1^).'
+#| echo: false
+
+knitr::include_graphics('manuscript/img_4.png')
+```
+\newpage
+```{r}
+#| label: fig-id.lyc5pu5rw21f
+#| fig-cap: 'Pearson correlation among agronomic and physiological traits evaluated in 15 potato genotypes under well-watered (WW) and water deficit (WD) conditions. Correlation coefficients (above diagonal), linear regressions (below diagonal), and trait distribution (diagonal in red color). p-value: 0.05\*, 0.01\*\*, 0.001\*\*\*. Where: Chlorophyll Concentration (SPAD), Plant height (HGT; cm), Relative water content (RWC), Leaf osmotic potential (LOP; MPa), Leaf dry weight (LDW; g), Stem dry weight (SDW; g), Root dry weight (RDW; g), Tuber dry weight (TDW; g), Tuber number (NTUB; N°), Total transpiration (TRS; mL), Leaf area (LFA; cm^2^), Root length (RTL; cm), Total dry biomass (TDB; g), Harvest index (HI), Specific leaf area (SLA; cm^2^ g ^-1^), Relative chlorophyll content (RCC), Biomass water use efficiency (WUE~B~; g L ^-1^), Tuber water use efficiency (WUE~T~; g L ^-1^).'
+#| echo: false
+
+knitr::include_graphics('manuscript/img_3.png')
+```
 
 ```{r}
 knitr::knit_exit() 
